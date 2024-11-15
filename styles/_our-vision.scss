@@ -1,0 +1,56 @@
+.our-vision-section {
+    padding: 10rem 0;
+    @include bp("xl-max") {
+        padding: 8rem 0;
+    }
+    @include bp("sm-max") {
+        padding: 6rem 0;
+    }
+    .our-vision-grid {
+        display: flex;
+        @include bp ("sm-max") {
+            flex-wrap: wrap;
+        }
+        .our-vision-left {
+            flex: 0 0 52.72%;
+            max-width: 52.72%;
+            padding-right: 9rem;
+            @include bp ("sm-max") {
+                flex: 0 0 100%;
+                max-width: 100%;
+                padding-right: 0;
+                padding-bottom: 3rem;
+            }
+            @include bp ("smd-max") {
+                padding-right: 3rem;
+            }
+            h2 {
+                text-align: left;
+                margin-bottom: 3rem;
+                @include bp ("smd-max") {
+                    margin-bottom: 2rem;
+                }
+            }
+            p {
+                font-size: 2rem;
+                @include bp ("smd-max") {
+                    font-size: 1.8rem;
+                }
+                @include bp ("smd-max") {
+                    font-size: 1.6rem;
+                }
+                & + p {
+                    margin-top: 2.5rem;
+                }
+            }
+        }
+        .our-vision-right {
+            flex: 0 0 47.28%;
+            max-width: 47.28%;
+            @include bp ("sm-max") {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+        }
+    }
+}

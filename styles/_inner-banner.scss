@@ -1,0 +1,110 @@
+.inner-page-banner {
+    background-image: url(../public/images/inner-page-bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    min-height: 47rem;
+    @include bp("xlg-max") {
+        min-height: 42rem;
+    }
+    @include bp("xl-max") {
+        min-height: 38rem;
+    }
+    @include bp("smd-max") {
+        min-height: 30rem;
+    }
+    &.contact-banner {
+        .inner-page-banner-left {
+            p {
+                max-width: 38rem;
+            }
+        }
+    }
+    .inner-page-banner-wrapper {
+        display: flex;
+        align-items: center;
+        @include bp("sm-max") {
+            flex-wrap: wrap;
+        }
+        .inner-page-banner-left {
+            flex: 0 0 44.74%;
+            max-width: 44.74%;
+            @include bp("sm-max") {
+                flex: 0 0 100%;
+                max-width: 100%;
+                padding-top: 3rem;
+            }
+            .sub-title {
+                font-size: 1.8rem;
+                font-weight: 600;
+                font-family: "Montserrat", sans-serif;
+                color: $white;
+                display: block;
+                margin-bottom: 0.5rem;
+            }
+            h1 {
+                font-size: 4.4rem;
+                padding-bottom: 1.5rem;
+                position: relative;
+                font-weight: 700;
+                margin-bottom: 2.5rem;
+                @include bp("xl-max") {
+                    font-size: 4rem;
+                }
+                @include bp("sm-max") {
+                    font-size: 3.6rem;
+                }
+                &.has-green-bar::after {
+                    background-color: #C4F053;
+                    width: 22rem;
+                    height: 0.6rem;
+                    border-radius: 0.3rem;;
+                    left: 0;
+                    bottom: 0;
+                    content: "";
+                    position: absolute;
+                    @include bp("sm-max") {
+                        width: 12rem;
+                    }
+
+                }
+            }
+            p {
+                font-size: 2rem;
+                color: $white;
+                @include bp("xl-max") {
+                    font-size: 1.8rem;
+                }
+                @include bp("sm-max") {
+                    font-size: 1.6rem;
+                }
+            }
+            .banner-button {
+                height: 5.2rem;
+                border-radius: 2.6rem;
+                padding: 0 3rem;
+                text-align: center;
+                line-height: 5.2rem;
+                background: $white;
+                font-weight: 700;
+                font-size: 1.6rem;
+                display: inline-block;
+                margin-top: 1.5rem;
+                transition: all 0.5s;
+                &:hover {
+                    background-color: $primaryColor;
+                    color: $white;
+                }
+            }
+        }
+        .inner-page-banner-right {
+            flex: 0 0 55.26%;
+            max-width: 55.26%;
+            @include bp("sm-max") {
+                flex: 0 0 100%;
+                max-width: 100%;
+                text-align: center;
+            }
+        }
+    }
+}

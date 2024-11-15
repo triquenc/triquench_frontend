@@ -1,0 +1,197 @@
+.service-we-provide {
+    background-color: $lightblue;   
+    padding: 10rem 0;
+    margin-bottom: -5rem;
+    position: relative;
+    @include bp("xl-max") {
+        padding: 8rem 0;
+    }
+    @include bp("sm-max") {
+        padding: 6rem 0;
+    }
+    .prop {
+        @include bp("xl-max") {
+            width: 10rem;
+        }   
+        @include bp("smd-max") {
+            width: 7rem;
+        }
+        @include bp("sm-max") {
+            display: none;
+        }
+    }
+    .prop1 {
+        position: absolute;
+        top: 10%;
+        left: 0;
+    }
+    .prop2 {
+        position: absolute;
+        top: 14%;
+        right: 0;
+    }
+    .prop3 {
+        position: absolute;
+        bottom: 15%;
+        left: 0;
+    }
+    .prop4 {
+        position: absolute;
+        bottom: 15%;
+        right: 0;
+    }
+    .container-sm {
+        max-width: 81.4rem;
+        padding: 0 2.5rem;
+        margin: 0 auto;
+        .title-block {
+            h2 {
+                margin-bottom: 1rem;
+            }
+            .sut-text {
+                color: $secondaryColor;
+                font-family: "Montserrat", serif;
+                font-size: 2.4rem;
+                font-weight: 600;
+                @include bp("smd-max") {
+                    font-size: 2rem;
+                }
+            }
+        }
+        .service-content-block {
+            .service-content-block-inner {
+                border: 1px solid $blueborder2;
+                padding: 3rem 3rem 7rem;
+                background: $white;
+                border-radius: 3rem;
+                @include bp("sm-max") {
+                    padding: 2.5rem 2.5rem 6rem;
+                }
+                .icon-list-wrapper {
+                    border-bottom: 1px solid #DEE2E5;
+                    margin-bottom: 3rem;
+                    ul {
+                        display: flex;
+                        flex-wrap: wrap;
+                        margin: 0 -1.5rem -1rem;
+                        position: relative;
+                        @include bp("sm-max") {
+                            margin: 0 0 -1rem;
+                        }
+                        &::after {
+                            position: absolute;
+                            height: calc(100% - 1rem);
+                            width: 0.1rem;
+                            background: #DEE2E5;
+                            left: calc(50% - 1.6rem);
+                            top: 0;
+                            content: "";
+                            @include bp("sm-max") {
+                                display: none;
+                            }
+                        }
+                        li {
+                            flex: 0 0 50%;
+                            max-width: 50%;
+                            padding: 0 1.5rem;
+                            margin-bottom: 3rem;
+                            @include bp("sm-max") {
+                                padding: 0;
+                            }
+                            @include bp("xxs-max") {
+                                flex: 0 0 100%;
+                                max-width: 100%;
+                            }
+                            span {
+                                display: inline-block;
+                                padding-left: 1.6rem;
+                                font-size: 2.4rem;
+                                line-height: normal;
+                                @include bp("smd-max") {
+                                    font-size: 2rem;
+                                }
+                                @include bp("sm-max") {
+                                    font-size: 1.8rem;
+                                    padding-left: 1rem;
+                                }
+                            }
+                        }
+                    }
+                }
+                p {
+                    font-size: 1.8rem;
+                    text-align: center;
+                    @include bp("sm-max") {
+                        font-size: 1.6rem;
+                    }
+                }
+            }
+            .button-block {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 3rem;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                top: -4.2rem;
+                @include bp("sm-max") {
+                    gap: 2rem;
+                    top: -3.7rem;
+                }
+                a {
+                    padding: 1.2rem 3rem;
+                    border-radius: 1.6rem;
+                    background-color: $primaryColor;
+                    min-width: 29rem;
+                    transition: all 0.5s;
+                    &:hover {
+                        background-color: $darkblue;
+                    }
+                    &.give-a-call {
+                        span {
+                            display: block;
+                            color: $white;
+                        }
+                        img {
+                            margin-right: 2.4rem;
+                            @include bp("sm-max") {
+                                margin-right: 1.5rem;
+                                height: 3.5rem;
+                                width: 3.5rem;
+                            }
+                        }
+                        .bold-text {
+                            letter-spacing: 0.2rem;
+                        }
+                    }
+                    &.get-a-quote {
+                        span {
+                            display: block;
+                            color: $white;
+                            text-align: center;
+                        }
+                    }
+                    .small-text {
+                        font-size: 2rem;
+                        line-height: normal;
+                        @include bp("sm-max") {
+                            font-size: 1.8rem;
+                        }
+                    }
+                    .bold-text {
+                        font-size: 2.4rem;
+                        font-weight: 700;
+                        line-height: normal;
+                        @include bp("sm-max") {
+                            font-size: 2rem;
+                        }
+                    }
+                    @include bp("sm-max") {
+                        padding: 1rem 2.5rem;
+                        min-width: 22rem;
+                    }
+                }
+            }
+        }
+    }
+}

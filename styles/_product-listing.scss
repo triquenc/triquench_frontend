@@ -1,0 +1,146 @@
+.product-listing {
+    padding: 10rem 0;
+    @include bp("xl-max") {
+        padding: 8rem 0;
+    }
+    @include bp("sm-max") {
+        padding: 6rem 0;
+    }
+    .product-listing-grid {
+        display: flex;
+        @include bp("smd-max") {
+            flex-wrap: wrap;
+        }
+        .product-listing-left {
+            flex: 0 0 30rem;
+            max-width: 30rem;
+            @include bp("smd-max") {
+                flex: 0 0 100%;
+                max-width: 100%;
+                padding-bottom: 2rem;
+            }
+            .filter-title {
+                display: block;
+                font-size: 2.2rem;
+                font-weight: 600;
+                margin-bottom: 2.5rem;
+                line-height: normal;
+            }
+            ul {
+                li {
+                    margin-bottom: 2rem;
+                    display: block;
+                    a {
+                        display: flex;
+                        min-height: 5.6rem;
+                        padding: 1rem 2rem;
+                        border-radius: 3rem;
+                        border: 1px solid $border2;
+                        line-height: normal;
+                        align-items: center;
+                        &.active {
+                            border-color: $lightblue;
+                            background: $lightblue;
+                            color: $primaryColor;
+                            font-weight: 600;
+                        }
+                        @include bp("sm-max") {
+                            min-height: 5rem;
+                        }
+                    }
+                }
+            }
+        }
+        .product-listing-right {
+            flex: 0 0 calc(100% - 30rem);
+            max-width: calc(100% - 30rem);
+            padding-left: 3rem;
+            @include bp("smd-max") {
+                flex: 0 0 100%;
+                max-width: 100%;
+                padding-left: 0;
+            }
+            .product-heading {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 2.5rem;
+                .product-count {
+                    font-size: 2.2rem;
+                    font-weight: 700;
+                    line-height: normal;
+                }
+            }
+            .product-grid{
+                display: flex;
+                flex-wrap: wrap;
+                margin: 0 -1.5rem -3rem;
+                .product-grid-item{
+                    max-width: 33.33%;
+                    flex: 0 0 33.33%;
+                    padding: 0 1.5rem 3rem;
+                    &:hover {
+                        .product-grid-inner {
+                            border-color: $primaryColor;
+                        }    
+                    }
+                    @include bp("sm-max") {
+                        flex: 0 0 50%;
+                        max-width: 50%;
+                    }
+                    @include bp("xxs-max") {
+                        flex: 0 0 100%;
+                        max-width: 100%;
+                    }
+
+                    .product-grid-inner{
+                        border-radius: 2rem;
+                        border:0.1rem solid $border2;
+                        display: block;
+                        padding: 1.6rem;
+                        position: relative;
+                        overflow: hidden;
+                        height: 100%;
+                        cursor: pointer;
+                        transition: all 0.5s;
+                        .img-content-block{
+                            margin-bottom: 1.2rem;
+                            .img-block{
+                                padding-bottom: 100%;
+                                position: relative;
+                                margin-bottom: 1.6rem;
+                                img{
+                                    height: 100%;
+                                    width: 100%;
+                                    object-fit: contain;
+                                    position: absolute;
+                                    left: 0;
+                                    top: 0;
+                                }
+                            }
+                            p{
+                               line-height: 1.375;
+                               min-height: 6.6rem;
+                            }
+                        }
+                        .product-button-wrapper {
+                            a {
+                                display: block;
+                                text-align: center;
+                                height: 4.2rem;
+                                line-height: 4rem;
+                                text-transform: capitalize;
+                                font-weight: 600;
+                                & + a {
+                                    margin-top: 1.2rem;
+                                }
+                            }
+                        }
+                        
+                        
+                    }
+                }
+            }
+        }
+    }
+}
+

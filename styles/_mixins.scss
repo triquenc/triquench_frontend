@@ -1,0 +1,36 @@
+/*
+  Here this loop is working and make every individual classes for padding, margin and width.
+
+  How to use classes
+  <div class=”m-l-10”> Hi, This is me </div>
+  it will work by margin-left: 1rem format, the every item will work this same format.
+  (m-l-10)
+
+  p-v and m-v here v denote vertical and it mean it will apply properties for top and bottom
+  p-h and m-h here h denote horizontal and it mean it will apply properties for left and right side
+
+  p-h-10 = padding-left: 1rem, padding-right: 1rem;
+  p-v-10 = padding-top: 1rem, padding-bottom: 1rem;
+*/
+$position: (
+  top: 't',
+  bottom: 'b',
+  left: 'l',
+  right: 'r'
+);
+
+@for $size from 0 through 300 {
+ @each $position, $pos in $position {
+    .m-#{$pos}-#{$size} { margin-#{$position}: (#{$size/10}rem) !important; }
+    .p-#{$pos}-#{$size} { padding-#{$position}: (#{$size/10}rem) !important; }
+    }
+  .m-#{$size} { margin: (#{$size/10}rem) !important; }
+  .m-v-#{$size} { margin-top: (#{$size/10}rem) !important; margin-bottom: (#{$size/10}rem) !important; }
+  .m-h-#{$size} { margin-right: (#{$size/10}rem) !important; margin-left: (#{$size/10}rem) !important; }
+
+  .p-#{$size} { padding: (#{$size/10}rem) !important; }
+  .p-v-#{$size} { padding-top: (#{$size/10}rem) !important; padding-bottom: (#{$size/10}rem) !important; }
+  .p-h-#{$size} { padding-right: (#{$size/10}rem) !important; padding-left: (#{$size/10}rem) !important; }
+
+  .site-w-#{$size} { width: (#{$size/10}rem) !important; }
+}

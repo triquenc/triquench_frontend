@@ -1,0 +1,71 @@
+.why-choose-triquench {
+    padding: 10rem 0;
+    background-image: url(../public/images/why-choose-bg.jpg);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    @include bp("xl-max") {
+        padding: 8rem 0;
+    }
+    @include bp("sm-max") {
+        padding: 6rem 0;
+    }
+    .title-block {
+        margin-bottom: 5rem;
+        @include bp("sm-max") {
+            margin-bottom: 4rem;
+        }
+        .sub-title {
+            color: $primaryColor;
+        }
+    }
+    .why-choose-grid {
+        display: flex;
+        margin: 0 -1rem;
+        @include bp("smd-max") {
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: -3rem;
+        }
+        @include bp("sm-max") {
+            margin-top: -2.5rem;
+            margin-left: 0;
+            margin-right: 0;
+        }
+        .why-choose-item {
+            flex: 0 0 33.33%;
+            max-width: 33.33%;
+            @include bp("smd-max") {
+                flex: 0 0 50%;
+                max-width: 50%;
+                margin-top: 3rem;
+            }
+            @include bp("sm-max") {
+                flex: 0 0 100%;
+                max-width: 100%;
+                margin-top: 2.5rem;
+                padding: 0;
+            }
+            padding: 0 1.5rem;
+            .why-choose-item-inner {
+                padding: 3rem;
+                background: #fff;
+                border-radius: 2rem;
+                text-align: center;
+                @include bp("xl-max") {
+                    padding: 2.5rem;
+                }
+                img {
+                    margin-bottom: 1rem;
+                }
+                h3 {
+                    color: $secondaryColor;
+                    font-size: 2.4rem;
+                    font-weight: 600;
+                    line-height: 1.3;
+                    margin-bottom: 0.5rem;
+                }
+            }
+        }
+    }
+}

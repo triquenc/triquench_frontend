@@ -1,0 +1,42 @@
+// Define the breakpoints globally
+$xxxxs-max: "(max-width: 375px)";
+$xxs-max: "(max-width: 479px)";
+$xs-max: "(max-width: 574px)";
+$sm-max: "(max-width: 767px)";
+$smd-max: "(max-width: 991px)";
+$tablet-max: "(max-width: 1024px)";
+$xl-max: "(max-width: 1199px)";
+$xlg-max: "(max-width: 1280px)";
+$xxl-md: "(max-width: 1366px)";
+$xlg-md: "(max-width: 1440px)";
+$xxlg-md: "(max-width: 1460px)";
+$xxxl-max: "(max-width: 1680px)";
+
+// Define the mixin
+@mixin bp($point) {
+    @if $point == "xxxxs-max" {
+      @media #{$xxxxs-max} { @content; }
+    } @else if $point == "xxs-max" {
+      @media #{$xxs-max} { @content; }
+    } @else if $point == "xs-max" {
+      @media #{$xs-max} { @content; }
+    } @else if $point == "sm-max" {
+      @media #{$sm-max} { @content; }
+    } @else if $point == "smd-max" {
+      @media #{$smd-max} { @content; }
+    } @else if $point == "tablet-max" {
+      @media #{$tablet-max} { @content; }
+    } @else if $point == "xl-max" {
+      @media #{$xl-max} { @content; }
+    } @else if $point == "xlg-max" {
+      @media #{$xlg-max} { @content; }
+    } @else if $point == "xxl-md" {
+      @media #{$xxl-md} { @content; }
+    } @else if $point == "xlg-md" {
+      @media #{$xlg-md} { @content; }
+    } @else if $point == "xxlg-md" {
+      @media #{$xxlg-md} { @content; }
+    } @else if $point == "xxxl-max" {
+      @media #{$xxxl-max} { @content; }
+    }
+}
