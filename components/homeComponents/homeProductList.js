@@ -97,7 +97,7 @@ const HomeProductList = forwardRef((props, ref) => {
               onClick={toggleCategory}
               ref={categoryTitleRef}
             >
-              <h3>Categories</h3>
+              <h3>{activeCategory}</h3>
               <em>
                 <Image src="/images/slider-arrow.svg" alt="arrow" width={15} height={10} />
               </em>
@@ -106,8 +106,8 @@ const HomeProductList = forwardRef((props, ref) => {
               className={`list-bar ${categoryOpen ? "open" : ""}`}
               ref={listBarRef}
             >
-              {categories.map((category) => (
-                <li key={category} className={activeCategory === category ? "active" : ""}>
+              {categories.map((category, i) => (
+                <li key={i} className={activeCategory === category ? "active" : ""}>
                   <a
                     href="#"
                     title={category}
@@ -128,13 +128,13 @@ const HomeProductList = forwardRef((props, ref) => {
                   <a href={`/product/${product._id}`} className="home-product-grid-inner">
                     <div className="normal-div">
                       <div className="img-block">
-                        <Image src={product.images[0].url} width={228} height={228} alt={product.title} />
+                        <Image src={product?.images[0]?.url} width={228} height={228} alt={product?.title} />
                       </div>
-                      <p>{product.title}</p>
+                      <p>{product?.title}</p>
                     </div>
                     <div className="hover-div">
-                      <p className="title">{product.title}</p>
-                      <p>{product.description}</p>
+                      <p className="title">{product?.title}</p>
+                      <p>{product?.description}</p>
                     </div>
                   </a>
                 </div>
