@@ -14,19 +14,19 @@ export default function MeetOurTeam() {
             <div className="our-team-grid">
               <div className="our-team-item half-width">
                   <div className="our-team-img-wrapper">
-                    <Image src="/images/team-member1.jpg" width={555} height={287} alt="Member Image1"/>
+                    <Image src="https://res.cloudinary.com/dd1na5drh/image/upload/v1731745597/PARAG_SHAH_prfjn0.webp" width={555} height={287} alt="Member Image1"/>
                   </div>
-                  <h3>John Jacob</h3>
+                  <h3>Parag Shah</h3>
                   <span className="designation">Director</span>
               </div>
               <div className="our-team-item half-width">
                   <div className="our-team-img-wrapper">
-                    <Image src="/images/team-member2.jpg" width={555} height={287} alt="Member Image2"/>
+                    <Image src="https://res.cloudinary.com/dd1na5drh/image/upload/v1731745597/KAUSHAL_PANCHAL_evlsqz.webp" width={555} height={287} alt="Member Image2"/>
                   </div>
-                  <h3>Sara Harper</h3>
+                  <h3>Kaushal Panchal</h3>
                   <span className="designation">Director</span>
               </div>
-              <div className="our-team-item">
+              {/* <div className="our-team-item">
                   <div className="our-team-img-wrapper">
                     <Image src="/images/team-member3.jpg" width={263} height={292} alt="Member Image3"/>
                   </div>
@@ -53,7 +53,7 @@ export default function MeetOurTeam() {
                   </div>
                   <h3>Elina Harper</h3>
                   <span className="designation">Team</span>
-              </div>
+              </div> */}
             </div>
           </div>
         </section>

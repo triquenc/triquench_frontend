@@ -85,8 +85,8 @@ export default function ProductDetail({ params }) {
                 thumbs={{ swiper: thumbsSwiper }}
                 className="main-slider"
               >
-                {product.images && product.images.map((image, i)=><SwiperSlide key={i}>
-                  <Image src={image.url} width={540} height={496} alt={image.alt_text} layout="responsive" className="bg-img" />
+                {product?.images && product?.images.map((image, i)=><SwiperSlide key={i}>
+                  <Image src={image?.url} width={540} height={496} alt={image?.alt_text} layout="responsive" className="bg-img" />
                 </SwiperSlide>)}
               </Swiper>
 
@@ -102,21 +102,21 @@ export default function ProductDetail({ params }) {
                   767: { slidesPerView: 4 },
                 }}
               >
-                 {product.images && product.images.map((image, i)=><SwiperSlide key={i}><Image src={image.url} width={128} height={120} alt={image.alt_text} layout="responsive" /></SwiperSlide>)}
+                 {product?.images && product?.images.map((image, i)=><SwiperSlide key={i}><Image src={image?.url} width={128} height={120} alt={image?.alt_text} layout="responsive" /></SwiperSlide>)}
                 
               </Swiper>
             </div>
 
             <div className="text-wrapper">
-              <h1>{product.title}</h1>
-              <p>{product.description}</p>
+              <h1>{product?.title}</h1>
+              <p>{product?.description}</p>
               <ul className="dot-list">
-                {product.features.map((feature, index) => (
+                {product?.features.map((feature, index) => (
                   <li key={index}>{feature}</li>
                 ))}
               </ul>
               
-              <a className="site-btn border-btn" href={product.shopNowUrl} target="_blank" rel="noopener noreferrer">
+              <a className="site-btn border-btn" href={product?.shopNowUrl} target="_blank" rel="noopener noreferrer">
                 Shop Now
               </a>
               <button className="site-btn" onClick={getQuoteModal}>Get a Quote</button>
@@ -177,10 +177,10 @@ export default function ProductDetail({ params }) {
             <div className="product-info-block specification-block" ref={section1Ref}>
               <h3 className="block-title">Specifications</h3>
               <ul className="specification-list">
-                {product.specifications.map((spec, index) => (
+                {product?.specifications.map((spec, index) => (
                   <li key={index}>
-                    <span className="spec-name">{spec.label}</span>
-                    <span className="spec-value">{spec.value}</span>
+                    <span className="spec-name">{spec?.label}</span>
+                    <span className="spec-value">{spec?.value}</span>
                   </li>
                 ))}
               </ul>
@@ -189,15 +189,15 @@ export default function ProductDetail({ params }) {
               <h3 className="block-title">Download</h3>
               <div className="download-grid">
                 <div className="download-left">
-                  <Image src={product.downloads.displayImage} width={690} height={383} alt="Download Image" />
+                  <Image src={product?.downloads?.displayImage} width={690} height={383} alt="Download Image" />
                 </div>
                 <div className="download-right">
                       <div className="doc-btn-wrapper">
-                        <a href={product.downloads.technicalSheetLink} target="_blank" className="doc-btn">
+                        <a href={product?.downloads?.technicalSheetLink} target="_blank" className="doc-btn">
                           <span className="doc-icon"><Image src="/images/pdf-icon.svg" height={50} width={50} alt="PDF Icon"/></span>
                           <span className="doc-text">Technical Sheet</span>
                         </a>
-                        <a href={product.downloads.otherDocument} target="_blank" className="doc-btn">
+                        <a href={product?.downloads?.otherDocument} target="_blank" className="doc-btn">
                           <span className="doc-icon"><Image src="/images/pdf-icon.svg" height={50} width={50} alt="PDF Icon"/></span>
                           <span className="doc-text">Other Document</span>
                         </a>
@@ -208,7 +208,7 @@ export default function ProductDetail({ params }) {
             <div className="product-info-block applications-block" ref={section3Ref}>
               <h3 className="block-title">Applications</h3>
               <ul>
-                {product.applications.map((application, index) => (
+                {product?.applications.map((application, index) => (
                   <li key={index}>{application}</li>
                 ))}
               </ul>

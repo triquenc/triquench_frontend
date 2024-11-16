@@ -17,19 +17,19 @@ export default function SliderBanner() {
                 <span className="title">Navigation</span>
                 <ul className="dot-list p-l-10">
                   <li>
-                    <a href="#" title="Spindle For Wood">Spindle For Wood</a>
+                    <a href="/products" title="Spindle For Wood">Spindle For Wood</a>
                   </li>
                   <li>
-                    <a href="#" title="Spindle For Stone">Spindle For Stone</a>
+                    <a href="/products" title="Spindle For Stone">Spindle For Stone</a>
                   </li>
                   <li>
-                    <a href="#" title="Spindle For Aluminum">Spindle For Aluminum</a>
+                    <a href="/products" title="Spindle For Aluminum">Spindle For Aluminum</a>
                   </li>
                   <li>
-                    <a href="#" title="Spindle for jewelry Making">Spindle for jewelry Making</a>
+                    <a href="/products" title="Spindle for jewelry Making">Spindle for jewelry Making</a>
                   </li>
                   <li>
-                    <a href="#" title="Edge Banding Spindle">Edge Banding Spindle</a>
+                    <a href="/products" title="Edge Banding Spindle">Edge Banding Spindle</a>
                   </li>
                 </ul>
               </div>
@@ -52,10 +52,10 @@ export default function SliderBanner() {
                       <h1>Relationship through our Quality Spindles</h1>
                       <p>We provide “Intelligent Spindle Solutions” and Aspiring to be of Service to Society and Grow along with it.</p>
                       <div className="btn-wrapper m-t-20">
-                        <a href="" className="white-btn" title="Shop Now">
+                        <a href="https://shop.triquenchindia.com" target="_blank" className="white-btn" title="Shop Now">
                         Shop Now
                         </a>
-                        <a href="" className="white-border-btn" title="View Products">
+                        <a href="/products" className="white-border-btn" title="View Products">
                         View Products
                         </a>
                       </div>
@@ -72,10 +72,10 @@ export default function SliderBanner() {
                       <h2 className="h1">Relationship through our Quality Spindles</h2>
                       <p>We provide “Intelligent Spindle Solutions” and Aspiring to be of Service to Society and Grow along with it.</p>
                       <div className="btn-wrapper m-t-20">
-                        <a href="" className="white-btn" title="Shop Now">
+                        <a href="https://shop.triquenchindia.com" target="_blank" className="white-btn" title="Shop Now">
                         Shop Now
                         </a>
-                        <a href="" className="white-border-btn" title="View Products">
+                        <a href="/products" className="white-border-btn" title="View Products">
                         View Products
                         </a>
                       </div>
@@ -92,10 +92,10 @@ export default function SliderBanner() {
                       <h2 className="h1">Relationship through our Quality Spindles</h2>
                       <p>We provide “Intelligent Spindle Solutions” and Aspiring to be of Service to Society and Grow along with it.</p>
                       <div className="btn-wrapper m-t-20">
-                        <a href="" className="white-btn" title="Shop Now">
+                        <a href="https://shop.triquenchindia.com" target="_blank" className="white-btn" title="Shop Now">
                         Shop Now
                         </a>
-                        <a href="" className="white-border-btn" title="View Products">
+                        <a href="/products" className="white-border-btn" title="View Products">
                         View Products
                         </a>
                       </div>

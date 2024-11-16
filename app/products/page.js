@@ -85,7 +85,7 @@ export default function Products() {
                             <div className="product-grid">
                                 {products.length > 0 ? (
                                     products.map((product) => (
-                                        <div key={product._id} className="product-grid-item">
+                                        <div key={product?._id} className="product-grid-item">
                                             <div className="product-grid-inner">
                                                 <div className="img-content-block">
                                                     <div className="img-block">
@@ -93,10 +93,10 @@ export default function Products() {
                                                         {product.images.map((image, index) => (
                                                             <Image
                                                                 key={image._id}
-                                                                src={image.url}
+                                                                src={image?.url}
                                                                 width={218}
                                                                 height={218}
-                                                                alt={image.alt_text || "Product Image"}
+                                                                alt={image?.alt_text || "Product Image"}
                                                             />
                                                         ))}
                                                     </div>
@@ -104,12 +104,12 @@ export default function Products() {
                                                 </div>
                                                 <div className="product-button-wrapper">
             {/* See Details button with programmatic navigation */}
-            <a onClick={()=>handleSeeDetailsClick(product._id)} className="border-btn">
+            <a onClick={()=>handleSeeDetailsClick(product?._id)} className="border-btn">
                 See Details
             </a>
             
             {/* Shop Now button with normal link */}
-            <a href={product.shopNowUrl} className="site-btn">Shop Now</a>
+            <a href={product?.shopNowUrl} className="site-btn">Shop Now</a>
         </div>
                                             </div>
                                         </div>
