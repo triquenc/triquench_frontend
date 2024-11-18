@@ -10,7 +10,7 @@ export default function OurVision() {
             <div className="our-vision-grid">
               <div className="our-vision-left">
                 <h2>Our Mission</h2>
-                <p>Our mission is to be the leading provider of CNC spindle solutions in India and a globally recognized brand for quality, reliability, and innovation. We are dedicated to exceeding customer expectations by offering a comprehensive range of CNC spindle products, accessories, and services that are tailored to their specific requirements.
+                <p>Our mission is to be the leading provider of CNC Spindle Solutions in India and a globally recognized brand for quality, reliability, and innovation. We are dedicated to exceeding customer expectations by offering a comprehensive range of CNC spindle products, accessories, and services that are tailored to their specific requirements.
                 </p>
               </div>
               <div className="our-vision-right">
