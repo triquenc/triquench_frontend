@@ -37,7 +37,7 @@ export default function Products() {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await fetch(`https://triquench-backend.vercel.app/api/product/all?category=${encodeURIComponent(activeCategory)}`);
+                const response = await fetch(`https://d1w2b5et10ojep.cloudfront.net/api/product/all?category=${encodeURIComponent(activeCategory)}`);
                 const data = await response.json();
                 setProducts(data || []); // Assuming the data is an array of products
             } catch (error) {
