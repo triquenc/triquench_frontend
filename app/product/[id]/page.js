@@ -13,7 +13,7 @@ import RequestQuote from "@/components/commonComponents/requestQuote";
 import { useRouter } from 'next/router';
 
 async function fetchProductData(id) {
-  const res = await fetch(`http://triquench.ap-south-1.elasticbeanstalk.com/api/product/${id}`);
+  const res = await fetch(`https://triquench-backend.vercel.app/api/product/${id}`);
   if (!res.ok) {
     throw new Error('Failed to fetch product data');
   }
