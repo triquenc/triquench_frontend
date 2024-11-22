@@ -27,7 +27,7 @@ const HomeProductList = forwardRef((props, ref) => {
   const fetchProducts = async (category) => {
     try {
       const response = await fetch(
-        `https://triquench-backend.vercel.app/api/product/all?category=${encodeURIComponent(category)}&trending=true`
+        `http://triquench.ap-south-1.elasticbeanstalk.com/api/product/all?category=${encodeURIComponent(category)}&trending=true`
       );
       const data = await response.json();
       setProducts(data); // Update the products state with the fetched data
