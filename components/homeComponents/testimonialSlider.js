@@ -13,12 +13,6 @@ const testimonials = [
     image: "/images/user-image.png",
   },
   {
-    quote: "It's been almost 2.5 years since I started purchasing from the company. As far back as I can remember, I have always received positive responses from the company's sales team and Kaushalbhai, whether it was about purchasing new spindles, repairing spindles, or purchasing spindle accessories like bearings, Collets, Holders etc. Additionally, the work done by the company's employees in serving the poor in society is truly commendable and inspiring",
-    name: "Purchase VEWPL",
-    designation: "Client",
-    image: "/images/user-image.png",
-  },
-  {
     quote: "End to end service providers for everything related to CNC. They have all spares and spindles. The market really needs people like them. Outstanding!",
     name: "Luv Jaiswal",
     designation: "Client",
@@ -43,8 +37,8 @@ const TestimonialSlider = forwardRef((props, ref) => {
     <section className="testimonial-section">
       <div className="container">
         <div className="title-block">
-          <span className="sub-title">TESTIMONIALS</span>
-          <h2 className="has-green-bar">WHAT PEOPLE ARE SAYING</h2>
+{/* <span className="sub-title">TESTIMONIALS</span> */}
+<h2 className="has-green-bar">WHAT PEOPLE ARE SAYING</h2>
         </div>
         <div className="testmonial-slider-wrapper">
           <Swiper

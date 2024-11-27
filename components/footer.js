@@ -155,10 +155,10 @@ export default function Footer() {
           <div className="footer-contact-wrapper">
             <span className="contact-title">Contact Us</span>
             <a href="mailto:support@triquench.com" title="Mail Us">
-              support@triquench.com
+             info@triquenchindia.com
             </a>
             <a href="tel:+91898783678" title="Call Us">
-              +91 89878 3678
+              +91 96011 11615
             </a>
           </div>
         </div>
