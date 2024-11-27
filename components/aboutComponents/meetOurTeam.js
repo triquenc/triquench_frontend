@@ -8,8 +8,8 @@ export default function MeetOurTeam() {
         <section className="our-team-section">
           <div className="container">
             <div className="title-block">
-                <span className="sub-title">Our Team</span>
-                <h2 className="has-green-bar">MEET OUR TEAM</h2>
+{/* <span className="sub-title">Our Team</span> */}
+<h2 className="has-green-bar">MEET OUR TEAM</h2>
             </div>
             <div className="our-team-grid">
               <div className="our-team-item half-width">

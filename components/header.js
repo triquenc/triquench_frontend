@@ -4,7 +4,6 @@ import Image from "next/image";
 const Header = forwardRef((props, ref) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Toggle the open-menu class on body
   useEffect(() => {
     if (menuOpen) {
       document.body.classList.add("open-menu");
@@ -12,16 +11,15 @@ const Header = forwardRef((props, ref) => {
       document.body.classList.remove("open-menu");
     }
 
-    // Cleanup to remove the class when component is unmounted or menuOpen changes
     return () => {
       document.body.classList.remove("open-menu");
     };
   }, [menuOpen]);
 
-  // Toggle menu state on hamburger icon click
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
+
   return (
     <header className="site-header p-t-10 p-b-13" ref={ref}>
       <div className="container">
@@ -32,7 +30,7 @@ const Header = forwardRef((props, ref) => {
                 src="/images/site-logo.svg"
                 width={86}
                 height={75}
-                alt="Triqunch Logo"
+                alt="Triquench Logo"
               />
             </a>
           </div>
@@ -48,7 +46,7 @@ const Header = forwardRef((props, ref) => {
                   About Us
                 </a>
               </li>
-              <li>
+              <li className="has-submenu">
                 <a title="Products" href="/products">
                   Products
                 </a>
@@ -60,6 +58,16 @@ const Header = forwardRef((props, ref) => {
                   target="_blank"
                 >
                   Our Store
+                </a>
+              </li>
+              <li>
+                <a title="Blog" href="/blogs">
+                  Blog
+                </a>
+              </li>
+              <li>
+                <a title="Event" href="/event">
+                  Event
                 </a>
               </li>
             </ul>

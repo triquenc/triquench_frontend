@@ -27,7 +27,7 @@ export default function SocialWallSection() {
                       Lorem Ipsum is simply dummy text of the printing and
                       typesetting industry.
                     </p>
-                    <p className="company-name">Triquench</p>
+                    <p className="company-name">TriQuench INDIA Pvt. Ltd.</p>
                     <span className="date">Triquench_ Sept 12</span>
                   </div>
                   <div className="action-row">
@@ -76,7 +76,7 @@ export default function SocialWallSection() {
                     Lorem Ipsum is simply dummy text of the printing and
                     typesetting industry.
                   </p>
-                  <p className="company-name">Triquench</p>
+                  <p className="company-name">TriQuench INDIA Pvt. Ltd.</p>
                   <span className="date">Triquench_ Sept 12</span>
                 </div>
                 <div className="action-row">
@@ -125,7 +125,7 @@ export default function SocialWallSection() {
                       Lorem Ipsum is simply dummy text of the printing and
                       typesetting industry.
                     </p>
-                    <p className="company-name">Triquench</p>
+                    <p className="company-name">TriQuench INDIA Pvt. Ltd.</p>
                     <span className="date">Triquench_ Sept 12</span>
                   </div>
                   <div className="action-row">
