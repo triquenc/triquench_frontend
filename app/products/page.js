@@ -5,17 +5,17 @@ import InnerPageBanner from "@/components/commonComponents/innerpagebanner";
 import { useRouter } from "next/navigation";
 
 export default function Products() {
-    const [activeCategory, setActiveCategory] = useState("All Products");
+    const [activeCategory, setActiveCategory] = useState("CNC Spindle Motor"); // Pre-selected category
     const [products, setProducts] = useState([]);
-    const [allProducts, setAllProducts] = useState([]); // Store all products for total count
-    const [sortingOption, setSortingOption] = useState("AtoZ"); // Default sorting option
-    const [currentPage, setCurrentPage] = useState(1); // Track the current page
-    const productsPerPage = 15; // Show 15 products per page
+    const [allProducts, setAllProducts] = useState([]);
+    const [sortingOption, setSortingOption] = useState("AtoZ");
+    const [currentPage, setCurrentPage] = useState(1);
+    const productsPerPage = 15;
     const router = useRouter();
 
     const categories = [
         "CNC Spindle Motor",
-        "Spindle Servo Motor",
+        "Spindle Servo Motor", 
         "AC Servo Motor",
         "CNC Router Accessories",
         "Spindle Bearing",
@@ -32,17 +32,17 @@ export default function Products() {
     };
 
     const handleSeeDetailsClick = (id) => {
-        router.push(`/product/${id}`);
+        router.push(/product/`${id}`);
     };
 
     // Fetch all products for total count
     useEffect(() => {
         const fetchAllProducts = async () => {
             try {
-                const response = await fetch(`https://d1w2b5et10ojep.cloudfront.net/api/product/all?category=${encodeURIComponent(activeCategory)}`);
+                const response = await fetch("https://triquench-backend.vercel.app/api/product/all");
                 const data = await response.json();
-                setAllProducts(data || []); // Set all products
-                setProducts(data || []); // Default to showing all products
+                setAllProducts(data || []);
+                setProducts(data || []);
             } catch (error) {
                 console.error("Error fetching all products:", error);
             }
@@ -54,7 +54,7 @@ export default function Products() {
     // Fetch products based on selected category
     useEffect(() => {
         if (activeCategory === "All Products") {
-            setProducts(allProducts); // Show all products when "All Products" is selected
+            setProducts(allProducts);
         } else {
             const filteredProducts = allProducts.filter(
                 (product) => product.category === activeCategory
@@ -69,19 +69,19 @@ export default function Products() {
 
         switch (sortingOption) {
             case "AtoZ":
-                sortedProducts.sort((a, b) => a.title.localeCompare(b.title)); // Sort by title A to Z
+                sortedProducts.sort((a, b) => a.title.localeCompare(b.title));
                 break;
             case "ZtoA":
-                sortedProducts.sort((a, b) => b.title.localeCompare(a.title)); // Sort by title Z to A
+                sortedProducts.sort((a, b) => b.title.localeCompare(a.title));
                 break;
             case "Popular":
-                sortedProducts.sort((a, b) => b.popularity - a.popularity); // Sort by popularity (assuming `popularity` field exists)
+                sortedProducts.sort((a, b) => b.popularity - a.popularity);
                 break;
             case "Latest":
-                sortedProducts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)); // Sort by creation date (latest first)
+                sortedProducts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
                 break;
             case "Rating":
-                sortedProducts.sort((a, b) => b.rating - a.rating); // Sort by rating (highest first)
+                sortedProducts.sort((a, b) => b.rating - a.rating);
                 break;
             default:
                 break;
@@ -120,7 +120,6 @@ export default function Products() {
                         <div className="product-listing-left">
                             <span className="filter-title">Filters</span>
                             <ul>
-                                {/* Exclude 'All Products' from the category list */}
                                 {categories.map((category) => (
                                     <li key={category}>
                                         <a
@@ -142,12 +141,21 @@ export default function Products() {
                                 <span className="product-count">
                                     Showing {currentProducts.length} of {products.length} products
                                 </span>
-                                <div className="sorting-dropdown">
-                                    <label htmlFor="sorting-options">Sort By: </label>
+                                <div className="sorting-dropdown" style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
+                                    <label htmlFor="sorting-options" style={{fontSize: '14px', color: '#333'}}>Sort By: </label>
                                     <select
                                         id="sorting-options"
                                         value={sortingOption}
                                         onChange={(e) => setSortingOption(e.target.value)}
+                                        style={{
+                                            padding: '8px 12px',
+                                            border: '1px solid #ddd',
+                                            borderRadius: '4px',
+                                            backgroundColor: '#fff',
+                                            fontSize: '14px',
+                                            cursor: 'pointer',
+                                            outline: 'none'
+                                        }}
                                     >
                                         <option value="AtoZ">A to Z</option>
                                         <option value="ZtoA">Z to A</option>
@@ -197,44 +205,106 @@ export default function Products() {
                                 )}
                             </div>
 {/* Pagination */}
-<div className="pagination flex justify-center items-center space-x-2 mt-6">
+<div className="pagination flex justify-center items-center mt-20 mb-12">
     <button
         onClick={() => handlePageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className={`px-4 py-2 border rounded-md text-sm font-medium ${
-            currentPage === 1
-                ? "bg-gray-200 text-gray-500 cursor-not-allowed"
-                : "bg-blue-500 text-white hover:bg-blue-600"
-        }`}
+        className="pagination-btn prev-next-btn"
+        style={{
+            opacity: currentPage === 1 ? 0.5 : 1,
+            cursor: currentPage === 1 ? 'not-allowed' : 'pointer',
+        }}
     >
         Previous
     </button>
-    {Array.from({ length: totalPages }, (_, index) => (
-        <button
-            key={index}
-            onClick={() => handlePageChange(index + 1)}
-            className={`px-4 py-2 border rounded-md text-sm font-medium ${
-                currentPage === index + 1
-                    ? "bg-blue-600 text-white"  // Active page styling
-                    : "bg-white text-blue-500 hover:bg-blue-100"
-            }`}
-        >
-            {index + 1}
-        </button>
-    ))}
+    <div className="page-numbers flex items-center">
+        {Array.from({ length: totalPages }, (_, index) => (
+            <button
+                key={index}
+                onClick={() => handlePageChange(index + 1)}
+                className={`pagination-btn page-num-btn ${currentPage === index + 1 ? 'active' : ''}`}
+            >
+                {index + 1}
+            </button>
+        ))}
+    </div>
     <button
         onClick={() => handlePageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className={`px-4 py-2 border rounded-md text-sm font-medium ${
-            currentPage === totalPages
-                ? "bg-gray-200 text-gray-500 cursor-not-allowed"
-                : "bg-blue-500 text-white hover:bg-blue-600"
-        }`}
+        className="pagination-btn prev-next-btn"
+        style={{
+            opacity: currentPage === totalPages ? 0.5 : 1,
+            cursor: currentPage === totalPages ? 'not-allowed' : 'pointer',
+        }}
     >
         Next
     </button>
 </div>
 
+<style jsx>{`
+    .pagination {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 20px;
+        margin-top: 60px;
+        margin-bottom: 80px;
+    }
+
+    .page-numbers {
+        display: flex;
+        gap: 12px;
+    }
+
+    .pagination-btn {
+        padding: 10px 20px;
+        border: 2px solid #006098;
+        border-radius: 8px;
+        font-size: 15px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        background: #ffffff;
+        color: #006098;
+        min-width: 48px;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.12);
+    }
+
+    .pagination-btn:hover:not(:disabled) {
+        background: #006098;
+        color: #ffffff;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(59,130,246,0.25);
+    }
+
+    .prev-next-btn {
+        background: #006098;
+        color: #ffffff;
+        font-weight: 500;
+        min-width: 120px;
+        letter-spacing: 0.5px;
+    }
+
+    .prev-next-btn:hover:not(:disabled) {
+        background: #006098;
+        border-color: #2563eb;
+    }
+
+    .page-num-btn {
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .page-num-btn.active {
+        background: #006098;
+        color: #ffffff;
+        transform: scale(1.1);
+        box-shadow: 0 4px 8px rgba(59,130,246,0.3);
+    }
+`}</style>
 
                         </div>
                     </div>
