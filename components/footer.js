@@ -167,7 +167,7 @@ export default function Footer() {
             © <span className="year">2024</span>, Triquench India PVT. LTD.
           </div>
           <div className="right">
-            <ul className="d-flex align-center">
+           {/*  <ul className="d-flex align-center">
               <li>
                 <Image
                   src="/images/visa.svg"
@@ -216,7 +216,7 @@ export default function Footer() {
                   alt="paypal"
                 />
               </li>
-            </ul>
+            </ul>*/}
           </div>
         </div>
       </div>

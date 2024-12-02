@@ -70,11 +70,20 @@ const Header = forwardRef((props, ref) => {
                   Event
                 </a>
               </li>
+              <li>
+                <a title="Event" href="/contact">
+                  Contact Us
+                </a>
+              </li>
             </ul>
           </nav>
           <div className="contact-wrapper d-flex align-center justify-end">
-            <a href="/contact" className="border-btn">
-              CONTACT US{" "}
+        
+            <a
+              href="tel:+919601111615"
+              className="call-btn border-btn d-flex align-center"
+            >
+              CALL NOW{" "}
               <Image
                 src="/images/call-ic.svg"
                 width={25}
