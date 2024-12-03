@@ -1,4 +1,5 @@
 import Image from "next/image";
+import BackToTop from './commonComponents/BackToTop';
 
 export default function Footer() {
   return (
@@ -162,12 +163,12 @@ export default function Footer() {
             </a>
           </div>
         </div>
-        <div className="footer-bottom d-flex align-center justify-sb">
+        <div className="footer-bottom d-flex align-center justify-center">
           <div className="left">
             © <span className="year">2024</span>, Triquench India PVT. LTD.
           </div>
-          <div className="right">
-           {/*  <ul className="d-flex align-center">
+          {/* <div className="right">
+            <ul className="d-flex align-center">
               <li>
                 <Image
                   src="/images/visa.svg"
@@ -216,10 +217,11 @@ export default function Footer() {
                   alt="paypal"
                 />
               </li>
-            </ul>*/}
-          </div>
+            </ul>
+          </div> */}
         </div>
       </div>
+      <BackToTop />
     </footer>
   );
 }
