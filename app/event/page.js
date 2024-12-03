@@ -100,15 +100,14 @@ export default function Events() {
 
       <div style={{ width: '90%', maxWidth: '1200px', margin: '0 auto', padding: '0 20px' }}>
         <section>
-          <h2 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Categories</h2>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', padding: '2rem 0' }}>
-            {['CSR By Triquench', 'Triquench Events', 'Exhibition', 'Upcoming'].map((category) => (
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', padding: '2rem 0', position:"relative", justifyContent:"center" }}>
+            {['Exhibition','Upcoming Exhibition','CSR By TriQuench', 'TriQuench Events' ].map((category) => (
               <button
                 key={category}
                 onClick={(e) => handleCategoryClick(e, category)}
                 style={{
-                  backgroundColor: selectedCategory === category ? '#3b82f6' : '#fff',
-                  color: selectedCategory === category ? '#fff' : '#333',
+                  backgroundColor: selectedCategory === category ? '#006098' : '#fff',
+                  color: selectedCategory === category ? '#fff' : '#006098',
                   padding: '0.5rem 1rem',
                   borderRadius: '20px',
                   border: '1px solid #ddd',
@@ -118,14 +117,14 @@ export default function Events() {
                   cursor: 'pointer',
                 }}
                 onMouseEnter={(e) => {
-                  e.target.style.backgroundColor = '#3b82f6';
+                  e.target.style.backgroundColor = '#006098';
                   e.target.style.color = '#fff';
                   e.target.style.transform = 'translateY(-2px)';
                 }}
                 onMouseLeave={(e) => {
                   if (selectedCategory !== category) {
                     e.target.style.backgroundColor = '#fff';
-                    e.target.style.color = '#333';
+                    e.target.style.color = '#006098';
                   }
                   e.target.style.transform = 'translateY(0)';
                 }}
@@ -137,7 +136,6 @@ export default function Events() {
         </section>
 
         <section className="social-wall-section" style={{ backgroundColor: 'white' }}>
-          <h2 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Upcoming Events</h2>
           <div className="social-grid">
             {filteredEvents.map((event, index) => (
               <div className="social-grid-item" key={index}>
