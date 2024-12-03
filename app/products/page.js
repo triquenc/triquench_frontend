@@ -3,13 +3,15 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import InnerPageBanner from "@/components/commonComponents/innerpagebanner";
 import { useRouter } from "next/navigation";
+import { FaSearch } from "react-icons/fa"; // Import the search icon
 
 export default function Products() {
-    const [activeCategory, setActiveCategory] = useState("CNC Spindle Motor"); // Pre-selected category
+    const [activeCategory, setActiveCategory] = useState("All Products"); // Pre-selected category
     const [products, setProducts] = useState([]);
     const [allProducts, setAllProducts] = useState([]);
     const [sortingOption, setSortingOption] = useState("AtoZ");
     const [currentPage, setCurrentPage] = useState(1);
+    const [searchQuery, setSearchQuery] = useState("");
     const productsPerPage = 15;
     const router = useRouter();
 
@@ -29,10 +31,12 @@ export default function Products() {
 
     const handleCategoryClick = (category) => {
         setActiveCategory(category);
+        setCurrentPage(1); // Reset to page 1
+        window.scrollTo({ top: 500, behavior: 'smooth' }); // Scroll to top
     };
 
     const handleSeeDetailsClick = (id) => {
-        router.push(/product/`${id}`);
+        router.push(`/product/${id}`);
     };
 
     // Fetch all products for total count
@@ -51,17 +55,26 @@ export default function Products() {
         fetchAllProducts();
     }, []);
 
-    // Fetch products based on selected category
+    // Filter products based on category and search
     useEffect(() => {
-        if (activeCategory === "All Products") {
-            setProducts(allProducts);
-        } else {
-            const filteredProducts = allProducts.filter(
+        let filteredProducts = [...allProducts];
+        
+        // Apply category filter
+        if (activeCategory !== "All Products") {
+            filteredProducts = filteredProducts.filter(
                 (product) => product.category === activeCategory
             );
-            setProducts(filteredProducts);
         }
-    }, [activeCategory, allProducts]);
+
+        // Apply search filter
+        if (searchQuery) {
+            filteredProducts = filteredProducts.filter(
+                (product) => product.title.toLowerCase().includes(searchQuery.toLowerCase())
+            );
+        }
+
+        setProducts(filteredProducts);
+    }, [activeCategory, allProducts, searchQuery]);
 
     // Sorting products based on selected option
     useEffect(() => {
@@ -98,6 +111,7 @@ export default function Products() {
     // Handle page change
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
+        window.scrollTo({ top: 500, behavior: 'smooth' }); // Scroll to top
     };
 
     // Calculate total pages
@@ -105,7 +119,7 @@ export default function Products() {
 
     return (
         <div>
-            <InnerPageBanner
+          <InnerPageBanner
                 title="OUR PRODUCTS"
                 subtitle="CATALOGUE"
                 paragraph="In India, Known for our Active and Dynamic Customer Service Practices and catering to a broad assortment of product categories"
@@ -141,28 +155,46 @@ export default function Products() {
                                 <span className="product-count">
                                     Showing {currentProducts.length} of {products.length} products
                                 </span>
-                                <div className="sorting-dropdown" style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
-                                    <label htmlFor="sorting-options" style={{fontSize: '14px', color: '#333'}}>Sort By: </label>
-                                    <select
-                                        id="sorting-options"
-                                        value={sortingOption}
-                                        onChange={(e) => setSortingOption(e.target.value)}
-                                        style={{
-                                            padding: '8px 12px',
-                                            border: '1px solid #ddd',
-                                            borderRadius: '4px',
-                                            backgroundColor: '#fff',
-                                            fontSize: '14px',
-                                            cursor: 'pointer',
-                                            outline: 'none'
-                                        }}
-                                    >
-                                        <option value="AtoZ">A to Z</option>
-                                        <option value="ZtoA">Z to A</option>
-                                        <option value="Popular">Popular</option>
-                                        <option value="Latest">Latest</option>
-                                        <option value="Rating">Rating</option>
-                                    </select>
+                                <div className="controls-wrapper" style={{display: 'flex', alignItems: 'center', gap: '20px'}}>
+                                    <div className="search-bar" style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
+                                        <FaSearch style={{ position: 'absolute', left: '10px', color: '#888' }} />
+                                        <input
+                                            type="search"
+                                            placeholder="Search products..."
+                                            value={searchQuery}
+                                            onChange={(e) => setSearchQuery(e.target.value)}
+                                            style={{
+                                                padding: '8px 12px 8px 30px', // Adjust padding for icon
+                                                border: '1px solid #ddd',
+                                                borderRadius: '4px',
+                                                width: '250px',
+                                                fontSize: '14px'
+                                            }}
+                                        />
+                                    </div>
+                                    <div className="sorting-dropdown" style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
+                                        <label htmlFor="sorting-options" style={{fontSize: '14px', color: '#333'}}>Sort By: </label>
+                                        <select
+                                            id="sorting-options"
+                                            value={sortingOption}
+                                            onChange={(e) => setSortingOption(e.target.value)}
+                                            style={{
+                                                padding: '8px 12px',
+                                                border: '1px solid #ddd',
+                                                borderRadius: '4px',
+                                                backgroundColor: '#fff',
+                                                fontSize: '14px',
+                                                cursor: 'pointer',
+                                                outline: 'none'
+                                            }}
+                                        >
+                                            <option value="AtoZ">A to Z</option>
+                                            <option value="ZtoA">Z to A</option>
+                                            <option value="Popular">Popular</option>
+                                            <option value="Latest">Latest</option>
+                                            <option value="Rating">Rating</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                             <div className="product-grid">
@@ -171,7 +203,7 @@ export default function Products() {
                                         <div key={product._id} className="product-grid-item">
                                             <div className="product-grid-inner">
                                                 <div className="img-content-block">
-                                                    <div className="img-block">
+                                                    <div className="img-block" onClick={() => handleSeeDetailsClick(product._id)}>
                                                         {product.images.map((image) => (
                                                             <Image
                                                                 key={image._id}
@@ -204,42 +236,56 @@ export default function Products() {
                                     </p>
                                 )}
                             </div>
-{/* Pagination */}
-<div className="pagination flex justify-center items-center mt-20 mb-12">
-    <button
-        onClick={() => handlePageChange(currentPage - 1)}
-        disabled={currentPage === 1}
-        className="pagination-btn prev-next-btn"
-        style={{
-            opacity: currentPage === 1 ? 0.5 : 1,
-            cursor: currentPage === 1 ? 'not-allowed' : 'pointer',
-        }}
-    >
-        Previous
-    </button>
-    <div className="page-numbers flex items-center">
-        {Array.from({ length: totalPages }, (_, index) => (
-            <button
-                key={index}
-                onClick={() => handlePageChange(index + 1)}
-                className={`pagination-btn page-num-btn ${currentPage === index + 1 ? 'active' : ''}`}
-            >
-                {index + 1}
-            </button>
-        ))}
-    </div>
-    <button
-        onClick={() => handlePageChange(currentPage + 1)}
-        disabled={currentPage === totalPages}
-        className="pagination-btn prev-next-btn"
-        style={{
-            opacity: currentPage === totalPages ? 0.5 : 1,
-            cursor: currentPage === totalPages ? 'not-allowed' : 'pointer',
-        }}
-    >
-        Next
-    </button>
-</div>
+                            {/* Pagination */}
+                            <div className="pagination flex justify-center items-center mt-20 mb-12">
+                                <button
+                                    onClick={() => handlePageChange(currentPage - 1)}
+                                    disabled={currentPage === 1}
+                                    className="pagination-btn prev-next-btn"
+                                    style={{
+                                        opacity: currentPage === 1 ? 0.5 : 1,
+                                        cursor: currentPage === 1 ? 'not-allowed' : 'pointer',
+                                    }}
+                                >
+                                    Previous
+                                </button>
+                                <div className="page-numbers flex items-center flex-wrap">
+                                    {Array.from({ length: totalPages }, (_, index) => {
+                                        // Show first page, last page, current page and pages around current page
+                                        const pageNum = index + 1;
+                                        const showPage = pageNum === 1 || 
+                                                    pageNum === totalPages ||
+                                                    Math.abs(currentPage - pageNum) <= 2 ||
+                                                    (currentPage <= 4 && pageNum <= 5) ||
+                                                    (currentPage >= totalPages - 3 && pageNum >= totalPages - 4);
+
+                                        if (!showPage && (pageNum === 2 || pageNum === totalPages - 1)) {
+                                            return <span key={index} className="pagination-ellipsis">...</span>;
+                                        }
+
+                                        return showPage ? (
+                                            <button
+                                                key={index}
+                                                onClick={() => handlePageChange(pageNum)}
+                                                className={`pagination-btn page-num-btn ${currentPage === pageNum ? 'active' : ''}`}
+                                            >
+                                                {pageNum}
+                                            </button>
+                                        ) : null;
+                                    })}
+                                </div>
+                                <button
+                                    onClick={() => handlePageChange(currentPage + 1)}
+                                    disabled={currentPage === totalPages}
+                                    className="pagination-btn prev-next-btn"
+                                    style={{
+                                        opacity: currentPage === totalPages ? 0.5 : 1,
+                                        cursor: currentPage === totalPages ? 'not-allowed' : 'pointer',
+                                    }}
+                                >
+                                    Next
+                                </button>
+                            </div>
 
 <style jsx>{`
     .pagination {

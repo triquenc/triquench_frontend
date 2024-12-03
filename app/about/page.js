@@ -11,7 +11,7 @@ export default function Aboutus() {
         title="About Us"
         subtitle="TRIQUENCH"
         paragraph="We provide “Intelligent Spindle Solutions” and aspire to be of service to society and grow along with it."
-        bannerImage="/images/about-banner.png"
+        bannerImage="/images/building png.png"
         />
         <WhoWeAre />
         <WhyChooseTriquench />

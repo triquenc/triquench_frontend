@@ -1,5 +1,6 @@
 import React, { forwardRef, useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 
 const HomeProductList = forwardRef((props, ref) => {
   const [categoryOpen, setMenuOpen] = useState(false);
@@ -25,7 +26,7 @@ const HomeProductList = forwardRef((props, ref) => {
   const fetchProducts = async (category) => {
     try {
       const response = await fetch(
-        `https://d1w2b5et10ojep.cloudfront.net/api/product/all?category=${encodeURIComponent(category)}&trending=true`
+        `https://triquench-backend.vercel.app/api/product/all?category=${encodeURIComponent(category)}&trending=true`
       );
       const data = await response.json();
       setProducts(data);
@@ -94,42 +95,133 @@ const HomeProductList = forwardRef((props, ref) => {
             <span className="sub-title">We have the best quality products</span>
             <h2 className="has-green-bar">OUR PRODUCTS</h2>
           </div>
-          <div className="category-wrapper">
-            <button className="prev-category" onClick={handlePreviousCategory}>
-              <Image src="/images/prev-icon.svg" alt="Previous" width={24} height={24} />
+          <div style={{
+            position: 'relative',
+            marginBottom: '30px',
+            overflow: 'hidden',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '20px'
+          }}>
+            <button 
+              onClick={handlePreviousCategory}
+              style={{
+                backgroundColor: '#fff',
+                border: '1px solid #ddd',
+                borderRadius: '9999px', // Perfect circle
+                width: '40px',
+                height: '40px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+                zIndex: 2,
+                transition: 'all 0.3s ease',
+                transform: 'rotate(-180deg)',
+                padding: 0, // Remove padding to maintain perfect circle
+                minWidth: '40px', // Ensure width stays fixed
+                minHeight: '40px', // Ensure height stays fixed
+                ':hover': {
+                  backgroundColor: '#4CAF50',
+                  color: '#fff',
+                  transform: 'rotate(-180deg) scale(1.1)',
+                  boxShadow: '0 4px 8px rgba(0,0,0,0.2)'
+                },
+                ':active': {
+                  transform: 'rotate(-180deg) scale(0.95)'
+                }
+              }}
+            >
+              <FaArrowRight style={{ 
+                fontSize: '18px',
+                margin: 'auto' // Center the icon perfectly
+              }} />
             </button>
+
             <div
-              className="catogary-title"
-              onClick={toggleCategory}
-              ref={categoryTitleRef}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '15px',
+                padding: '20px',
+                overflowX: 'hidden',
+                whiteSpace: 'nowrap',
+                cursor: 'grab',
+                WebkitOverflowScrolling: 'touch',
+                transition: 'transform 0.5s ease-out',
+                maxWidth: 'calc(100% - 100px)'
+              }}
             >
-              <h3>{activeCategory}</h3>
-              <em>
-                <Image src="/images/slider-arrow.svg" alt="arrow" width={15} height={10} />
-              </em>
-            </div>
-            <button className="next-category" onClick={handleNextCategory}>
-              <Image src="/images/next-icon.svg" alt="Next" width={24} height={24} />
-            </button>
-            <ul
-              className={`list-bar ${categoryOpen ? "open" : ""}`}
-              ref={listBarRef}
-            >
-              {categories.map((category, i) => (
-                <li
-                  key={i}
-                  className={activeCategory === category ? "active" : ""}
-                >
-                  <a
-                    href="#"
-                    title={category}
+              <div style={{
+                display: 'flex',
+                gap: '15px',
+                transform: `translateX(-${categories.indexOf(activeCategory) * 140}px)`,
+                transition: 'transform 0.5s ease-out'
+              }}>
+                {categories.map((category, i) => (
+                  <button
+                    key={i}
                     onClick={() => handleCategoryClick(category)}
+                    style={{
+                      padding: '10px 25px',
+                      backgroundColor: activeCategory === category ? '#006098' : '#fff',
+                      color: activeCategory === category ? '#fff' : '#333',
+                      border: '1px solid #ddd',
+                      borderRadius: '25px',
+                      cursor: 'pointer',
+                      fontSize: '16px',
+                      transition: 'all 0.3s ease',
+                      minWidth: '120px',
+                      textAlign: 'center',
+                      boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+                      flex: '0 0 auto',
+                      userSelect: 'none',
+                      transform: activeCategory === category ? 'scale(1.05)' : 'scale(1)',
+                      opacity: activeCategory === category ? 1 : 0.7
+                    }}
                   >
                     {category}
-                  </a>
-                </li>
-              ))}
-            </ul>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <button 
+              onClick={handleNextCategory}
+              style={{
+                backgroundColor: '#fff',
+                border: '1px solid #ddd',
+                borderRadius: '9999px', // Perfect circle
+                width: '40px',
+                height: '40px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+                zIndex: 2,
+                transition: 'all 0.3s ease',
+                padding: 0, // Remove padding to maintain perfect circle
+                minWidth: '40px', // Ensure width stays fixed
+                minHeight: '40px', // Ensure height stays fixed
+                ':hover': {
+                  backgroundColor: '#4CAF50',
+                  color: '#fff',
+                  transform: 'scale(1.1)',
+                  boxShadow: '0 4px 8px rgba(0,0,0,0.2)'
+                },
+                ':active': {
+                  transform: 'scale(0.95)'
+                }
+              }}
+            >
+              <FaArrowRight style={{ 
+                fontSize: '18px',
+                margin: 'auto' // Center the icon perfectly
+              }} />
+            </button>
           </div>
 
           <div className="home-product-grid">
