@@ -9,18 +9,77 @@ const FormSection = () => {
     message: ""
   });
 
+  const [errors, setErrors] = useState({});
   const [notification, setNotification] = useState("");
+
+  // Function to validate individual fields
+  const validateField = (name, value) => {
+    let error = "";
+
+    switch (name) {
+      case "name":
+        if (!value.trim()) error = "*Full name is required.";
+        break;
+      case "email":
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!value.trim()) error = "*Email is required.";
+        else if (!emailRegex.test(value)) error = "Invalid email format.";
+        break;
+      case "company":
+        if (!value.trim()) error = "*Company name is required.";
+        break;
+      case "mobile":
+        const phoneRegex = /^[0-9]{10}$/;
+        if (!value.trim()) error = "*Phone number is required.";
+        else if (!phoneRegex.test(value)) error = "Enter a valid 10-digit phone number.";
+        break;
+      case "message":
+        if (!value.trim()) error = "*Message cannot be empty.";
+        break;
+      default:
+        break;
+    }
+
+    return error;
+  };
+
+  // Function to validate all fields
+  const validateAllFields = () => {
+    const formErrors = {};
+    Object.keys(formData).forEach((key) => {
+      const error = validateField(key, formData[key]);
+      if (error) formErrors[key] = error;
+    });
+    return formErrors;
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
+
+    setFormData((prev) => ({
+      ...prev,
       [name]: value
-    });
+    }));
+
+    // Clear the error as user types
+    setErrors((prev) => ({
+      ...prev,
+      [name]: ""
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validate all fields before submission
+    const formErrors = validateAllFields();
+    setErrors(formErrors);
+
+    if (Object.keys(formErrors).length > 0) {
+      setNotification("Please fix the highlighted errors.");
+      return;
+    }
+
     try {
       const response = await fetch("https://d1w2b5et10ojep.cloudfront.net/api/form/submit", {
         method: "POST",
@@ -34,10 +93,8 @@ const FormSection = () => {
         const data = await response.json();
         console.log("Form submitted successfully:", data);
 
-        // Show success notification
         setNotification("Form submitted successfully!");
 
-        // Optional: Reset form after successful submission
         setFormData({
           name: "",
           email: "",
@@ -46,7 +103,6 @@ const FormSection = () => {
           message: ""
         });
 
-        // Hide notification after 3 seconds
         setTimeout(() => {
           setNotification("");
         }, 3000);
@@ -74,6 +130,7 @@ const FormSection = () => {
               value={formData.name}
               onChange={handleChange}
             />
+            {errors.name && <span className="error">{errors.name}</span>}
           </div>
           <div className="form-group email-field">
             <label htmlFor="email">Email</label>
@@ -85,6 +142,7 @@ const FormSection = () => {
               value={formData.email}
               onChange={handleChange}
             />
+            {errors.email && <span className="error">{errors.email}</span>}
           </div>
           <div className="form-group company-field">
             <label htmlFor="company">Company</label>
@@ -96,6 +154,7 @@ const FormSection = () => {
               value={formData.company}
               onChange={handleChange}
             />
+            {errors.company && <span className="error">{errors.company}</span>}
           </div>
           <div className="form-group phone-field">
             <label htmlFor="mobile">Phone Number</label>
@@ -107,6 +166,7 @@ const FormSection = () => {
               value={formData.mobile}
               onChange={handleChange}
             />
+            {errors.mobile && <span className="error">{errors.mobile}</span>}
           </div>
           <div className="form-group">
             <label htmlFor="message">Message</label>
@@ -117,6 +177,7 @@ const FormSection = () => {
               value={formData.message}
               onChange={handleChange}
             />
+            {errors.message && <span className="error">{errors.message}</span>}
           </div>
           <div className="form-group">
             <button type="submit" className="site-btn">
@@ -126,7 +187,6 @@ const FormSection = () => {
         </div>
       </form>
 
-      {/* Notification */}
       {notification && <div className="notification">{notification}</div>}
     </div>
   );
