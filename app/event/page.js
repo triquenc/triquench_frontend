@@ -102,26 +102,36 @@ export default function Events() {
         <section>
           <h2 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Categories</h2>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', padding: '2rem 0' }}>
-            {['All Categories', 'Blood Donation Camp', 'Standard Posts'].map((category) => (
-              <a
-                href="#"
+            {['CSR By Triquench', 'Triquench Events', 'Exhibition', 'Upcoming'].map((category) => (
+              <button
                 key={category}
-                onClick={() => setSelectedCategory(category === 'All Categories' ? '' : category)} // Set selected category or show all
+                onClick={(e) => handleCategoryClick(e, category)}
                 style={{
                   backgroundColor: selectedCategory === category ? '#3b82f6' : '#fff',
                   color: selectedCategory === category ? '#fff' : '#333',
                   padding: '0.5rem 1rem',
                   borderRadius: '20px',
-                  textDecoration: 'none',
-                  fontWeight: 'bold',
-                  transition: 'background-color 0.3s, color 0.3s',
                   border: '1px solid #ddd',
+                  fontWeight: 'bold',
+                  transition: 'all 0.3s ease',
                   boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
                   cursor: 'pointer',
                 }}
+                onMouseEnter={(e) => {
+                  e.target.style.backgroundColor = '#3b82f6';
+                  e.target.style.color = '#fff';
+                  e.target.style.transform = 'translateY(-2px)';
+                }}
+                onMouseLeave={(e) => {
+                  if (selectedCategory !== category) {
+                    e.target.style.backgroundColor = '#fff';
+                    e.target.style.color = '#333';
+                  }
+                  e.target.style.transform = 'translateY(0)';
+                }}
               >
                 {category}
-              </a>
+              </button>
             ))}
           </div>
         </section>
