@@ -101,7 +101,7 @@ export default function Events() {
       <div style={{ width: '90%', maxWidth: '1200px', margin: '0 auto', padding: '0 20px' }}>
         <section>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', padding: '2rem 0', position:"relative", justifyContent:"center" }}>
-            {['Exhibition','Upcoming Exhibition','CSR By TriQuench', 'TriQuench Events'].map((category) => (
+            {['Exhibition','Upcoming Exhibition','CSR By TriQuench','TriQuench Events'].map((category) => (
               <button
                 key={category}
                 onClick={(e) => handleCategoryClick(e, category)}
