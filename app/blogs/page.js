@@ -1,13 +1,9 @@
 "use client";
 import { useState, useEffect } from "react";
-import { FaCalendarAlt, FaTag, FaBookOpen, FaList, FaUser } from "react-icons/fa";
+import { FaCalendarAlt, FaTag, FaBookOpen, FaUser } from "react-icons/fa";
 
 export default function Blogs() {
   const [blogs, setBlogs] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("All Categories");
-  const [categories, setCategories] = useState([
-    "All Categories", "CNC Spindle Motor", "Spindle Servo Motor", "AC Servo Motor", "CNC Router Accessories", "Spindle Bearing", "Gearbox", "Spindle Accessories", "Laser Parts", "Controller", "Chiller", "Engraving Tools", "Laser Parts", "Controller", 
-  ]);
   const [popularPosts, setPopularPosts] = useState([
     { title: "Exploring Advanced React Features", date: "November 15, 2024", imageUrl: "https://storage.googleapis.com/a1aa/image/jdScUnVP8pY0Ddkjgt3BoOHyvAzA60YKcyBiKNAAYs2Faz8E.jpg" },
     { title: "The Future of Artificial Intelligence", date: "November 20, 2024", imageUrl: "https://storage.googleapis.com/a1aa/image/IYRTjx8GzjoiIVs2BHiYkGsD6Pezs58Okatt7pr13iaP0m5JA.jpg" },
@@ -17,7 +13,7 @@ export default function Blogs() {
   useEffect(() => {
     const fetchAllBlogs = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/blogs");
+        const response = await fetch("http://localhost:5000/api/blog/getBlogs");
         const data = await response.json();
         setBlogs(data || []);
       } catch (error) {
@@ -28,35 +24,22 @@ export default function Blogs() {
     fetchAllBlogs();
   }, []);
 
-  const filteredBlogs = selectedCategory === "All Categories"
-    ? blogs
-    : blogs.filter(blog => blog.category === selectedCategory);
-
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%" }}>
       <section style={{
-        backgroundImage: "url('https://thumbs.dreamstime.com/b/national-manufacturing-week-background-banner-design-template-observed-every-year-october-holiday-concept-card-poster-336989364.jpg')",
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        height: '400px',
-        display: 'flex',
-        alignItems: 'center',
+        backgroundImage: "url('https://res.cloudinary.com/dd1na5drh/image/upload/v1732516970/WhatsApp-Image-2024-01-18-at-12.47.26-PM_odprx9.jpg')",
+        height: '430px',
         justifyContent: 'center',
         textAlign: 'center',
-        color: '#fff',
         position: 'relative',
         width: '100%',
       }}>
         <div style={{
-          content: '""',
-          position: 'absolute',
           top: 0,
           left: 0,
           right: 0,
           bottom: 0,
-          backgroundColor: 'rgba(0,0,0,0.5)',
         }}></div>
-        <h1 style={{ fontSize: '3rem', position: 'relative', zIndex: 1 }}>Discover Amazing Blogs</h1>
       </section>
 
       <div style={{
@@ -77,8 +60,8 @@ export default function Blogs() {
               gap: "20px",
             }}
           >
-            {filteredBlogs.length > 0 ? (
-              filteredBlogs.map((blog) => (
+            {blogs.length > 0 ? (
+              blogs.map((blog) => (
                 <div
                   key={blog._id}
                   style={{
@@ -93,7 +76,7 @@ export default function Blogs() {
                   <div
                     style={{
                       backgroundColor: "#f7f7f7",
-                      height: "150px", // Reduced height from 200px
+                      height: "150px",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
@@ -168,53 +151,8 @@ export default function Blogs() {
           </div>
         </div>
 
-        {/* Sidebar with Categories and Popular Posts */}
+        {/* Sidebar with Popular Posts */}
         <div style={{ flex: "1 1 10%", boxSizing: "border-box" }}>
-          {/* Blog Categories Section */}
-          <div
-            style={{
-              backgroundColor: "#fff", 
-              borderRadius: "6px",
-              boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-              marginBottom: "15px",
-              padding: "12px",
-            }}
-          >
-            <h2 style={{fontSize: "18px", marginBottom: "10px"}}>Blog Categories</h2>
-            <hr style={{
-              border: "none",
-              height: "1px",
-              backgroundColor: "#e5e7eb",
-              margin: "10px 0"
-            }} />
-            <ul className="categories" style={{ listStyle: "none", padding: 0 }}>
-              {categories.map((category, index) => (
-                <li key={index} style={{ marginBottom: "8px" }}>
-                  <a
-                    href="#"
-                    onClick={() => setSelectedCategory(category)}
-                    style={{
-                      textDecoration: "none",
-                      color: selectedCategory === category ? "#fff" : "#333",
-                      fontWeight: "500",
-                      display: "flex",
-                      alignItems: "center",
-                      backgroundColor: selectedCategory === category ? "#3b82f6" : "transparent",
-                      padding: "8px 15px",
-                      borderRadius: "4px",
-                      fontSize: "14px",
-                      transition: "background-color 0.3s, color 0.3s",
-                      cursor: "pointer",
-                    }}
-                  >
-                    <FaList style={{ marginRight: "10px", fontSize: "14px" }} />
-                    {category}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
           {/* Popular Posts Section */}
           <div
             style={{
