@@ -85,8 +85,11 @@ export default function ProductDetail({ params }) {
         },
         body: JSON.stringify({ phoneNumber, productName: product?.title }),
       });
+      console.log(response)
 
       const data = await response.json();
+      console.log(data)
+      console.log(response.body)
       if (response.ok) {
         toast.success(data.message); // Show success notification
         openOtpModal();

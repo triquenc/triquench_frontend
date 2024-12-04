@@ -14,8 +14,9 @@ export default function SocialWallSection() {
               <div className="social-grid-inner">
                 <div className="img-wrapper">
                   <picture className='bg-img'> 
-                    <source srcSet="/images/social-post1.webp" type="image/webp"/>
-                    <Image src="/images/social-post1.jpg" height={190} width={340} alt="Post" className='bg-img'/>
+                    <Image src="/images/social_media_wall_2.png" height={190} width={340} alt="Post" className='bg-img'/>
+                    <source srcSet="/images/social_media_wall_2.png" type="image/webp"/>
+                    <Image src="/images/social_media_wall_1.png" height={190} width={340} alt="Post" className='bg-img'/>
                   </picture>
                 </div>
                <div className="bottom-outer">
@@ -62,7 +63,7 @@ export default function SocialWallSection() {
               <div className="social-grid-inner">
                 <div className="img-wrapper">
                   <picture className='bg-img'> 
-                    <source srcSet="/images/social-post2.webp" type="image/webp"/>
+                    <source srcSet="/images/social_media_wall_3.png" type="image/webp"/>
                     <Image src="/images/social-post2.jpg" height={190} width={340} alt="Post" className='bg-img'/>
                   </picture>
                 </div>
@@ -110,8 +111,8 @@ export default function SocialWallSection() {
               <div className="social-grid-inner">
                 <div className="img-wrapper">
                   <picture className='bg-img'> 
-                    <source srcSet="/images/social-post3.webp" type="image/webp" />
-                    <Image src="/images/social-post3.jpg" height={190} width={340} alt="Post" className='bg-img'/>
+                    <source srcSet="/images/social_media_wall_1.png" type="image/webp" />
+                    <Image src="/images/social_media_wall_1.png" height={190} width={340} alt="Post" className='bg-img'/>
                   </picture>
                 </div>
                <div className="bottom-outer">
