@@ -143,8 +143,8 @@ export default function Footer() {
           <div className="left">
             © <span className="year">2024</span>, Triquench India PVT. LTD.
           </div>
-          <div className="right">
-           {/*  <ul className="d-flex align-center">
+          {/* <div className="right">
+            <ul className="d-flex align-center">
               <li>
                 <Image
                   src="/images/visa.svg"
@@ -193,8 +193,8 @@ export default function Footer() {
                   alt="paypal"
                 />
               </li>
-            </ul>*/}
-          </div>
+            </ul>
+          </div> */}
         </div>
       </div>
       <BackToTop />
