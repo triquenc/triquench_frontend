@@ -18,13 +18,24 @@ export default function AboutSection() {
               </div>
           </div>
           <div className="img-wrap">
-              <picture className='bottom-img'> 
+              <picture className='bottom-img' style={{
+                position: 'relative'
+               }}> 
                 <source srcSet="/images/about-bottom.webp" type="image/webp" />
                 <Image src="/images/about-bottom.webp" width={587} height={753} alt="Product image" />
+                <div style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: '100%',
+                  backgroundColor: 'rgba(0, 0, 0, 0.5)', // Black overlay with 50% opacity
+                  pointerEvents: 'none'
+                }}></div>
               </picture>
               <picture className="absolute-img">
-                <source srcSet="/images/about-top.jpg" type="image/webp" />
-                <Image src="/images/about-top.jpg" width={474} height={660} alt="Product image" />
+                <source srcSet="https://res.cloudinary.com/dd1na5drh/image/upload/v1733207720/About_img_ixsnwn.png" type="image/webp" />
+                <Image src="https://res.cloudinary.com/dd1na5drh/image/upload/v1733207720/About_img_ixsnwn.png" width={474} height={660} alt="Product image" />
               </picture>
           </div>
         </div>
