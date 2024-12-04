@@ -24,9 +24,8 @@ export default function SocialWallSection() {
                     <Image src="/images/facebook-blue.svg" height={20} width={20} alt="facebook"/>
                     </em>
                     <p>
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry.
-                    </p>
+                    Maximize Productivity and Precision with TriQuench's Automatic Tool Changer (ATC) Spindle for Your CNC Machine!
+                   </p>
                     <p className="company-name">TriQuench INDIA Pvt. Ltd.</p>
                     <span className="date">Triquench_ Sept 12</span>
                   </div>
@@ -73,8 +72,7 @@ export default function SocialWallSection() {
                     <Image src="/images/insta-blue.svg" height={20} width={20} alt="Instagram Icon"/>
                   </em>
                   <p>
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry.
+                  Unlock superior machining with our BT40 Motorized Spindle—perfect for CNC Milling, Automotive, and Aerospace industries!
                   </p>
                   <p className="company-name">TriQuench INDIA Pvt. Ltd.</p>
                   <span className="date">Triquench_ Sept 12</span>
@@ -122,8 +120,8 @@ export default function SocialWallSection() {
                       <Image src="/images/insta-blue.svg" height={20} width={20} alt="Instagram Icon"/>
                     </em>
                     <p>
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry.
+                    TriQuench India offers premium-quality LM Guideways (Linear Motion Rail & Block) for precise and smooth movement in your CNC machines
+
                     </p>
                     <p className="company-name">TriQuench INDIA Pvt. Ltd.</p>
                     <span className="date">Triquench_ Sept 12</span>

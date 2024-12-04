@@ -11,9 +11,11 @@ import "swiper/css/thumbs";
 import Image from "next/image";
 import RequestQuote from "@/components/commonComponents/requestQuote";
 import { useRouter } from 'next/router';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 async function fetchProductData(id) {
-  const res = await fetch(`https://d1w2b5et10ojep.cloudfront.net/api/product/${id}`);
+  const res = await fetch(`https://triquench-backend.vercel.app/api/product/${id}`);
   if (!res.ok) {
     throw new Error('Failed to fetch product data');
   }
@@ -30,6 +32,8 @@ export default function ProductDetail({ params }) {
   const section2Ref = useRef(null);
   const section3Ref = useRef(null);
   const [headerHeight, setHeaderHeight] = useState(0);
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [otp, setOtp] = useState('');
 
   // Fetch product data on component mount
   useEffect(() => {
@@ -71,8 +75,57 @@ export default function ProductDetail({ params }) {
   const openOtpModal = () => { setIsOpen(false); setOtpModalIsOpen(true); };
   const closeModal = () => { setIsOpen(false); setOtpModalIsOpen(false); };
 
+  const handleSendOtp = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch('http://triquench.ap-south-1.elasticbeanstalk.com/api/getAquote/send-otp', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ phoneNumber, productName: product?.title }),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        toast.success(data.message); // Show success notification
+        openOtpModal();
+      } else {
+        toast.error(data.message || 'Failed to send OTP'); // Show error notification
+      }
+    } catch (error) {
+      console.error('Error sending OTP:', error);
+      toast.error('Failed to send OTP'); // Show error notification
+    }
+  };
+
+  const handleVerifyOtp = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch('http://triquench.ap-south-1.elasticbeanstalk.com/api/getAquote/verify-otp', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ phoneNumber, otp }),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        toast.success(data.message); // Show success notification
+        closeModal();
+      } else {
+        toast.error(data.message || 'Failed to verify OTP'); // Show error notification
+      }
+    } catch (error) {
+      console.error('Error verifying OTP:', error);
+      toast.error('Failed to verify OTP'); // Show error notification
+    }
+  };
+
   return (
     <div>
+      <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
       <section className="product-detail-slider-section">
         <div className="container">
           <div className="slider-text-wrapper">
@@ -126,14 +179,21 @@ export default function ProductDetail({ params }) {
                   <h2>Get a Quote</h2>
                   <button onClick={closeModal} className="close-btn"><Image src="/images/cross.svg" height={25} width={25} alt="Close" /></button>
                 </div>
-                <form>
+                <form onSubmit={handleSendOtp}>
                   <div className="form-wrapper">
                     <div className="form-group">
                       <label htmlFor="number">Phone Number</label>
-                      <input type="text" id="number" name="number" placeholder="Enter Phone Number" />
+                      <input
+                        type="text"
+                        id="number"
+                        name="number"
+                        placeholder="Enter Phone Number"
+                        value={phoneNumber}
+                        onChange={(e) => setPhoneNumber(e.target.value)}
+                      />
                     </div>
                     <div className="form-group">
-                      <button onClick={openOtpModal} className="site-btn">Submit</button>
+                      <button type="submit" className="site-btn">Submit</button>
                     </div>
                   </div>
                 </form>
@@ -145,14 +205,21 @@ export default function ProductDetail({ params }) {
                   <button onClick={closeModal} className="close-btn"><Image src="/images/cross.svg" height={25} width={25} alt="Close" /></button>
                 </div>
                 <p>We have sent OTP on your given mobile number</p>
-                <form>
+                <form onSubmit={handleVerifyOtp}>
                   <div className="form-wrapper">
                     <div className="form-group">
                       <label htmlFor="otp">OTP</label>
-                      <input type="text" id="otp" name="otp" placeholder="Enter OTP" />
+                      <input
+                        type="text"
+                        id="otp"
+                        name="otp"
+                        placeholder="Enter OTP"
+                        value={otp}
+                        onChange={(e) => setOtp(e.target.value)}
+                      />
                     </div>
                     <div className="form-group">
-                      <button onClick={closeModal} className="site-btn">Submit</button>
+                      <button type="submit" className="site-btn">Submit</button>
                     </div>
                   </div>
                 </form>
@@ -167,8 +234,8 @@ export default function ProductDetail({ params }) {
           <div className="container">
             <ul>
               <li><button onClick={() => scrollToSection(section1Ref)}>Specifications</button></li>
-              <li><button onClick={() => scrollToSection(section2Ref)}>Download</button></li>
               <li><button onClick={() => scrollToSection(section3Ref)}>Applications</button></li>
+              {/* <li><button onClick={() => scrollToSection(section2Ref)}>Download</button></li> */}
             </ul>
           </div>
         </div>
@@ -185,7 +252,7 @@ export default function ProductDetail({ params }) {
                 ))}
               </ul>
             </div>
-            <div className="product-info-block download-block" ref={section2Ref}>
+            {/* <div className="product-info-block download-block" ref={section2Ref}>
               <h3 className="block-title">Download</h3>
               <div className="download-grid">
                 <div className="download-left">
@@ -204,7 +271,7 @@ export default function ProductDetail({ params }) {
                       </div>
                     </div>
               </div>
-            </div>
+            </div> */}
             <div className="product-info-block applications-block" ref={section3Ref}>
               <h3 className="block-title">Applications</h3>
               <ul>

@@ -13,7 +13,7 @@ export default function Blogs() {
   useEffect(() => {
     const fetchAllBlogs = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/blog/getBlogs");
+        const response = await fetch("http://triquench.ap-south-1.elasticbeanstalk.com/api/blog/getBlogs");
         const data = await response.json();
         setBlogs(data || []);
       } catch (error) {

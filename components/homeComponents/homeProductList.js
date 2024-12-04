@@ -92,8 +92,8 @@ const HomeProductList = forwardRef((props, ref) => {
       <section className="home-product-list">
         <div className="container">
           <div className="title-block">
-            <span className="sub-title">We have the best quality products</span>
-            <h2 className="has-green-bar">OUR PRODUCTS</h2>
+            {/*<span className="sub-title"></span>*/}
+            <h2 className="has-green-bar"> We have the best quality products</h2>
           </div>
           <div style={{
             position: 'relative',
