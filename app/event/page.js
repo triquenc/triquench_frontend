@@ -15,7 +15,7 @@ export default function Events() {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/events');
+        const response = await fetch('http://triquench.ap-south-1.elasticbeanstalk.com/api/event/getEvents');
         const data = await response.json();
         setEvents(data);
       } catch (error) {
@@ -31,7 +31,7 @@ export default function Events() {
     if (likedPosts[index]) return; // Prevent further clicks if already liked
 
     try {
-      const response = await fetch(`http://localhost:5000/api/event/like`, {
+      const response = await fetch(`http://triquench.ap-south-1.elasticbeanstalk.com/api/event/like`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

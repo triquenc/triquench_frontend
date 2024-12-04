@@ -27,7 +27,7 @@ export default function Footer() {
               <span className="title">Follow Us</span>
               <ul className="d-flex">
                 <li>
-                  <a href="" title="facebook">
+                  <a href="https://www.facebook.com/spindlemotorTQI" title="facebook">
                     <Image
                       src="/images/facebook.svg"
                       width={14}
@@ -37,7 +37,7 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a href="" title="Instagram">
+                  <a href="https://www.instagram.com/triquench/" title="Instagram">
                     <Image
                       src="/images/insta.svg"
                       width={14}
@@ -47,7 +47,7 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a href="" title="Youtube">
+                  <a href="https://www.youtube.com/channel/UCnlvf2-Ml9cgDiAXeEncYkA" title="Youtube">
                     <Image
                       src="/images/youtube.svg"
                       width={15}
@@ -57,12 +57,22 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a href="" title="X">
+                  <a href="https://x.com/triquenchindia" title="X">
                     <Image
                       width={12}
                       height={12}
                       src="/images/x-logo.svg"
                       alt="X Icon"
+                    />
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.linkedin.com/company/triquenchindia/" title="Linkedin">
+                    <Image
+                      width={20}
+                      height={20}
+                      src="/images/link_in.png"
+                      alt="Linkedin icon"
                     />
                   </a>
                 </li>
@@ -80,7 +90,7 @@ export default function Footer() {
                     </a>
                   </li>
                   <li>
-                  <a href="/products" title="Spindle Motor MTC">
+                    <a href="/products" title="Spindle Motor MTC">
                       Spindle Motor MTC
                     </a>
                   </li>
@@ -92,35 +102,6 @@ export default function Footer() {
                   <li>
                     <a href="/products" title="Spindle Bearing">
                       Spindle Bearing
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div className="links-inner-wrapper">
-                <span className="footer-title">Quick links</span>
-                <ul>
-                  <li>
-                    <a href="/" title="Home">
-                      Home
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/products" title="Categories">
-                      Categories
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/contact" title="Contact">
-                      Contact
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      title="Products"
-                      href="https://shop.triquenchindia.com"
-                      target="_blank"
-                    >
-                      Our Store
                     </a>
                   </li>
                 </ul>
@@ -143,11 +124,6 @@ export default function Footer() {
                       Terms of service
                     </a>
                   </li>
-                  <li>
-                    <a href="" title="Contact information">
-                      Contact information
-                    </a>
-                  </li>
                 </ul>
               </div>
             </div>
@@ -155,7 +131,7 @@ export default function Footer() {
           <div className="footer-contact-wrapper">
             <span className="contact-title">Contact Us</span>
             <a href="mailto:support@triquench.com" title="Mail Us">
-             info@triquenchindia.com
+              info@triquenchindia.com
             </a>
             <a href="tel:+91898783678" title="Call Us">
               +91 96011 11615
@@ -165,58 +141,6 @@ export default function Footer() {
         <div className="footer-bottom d-flex align-center justify-sb">
           <div className="left">
             © <span className="year">2024</span>, Triquench India PVT. LTD.
-          </div>
-          <div className="right">
-           {/*  <ul className="d-flex align-center">
-              <li>
-                <Image
-                  src="/images/visa.svg"
-                  width={36}
-                  height={22}
-                  alt="visa"
-                />
-              </li>
-              <li>
-                <Image
-                  src="/images/diners.svg"
-                  width={36}
-                  height={22}
-                  alt="diners"
-                />
-              </li>
-              <li>
-                <Image
-                  src="/images/master-card.svg"
-                  width={36}
-                  height={22}
-                  alt="mastercard"
-                />
-              </li>
-              <li>
-                <Image
-                  src="/images/american-express.svg"
-                  width={36}
-                  height={22}
-                  alt="americanExpress"
-                />
-              </li>
-              <li>
-                <Image
-                  src="/images/discover.svg"
-                  width={36}
-                  height={22}
-                  alt="discover"
-                />
-              </li>
-              <li>
-                <Image
-                  src="/images/paypal.svg"
-                  width={36}
-                  height={22}
-                  alt="paypal"
-                />
-              </li>
-            </ul>*/}
           </div>
         </div>
       </div>
