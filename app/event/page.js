@@ -15,7 +15,7 @@ export default function Events() {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await fetch('http://triquench.ap-south-1.elasticbeanstalk.com/api/event/getEvents');
+        const response = await fetch('http://localhost:5000/api/event/getEvents');
         const data = await response.json();
         setEvents(data);
       } catch (error) {
@@ -31,7 +31,7 @@ export default function Events() {
     if (likedPosts[index]) return; // Prevent further clicks if already liked
 
     try {
-      const response = await fetch(`http://triquench.ap-south-1.elasticbeanstalk.com/api/event/like`, {
+      const response = await fetch(`http://localhost:5000/api/event/like`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -71,6 +71,12 @@ export default function Events() {
     ? events.filter(event => event.category === selectedCategory)
     : events;
 
+  // Handle category selection without page jump
+  const handleCategoryClick = (e, category) => {
+    e.preventDefault(); // Prevent default anchor behavior
+    setSelectedCategory(category === 'All Categories' ? '' : category);
+  };
+
   return (
     <div style={{ width: '100%', backgroundColor: '#fff', fontFamily: 'Arial, sans-serif', lineHeight: '1.6', color: '#333' }}>
       <section style={{
@@ -100,13 +106,13 @@ export default function Events() {
 
       <div style={{ width: '90%', maxWidth: '1200px', margin: '0 auto', padding: '0 20px' }}>
         <section>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', padding: '2rem 0', position:"relative", justifyContent:"center" }}>
-            {['Exhibition','Upcoming Exhibition','CSR By TriQuench','TriQuench Events'].map((category) => (
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', padding: '2rem 0', justifyContent: 'center' }}>
+            {['Exhibition', 'Upcoming Exhibition','CSR By Triquench', 'Triquench Events' ].map((category) => (
               <button
                 key={category}
                 onClick={(e) => handleCategoryClick(e, category)}
                 style={{
-                  backgroundColor: selectedCategory === category ? '#006098' : '#fff',
+                  backgroundColor: selectedCategory === category ? '#006098' : '#fff', 
                   color: selectedCategory === category ? '#fff' : '#006098',
                   padding: '0.5rem 1rem',
                   borderRadius: '20px',
@@ -115,18 +121,26 @@ export default function Events() {
                   transition: 'all 0.3s ease',
                   boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
                   cursor: 'pointer',
+                  ':hover': {
+                    backgroundColor: '#006098',
+                    color: '#fff',
+                    transform: 'translateY(-2px)',
+                    boxShadow: '0 4px 8px rgba(0,0,0,0.2)'
+                  }
                 }}
                 onMouseEnter={(e) => {
                   e.target.style.backgroundColor = '#006098';
                   e.target.style.color = '#fff';
                   e.target.style.transform = 'translateY(-2px)';
+                  e.target.style.boxShadow = '0 4px 8px rgba(0,0,0,0.2)';
                 }}
                 onMouseLeave={(e) => {
                   if (selectedCategory !== category) {
                     e.target.style.backgroundColor = '#fff';
                     e.target.style.color = '#006098';
+                    e.target.style.transform = 'translateY(0)';
+                    e.target.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
                   }
-                  e.target.style.transform = 'translateY(0)';
                 }}
               >
                 {category}
