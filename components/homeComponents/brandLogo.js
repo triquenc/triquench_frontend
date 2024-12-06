@@ -14,9 +14,11 @@ export default function SliderBanner() {
             <div className="text-block">
               <div className="title-block">
                 <Image src="/images/brands.svg" alt="brands" width={397} height={95} className="brand-text"/>
-                <h2 className="has-green-bar">Trusted by world’s Biggest Brands</h2>
+                <h2 className="has-green-bar">Trusted by the World’s Leading Brands
+                </h2>
               </div>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy Lorem Ipsum is simply dummy text of the printing.</p>
+              <p>At TriQuench India, we take immense pride in being a trusted partner to some of the most renowned and respected industry leaders worldwide. Our dedication to delivering high-quality, precision-engineered CNC spindles has earned us a reputation for excellence across various sectors.
+              </p>
             </div>
             <div className="slider-navgation-wrapper">
               <div className="slider-wrapper">
