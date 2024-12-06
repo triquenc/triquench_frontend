@@ -9,8 +9,13 @@ export default function SocialWallSection() {
           <div className="title-block">
             <h2 className="has-green-bar">SOCIAL WALL</h2>
           </div>
-          <div className="social-grid">
+            <div className="social-grid">
             <div className="social-grid-item">
+            <a 
+              href="https://www.instagram.com/triquench_spindlemotor/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="social-grid-inner">
               <div className="social-grid-inner">
                 <div className="img-wrapper">
                   <picture className='bg-img'> 
@@ -28,7 +33,7 @@ export default function SocialWallSection() {
                     Maximize Productivity and Precision with TriQuench's Automatic Tool Changer (ATC) Spindle for Your CNC Machine!
                    </p>
                     <p className="company-name">TriQuench INDIA Pvt. Ltd.</p>
-                    <span className="date">Triquench_ Sept 12</span>
+                 {/*  <span className="date">Triquench_ Sept 12</span>*/}
                   </div>
                   <div className="action-row">
                     <div className="left">
@@ -58,8 +63,14 @@ export default function SocialWallSection() {
                   </div>
                </div>
               </div>
+              </a>
             </div>
             <div className="social-grid-item">
+            <a 
+              href="https://www.instagram.com/triquench_spindlemotor/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="social-grid-inner">
               <div className="social-grid-inner">
                 <div className="img-wrapper">
                   <picture className='bg-img'> 
@@ -76,7 +87,7 @@ export default function SocialWallSection() {
                   Unlock superior machining with our BT40 Motorized Spindle—perfect for CNC Milling, Automotive, and Aerospace industries!
                   </p>
                   <p className="company-name">TriQuench INDIA Pvt. Ltd.</p>
-                  <span className="date">Triquench_ Sept 12</span>
+                 {/* <span className="date">Triquench_ Sept 12</span>*/}
                 </div>
                 <div className="action-row">
                   <div className="left">
@@ -106,8 +117,14 @@ export default function SocialWallSection() {
                 </div>
                </div>
               </div>
+              </a>
             </div>
             <div className="social-grid-item">
+                <a 
+              href="https://www.instagram.com/triquench_spindlemotor/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="social-grid-inner">
               <div className="social-grid-inner">
                 <div className="img-wrapper">
                   <picture className='bg-img'> 
@@ -125,7 +142,7 @@ export default function SocialWallSection() {
 
                     </p>
                     <p className="company-name">TriQuench INDIA Pvt. Ltd.</p>
-                    <span className="date">Triquench_ Sept 12</span>
+                     {/* <span className="date">Triquench_ Sept 12</span> */}
                   </div>
                   <div className="action-row">
                     <div className="left">
@@ -155,6 +172,7 @@ export default function SocialWallSection() {
                   </div>
                </div>
               </div>
+              </a>
             </div>
           </div>
         </div>

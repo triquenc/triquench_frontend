@@ -1,5 +1,7 @@
 import Image from "next/image";
 import BackToTop from './commonComponents/BackToTop';
+import { EnvelopeIcon, PhoneIcon } from "@heroicons/react/24/outline"; // Import icons
+
 
 export default function Footer() {
   return (
@@ -38,7 +40,7 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a href="https://www.instagram.com/triquench/" title="Instagram">
+                  <a href="https://www.instagram.com/triquench_spindlemotor/" title="Instagram">
                     <Image
                       src="/images/insta.svg"
                       width={14}
@@ -132,9 +134,13 @@ export default function Footer() {
           <div className="footer-contact-wrapper">
             <span className="contact-title">Contact Us</span>
             <a href="mailto:support@triquench.com" title="Mail Us">
+            {/*<EnvelopeIcon className="w-0.5 h-0.5" />*/}
+
               info@triquenchindia.com
             </a>
             <a href="tel:+91898783678" title="Call Us">
+            {/* <PhoneIcon className="w-0.5 h-0.5" />*/}
+
               +91 96011 11615
             </a>
           </div>

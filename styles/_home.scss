@@ -774,7 +774,7 @@
         }
         .text-wrap{
             margin: 0 auto;
-            padding: 13rem 5rem;
+            padding: 5rem 1rem;
             width: 100%;
             display: flex;
             align-items: center;
@@ -815,7 +815,7 @@
     }
 }
 .form-section{
-    padding: 5rem 0;
+    padding: 4rem 0;
     @include bp("xl-max") {
         padding: 8rem 0;
     }
@@ -969,7 +969,7 @@
                 }
                 .absolute-img{
                     position: absolute;
-                    right: 1.4rem;
+                    right:28.4rem;
                     top: 1.4rem;
                     height: 4rem;
                     width: 4rem;
@@ -1189,7 +1189,7 @@
 }
 .home-wrapper{
     .service-we-provide{
-        padding-bottom: 14rem;
+        padding-bottom:4rem;
         @include bp("xl-max") {
             padding-bottom: 11rem;
         }
