@@ -32,6 +32,7 @@ export default function WhyChooseTriquench() {
                             <h3>RELIABILITY</h3>
                             <p>We understand that our customers rely on our products to keep their operations running smoothly. That's why we focus on providing reliable CNC spindle solutions that you can count on.</p>
                         </div>
+
                     </div>
                 </div>
             </div>

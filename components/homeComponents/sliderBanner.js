@@ -9,7 +9,7 @@ import 'swiper/swiper-bundle.css';
 export default function SliderBanner() {
     return (
       <section className="banner-section relative">
-        <Image src="/images/banner-prop.png" width={1440} height={580} alt="Banner Background Image" className="bg-img" />
+        <Image src="https://res.cloudinary.com/dd1na5drh/image/upload/v1733571640/Slider_BG_seiv3u.png" width={1440} height={580} alt="Banner Background Image" className="bg-img" />
         <div className="container">
           <div className="slider-navgation-wrapper">
             <div className="banner-navigation-wrapper">
@@ -48,9 +48,9 @@ export default function SliderBanner() {
                 <SwiperSlide>
                   <div className="swiper-flex-wrap">
                     <div className="left">
-                      <span className="sub-title">Building High Trust </span>
-                      <h1>Relationship through our Quality Spindles</h1>
-                      <p>We provide “Intelligent Spindle Solutions” and Aspiring to be of Service to Society and Grow along with it.</p>
+                      {/*<span className="sub-title">Building High Trust </span>*/}
+                      <h1>High-Performance ATC Spindle Motors</h1>
+                      <p>Discover premium ATC spindle motors for CNC machines, offering 0.3–12 kW power and speeds up to 60,000 RPM. Choose air-cooled or water-cooled for precision and efficiency.</p>
                       <div className="btn-wrapper m-t-20">
                         <a href="https://shop.triquenchindia.com" target="_blank" className="white-btn" title="Shop Now">
                         Shop Now
@@ -61,16 +61,16 @@ export default function SliderBanner() {
                       </div>
                     </div>
                     <div className="right">
-                      <Image src="/images/slide1.png" width={530} height={350} alt="Slider Item1 Image"/>
+                      <Image src="https://res.cloudinary.com/dd1na5drh/image/upload/v1733572505/Slider_1_img_cwvo54.png" width={530} height={350} alt="Slider Item1 Image"/>
                     </div>
                   </div>
                 </SwiperSlide>
                 <SwiperSlide>
                 <div className="swiper-flex-wrap">
                   <div className="left">
-                      <span className="sub-title">Building High Trust </span>
-                      <h2 className="h1">Relationship through our Quality Spindles</h2>
-                      <p>We provide “Intelligent Spindle Solutions” and Aspiring to be of Service to Society and Grow along with it.</p>
+                      {/*<span className="sub-title">Building High Trust </span>*/}
+                      <h2 className="h1">MTC Spindle Motors | CNC Precision Spindles</h2>
+                      <p>Explore durable and efficient MTC spindle motors for CNC machines, available in versatile power and speed configurations to suit diverse machining needs.</p>
                       <div className="btn-wrapper m-t-20">
                         <a href="https://shop.triquenchindia.com" target="_blank" className="white-btn" title="Shop Now">
                         Shop Now
@@ -81,16 +81,16 @@ export default function SliderBanner() {
                       </div>
                   </div>
                   <div className="right">
-                    <Image src="/images/slide2.png" alt="Slider Item2 Image" width={530} height={350}/>
+                    <Image src="https://res.cloudinary.com/dd1na5drh/image/upload/v1733572625/Slider_2_img_hi1uod.png" alt="Slider Item2 Image" width={530} height={350}/>
                   </div>
                 </div>
                 </SwiperSlide>
                 <SwiperSlide>
                 <div className="swiper-flex-wrap">
                   <div className="left">
-                      <span className="sub-title">Building High Trust </span>
-                      <h2 className="h1">Relationship through our Quality Spindles</h2>
-                      <p>We provide “Intelligent Spindle Solutions” and Aspiring to be of Service to Society and Grow along with it.</p>
+                      {/*<span className="sub-title">Building High Trust </span>*/}
+                      <h2 className="h1">LM Guideways and Ball Screws for CNC Machines</h2>
+                      <p>Ensure smooth and precise CNC operation with our LM guideways and ball screws. Engineered for longevity and high-performance machining tasks. </p>
                       <div className="btn-wrapper m-t-20">
                         <a href="https://shop.triquenchindia.com" target="_blank" className="white-btn" title="Shop Now">
                         Shop Now
@@ -101,7 +101,27 @@ export default function SliderBanner() {
                       </div>
                   </div>
                   <div className="right">
-                    <Image src="/images/slide3.png" alt="Slider Item3 Image" width={530} height={350}/>
+                    <Image src="https://res.cloudinary.com/dd1na5drh/image/upload/v1733572675/Slider_3_img_wbvqda.png" alt="Slider Item3 Image" width={530} height={350}/>
+                  </div>
+                </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                <div className="swiper-flex-wrap">
+                  <div className="left">
+                      {/*<span className="sub-title">Building High Trust </span>*/}
+                      <h2 className="h1">Spindles, VFD's, Tool Holders & More</h2>
+                      <p>Welcome to Triquench India Pvt. Ltd., your trusted CNC spindle manufacturer. Explore our range of CNC spindles, VFDs, tool holders, bearings, and machine accessories. Worldwide delivery!</p>
+                      <div className="btn-wrapper m-t-20">
+                        <a href="https://shop.triquenchindia.com" target="_blank" className="white-btn" title="Shop Now">
+                        Shop Now
+                        </a>
+                        <a href="/products" className="white-border-btn" title="View Products">
+                        View Products
+                        </a>
+                      </div>
+                  </div>
+                  <div className="right">
+                    <Image src="https://res.cloudinary.com/dd1na5drh/image/upload/v1733572391/Slider_4_img_xt3kp0.png" alt="Slider Item3 Image" width={530} height={350}/>
                   </div>
                 </div>
                 </SwiperSlide>
@@ -109,6 +129,7 @@ export default function SliderBanner() {
             </div>
           </div>
         </div>
+        
       </section>
     );
 }

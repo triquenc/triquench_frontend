@@ -17,7 +17,8 @@ export default function SliderBanner() {
                 <h2 className="has-green-bar">Trusted by the World’s Leading Brands
                 </h2>
               </div>
-              <p>At TriQuench India, we take immense pride in being a trusted partner to some of the most renowned and respected industry leaders worldwide. Our dedication to delivering high-quality, precision-engineered CNC spindles has earned us a reputation for excellence across various sectors.
+              <p style={{ paddingRight: '20px' }}>
+              At TriQuench India, we take immense pride in being a trusted partner to some of the most renowned and respected industry leaders worldwide. Our dedication to delivering high-quality, precision-engineered CNC spindles has earned us a reputation for excellence across various sectors.
               </p>
             </div>
             <div className="slider-navgation-wrapper">

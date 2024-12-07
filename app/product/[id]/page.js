@@ -1,4 +1,6 @@
-"use client"; // Keep this to use client-side features
+// app/product/page.js
+
+"use client"; // Keep this if you want to use client-side features
 
 import { useState, useEffect, useRef, useLayoutEffect } from "react";
 import Modal from "react-modal";
@@ -7,11 +9,10 @@ import { Thumbs, Autoplay, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/thumbs";
 import Image from "next/image";
-import { useRouter } from "next/router";
-import { toast, ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
 import RequestQuote from "@/components/commonComponents/requestQuote";
-import Cookies from 'js-cookie';
+import { useRouter } from 'next/router';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 async function fetchProductData(id) {
   const res = await fetch(`https://triquench-backend.vercel.app/api/product/${id}`);
@@ -28,12 +29,11 @@ export default function ProductDetail({ params }) {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [otpModalIsOpen, setOtpModalIsOpen] = useState(false);
   const section1Ref = useRef(null);
-  // const section2Ref = useRef(null);
+  const section2Ref = useRef(null);
   const section3Ref = useRef(null);
   const [headerHeight, setHeaderHeight] = useState(0);
   const [phoneNumber, setPhoneNumber] = useState('');
   const [otp, setOtp] = useState('');
-  // const router = useRouter();
 
   // Fetch product data on component mount
   useEffect(() => {
@@ -47,9 +47,9 @@ export default function ProductDetail({ params }) {
     };
     
     getProductData();
-  }, [id]);
+  }, [id]); // Only run once when the `id` changes
 
-  // Get header height for smooth scrolling
+  // Ensure hooks are not conditional
   useLayoutEffect(() => {
     const headerElement = document.querySelector('.site-header');
     if (headerElement) {
@@ -58,7 +58,12 @@ export default function ProductDetail({ params }) {
   }, []);
 
   if (!product) {
-    return <p>Loading...</p>; // Show loading state until product data is available
+    return <p  style={{
+      width: "100vw",
+      textAlign: "center",
+      marginBottom: "80px",
+      marginTop: "40px"
+  }}>Loading...</p>; // Show loading state until product data is available
   }
 
   const scrollToSection = (sectionRef) => {
@@ -66,119 +71,57 @@ export default function ProductDetail({ params }) {
     window.scrollTo({ top: sectionPosition - 1, behavior: 'smooth' });
   };
 
-  const getQuoteModal = async () => {
-    const token = Cookies.get('token'); // Get the token from cookies
-
-    if (token) {
-      // If token exists, call add-product-name API
-      try {
-        const response = await fetch('https://d1w2b5et10ojep.cloudfront.net/api/getAquote/add-product-name', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`,
-          },
-          body: JSON.stringify({ productName: product?.title }),
-        });
-
-        const data = await response.json();
-        if (response.ok) {
-          toast.success(data.message); // Show success notification
-        } else {
-          toast.error(data.message || 'Failed to add product name'); // Show error notification
-        }
-      } catch (error) {
-        console.error('Error adding product name:', error);
-        toast.error('Failed to add product name'); // Show error notification
-      }
-    } else {
-      // If no token, open the modal to send OTP
-      setIsOpen(true);
-    }
-  };
-
+  const getQuoteModal = () => setIsOpen(true);
   const openOtpModal = () => { setIsOpen(false); setOtpModalIsOpen(true); };
   const closeModal = () => { setIsOpen(false); setOtpModalIsOpen(false); };
 
-  // Send OTP to the provided phone number
   const handleSendOtp = async (e) => {
     e.preventDefault();
     try {
       const response = await fetch('https://d1w2b5et10ojep.cloudfront.net/api/getAquote/send-otp', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({ phoneNumber, productName: product?.title }),
       });
+      console.log("response:", response);
+      console.log("body:", response.body);
 
       const data = await response.json();
       if (response.ok) {
-        toast.success(data.message);
+        toast.success(data.message); // Show success notification
         openOtpModal();
       } else {
-        toast.error(data.message || 'Failed to send OTP');
+        toast.error(data.message || 'Failed to send OTP'); // Show error notification
       }
     } catch (error) {
       console.error('Error sending OTP:', error);
-      toast.error('Failed to send OTP');
+      toast.error('Failed to send OTP'); // Show error notification
     }
   };
 
-  // Verify OTP and store the JWT token
   const handleVerifyOtp = async (e) => {
     e.preventDefault();
     try {
       const response = await fetch('https://d1w2b5et10ojep.cloudfront.net/api/getAquote/verify-otp', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({ phoneNumber, otp }),
       });
 
       const data = await response.json();
-      console.log("Verify OTP response data:", data); // Log the response
-
-        if (response.ok) {
-            // Ensure that the token is present in the response
-            if (data.token) {
-                // Store JWT token in cookies instead of localStorage
-                Cookies.set('token', data.token); // Token will expire in 7 days
-                toast.success(data.message);
-                closeModal();
-
-                // Proceed with adding the product name
-                await addProductName(data.token, product?.title);
-            } else {
-                toast.error('Token not found in response');
-            }
-        } else {
-            toast.error(data.message || 'Failed to verify OTP');
-        }
-    } catch (error) {
-        console.error('Error verifying OTP:', error);
-        toast.error('Failed to verify OTP');
-    }
-  };
-
-  // Add the product to the user's list
-  const addProductName = async (token, productName) => {
-    try {
-      const response = await fetch('https://d1w2b5et10ojep.cloudfront.net/api/getAquote/add-product-name', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
-        },
-        body: JSON.stringify({ productName }),
-      });
-
-      const data = await response.json();
       if (response.ok) {
-        toast.success(data.message);
+        toast.success(data.message); // Show success notification
+        closeModal();
       } else {
-        toast.error(data.message || 'Failed to add product');
+        toast.error(data.message || 'Failed to verify OTP'); // Show error notification
       }
     } catch (error) {
-      console.error('Error adding product name:', error);
-      toast.error('Failed to add product');
+      console.error('Error verifying OTP:', error);
+      toast.error('Failed to verify OTP'); // Show error notification
     }
   };
 
@@ -188,7 +131,7 @@ export default function ProductDetail({ params }) {
       <section className="product-detail-slider-section">
         <div className="container">
           <div className="slider-text-wrapper">
-            <div className="thumbmail-slider">
+          <div className="thumbmail-slider">
               <Swiper
                 modules={[Thumbs, Navigation, Autoplay]}
                 spaceBetween={10}
@@ -197,24 +140,28 @@ export default function ProductDetail({ params }) {
                 thumbs={{ swiper: thumbsSwiper }}
                 className="main-slider"
               >
-                {product?.images && product?.images.map((image, i)=>
-                  <SwiperSlide key={i}>
-                    <Image src={image?.url} width={540} height={496} alt={image?.alt_text} layout="responsive" className="bg-img" />
-                  </SwiperSlide>)}
+                {product?.images && product?.images.map((image, i)=><SwiperSlide key={i}>
+                  <Image src={image?.url} width={540} height={496} alt={image?.alt_text} layout="responsive" className="bg-img" />
+                </SwiperSlide>)}
               </Swiper>
+
               <Swiper
                 onSwiper={setThumbsSwiper}
                 spaceBetween={10}
                 slidesPerView={4}
                 watchSlidesProgress
                 className="thumb-slider"
+                breakpoints={{
+                  320: { slidesPerView: 2 },
+                  375: { slidesPerView: 3 },
+                  767: { slidesPerView: 4 },
+                }}
               >
-                {product?.images && product?.images.map((image, i)=>
-                  <SwiperSlide key={i}>
-                    <Image src={image?.url} width={128} height={120} alt={image?.alt_text} layout="responsive" />
-                  </SwiperSlide>)}
+                 {product?.images && product?.images.map((image, i)=><SwiperSlide key={i}><Image src={image?.url} width={128} height={120} alt={image?.alt_text} layout="responsive" /></SwiperSlide>)}
+                
               </Swiper>
             </div>
+
             <div className="text-wrapper">
               <h1>{product?.title}</h1>
               <p>{product?.description}</p>
@@ -223,6 +170,7 @@ export default function ProductDetail({ params }) {
                   <li key={index}>{feature}</li>
                 ))}
               </ul>
+              
               <a className="site-btn border-btn" href={product?.shopNowUrl} target="_blank" rel="noopener noreferrer">
                 Shop Now
               </a>
@@ -231,9 +179,7 @@ export default function ProductDetail({ params }) {
               <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Get a Quote Modal" className="quote-otp-modal">
                 <div className="title-wrapper">
                   <h2>Get a Quote</h2>
-                  <button onClick={closeModal} className="close-btn">
-                    <Image src="/images/cross.svg" height={25} width={25} alt="Close" />
-                  </button>
+                  <button onClick={closeModal} className="close-btn"><Image src="/images/cross.svg" height={25} width={25} alt="Close" /></button>
                 </div>
                 <form onSubmit={handleSendOtp}>
                   <div className="form-wrapper">
@@ -258,9 +204,7 @@ export default function ProductDetail({ params }) {
               <Modal isOpen={otpModalIsOpen} onRequestClose={closeModal} contentLabel="OTP Modal" className="quote-otp-modal">
                 <div className="title-wrapper">
                   <h2>OTP Verification</h2>
-                  <button onClick={closeModal} className="close-btn">
-                    <Image src="/images/cross.svg" height={25} width={25} alt="Close" />
-                  </button>
+                  <button onClick={closeModal} className="close-btn"><Image src="/images/cross.svg" height={25} width={25} alt="Close" /></button>
                 </div>
                 <p>We have sent OTP on your given mobile number</p>
                 <form onSubmit={handleVerifyOtp}>
@@ -286,6 +230,7 @@ export default function ProductDetail({ params }) {
           </div>
         </div>
       </section>
+
       <section className="product-info-blocks">
         <div className="product-block-navigation">
           <div className="container">
@@ -340,9 +285,7 @@ export default function ProductDetail({ params }) {
           </div>
         </div>
       </section>
-
       <RequestQuote />
-
     </div>
   );
 }

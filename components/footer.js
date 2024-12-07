@@ -2,7 +2,6 @@ import Image from "next/image";
 import BackToTop from './commonComponents/BackToTop';
 import { EnvelopeIcon, PhoneIcon } from "@heroicons/react/24/outline"; // Import icons
 
-
 export default function Footer() {
   return (
     <footer className="site-footer">
@@ -113,17 +112,17 @@ export default function Footer() {
                 <span className="footer-title">Policy</span>
                 <ul>
                   <li>
-                    <a href="" title="Privacy policy">
+                    <a href="/PrivacyPolicy" title="Privacy policy">
                       Privacy policy
                     </a>
                   </li>
                   <li>
-                    <a href="" title="Refund policy">
+                    <a href="/Return" title="Refund policy">
                       Refund policy
                     </a>
                   </li>
                   <li>
-                    <a href="" title="Terms of service">
+                    <a href="/terms" title="Terms of service">
                       Terms of service
                     </a>
                   </li>
