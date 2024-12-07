@@ -14,7 +14,7 @@
         padding: 0 3rem;
         z-index: 1;
         position: relative;
-        @include bp("xl-max") {
+        @include bp("xl-max")   {
             padding: 0 2.5rem;
         }
     }
@@ -114,7 +114,7 @@
                             font-family: "Montserrat", sans-serif;
                             font-size: 2rem;
                             color: $white;
-                            text-transform: uppercase;
+                            text-transform: none;
                             @include bp("xl-max") {
                                 font-size: 1.8rem;
                             }
@@ -197,7 +197,7 @@
     }
 }
 .home-product-list{
-    padding: 9.2rem 0;
+    padding: 2.2rem 0;
     @include bp("xl-max") {
         padding: 7rem 0;
     }
@@ -611,7 +611,7 @@
 
 .title-block{
     h2{
-        margin-bottom: 3rem;
+        margin-bottom: 2rem;
     }
 }
 }
@@ -1189,7 +1189,7 @@
 }
 .home-wrapper{
     .service-we-provide{
-        padding-bottom:4rem;
+        padding-bottom:2rem;
         @include bp("xl-max") {
             padding-bottom: 11rem;
         }

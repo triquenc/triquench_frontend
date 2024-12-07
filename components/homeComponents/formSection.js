@@ -121,7 +121,7 @@ const FormSection = () => {
       <form onSubmit={handleSubmit}>
         <div className="form-wrapper">
           <div className="form-group full-name-field">
-            <label htmlFor="name">Full Name</label>
+            <label htmlFor="name" aria-required>Full Name</label>
             <input
               type="text"
               id="name"
@@ -133,7 +133,7 @@ const FormSection = () => {
             {errors.name && <span className="error">{errors.name}</span>}
           </div>
           <div className="form-group email-field">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email" aria-required>Email</label>
             <input
               type="email"
               id="email"
@@ -145,7 +145,7 @@ const FormSection = () => {
             {errors.email && <span className="error">{errors.email}</span>}
           </div>
           <div className="form-group company-field">
-            <label htmlFor="company">Company</label>
+            <label htmlFor="company" aria-required>Company</label>
             <input
               type="text"
               id="company"
@@ -157,7 +157,7 @@ const FormSection = () => {
             {errors.company && <span className="error">{errors.company}</span>}
           </div>
           <div className="form-group phone-field">
-            <label htmlFor="mobile">Phone Number</label>
+            <label htmlFor="mobile" aria-required >Phone Number</label>
             <input
               type="text"
               id="mobile"

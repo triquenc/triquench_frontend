@@ -10,8 +10,9 @@
 
     .header-wrapper {
         display: flex;
-        align-items: center;
-        justify-content: space-between;
+        justify-content: space-between; /* Ensures items are spaced evenly */
+        align-items: center; /* Vertically center the items */
+      
 
         .logo-wrapper {
             max-width: 14.6rem;
@@ -35,7 +36,7 @@
         }
 
         .navigation-wrapper {
-            flex: 1;
+            display: flex;
 
             @include bp("tablet-max") {
                 position: fixed;
@@ -57,7 +58,9 @@
             }
 
             ul {
+                list-style: none;
                 display: flex;
+                gap: 20px; /* Space between menu items */
                 justify-content: center;
 
                 @include bp(tablet-max) {
@@ -97,6 +100,32 @@
 
         }
 
+        .submenu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #006098;
+            z-index: 1;
+            
+            li {
+              a {
+                color: #fff; // Ensure submenu text is white
+                display: flex;
+                align-items: center;
+  
+                img {
+                  margin-right: 10px; // Add spacing between image and text
+                }
+              }
+            }
+            .has-submenu.open .submenu {
+                display: block;
+              }
+        }
+          
+       
+          
         .contact-wrapper {
             max-width: 14.6rem;
             flex: 0 0 14.6rem;

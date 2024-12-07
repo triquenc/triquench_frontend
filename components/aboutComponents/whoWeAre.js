@@ -38,7 +38,7 @@ export default function WhoWeAre() {
           <div className="who-we-are-grid">
             <div className="who-we-are-grid-item">
               <Image
-                src="/images/who-we-are-img1.jpg"
+                src="/images/About_image_2.png"
                 width={555}
                 height={396}
                 alt="Who We Are Image1"
@@ -46,7 +46,7 @@ export default function WhoWeAre() {
             </div>
             <div className="who-we-are-grid-item">
               <Image
-                src="/images/who-we-are-img2.jpg"
+                src="/images/about_image1.png"
                 width={555}
                 height={396}
                 alt="Who We Are Image2"
