@@ -81,7 +81,7 @@ const Header = forwardRef((props, ref) => {
                   Home
                 </a>
               </li>
-              
+
               <li
                 className="has-submenu"
                 onMouseEnter={handleMouseEnter}
@@ -216,6 +216,7 @@ const Header = forwardRef((props, ref) => {
                   </ul>
                 )}
               </li>
+
               <li>
                 <a title="Us" href="/about">
                   About Us

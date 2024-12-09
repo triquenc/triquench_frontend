@@ -35,7 +35,7 @@ export default function SocialWallSection() {
                     <p className="company-name">TriQuench INDIA Pvt. Ltd.</p>
                  {/*  <span className="date">Triquench_ Sept 12</span>*/}
                   </div>
-                  <div className="action-row">
+                  {/*  <div className="action-row">
                     <div className="left">
                       <ul>
                         <li>
@@ -61,7 +61,9 @@ export default function SocialWallSection() {
                         </em>
                     </div>
                   </div>
+                   */}
                </div>
+                 
               </div>
               </a>
             </div>
@@ -89,7 +91,7 @@ export default function SocialWallSection() {
                   <p className="company-name">TriQuench INDIA Pvt. Ltd.</p>
                  {/* <span className="date">Triquench_ Sept 12</span>*/}
                 </div>
-                <div className="action-row">
+                {/*<div className="action-row">
                   <div className="left">
                   <ul>
                         <li>
@@ -115,6 +117,7 @@ export default function SocialWallSection() {
                       </em>
                   </div>
                 </div>
+                */}
                </div>
               </div>
               </a>
@@ -144,7 +147,7 @@ export default function SocialWallSection() {
                     <p className="company-name">TriQuench INDIA Pvt. Ltd.</p>
                      {/* <span className="date">Triquench_ Sept 12</span> */}
                   </div>
-                  <div className="action-row">
+                 {/* <div className="action-row">
                     <div className="left">
                       <ul>
                           <li>
@@ -170,6 +173,7 @@ export default function SocialWallSection() {
                         </em>
                     </div>
                   </div>
+                 */}
                </div>
               </div>
               </a>
