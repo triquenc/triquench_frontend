@@ -1,6 +1,6 @@
 import Image from "next/image";
 import BackToTop from './commonComponents/BackToTop';
-import { EnvelopeIcon, PhoneIcon } from "@heroicons/react/24/outline"; // Import icons
+import { EnvelopeIcon, PhoneIcon, MapPinIcon } from "@heroicons/react/24/outline"; // Import icons
 
 export default function Footer() {
   return (
@@ -130,19 +130,31 @@ export default function Footer() {
               </div>
             </div>
           </div>
-          <div className="footer-contact-wrapper">
-            <span className="contact-title">Contact Us</span>
-            <a href="mailto:support@triquench.com" title="Mail Us">
-            {/*<EnvelopeIcon className="w-0.5 h-0.5" />*/}
-
+          <div className="links-inner-wrapper">
+          <span className="footer-title"><b>Contact</b></span>
+          <div className="contact-item">
+            <EnvelopeIcon className="social_icon_footer" />
+            <a href="mailto:support@triquench.com" title="Mail Us" className="inks-inner-wrapper">
               info@triquenchindia.com
             </a>
-            <a href="tel:+91898783678" title="Call Us">
-            {/* <PhoneIcon className="w-0.5 h-0.5" />*/}
-
-              +91 96011 11615
+          </div>
+          <div className="contact-item">
+            <PhoneIcon className="social_icon_footer" />
+            <a href="tel:+919601111615" title="Call Us" className="inks-inner-wrapper">
+             Kaushal Panchal(Dir) :
+             <br/>+91 96011 11615
             </a>
           </div>
+          {/*<div className="contact-item">
+          <MapPinIcon  className="social_icon_footer" />
+          <p className="links-inner-wrapper">
+            D-01, Sumel Business Park - 7,
+            <br/>N.H.-08, Road,
+            nr. Soni Ni Chawl <br/> Road, Rakhial, Ahmedabad,<br/> Gujarat 380023
+            </p>
+            </div>*/}
+        </div>
+
         </div>
         <div className="footer-bottom d-flex align-center justify-center">
           <div className="left">

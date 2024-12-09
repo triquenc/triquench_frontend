@@ -52,10 +52,10 @@ export default function SliderBanner() {
                       <h1>High-Performance ATC Spindle Motors</h1>
                       <p>Discover premium ATC spindle motors for CNC machines, offering 0.3–12 kW power and speeds up to 60,000 RPM. Choose air-cooled or water-cooled for precision and efficiency.</p>
                       <div className="btn-wrapper m-t-20">
-                        <a href="https://shop.triquenchindia.com" target="_blank" className="white-btn" title="Shop Now">
+                        {/*<a href="https://shop.triquenchindia.com" target="_blank" className="white-btn" title="Shop Now">
                         Shop Now
-                        </a>
-                        <a href="/products" className="white-border-btn" title="View Products">
+                        </a>*/}
+                        <a href="/products"  target="_blank" className="white-btn" title="View Products">
                         View Products
                         </a>
                       </div>
@@ -72,10 +72,8 @@ export default function SliderBanner() {
                       <h2 className="h1">MTC Spindle Motors | CNC Precision Spindles</h2>
                       <p>Explore durable and efficient MTC spindle motors for CNC machines, available in versatile power and speed configurations to suit diverse machining needs.</p>
                       <div className="btn-wrapper m-t-20">
-                        <a href="https://shop.triquenchindia.com" target="_blank" className="white-btn" title="Shop Now">
-                        Shop Now
-                        </a>
-                        <a href="/products" className="white-border-btn" title="View Products">
+                       
+                      <a href="/products"  target="_blank" className="white-btn" title="View Products">
                         View Products
                         </a>
                       </div>
@@ -92,10 +90,8 @@ export default function SliderBanner() {
                       <h2 className="h1">LM Guideways and Ball Screws for CNC Machines</h2>
                       <p>Ensure smooth and precise CNC operation with our LM guideways and ball screws. Engineered for longevity and high-performance machining tasks. </p>
                       <div className="btn-wrapper m-t-20">
-                        <a href="https://shop.triquenchindia.com" target="_blank" className="white-btn" title="Shop Now">
-                        Shop Now
-                        </a>
-                        <a href="/products" className="white-border-btn" title="View Products">
+                       
+                      <a href="/products"  target="_blank" className="white-btn" title="View Products">
                         View Products
                         </a>
                       </div>
@@ -112,10 +108,8 @@ export default function SliderBanner() {
                       <h2 className="h1">Spindles, VFD's, Tool Holders & More</h2>
                       <p>Welcome to Triquench India Pvt. Ltd., your trusted CNC spindle manufacturer. Explore our range of CNC spindles, VFDs, tool holders, bearings, and machine accessories. Worldwide delivery!</p>
                       <div className="btn-wrapper m-t-20">
-                        <a href="https://shop.triquenchindia.com" target="_blank" className="white-btn" title="Shop Now">
-                        Shop Now
-                        </a>
-                        <a href="/products" className="white-border-btn" title="View Products">
+                       
+                      <a href="/products"  target="_blank" className="white-btn" title="View Products">
                         View Products
                         </a>
                       </div>

@@ -12,7 +12,7 @@ export default function ServiceWeProvide() {
                 <span className="prop4 prop"><Image src="/images/prop4.svg" width={241} height={227} alt="Prop4" /></span>
                 <div className="container-sm">
                     <div className="title-block">
-                        <h2>Service We Provide</h2>
+                        <h2 >Service We Provide</h2>
                         <span className="sut-text">24h Service Hotline</span>
                     </div>
                     <div className="service-content-block">

@@ -14,7 +14,7 @@ export default function Aboutus() {
         bannerImage="/images/building png.png"
         />*/}
 
-        <img src='https://res.cloudinary.com/dd1na5drh/image/upload/v1733200123/about_us_hero_page_se7t8n.png'></img>
+        <img src='https://res.cloudinary.com/dd1na5drh/image/upload/v1733749854/about_us_Desktop_hero_page_fhoeql.png'></img>
         <WhoWeAre />
         <WhyChooseTriquench />
         <MeetOurTeam />
