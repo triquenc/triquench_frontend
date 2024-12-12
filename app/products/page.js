@@ -3,36 +3,69 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import InnerPageBanner from "@/components/commonComponents/innerpagebanner";
 import { useRouter } from "next/navigation";
-import { FaSearch } from "react-icons/fa"; // Import the search icon
+import { FaSearch, FaChevronDown } from "react-icons/fa"; // Import the search and dropdown icons
+import categoriesData from './categories.json';
 
 export default function Products() {
     const [activeCategory, setActiveCategory] = useState("All Products"); // Pre-selected category
+    const [expandedCategories, setExpandedCategories] = useState({});
     const [products, setProducts] = useState([]);
     const [allProducts, setAllProducts] = useState([]);
     const [sortingOption, setSortingOption] = useState("AtoZ");
     const [currentPage, setCurrentPage] = useState(1);
     const [searchQuery, setSearchQuery] = useState("");
+    const [breadcrumb, setBreadcrumb] = useState([]);
     const productsPerPage = 15;
     const router = useRouter();
 
-    const categories = [
-        "CNC Spindle Motor",
-        "Spindle Servo Motor", 
-        "AC Servo Motor",
-        "CNC Router Accessories",
-        "Spindle Bearing",
-        "Gearbox",
-        "Spindle Accessories",
-        "Laser Parts",
-        "Controller",
-        "Chiller",
-        "Engraving Tools",
-    ];
+    const categories = categoriesData.categories;
 
-    const handleCategoryClick = (category) => {
+    const handleCategoryClick = (category, subcategory = '', subSubcategory = '') => {
+        console.log("Category clicked:", { category, subcategory, subSubcategory });
         setActiveCategory(category);
-        setCurrentPage(1); // Reset to page 1
-        window.scrollTo({ top: 500, behavior: 'smooth' }); // Scroll to top
+        setCurrentPage(1);
+        window.scrollTo({ top: 500, behavior: 'smooth' });
+        
+        const newBreadcrumb = [category];
+        if (subcategory) newBreadcrumb.push(subcategory);
+        if (subSubcategory) newBreadcrumb.push(subSubcategory);
+        setBreadcrumb(newBreadcrumb);
+        
+        fetchCategoryData(category, subcategory, subSubcategory);
+    };
+
+    const toggleCategory = (categoryPath) => {
+        setExpandedCategories((prevState) => ({
+            ...prevState,
+            [categoryPath]: !prevState[categoryPath],
+        }));
+    };
+
+    const fetchCategoryData = async (category, subcategory = '', subSubcategory = '') => {
+        try {
+            let url = `http://localhost:5000/api/product/category/${encodeURIComponent(category)}`;
+            
+            // Add query parameters
+            const params = new URLSearchParams();
+            if (subcategory) params.append('subcategory', subcategory);
+            if (subSubcategory) params.append('subSubcategory', subSubcategory);
+            
+            if (params.toString()) {
+                url += `?${params.toString()}`;
+            }
+
+            console.log("Fetching URL:", url);
+            console.log("Parameters:", { category, subcategory, subSubcategory });
+            
+            const response = await fetch(url);
+            const data = await response.json();
+            console.log("Received data:", data);
+            
+            setProducts(data || []);
+        } catch (error) {
+            console.error("Error fetching category data:", error);
+            setProducts([]);
+        }
     };
 
     const handleSeeDetailsClick = (id) => {
@@ -117,35 +150,181 @@ export default function Products() {
     // Calculate total pages
     const totalPages = Math.ceil(products.length / productsPerPage);
 
+    const renderSubcategories = (subcategories, parentCategory = '') => {
+        return (
+            <ul style={{ listStyle: 'none', paddingLeft: '40px', marginTop: '5px', position: 'relative' }}>
+                {subcategories.map((subcategory) => {
+                    const subcategoryName = typeof subcategory === 'string' ? subcategory : subcategory.name;
+                    const categoryPath = `${parentCategory}/${subcategoryName}`;
+                    const isExpanded = expandedCategories[categoryPath];
+
+                    if (typeof subcategory === 'string') {
+                        return (
+                            <li key={subcategory} style={{ marginBottom: '5px', position: 'relative' }}>
+                                <span style={{
+                                    position: 'absolute',
+                                    left: '-15px',
+                                    top: '50%',
+                                    width: '10px',
+                                    height: '1px',
+                                    backgroundColor: '#ddd'
+                                }}></span>
+                                <a
+                                    href="#"
+                                    style={{
+                                        color: '#333',
+                                        textDecoration: 'none',
+                                        cursor: 'pointer',
+                                        transition: 'color 0.3s',
+                                        display: 'block',
+                                        padding: '8px 16px'
+                                    }}
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        e.stopPropagation();
+                                        // Extract category hierarchy from path
+                                        const [mainCategory, subCategory] = parentCategory.split('/');
+                                        handleCategoryClick(mainCategory, subCategory, subcategory);
+                                    }}
+                                >
+                                    {subcategory}
+                                </a>
+                            </li>
+                        );
+                    } else {
+                        return (
+                            <li key={subcategory.name} style={{ marginBottom: '5px', position: 'relative' }}>
+                                <div style={{ display: 'flex', alignItems: 'center', padding: '8px 16px' }}>
+                                    <a
+                                        href="#"
+                                        style={{
+                                            fontWeight: 'bold',
+                                            color: '#006098',
+                                            backgroundColor: isExpanded ? '#f1fafe' : '',
+                                            borderColor: isExpanded ? '#f1fafe' : '',
+                                            textDecoration: 'none',
+                                            cursor: 'pointer',
+                                            transition: 'color 0.3s',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: '8px',
+                                            width: '100%'
+                                        }}
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            e.stopPropagation();
+                                            // Extract category hierarchy from path
+                                            const [mainCategory] = parentCategory ? parentCategory.split('/') : [parentCategory];
+                                            handleCategoryClick(mainCategory || subcategory.name, subcategory.name);
+                                        }}
+                                    >
+                                        {subcategory.name}
+                                        <div
+                                            style={{
+                                                marginLeft: 'auto',
+                                                cursor: 'pointer'
+                                            }}
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                e.stopPropagation();
+                                                toggleCategory(categoryPath);
+                                            }}
+                                        >
+                                            <FaChevronDown
+                                                style={{
+                                                    transition: 'transform 0.3s',
+                                                    transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)'
+                                                }}
+                                            />
+                                        </div>
+                                    </a>
+                                </div>
+                                {isExpanded && subcategory.subcategories && 
+                                    renderSubcategories(subcategory.subcategories, categoryPath)}
+                            </li>
+                        );
+                    }
+                })}
+            </ul>
+        );
+    };
+
+    // Add this function to handle breadcrumb navigation
+    const handleBreadcrumbClick = (index) => {
+        const newBreadcrumb = breadcrumb.slice(0, index + 1);
+        setBreadcrumb(newBreadcrumb);
+        
+        // Get the category info based on clicked breadcrumb level
+        const category = newBreadcrumb[0];
+        const subcategory = newBreadcrumb[1] || '';
+        const subSubcategory = newBreadcrumb[2] || '';
+        
+        // Update active category and fetch data
+        setActiveCategory(category);
+        fetchCategoryData(category, subcategory, subSubcategory);
+    };
+
     return (
         <div>
-          <InnerPageBanner
-                title="OUR PRODUCTS"
-                subtitle="CATALOGUE"
-                paragraph="In India, Known for our Active and Dynamic Customer Service Practices and catering to a broad assortment of product categories"
-                bannerImage="/images/product-banner.png"
-                className="product-banner"
-                buttonText="Shop Now"
-                buttonUrl="/product"
+            <InnerPageBanner
+            title="OUR PRODUCTS"
+            subtitle="CATALOGUE"
+            paragraph="In India, Known for our Active and Dynamic Customer Service Practices and catering to a broad assortment of product categories"
+            bannerImage="/images/product-banner.png"
+            className="product-banner"
+            buttonText="Shop Now"
+            buttonUrl="/product"
             />
             <section className="product-listing">
                 <div className="container">
                     <div className="product-listing-grid">
                         <div className="product-listing-left">
                             <span className="filter-title">Filters</span>
-                            <ul>
+                            <ul style={{ listStyle: 'none', padding: 0 }}>
                                 {categories.map((category) => (
-                                    <li key={category}>
-                                        <a
-                                            href="#"
-                                            className={activeCategory === category ? "active" : ""}
-                                            onClick={(e) => {
-                                                e.preventDefault();
-                                                handleCategoryClick(category);
-                                            }}
-                                        >
-                                            {category}
-                                        </a>
+                                    <li key={category.name} style={{ marginBottom: '10px' }}>
+                                        <div style={{ display: 'flex', alignItems: 'center', padding: '8px 16px' }}>
+                                            <a
+                                                href="#"
+                                                className={`${activeCategory === category.name ? 'active' : ''}`}
+                                                style={{
+                                                    fontWeight: 'bold',
+                                                    color: '#006098',
+                                                    textDecoration: 'none',
+                                                    cursor: 'pointer',
+                                                    transition: 'color 0.3s',
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    gap: '8px',
+                                                    width: '100%'
+                                                }}
+                                                onClick={(e) => {
+                                                    e.preventDefault();
+                                                    handleCategoryClick(category.name);
+                                                }}
+                                            >
+                                                {category.name}
+                                                <div
+                                                    style={{
+                                                        marginLeft: 'auto',
+                                                        cursor: 'pointer'
+                                                    }}
+                                                    onClick={(e) => {
+                                                        e.preventDefault();
+                                                        e.stopPropagation();
+                                                        toggleCategory(category.name);
+                                                    }}
+                                                >
+                                                    <FaChevronDown
+                                                        style={{
+                                                            transition: 'transform 0.3s',
+                                                            transform: expandedCategories[category.name] ? 'rotate(180deg)' : 'rotate(0deg)'
+                                                        }}
+                                                    />
+                                                </div>
+                                            </a>
+                                        </div>
+                                        {expandedCategories[category.name] && category.subcategories && renderSubcategories(category.subcategories, category.name)}
                                     </li>
                                 ))}
                             </ul>
@@ -164,7 +343,7 @@ export default function Products() {
                                             value={searchQuery}
                                             onChange={(e) => setSearchQuery(e.target.value)}
                                             style={{
-                                                padding: '8px 12px 8px 30px', // Adjust padding for icon
+                                                padding: '8px 12px 8px 30px',
                                                 border: '1px solid #ddd',
                                                 borderRadius: '4px',
                                                 width: '250px',
@@ -197,6 +376,42 @@ export default function Products() {
                                     </div>
                                 </div>
                             </div>
+                            {breadcrumb.length > 0 && (
+                                <div style={{
+                                    padding: '10px 0',
+                                    marginTop: '10px'
+                                }}>
+                                    <div style={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '8px',
+                                        color: '#666',
+                                        fontSize: '14px',
+                                        justifyContent: "right"
+                                    }}>
+                                        {breadcrumb.map((item, index) => (
+                                            <span key={index} style={{ display: 'flex', alignItems: 'center' }}>
+                                                {index > 0 && <span style={{ margin: '0 8px', color: '#999' }}>/</span>}
+                                                <span 
+                                                    onClick={() => handleBreadcrumbClick(index)}
+                                                    style={{ 
+                                                        color: index === breadcrumb.length - 1 ? '#006098' : '#666',
+                                                        cursor: 'pointer',
+                                                        transition: 'color 0.3s ease',
+                                                        '&:hover': {
+                                                            color: '#006098',
+                                                            textDecoration: 'underline'
+                                                        }
+                                                    }}
+                                                >
+                                                    {item}
+                                                </span>
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+
                             <div className="product-grid">
                                 {currentProducts.length > 0 ? (
                                     currentProducts.map((product) => (
@@ -236,22 +451,62 @@ export default function Products() {
                                     </p>
                                 )}
                             </div>
-                            {/* Pagination */}
-                            <div className="pagination flex justify-center items-center mt-20 mb-12">
+                           {/* Pagination */}
+                            <div 
+                                className="pagination" 
+                                style={{
+                                    width: '100%',
+                                    maxWidth: '800px',
+                                    margin: '0 auto',
+                                    display: 'flex',
+                                    flexWrap: 'wrap',
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    padding: '20px',
+                                    gap: '10px',
+                                    marginTop: '60px',
+                                    marginBottom: '80px'
+                                }}
+                            >
                                 <button
                                     onClick={() => handlePageChange(currentPage - 1)}
                                     disabled={currentPage === 1}
-                                    className="pagination-btn prev-next-btn"
                                     style={{
+                                        padding: '10px 15px',
+                                        border: '2px solid #006098',
+                                        borderRadius: '8px',
+                                        fontSize: '14px',
+                                        fontWeight: '600',
+                                        background: '#006098',
+                                        color: '#ffffff',
                                         opacity: currentPage === 1 ? 0.5 : 1,
                                         cursor: currentPage === 1 ? 'not-allowed' : 'pointer',
+                                        transition: 'all 0.3s ease',
+                                        minWidth: '100px',
+                                        '@media (max-width: 600px)': {
+                                            minWidth: '80px',
+                                            padding: '8px 12px',
+                                            fontSize: '12px'
+                                        }
                                     }}
                                 >
                                     Previous
                                 </button>
-                                <div className="page-numbers flex items-center flex-wrap">
+
+                                <div 
+                                    className="page-numbers" 
+                                    style={{
+                                        display: 'flex',
+                                        flexWrap: 'wrap',
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
+                                        gap: '8px',
+                                        '@media (max-width: 600px)': {
+                                            gap: '4px'
+                                        }
+                                    }}
+                                >
                                     {Array.from({ length: totalPages }, (_, index) => {
-                                        // Show first page, last page, current page and pages around current page
                                         const pageNum = index + 1;
                                         const showPage = pageNum === 1 || 
                                                     pageNum === totalPages ||
@@ -260,98 +515,79 @@ export default function Products() {
                                                     (currentPage >= totalPages - 3 && pageNum >= totalPages - 4);
 
                                         if (!showPage && (pageNum === 2 || pageNum === totalPages - 1)) {
-                                            return <span key={index} className="pagination-ellipsis">...</span>;
+                                            return (
+                                                <span 
+                                                    key={`ellipsis-${index}`} 
+                                                    style={{
+                                                        color: '#666',
+                                                        fontSize: '16px',
+                                                        margin: '0 5px',
+                                                        '@media (max-width: 600px)': {
+                                                            fontSize: '14px'
+                                                        }
+                                                    }}
+                                                >
+                                                    ...
+                                                </span>
+                                            );
                                         }
 
                                         return showPage ? (
                                             <button
-                                                key={index}
+                                                key={pageNum}
                                                 onClick={() => handlePageChange(pageNum)}
-                                                className={`pagination-btn page-num-btn ${currentPage === pageNum ? 'active' : ''}`}
+                                                style={{
+                                                    padding: '10px 15px',
+                                                    border: '2px solid #006098',
+                                                    borderRadius: '8px',
+                                                    fontSize: '14px',
+                                                    fontWeight: '600',
+                                                    transition: 'all 0.3s ease',
+                                                    background: currentPage === pageNum ? '#006098' : '#ffffff',
+                                                    color: currentPage === pageNum ? '#ffffff' : '#006098',
+                                                    minWidth: '48px',
+                                                    boxShadow: currentPage === pageNum 
+                                                        ? '0 4px 8px rgba(59,130,246,0.3)' 
+                                                        : '0 3px 6px rgba(0,0,0,0.12)',
+                                                    transform: currentPage === pageNum ? 'scale(1.1)' : 'scale(1)',
+                                                    '@media (max-width: 600px)': {
+                                                        padding: '8px 12px',
+                                                        fontSize: '12px',
+                                                        minWidth: '40px'
+                                                    }
+                                                }}
                                             >
                                                 {pageNum}
                                             </button>
                                         ) : null;
                                     })}
                                 </div>
+
                                 <button
                                     onClick={() => handlePageChange(currentPage + 1)}
                                     disabled={currentPage === totalPages}
-                                    className="pagination-btn prev-next-btn"
                                     style={{
+                                        padding: '10px 15px',
+                                        border: '2px solid #006098',
+                                        borderRadius: '8px',
+                                        fontSize: '14px',
+                                        fontWeight: '600',
+                                        background: '#006098',
+                                        color: '#ffffff',
                                         opacity: currentPage === totalPages ? 0.5 : 1,
                                         cursor: currentPage === totalPages ? 'not-allowed' : 'pointer',
+                                        transition: 'all 0.3s ease',
+                                        minWidth: '100px',
+                                        '@media (max-width: 600px)': {
+                                            minWidth: '80px',
+                                            padding: '8px 12px',
+                                            fontSize: '12px'
+                                        }
                                     }}
                                 >
                                     Next
                                 </button>
                             </div>
-
-<style jsx>{`
-    .pagination {
-        width: 100%;
-        max-width: 800px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        padding: 0 20px;
-        margin-top: 60px;
-        margin-bottom: 80px;
-    }
-
-    .page-numbers {
-        display: flex;
-        gap: 12px;
-    }
-
-    .pagination-btn {
-        padding: 10px 20px;
-        border: 2px solid #006098;
-        border-radius: 8px;
-        font-size: 15px;
-        font-weight: 600;
-        transition: all 0.3s ease;
-        background: #ffffff;
-        color: #006098;
-        min-width: 48px;
-        box-shadow: 0 3px 6px rgba(0,0,0,0.12);
-    }
-
-    .pagination-btn:hover:not(:disabled) {
-        background: #006098;
-        color: #ffffff;
-        transform: translateY(-2px);
-        box-shadow: 0 6px 12px rgba(59,130,246,0.25);
-    }
-
-    .prev-next-btn {
-        background: #006098;
-        color: #ffffff;
-        font-weight: 500;
-        min-width: 120px;
-        letter-spacing: 0.5px;
-    }
-
-    .prev-next-btn:hover:not(:disabled) {
-        background: #006098;
-        border-color: #2563eb;
-    }
-
-    .page-num-btn {
-        height: 45px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .page-num-btn.active {
-        background: #006098;
-        color: #ffffff;
-        transform: scale(1.1);
-        box-shadow: 0 4px 8px rgba(59,130,246,0.3);
-    }
-`}</style>
-
                         </div>
                     </div>
                 </div>
