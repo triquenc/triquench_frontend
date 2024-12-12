@@ -131,8 +131,8 @@ export default function SocialWallSection() {
               <div className="social-grid-inner">
                 <div className="img-wrapper">
                   <picture className='bg-img'> 
-                    <source srcSet="/images/social_media_wall_1.png" type="image/webp" />
-                    <Image src="/images/social_media_wall_1.png" height={190} width={340} alt="Post" className='bg-img'/>
+                    <source srcSet="/images/SOCIAL_two.png" type="image/webp" />
+                    <Image src="/images/SOCIAL_two.png" height={190} width={340} alt="Post" className='bg-img'/>
                   </picture>
                 </div>
                <div className="bottom-outer">

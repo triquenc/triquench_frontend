@@ -31,7 +31,7 @@ export default function Footer() {
                 <li>
                   <a href="https://www.facebook.com/spindlemotorTQI" title="facebook">
                     <Image
-                      src="/images/facebook.svg"
+                      src="/images/facebook.png"
                       width={14}
                       height={14}
                       alt="Facebook Icon"
@@ -41,11 +41,12 @@ export default function Footer() {
                 <li>
                   <a href="https://www.instagram.com/triquench_spindlemotor/" title="Instagram">
                     <Image
-                      src="/images/insta.svg"
-                      width={14}
-                      height={14}
+                      src="/favicon/Instagram_icon.png"
+                      width={30}
+                      height={30}
                       alt="Instagram Icon"
                     />
+
                   </a>
                 </li>
                 <li>
