@@ -246,13 +246,12 @@ const Header = forwardRef((props, ref) => {
                   <a title="Contact" href="/contact">
                     contact 
                   </a>
-                </li>
-               
+                </li>              
               </ul>
             </nav>
             <div className="contact-wrapper d-flex align-center justify-end">
-              <a href="/contact" className="border-btn">
-                CONTACT US{" "}
+                <a href="tel:+919601111615" className="border-btn">
+                Call Now{" "}
                 <Image
                   src="/images/call-ic.svg"
                   width={25}
@@ -260,6 +259,7 @@ const Header = forwardRef((props, ref) => {
                   alt="call-ic"
                 />
               </a>
+
               <div className="hamburger-icon" onClick={toggleMenu}>
                 <span></span>
                 <span></span>
