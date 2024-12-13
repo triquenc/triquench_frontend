@@ -80,6 +80,9 @@ const Header = forwardRef((props, ref) => {
       { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220968/GEARBOX_LINE_emcut4.png", href: "/products/vfd", label: "VFD" },
       { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220968/AC_SERVO_LINE_k7ruph.png", href: "/products/bearings", label: "BEARINGS" },
       { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220968/LASER_LINE_pyzbml.png", href: "/products/cnc-machine-parts", label: "CNC MACHINE PARTS" },
+      { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220968/GEARBOX_LINE_emcut4.png", href: "/products/vfd", label: "VFD" },
+      { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220968/AC_SERVO_LINE_k7ruph.png", href: "/products/bearings", label: "BEARINGS" },
+      { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220968/LASER_LINE_pyzbml.png", href: "/products/cnc-machine-parts", label: "CNC MACHINE PARTS" },
     ];
 
     return (
@@ -117,23 +120,24 @@ const Header = forwardRef((props, ref) => {
                       style={{
                         position: "absolute",
                         top: "100%",
+                        height:"150px",
                         left: 0,
                         width: "100%",
                         backgroundColor: "#006098",
-                        boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
-                        border: "1px solid #eaeaea",
-                        borderRadius: "4px",
-                        padding: "5px",
+                        //boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
+                       // border: "1px solid #eaeaea",
+                        //borderRadius: "4px",
                         zIndex: 1000,
                         transition: "opacity 0.3s ease-in-out",
                         opacity: hoveredProduct ? 1 : 0,
-                      }}
+                        padding:"5px"
+                        }}
                     >
                       <div
                         className="products-grid"
                         style={{
                           display: "grid",
-                          gridTemplateColumns: "repeat(6, 1fr)",
+                          gridTemplateColumns: "repeat(9, 1fr)",
                           gap: "10px",
                           width: "100%",
                           maxWidth: "1200px",
@@ -143,6 +147,9 @@ const Header = forwardRef((props, ref) => {
                         {[
                           { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220967/SPINDLE_LINE_evvu8p.png", href: "/products/cnc-atc-spindle", label: "CNC ATC SPINDLE" },
                           { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220967/CHILLER_LINE_fedf7s.png", href: "/products/cnc-mtc-spindle", label: "CNC MTC SPINDLE" },
+                          { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220967/SPINDLE_LINE_evvu8p.png", href: "/products/cnc-atc-spindle", label: "CNC ATC SPINDLE" },
+                          { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220967/CHILLER_LINE_fedf7s.png", href: "/products/cnc-mtc-spindle", label: "CNC MTC SPINDLE" },
+                          { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220968/CONTROLLER_LINE_nthfof.png", href: "/products/belt-driven-spindle", label: "BELT DRIVEN SPINDLE" },
                           { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220968/CONTROLLER_LINE_nthfof.png", href: "/products/belt-driven-spindle", label: "BELT DRIVEN SPINDLE" },
                           { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220968/GEARBOX_LINE_emcut4.png", href: "/products/vfd", label: "VFD" },
                           { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220968/AC_SERVO_LINE_k7ruph.png", href: "/products/bearings", label: "BEARINGS" },
@@ -153,7 +160,7 @@ const Header = forwardRef((props, ref) => {
                             className="product-item"
                             style={{
                               textAlign: "center",
-                              padding: "5px",
+                              padding: "2px",
                               transition: "transform 0.3s, border-color 0.3s",
                               cursor: "pointer",
                               border: "2px solid transparent",
@@ -185,8 +192,8 @@ const Header = forwardRef((props, ref) => {
                                 alignItems: 'center'
                               }}>
                                 <li style={{
-                                  width: "120px",
-                                  height: "120px",
+                                  width: "60px",
+                                  height: "60px",
                                   display: "flex",
                                   alignItems: "center",
                                   justifyContent: "center"
@@ -202,7 +209,7 @@ const Header = forwardRef((props, ref) => {
                                     }}
                                   />
                                 </li>
-                                <li style={{marginTop: "10px"}}>
+                                <li style={{marginTop: "5px"}}>
                                   <span
                                     style={{
                                       display: "block",

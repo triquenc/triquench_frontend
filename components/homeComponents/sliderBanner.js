@@ -17,19 +17,22 @@ export default function SliderBanner() {
                 <span className="title">Navigation</span>
                 <ul className="dot-list p-l-10">
                   <li>
-                    <a href="/products" title="Spindle For Wood">Spindles For Wood</a>
+                    <a href="/products" title="Spindle For Wood">CNC Spindle Motor</a>
                   </li>
                   <li>
-                    <a href="/products" title="Spindle For Stone">Spindles For Stone</a>
+                    <a href="/products" title="Spindle For Stone">Servo Motor</a>
                   </li>
                   <li>
-                    <a href="/products" title="Spindle For Aluminum">Spindles For Aluminum</a>
+                    <a href="/products" title="Spindle For Aluminum">Gearbox</a>
                   </li>
                   <li>
-                    <a href="/products" title="Spindle for jewelry Making">Spindles for jewelry Making</a>
+                    <a href="/products" title="Spindle for jewelry Making">CNC Machine Accessories</a>
                   </li>
                   <li>
-                    <a href="/products" title="Edge Banding Spindle">Edge Banding Spindles</a>
+                    <a href="/products" title="Edge Banding Spindle">Laser Machine Accessories</a>
+                  </li>
+                  <li>
+                    <a href="/products" title="Edge Banding Spindle">Spindle Accessories</a>
                   </li>
                 </ul>
               </div>
