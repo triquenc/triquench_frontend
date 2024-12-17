@@ -26,20 +26,30 @@ export default function Blogs() {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%" }}>
-      <section style={{
-        backgroundImage: "url('https://res.cloudinary.com/dd1na5drh/image/upload/v1732516970/WhatsApp-Image-2024-01-18-at-12.47.26-PM_odprx9.jpg')",
-        height: '430px',
-        justifyContent: 'center',
-        textAlign: 'center',
-        position: 'relative',
-        width: '100%',
-      }}>
-        <div style={{
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-        }}></div>
+      {/* Banner Section */}
+      <section
+        style={{
+          backgroundImage: "url('https://res.cloudinary.com/dd1na5drh/image/upload/v1734419165/BLOG_HERO_LAPTOP_REACT_h9xms4.png')",
+          height: "430px", // Adjust height
+          width: "100%",   // Full width
+          backgroundSize: "cover", // Cover the section
+          backgroundPosition: "center", // Center image
+          backgroundRepeat: "no-repeat", // No repeat
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          position: "relative",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+          }}
+        ></div>
       </section>
 
       <div style={{
@@ -183,9 +193,6 @@ export default function Blogs() {
                     borderRadius: "4px",
                     transition: "background-color 0.2s",
                     cursor: "pointer",
-                    ':hover': {
-                      backgroundColor: "#f5f5f5"
-                    }
                   }}
                 >
                   <img
@@ -223,5 +230,5 @@ export default function Blogs() {
         </div>
       </div>
     </div>
-  );
+  );  
 }
