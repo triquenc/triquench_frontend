@@ -19,9 +19,9 @@ export default function SocialWallSection() {
               <div className="social-grid-inner">
                 <div className="img-wrapper">
                   <picture className='bg-img'> 
-                    <Image src="/images/social_media_wall_2.png" height={190} width={340} alt="Post" className='bg-img'/>
-                    <source srcSet="/images/social_media_wall_2.png" type="image/webp"/>
-                    <Image src="/images/social_media_wall_1.png" height={190} width={340} alt="Post" className='bg-img'/>
+                    <Image src="https://res.cloudinary.com/dd1na5drh/image/upload/v1734436537/SOCIAL_WALL_plain_3_tmla8a.png" height={200} width={340} alt="Post" className='bg-img'/>
+                    <source srcSet="https://res.cloudinary.com/dd1na5drh/image/upload/v1734436537/SOCIAL_WALL_plain_3_tmla8a.png" type="image/webp"/>
+                    <Image src="https://res.cloudinary.com/dd1na5drh/image/upload/v1734436537/SOCIAL_WALL_plain_3_tmla8a.png" height={200} width={340} alt="Post" className='bg-img'/>
                   </picture>
                 </div>
                <div className="bottom-outer">
@@ -76,8 +76,8 @@ export default function SocialWallSection() {
               <div className="social-grid-inner">
                 <div className="img-wrapper">
                   <picture className='bg-img'> 
-                    <source srcSet="/images/social_media_wall_3.png" type="image/webp"/>
-                    <Image src="/images/social-post2.jpg" height={190} width={340} alt="Post" className='bg-img'/>
+                    <source srcSet="https://res.cloudinary.com/dd1na5drh/image/upload/v1734436498/SOCIAL_WALL_plain_2_wdlll4.png" type="image/webp"/>
+                    <Image src="https://res.cloudinary.com/dd1na5drh/image/upload/v1734436498/SOCIAL_WALL_plain_2_wdlll4.png" height={190} width={340} alt="Post" className='bg-img'/>
                   </picture>
                 </div>
                <div className="bottom-outer">
@@ -131,8 +131,8 @@ export default function SocialWallSection() {
               <div className="social-grid-inner">
                 <div className="img-wrapper">
                   <picture className='bg-img'> 
-                    <source srcSet="/images/SOCIAL_two.png" type="image/webp" />
-                    <Image src="/images/SOCIAL_two.png" height={190} width={340} alt="Post" className='bg-img'/>
+                    <source srcSet="https://res.cloudinary.com/dd1na5drh/image/upload/v1734436466/SOCIAL_WALL_plain_1_pnqtwq.png" type="image/webp" />
+                    <Image src="https://res.cloudinary.com/dd1na5drh/image/upload/v1734436466/SOCIAL_WALL_plain_1_pnqtwq.png" height={190} width={340} alt="Post" className='bg-img'/>
                   </picture>
                 </div>
                <div className="bottom-outer">
