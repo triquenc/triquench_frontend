@@ -230,7 +230,6 @@ const HomeProductList = forwardRef((props, ref) => {
                     </div>
                     <div className="hover-div">
                       <p className="title">{product?.title}</p>
-                      <p>{product?.description}</p>
                     </div>
                   </a>
                 </div>
