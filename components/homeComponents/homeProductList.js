@@ -98,9 +98,14 @@ const HomeProductList = forwardRef((props, ref) => {
       <section className="home-product-list">
         <div className="container" style={{ position: 'relative' }}>
           <div className="title-block">
-            <span className="sub-title">We have the best quality products</span>
-            <h2 className="has-green-bar">OUR PRODUCTS</h2>
-          </div>
+            {/* <span className="sub-title">We have the best quality products</span> */}
+            <h2 
+  className="has-green-bar" 
+  style={{ fontFamily: 'sans-serif', textTransform: 'capitalize' }}
+>
+  We have the best quality products
+</h2>
+           </div>
           <div
             style={{
               position: "relative",
@@ -226,8 +231,9 @@ const HomeProductList = forwardRef((props, ref) => {
                           alt={product?.title}
                         />
                       </div>
-                      <p>{product?.title}</p>
-                    </div>
+                      <p style={{ fontSize: "18px", fontWeight: "600", maxWidth: "600px" }}>
+                        {product?.title}</p>
+                      </div>
                     <div className="hover-div">
                       <p className="title">{product?.title}</p>
                     </div>
