@@ -113,7 +113,7 @@ const Header = forwardRef((props, ref) => {
                   onMouseLeave={handleMouseLeave}
                 >
                   <a title="Products" href="/products">
-                    Products
+                    Products ETCCC....
                   </a>
                   {hoveredProduct && (
                     <div
@@ -142,7 +142,7 @@ const Header = forwardRef((props, ref) => {
                           gap: "10px",
                           width: "100%",
                           maxWidth: "1200px",
-                          margin: "0 auto",
+                          margin: "0 auto"
                         }}
                       >
                         {[

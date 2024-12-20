@@ -12,7 +12,7 @@ export default function RequestQuote() {
                         <div className="request-quote-left">
                             <h2>Request Quote</h2>
                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy. </p>
-                            <a href="#" className="site-btn">SUBMIT ENQUIRY</a>
+                            <a href="https://www.spindlemotor.in/contact" className="site-btn">SUBMIT ENQUIRY</a>
                         </div>
                         <div className="request-quote-right">
                             <Image src="/images/request-quote-image.svg" width={300} height={283} alt="Request Quote Image"/>
