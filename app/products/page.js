@@ -276,6 +276,7 @@ export default function Products() {
         setActiveCategory(category);
         fetchCategoryData(category, subcategory, subSubcategory);
     };
+    
 
     return (
         <div>
