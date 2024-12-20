@@ -329,21 +329,24 @@
                     display: block;
                     margin-bottom: 1rem;
                 }
+                img {
+                    width: 50px;
+                }
 
                 ul {
                     li {
-                        a {
+                        a { 
                             width: 2.9rem;
                             height: 2.9rem;
                             display: flex;
                             align-items: center;
                             justify-content: center;
-                            background-color: $primaryColor;
-                            padding: 0.8rem;
-                            border-radius: 50%;
+                            //background-color: $primaryColor;
+                            //padding: 0.8rem;
+                            //border-radius: 100%;
 
                             &:hover {
-                                background-color: $darkblue;
+                                background-color: $primaryColor;
                             }
                         }
 

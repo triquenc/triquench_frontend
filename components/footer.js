@@ -31,9 +31,9 @@ export default function Footer() {
                 <li>
                   <a href="https://www.facebook.com/spindlemotorTQI" title="facebook">
                     <Image
-                      src="/images/facebook.png"
-                      width={14}
-                      height={14}
+                      src="/favicon/Facebook_square_icon.svg"
+                      width={15}
+                      height={11}
                       alt="Facebook Icon"
                     />
                   </a>
@@ -41,7 +41,7 @@ export default function Footer() {
                 <li>
                   <a href="https://www.instagram.com/triquench_spindlemotor/" title="Instagram">
                     <Image
-                      src="/favicon/Instagram_icon.png"
+                      src="/favicon/icons8-instagram.svg"
                       width={30}
                       height={30}
                       alt="Instagram Icon"
@@ -52,7 +52,7 @@ export default function Footer() {
                 <li>
                   <a href="https://www.youtube.com/channel/UCnlvf2-Ml9cgDiAXeEncYkA" title="Youtube">
                     <Image
-                      src="/images/youtube.svg"
+                      src="/favicon/icons8-linkedin.svg"
                       width={15}
                       height={11}
                       alt="youtube Icon"
@@ -64,7 +64,7 @@ export default function Footer() {
                     <Image
                       width={12}
                       height={12}
-                      src="/images/x-logo.svg"
+                      src="/favicon/icons8-twitterx.svg"
                       alt="X Icon"
                     />
                   </a>
@@ -74,7 +74,7 @@ export default function Footer() {
                     <Image
                       width={20}
                       height={20}
-                      src="/images/link_in.png"
+                      src="/favicon/icons8-youtube.svg"
                       alt="Linkedin icon"
                     />
                   </a>

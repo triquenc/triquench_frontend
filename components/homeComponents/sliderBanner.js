@@ -1,10 +1,10 @@
-"use client"; 
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import { Autoplay, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
 import "swiper/css";
-import 'swiper/swiper-bundle.css';
+import "swiper/swiper-bundle.css";
 
 export default function SliderBanner() {
     return (
@@ -17,22 +17,22 @@ export default function SliderBanner() {
                 <span className="title">Navigation</span>
                 <ul className="dot-list p-l-10">
                   <li>
-                    <a href="/products" title="CNC Spindle Motor">CNC Spindle Motor</a>
+                  <a href="/products?category=cnc-spindle-motor" title="CNC Spindle Motor">CNC Spindle Motor</a>
                   </li>
                   <li>
-                    <a href="/products" title="Servo Motor">Servo Motor</a>
+                    <a href="/products?category=spindle-servo-motor" title="Servo Motor">Servo Motor</a>
                   </li>
                   <li>
-                    <a href="/products" title="Gearbox">Gearbox</a>
+                    <a href="/products?category=gearbox" title="Gearbox">Gearbox</a>
                   </li>
                   <li>
-                    <a href="/products" title="CNC Machine Accessories">CNC Machine Accessories</a>
+                    <a href="/products?category=cnc-router-accessories" title="CNC Machine Accessories">CNC Machine Accessories</a>
                   </li>
                   <li>
-                    <a href="/products" title="Laser Machine Accessories">Laser Machine Accessories</a>
+                    <a href="/products?category=laser-parts" title="Laser Machine Accessories">Laser Machine Accessories</a>
                   </li>
                   <li>
-                    <a href="/products" title="Spindle Accessories">Spindle Accessories</a>
+                    <a href="/products?category=laser-parts" title="Spindle Accessories">Spindle Accessories</a>
                   </li>
                 </ul>
               </div>

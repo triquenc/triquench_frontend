@@ -2,11 +2,14 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import InnerPageBanner from "@/components/commonComponents/innerpagebanner";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { FaSearch, FaChevronDown } from "react-icons/fa"; // Import the search and dropdown icons
 import categoriesData from './categories.json';
 
 export default function Products() {
+    const searchParams = useSearchParams();
+    const categorySlug = searchParams.get('category'); // Get the category slug from the query parameters
+
     const [activeCategory, setActiveCategory] = useState("All Products"); // Pre-selected category
     const [expandedCategories, setExpandedCategories] = useState({});
     const [products, setProducts] = useState([]);
@@ -19,6 +22,16 @@ export default function Products() {
     const router = useRouter();
 
     const categories = categoriesData.categories;
+
+    useEffect(() => {
+        if (categorySlug) {
+            const category = categories.find(cat => cat.slug === categorySlug);
+            if (category) {
+                setActiveCategory(category.name);
+                fetchCategoryData(category.name);
+            }
+        }
+    }, [categorySlug, categories]);
 
     const handleCategoryClick = (category, subcategory = '', subSubcategory = '') => {
         console.log("Category clicked:", { category, subcategory, subSubcategory });

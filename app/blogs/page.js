@@ -29,7 +29,7 @@ export default function Blogs() {
       {/* Banner Section */}
       <section
         style={{
-          backgroundImage: "url('https://res.cloudinary.com/dd1na5drh/image/upload/v1734419165/BLOG_HERO_LAPTOP_REACT_h9xms4.png')",
+          backgroundImage: "url('https://res.cloudinary.com/dd1na5drh/image/upload/v1734609447/React_blog_Banner_desktop_ilhgqy.png')",
           height: "430px", // Adjust height
           width: "100%",   // Full width
           backgroundSize: "cover", // Cover the section

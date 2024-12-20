@@ -1,211 +1,178 @@
 {
-    "categories": [
-      {
-        "name": "CNC Spindle Motor",
-        "subcategories": [
-          {
-            "name": "CNC ATC Spindle",
-            "subcategories": [
-              "Air Cooled",
-              "Water Cooled"
-            ]
-          },
-          {
-            "name": "CNC MTC Spindle",
-            "subcategories": [
-              "Air Cooled",
-              "Water Cooled"
-            ]
-          },
-          {
-            "name": "Belt Driven Spindle",
-            "subcategories":[
-              "Lathe Spindle",
-              "Milling Spindle"
-            ]
-          },
-          {
-            "name": "EDGE Banding Spindle"
-          }
-        ]
-      },
-      {
-        "name": "Spindle Servo Motor",
-        "subcategories": [
-          {
-            "name": "Axis Servo Motor",
-            "subcategories": [
-              {
-                "name": "Subcategory 5",
-                "subcategories": ["Sub-subcategory 5", "Sub-subcategory 6"]
-              }
-            ]
-          },
-          {
-            "name": "Spindle Servo"
-          },
-          {
-            "name": "Drive"
-          }
-        ]
-      },
-      {
-        "name": "AC Servo Motor",
-        "subcategories": [
-          {
-            "name": "Stepper Motor"
-          },
-          {
-            "name": "Easy Servo"
-          },
-          {
-            "name": "Servo"
-          }
-        ]
-      },
-      {
-        "name": "CNC Router Accessories",
-        "subcategories": [
-          {
-            "name": "LM Guideways"
-          },
-          {
-            "name": "Ball Screw"
-          },
-          {
-            "name": "Rack and Pinion"
-          },
-          {
-            "name": "Chiller"
-          },
-          {
-            "name": "VFD"
-          },
-          {
-            "name": "Controller"
-          },
-          {
-            "name": "Hydro Pneumatic Cylinder"
-          },
-          {
-            "name": "Cable"
-          },
-          {
-            "name": "Drag Chain"
-          },
-          {
-            "name": "Axis Coupling"
-          },
-          {
-            "name": "BK-BF Nut Housing"
-          }        ]
-      },
-      {
-        "name": "Spindle Bearing",
-        "subcategories": [
-          {
-            "name": "Angular Contact Steel Ball Bearing"
-          },
-          {
-            "name": "Angular Contact Ceramic Ball Bearing"
-          }
-        ]
-      },
-      {
-        "name": "Gearbox",
-        "subcategories": [
-          {
-            "name": "Planetary Gearbox"
-          },
-          {
-            "name": "Cycloidal Gearbox"
-          }
-        ]
-      },
-      {
-        "name": "Spindle Accessories",
-        "subcategories": [
-          {
-            "name": "ER - Collet"
-          },
-          {
-            "name": "ER - Nut"
-          },
-          {
-            "name": "Toolholder"
-          }, 
-          {
-            "name": "Gripper"
-          },
-          {
-            "name": "Fork"
-          },
-          {
-            "name": "Connector"
-          },
-          {
-            "name": "Clamp"
-          }
-        ]
-      },
-      {
-        "name": "Laser Parts",
-        "subcategories": [
-          {
-            "name": "Laser Head"
-          },
-          {
-            "name": "Source"
-          },
-          {
-            "name": "Controller"
-          },
-          {
-            "name": "CO2 Tube"
-          },
-          {
-            "name": "Fiber Laser Controller"
-          },
-          {
-            "name": "CO2 Blower"
-          },
-          {
-            "name": "Motion Systems"
-          }
-        ]
-      },
-      {
-        "name": "Controller",
-        "subcategories": [
-          {
-            "name": "NK105 G2 & G3"
-          },
-          {
-            "name": "Rich Auto"
-          }
-        ]
-      },
-      {
-        "name": "Chiller",
-        "subcategories": [
-          {
-            "name": "Oil Cooled"
-          },
-          {
-            "name": "Water Cooled"
-          }
-        ]
-      },
-      {
-        "name": "Engraving Tools",
-        "subcategories": [
-          {
-            "name": "CNC Stone Carving Tools"
-          },
-          {
-            "name": "CNC Wood Carving Tools"
-          }
-        ]
-      }
-    ]
-  } 
+  "categories": [
+    {
+      "name": "CNC Spindle Motor",
+      "slug": "cnc-spindle-motor",
+      "subcategories": [
+        {
+          "name": "CNC ATC Spindle",
+          "subcategories": [
+            "Air Cooled",
+            "Water Cooled"
+          ]
+        },
+        {
+          "name": "CNC MTC Spindle",
+          "subcategories": [
+            "Air Cooled",
+            "Water Cooled"
+          ]
+        },
+        {
+          "name": "Belt Driven Spindle",
+          "subcategories":[
+            "Lathe Spindle",
+            "Milling Spindle"
+          ]
+        },
+        {
+          "name": "EDGE Banding Spindle"
+        }
+      ]
+    },
+    {
+      "name": "Spindle Servo Motor",
+      "slug": "spindle-servo-motor",
+      "subcategories": [
+        {
+          "name": "Axis Servo Motor",
+          "subcategories": [
+            {
+              "name": "Subcategory 5",
+              "subcategories": ["Sub-subcategory 5", "Sub-subcategory 6"]
+            }
+          ]
+        },
+        {
+          "name": "Spindle Servo"
+        },
+        {
+          "name": "Drive"
+        }
+      ]
+    },
+    {
+      "name": "AC Servo Motor",
+      "slug": "ac-servo-motor",
+      "subcategories": [
+        {
+          "name": "Single Phase"
+        },
+        {
+          "name": "Three Phase"
+        }
+      ]
+    },
+    {
+      "name": "CNC Router Accessories",
+      "slug": "cnc-router-accessories",
+      "subcategories": [
+        {
+          "name": "Single Phase"
+        },
+        {
+          "name": "Three Phase"
+        }
+      ]
+    },
+    {
+      "name": "Spindle Bearing",
+      "slug": "spindle-bearing",
+      "subcategories": [
+        {
+          "name": "Angular Contact Steel Ball Bearing"
+        },
+        {
+          "name": "Angular Contact Ceramic Ball Bearing"
+        }
+      ]
+    },
+    {
+      "name": "Gearbox",
+      "slug": "gearbox",
+      "subcategories": [
+        {
+          "name": "Planetary Gearbox"
+        },
+        {
+          "name": "Cycloidal Gearbox"
+        }
+      ]
+    },
+    {
+      "name": "Spindle Accessories",
+      "slug": "spindle-accessories",
+      "subcategories": [
+        {
+          "name": "Single Phase"
+        },
+        {
+          "name": "Three Phase"
+        }
+      ]
+    },
+    {
+      "name": "Laser Parts",
+      "slug": "laser-parts",
+      "subcategories": [
+        {
+          "name": "Laser Head"
+        },
+        {
+          "name": "Source"
+        },
+        {
+          "name": "Controller"
+        },
+        {
+          "name": "CO2 Tube"
+        },
+        {
+          "name": "Fiber Laser Controller"
+        },
+        {
+          "name": "CO2 Blower"
+        },
+        {
+          "name": "Motion Systems"
+        }
+      ]
+    },
+    {
+      "name": "Controller",
+      "slug": "controller",
+      "subcategories": [
+        {
+          "name": "Single Phase"
+        },
+        {
+          "name": "Three Phase"
+        }
+      ]
+    },
+    {
+      "name": "Chiller",
+      "slug": "chiller",
+      "subcategories": [
+        {
+          "name": "Oil Cooled"
+        },
+        {
+          "name": "Water Cooled"
+        }
+      ]
+    },
+    {
+      "name": "Engraving Tools",
+      "slug": "engraving-tools",
+      "subcategories": [
+        {
+          "name": "CNC Stone Carving Tools"
+        },
+        {
+          "name": "CNC Wood Carving Tools"
+        }
+      ]
+    }
+  ]
+} 
