@@ -1,6 +1,7 @@
 import React, { forwardRef, useState, useEffect } from "react";
 import Image from "next/image";
 
+
 const globalStyles = `
   @media (max-width: 768px) {
     .mobile-menu::-webkit-scrollbar {
@@ -74,15 +75,15 @@ const Header = forwardRef((props, ref) => {
     };
 
     const products = [
-      { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220967/SPINDLE_LINE_evvu8p.png", href: "/products/cnc-atc-spindle", label: "CNC Spindle Motor" },
-      { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220967/CHILLER_LINE_fedf7s.png", href: "/products/cnc-mtc-spindle", label: "Spindle Servo Motor" },
-      { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220968/CONTROLLER_LINE_nthfof.png", href: "/products/belt-driven-spindle", label: "AC Servo Motor" },
-      { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220968/GEARBOX_LINE_emcut4.png", href: "/products/vfd", label: "CNC Router Accessories" },
-      { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220968/AC_SERVO_LINE_k7ruph.png", href: "/products/bearings", label: "Spindle Bearing" },
-      { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733221073/LASER_LINE_g7ky7p.png", href: "/products/cnc-machine-parts", label: "Gearbox" },
-      { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220968/GEARBOX_LINE_emcut4.png", href: "/products/vfd", label: "Spindle Accessories" },
-      { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220968/AC_SERVO_LINE_k7ruph.png", href: "/products/bearings", label: "Laser Parts" },
-      { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220968/LASER_LINE_pyzbml.png", href: "/products/cnc-machine-parts", label: "Controller" },
+      { href: "/products/cnc-atc-spindle", label: "CNC Spindle Motor" },
+      { href: "/products/cnc-mtc-spindle", label: "Spindle Servo Motor" },
+      { href: "/products/belt-driven-spindle", label: "AC Servo Motor" },
+      { href: "/products/vfd", label: "CNC Router Accessories" },
+      { href: "/products/bearings", label: "Spindle Bearing" },
+      { href: "/products/cnc-machine-parts", label: "Gearbox" },
+      { href: "/products/vfd", label: "Spindle Accessories" },
+      { href: "/products/bearings", label: "Laser Parts" },
+      { href: "/products/cnc-machine-parts", label: "Controller" },
     ];
 
     return (
