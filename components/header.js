@@ -146,15 +146,15 @@ const Header = forwardRef((props, ref) => {
                         }}
                       >
                         {[
-                          { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220967/SPINDLE_LINE_evvu8p.png", href: "/products/cnc-atc-spindle", label: "CNC Spindle Motor" },
-                          { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220967/SPINDLE_SERVO_LINE_q0nzbl.png", href: "/products/cnc-mtc-spindle", label: "Spindle Servo Motor" },
-                          { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220968/AC_SERVO_LINE_k7ruph.png", href: "/products/cnc-atc-spindle", label: "AC Servo Motor" },
-                          { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220968/ROUTER_LINE_kbcmw2.png", href: "/products/cnc-mtc-spindle", label: "CNC Router Accessories" },
-                          { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220967/BEARING_LINE_ls3m9x.png", href: "/products/belt-driven-spindle", label: "Spindle Bearing" },
-                          { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220968/GEARBOX_LINE_emcut4.png", href: "/products/belt-driven-spindle", label: "Gearbox" },
+                          { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220967/SPINDLE_LINE_evvu8p.png", href: "/products?category=cnc-spindle-motor", label: "CNC Spindle Motor" },
+                          { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220967/SPINDLE_SERVO_LINE_q0nzbl.png", href: "/products?category=spindle-servo-motor", label: "Spindle Servo Motor" },
+                          { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220968/AC_SERVO_LINE_k7ruph.png", href: "/products?category=ac-servo-motor", label: "AC Servo Motor" },
+                          { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220968/ROUTER_LINE_kbcmw2.png", href: "/products?category=cnc-router-accessories", label: "CNC Router Accessories" },
+                          { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220967/BEARING_LINE_ls3m9x.png", href: "/products?category=spindle-bearing", label: "Spindle Bearing" },
+                          { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220968/GEARBOX_LINE_emcut4.png", href: "/products?category=gearbox", label: "Gearbox" },
                          // { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1734430565/SPINDLE_ACCESSORIES_LINE_1_dwbzn9.png", href: "/products/vfd", label: "Spindle Accessories" },
-                          { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220968/LASER_LINE_pyzbml.png", href: "/products/bearings", label: "Laser Parts" },
-                          { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220968/CONTROLLER_LINE_nthfof.png", href: "/products/cnc-machine-parts", label: "Controller" },
+                          { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220968/LASER_LINE_pyzbml.png", href: "/products?category=laser-parts", label: "Laser Parts" },
+                          { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220968/CONTROLLER_LINE_nthfof.png", href: "/products?category=controller", label: "Controller" },
                           //{ url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220967/TOOL_LINE_qv8quw.png ", href: "/products/cnc-machine-parts", label: "Engraving Tools" },
 
                         ].map((product, index) => (

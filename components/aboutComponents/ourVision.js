@@ -45,7 +45,7 @@ export default function OurVisionAndMission() {
             </div>
             <div className="our-vision-right">
               <Image
-                src="https://res.cloudinary.com/dd1na5drh/image/upload/v1733550275/Vision_PNG_ew1qne.png"
+                src="https://res.cloudinary.com/dd1na5drh/image/upload/v1734679425/Vision_PNG__web_gz2bcr.png"
                 width={390}
                 height={390}
                 alt="Our Vision Image"

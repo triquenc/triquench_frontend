@@ -68,9 +68,9 @@ export default function Terms() {
         <p>
           If you have any questions about these terms, please contact us at:
         </p>
-        <p>Email: <a href="mailto:support@spindlemotor.in">support@spindlemotor.in</a></p>
-        <p>Phone: +91-XXXXXXXXXX</p>
-        <p>Address: Ahmedabad, Gujarat, India</p>
+        <p>Email: <a href="mailto:info@triquenchindia.com">info@triquenchindia.com</a></p>
+        <p>Phone: +91-9601111615</p>
+        <p>Address:info@triquenchindia.com</p>
       </section>
     </div>
   );

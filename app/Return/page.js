@@ -32,7 +32,7 @@ export default function Return() {
         <h2>Return Process</h2>
         <p>To initiate a return, please follow these steps:</p>
         <ol>
-          <li>Contact our customer support at <a href="mailto:support@spindlemotor.in">support@spindlemotor.in</a> to request a return authorization.</li>
+          <li>Contact our customer support at <a href="mailto:info@triquenchindia.com">info@triquenchindia.com</a> to request a return authorization.</li>
           <li>Pack the item securely in its original packaging, including all accessories and documents.</li>
           <li>Ship the package to the return address provided by our team.</li>
         </ol>
@@ -53,9 +53,10 @@ export default function Return() {
         <p>
           If you have any questions about our return policy, please contact us at:
         </p>
-        <p>Email: <a href="mailto:support@spindlemotor.in">info@triquenchindia.com</a></p>
-        <p>Phone: +91-9724860722</p>
-        <p>Address: Ahmedabad, Gujarat, India</p>
+        <p>Email: <a href="mailto:info@triquenchindia.com">info@triquenchindia.com</a></p>
+        <p>Phone: +91- 9601111615</p>
+        <p>Address: D-01, Sumel Business Park - 7, N.H.-08, Road, nr. Soni Ni Chawl Road, Rakhial, Ahmedabad, Gujarat 380023
+        </p>
       </section>
     </div>
   );

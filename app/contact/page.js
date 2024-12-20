@@ -8,12 +8,14 @@ export default function Contactus() {
     return (
       <div>
         <InnerPageBanner 
-            title="Contact Us"
-            subtitle="ENQUIRY"
-            paragraph="We provide “Intelligent Spindle Solutions” and aspire to be of service to society and grow along with it."
-            bannerImage="/images/contact-banner.png"
-            className="contact-banner"
-        />
+        title="Contact Us"
+        subtitle="ENQUIRY"
+        paragraph="We provide “Intelligent Spindle Solutions” and aspire to be of service to society and grow along with it."
+        bannerImage="https://res.cloudinary.com/dd1na5drh/image/upload/v1734679455/IMG_2980_pdvjfa.png"
+        className="contact-banner"
+        buttonText="Reach Out"
+        buttonUrl="/contact-form"
+      />
         <section className="contact-form-block">
           <div className="container">
             <div className="contact-form-inner">
