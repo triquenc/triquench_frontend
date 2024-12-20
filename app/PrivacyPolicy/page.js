@@ -61,8 +61,9 @@ export default function PrivacyPolicy() {
       <section className="privacy-policy-section">
         <h2>Contact Us</h2>
         <p>If you have any questions or concerns about this Privacy Policy, please contact us at:</p>
-        <p>Email: support@spindlemotor.in</p>
-        <p>Address: Ahmedabad, Gujarat, India</p>
+        <p>Email: info@triquenchindia.com</p>
+        <p>Address: D-01, Sumel Business Park - 7, N.H.-08, Road, nr. Soni Ni Chawl Road, Rakhial, Ahmedabad, Gujarat 380023
+        </p>
       </section>
     </div>
   );

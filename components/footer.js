@@ -88,22 +88,22 @@ export default function Footer() {
                 <span className="footer-title">Categories</span>
                 <ul>
                   <li>
-                    <a href="/products" title="Spindle Motor ATC">
+                    <a href="/products?category=cnc-spindle-motor" title="Spindle Motor ATC">
                       Spindle Motor ATC
                     </a>
                   </li>
                   <li>
-                    <a href="/products" title="Spindle Motor MTC">
+                    <a href="/products?category=cnc-spindle-motor" title="Spindle Motor MTC">
                       Spindle Motor MTC
                     </a>
                   </li>
                   <li>
-                    <a href="/products" title="VFD">
+                    <a href="/products?category=cnc-spindle-motor" title="VFD">
                       VFD
                     </a>
                   </li>
                   <li>
-                    <a href="/products" title="Spindle Bearing">
+                    <a href="/products?category=cnc-spindle-motor" title="Spindle Bearing">
                       Spindle Bearing
                     </a>
                   </li>

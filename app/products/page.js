@@ -279,15 +279,16 @@ export default function Products() {
 
     return (
         <div>
-            <InnerPageBanner
-            title="OUR PRODUCTS"
-            subtitle="CATALOGUE"
-            paragraph="In India, Known for our Active and Dynamic Customer Service Practices and catering to a broad assortment of product categories"
-            bannerImage="/images/product-banner.png"
-            className="product-banner"
-            buttonText="Shop Now"
-            buttonUrl="/product"
-            />
+           <InnerPageBanner
+  title="OUR PRODUCTS"
+  subtitle="CATALOGUE"
+  paragraph="In India, Known for our Active and Dynamic Customer Service Practices and catering to a broad assortment of product categories"
+  bannerImage="https://res.cloudinary.com/dd1na5drh/image/upload/v1734679442/IMG_2915_uxq8np.png"
+  className="product-banner"
+  buttonText="Shop Now"
+  buttonUrl="/product" // Correct URL if "/product" is your intended route
+/>
+
             <section className="product-listing">
                 <div className="container">
                     <div className="product-listing-grid">
