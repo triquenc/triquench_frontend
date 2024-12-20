@@ -75,15 +75,15 @@ const Header = forwardRef((props, ref) => {
     };
 
     const products = [
-      { href: "/products/cnc-atc-spindle", label: "CNC Spindle Motor" },
-      { href: "/products/cnc-mtc-spindle", label: "Spindle Servo Motor" },
-      { href: "/products/belt-driven-spindle", label: "AC Servo Motor" },
-      { href: "/products/vfd", label: "CNC Router Accessories" },
-      { href: "/products/bearings", label: "Spindle Bearing" },
-      { href: "/products/cnc-machine-parts", label: "Gearbox" },
-      { href: "/products/vfd", label: "Spindle Accessories" },
-      { href: "/products/bearings", label: "Laser Parts" },
-      { href: "/products/cnc-machine-parts", label: "Controller" },
+      { href: "/products?category=cnc-spindle-motor", label: "CNC Spindle Motor" },
+      { href: "/products?category=spindle-servo-motor", label: "Spindle Servo Motor" },
+      { href: "/products?category=spindle-servo-motor", label: "AC Servo Motor" },
+      { href: "/products?category=spindle-servo-motor", label: "CNC Router Accessories" },
+      { href: "/products?category=spindle-servo-motor", label: "Spindle Bearing" },
+      { href: "/products?category=spindle-servo-motor", label: "Gearbox" },
+      { href:"/products?category=spindle-servo-motor", label: "Spindle Accessories" },
+      { href: "/products?category=spindle-servo-motor", label: "Laser Parts" },
+      { href:"/products?category=spindle-servo-motor", label: "Controller" },
     ];
 
     return (
