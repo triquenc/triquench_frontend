@@ -56,7 +56,7 @@ export default function Products() {
 
     const fetchCategoryData = async (category, subcategory = "", subSubcategory = "") => {
         try {
-            let url = `http://localhost:5000/api/product/category/${encodeURIComponent(category)}`;
+            let url = `https://triquench-backend.vercel.app/api/product/category/${encodeURIComponent(category)}`;
 
             const params = new URLSearchParams();
             if (subcategory) params.append("subcategory", subcategory);
