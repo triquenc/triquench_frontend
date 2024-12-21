@@ -113,7 +113,7 @@ const Header = forwardRef((props, ref) => {
                   onMouseLeave={handleMouseLeave}
                 >
                   <a title="Products" href="/products">
-                    Products ETCCC....
+                    Products
                   </a>
                   {hoveredProduct && (
                     <div
