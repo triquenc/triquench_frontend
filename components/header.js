@@ -77,13 +77,13 @@ const Header = forwardRef((props, ref) => {
     const products = [
       { href: "/products?category=cnc-spindle-motor", label: "CNC Spindle Motor" },
       { href: "/products?category=spindle-servo-motor", label: "Spindle Servo Motor" },
-      { href: "/products?category=spindle-servo-motor", label: "AC Servo Motor" },
-      { href: "/products?category=spindle-servo-motor", label: "CNC Router Accessories" },
-      { href: "/products?category=spindle-servo-motor", label: "Spindle Bearing" },
-      { href: "/products?category=spindle-servo-motor", label: "Gearbox" },
-      { href:"/products?category=spindle-servo-motor", label: "Spindle Accessories" },
-      { href: "/products?category=spindle-servo-motor", label: "Laser Parts" },
-      { href:"/products?category=spindle-servo-motor", label: "Controller" },
+      { href: "/products?category=ac-servo-motor", label: "AC Servo Motor" },
+      { href: "/products?category=cnc-router-accessories", label: "CNC Router Accessories" },
+      { href: "/products?category=spindle-bearing", label: "Spindle Bearing" },
+      { href: "/products?category=gearbox", label: "Gearbox" },
+      { href:"/products?category=spindle-accessories", label: "Spindle Accessories" },
+      { href: "/products?category=laser-parts", label: "Laser Parts" },
+      { href:"/products?category=controller", label: "Controller" },
     ];
 
     return (
@@ -146,8 +146,8 @@ const Header = forwardRef((props, ref) => {
                         }}
                       >
                         {[
-{ url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220967/SPINDLE_LINE_evvu8p.png", href: "/products?category=cnc-spindle-motor", label: "CNC Spindle Motor" },
-{ url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220967/SPINDLE_SERVO_LINE_q0nzbl.png", href: "/products?category=spindle-servo-motor", label: "Spindle Servo Motor" },
+                          { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220967/SPINDLE_LINE_evvu8p.png", href: "/products?category=cnc-spindle-motor", label: "CNC Spindle Motor" },
+                          { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220967/SPINDLE_SERVO_LINE_q0nzbl.png", href: "/products?category=spindle-servo-motor", label: "Spindle Servo Motor" },
                           { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220968/AC_SERVO_LINE_k7ruph.png", href: "/products?category=ac-servo-motor", label: "AC Servo Motor" },
                           { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220968/ROUTER_LINE_kbcmw2.png", href: "/products?category=cnc-router-accessories", label: "CNC Router Accessories" },
                           { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220967/BEARING_LINE_ls3m9x.png", href: "/products?category=spindle-bearing", label: "Spindle Bearing" },
@@ -416,12 +416,9 @@ const Header = forwardRef((props, ref) => {
                 <li style={{
                   borderBottom: '1px solid #eee'
                 }}>
-                  <a href="/loging" style={{
-                    display: 'block',
-                    padding: '15px 20px',
-                    color: '#333',
-                    textDecoration: 'none'
-                  }}>Login</a>
+                   <a href="tel:+919601111615" className="border-btn">
+                Call Now{" "}
+              </a>
                 </li>
               </ul>
             </nav>
