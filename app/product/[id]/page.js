@@ -72,7 +72,7 @@ export default function ProductDetail({ params }) {
     if (token) {
       // If token exists, call add-product-name API
       try {
-        const response = await fetch('http://triquench.ap-south-1.elasticbeanstalk.com/api/getAquote/add-product-name', {
+        const response = await fetch('https://d1w2b5et10ojep.cloudfront.net/api/getAquote/add-product-name', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -104,7 +104,7 @@ export default function ProductDetail({ params }) {
   const handleSendOtp = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://triquench.ap-south-1.elasticbeanstalk.com/api/getAquote/send-otp', {
+      const response = await fetch('https://d1w2b5et10ojep.cloudfront.net/api/getAquote/send-otp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ phoneNumber }),
@@ -127,7 +127,7 @@ export default function ProductDetail({ params }) {
   const handleVerifyOtp = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://triquench.ap-south-1.elasticbeanstalk.com/api/getAquote/verify-otp', {
+      const response = await fetch('https://d1w2b5et10ojep.cloudfront.net/api/getAquote/verify-otp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ phoneNumber, otp }),
@@ -161,7 +161,7 @@ export default function ProductDetail({ params }) {
   // Add the product to the user's list
   const addProductName = async (token, productName) => {
     try {
-      const response = await fetch('http://triquench.ap-south-1.elasticbeanstalk.com/api/getAquote/add-product-name', {
+      const response = await fetch('https://d1w2b5et10ojep.cloudfront.net/api/getAquote/add-product-name', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
