@@ -22,7 +22,7 @@ export default function Events() {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await fetch('http://triquench.ap-south-1.elasticbeanstalk.com/api/event/getEvents');
+        const response = await fetch('https://d1w2b5et10ojep.cloudfront.net/api/event/getEvents');
         const data = await response.json();
         setEvents(data);
       } catch (error) {
@@ -37,7 +37,7 @@ export default function Events() {
     if (likedPosts[index]) return;
 
     try {
-      const response = await fetch('http://triquench.ap-south-1.elasticbeanstalk.com/api/event/like', {
+      const response = await fetch('https://d1w2b5et10ojep.cloudfront.net/api/event/like', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
