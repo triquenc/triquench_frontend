@@ -72,7 +72,7 @@ export default function ProductDetail({ params }) {
     if (token) {
       // If token exists, call add-product-name API
       try {
-        const response = await fetch('http://localhost:5000/api/getAquote/add-product-name', {
+        const response = await fetch('http://triquench.ap-south-1.elasticbeanstalk.com/api/getAquote/add-product-name', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
