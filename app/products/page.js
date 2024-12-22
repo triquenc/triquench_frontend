@@ -283,10 +283,14 @@ export default function Products() {
 
     return (
         <div>
-            <InnerPageBanner
-                bannerImage1="https://res.cloudinary.com/dd1na5drh/image/upload/v1733118990/desktop_zw16yw.png"
-                bannerImage2="https://res.cloudinary.com/dd1na5drh/image/upload/v1733118990/teblet_uuz7dz.png"
-                bannerImage3="https://res.cloudinary.com/dd1na5drh/image/upload/v1733118990/React_hero_Phone_tgojch.png"
+             <InnerPageBanner
+                title="OUR PRODUCTS"
+                subtitle="CATALOGUE"
+                paragraph="In India, Known for our Active and Dynamic Customer Service Practices and catering to a broad assortment of product categories"
+                bannerImage="https://res.cloudinary.com/dd1na5drh/image/upload/v1734679442/IMG_2915_uxq8np.png"
+                className="product-banner"
+                buttonText="Shop Now"
+                buttonUrl="/product"
             />
             <section className="product-listing">
                 <div className="container">
