@@ -75,15 +75,17 @@ const Header = forwardRef((props, ref) => {
     };
 
     const products = [
-      { href: "/products?category=cnc-spindle-motor", label: "CNC Spindle Motor" },
-      { href: "/products?category=spindle-servo-motor", label: "Spindle Servo Motor" },
-      { href: "/products?category=ac-servo-motor", label: "AC Servo Motor" },
-      { href: "/products?category=cnc-router-accessories", label: "CNC Router Accessories" },
-      { href: "/products?category=spindle-bearing", label: "Spindle Bearing" },
-      { href: "/products?category=gearbox", label: "Gearbox" },
-      { href:"/products?category=spindle-accessories", label: "Spindle Accessories" },
-      { href: "/products?category=laser-parts", label: "Laser Parts" },
-      { href:"/products?category=controller", label: "Controller" },
+      { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220967/SPINDLE_LINE_evvu8p.png", href: "/products?category=cnc-spindle-motor", label: "CNC Spindle Motor" },
+      { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220967/SPINDLE_SERVO_LINE_q0nzbl.png", href: "/products?category=spindle-servo-motor", label: "Spindle Servo Motor" },
+      { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220968/AC_SERVO_LINE_k7ruph.png", href: "/products?category=ac-servo-motor", label: "AC Servo Motor" },
+      { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220968/ROUTER_LINE_kbcmw2.png", href: "/products?category=cnc-router-accessories", label: "CNC Router Accessories" },
+      { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220967/BEARING_LINE_ls3m9x.png", href: "/products?category=spindle-bearing", label: "Spindle Bearing" },
+      { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220968/GEARBOX_LINE_emcut4.png", href: "/products?category=gearbox", label: "Gearbox" },
+     // { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1734430565/SPINDLE_ACCESSORIES_LINE_1_dwbzn9.png", href: "/products/vfd", label: "Spindle Accessories" },
+      { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220968/LASER_LINE_pyzbml.png", href: "/products?category=laser-parts", label: "Laser Parts" },
+      { url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220968/CONTROLLER_LINE_nthfof.png", href: "/products?category=controller", label: "Controller" },
+      //{ url:"https://res.cloudinary.com/dd1na5drh/image/upload/v1733220967/TOOL_LINE_qv8quw.png ", href: "/products/cnc-machine-parts", label: "Engraving Tools" },
+
     ];
 
     return (
@@ -360,17 +362,7 @@ const Header = forwardRef((props, ref) => {
                               transition: 'all 0.3s ease'
                             }}
                           >
-                            <Image
-                              src={product.url}
-                              width={30}
-                              height={30}
-                              alt={product.label}
-                              style={{ 
-                                objectFit: "contain",
-                                transform: hoveredItem === index ? 'scale(1.1)' : 'scale(1)',
-                                transition: 'transform 0.3s ease'
-                              }}
-                            />
+                            
                             <span style={{
                               fontSize: '14px',
                               fontWeight: hoveredItem === index ? 'bold' : 'normal'
@@ -392,6 +384,16 @@ const Header = forwardRef((props, ref) => {
                     color: '#333',
                     textDecoration: 'none'
                   }}>About Us</a>
+                </li>
+                <li style={{
+                  borderBottom: '1px solid #eee'
+                }}>
+                  <a   href="https://shop.triquenchindia.com/" style={  {display: 'block',
+                    padding: '15px 20px',
+                    color: '#333',
+                    textDecoration: 'none' }}>
+              Our Store
+              </a>
                 </li>
                 <li style={{
                   borderBottom: '1px solid #eee'
