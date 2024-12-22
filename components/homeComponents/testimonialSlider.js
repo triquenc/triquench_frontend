@@ -54,7 +54,7 @@ const TestimonialSlider = forwardRef((props, ref) => {
             {testimonials.map((testimonial, index) => (
               <SwiperSlide key={index}>
                 <div className="testimonial-item">
-                  <Image
+           <Image
                     src="/images/quote.svg"
                     alt="Quote"
                     className="quote-img"

@@ -7,6 +7,13 @@ import { FaSearch, FaChevronDown } from "react-icons/fa"; // Import the search a
 import categoriesData from './categories.json';
 
 export default function Products() {
+    const [categorySlug, setCategorySlug] = useState(null);
+
+    useEffect(() => {
+        const searchParams = new URLSearchParams(window.location.search);
+        setCategorySlug(searchParams.get('category'));
+    }, []);
+
     const [activeCategory, setActiveCategory] = useState("All Products"); // Pre-selected category
     const [expandedCategories, setExpandedCategories] = useState({});
     const [products, setProducts] = useState([]);
@@ -19,6 +26,16 @@ export default function Products() {
     const router = useRouter();
 
     const categories = categoriesData.categories;
+
+    useEffect(() => {
+        if (categorySlug && categories.length > 0) {
+            const category = categories.find(cat => cat.slug === categorySlug);
+            if (category) {
+                setActiveCategory(category.name);
+                fetchCategoryData(category.name);
+            }
+        }
+    }, [categorySlug, categories]);
 
     const handleCategoryClick = (category, subcategory = '', subSubcategory = '') => {
         console.log("Category clicked:", { category, subcategory, subSubcategory });
@@ -43,7 +60,7 @@ export default function Products() {
 
     const fetchCategoryData = async (category, subcategory = '', subSubcategory = '') => {
         try {
-            let url = `https://d1w2b5et10ojep.cloudfront.net/api/product/category/${encodeURIComponent(category)}`;
+            let url = `http://localhost:5000/api/product/category/${encodeURIComponent(category)}`;
             
             // Add query parameters
             const params = new URLSearchParams();
@@ -172,7 +189,7 @@ export default function Products() {
                                 <a
                                     href="#"
                                     style={{
-                                        color: '#333',
+                                        color: '#006098',
                                         textDecoration: 'none',
                                         cursor: 'pointer',
                                         transition: 'color 0.3s',
@@ -591,3 +608,4 @@ export default function Products() {
         </div>
     );
 }
+
