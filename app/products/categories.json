@@ -56,10 +56,13 @@
       "slug": "ac-servo-motor",
       "subcategories": [
         {
-          "name": "Single Phase"
+          "name": "Stepper Motor"
         },
         {
-          "name": "Three Phase"
+          "name": "Easy Servo Motor"
+        },
+        {
+          "name": "Servo Motor"
         }
       ]
     },
@@ -68,10 +71,37 @@
       "slug": "cnc-router-accessories",
       "subcategories": [
         {
-          "name": "Single Phase"
+          "name": "LM Guideways"
         },
         {
-          "name": "Three Phase"
+          "name": "Ball Screw"
+        },
+        {
+          "name": "Rack & Pnion"
+        },
+        {
+          "name": "Chiller"
+        },
+        {
+          "name": "VFD"
+        },
+        {
+          "name": "Controller"
+        },
+        {
+          "name": "Hydro Pneumatic Cylinder"
+        },
+        {
+          "name": "Cable"
+        },    
+        {
+          "name": "Drag Chain"
+        },
+        {
+          "name": "Axis Cupling"
+        },
+        {
+          "name": "BK - BF Nut Housing"
         }
       ]
     },
@@ -104,11 +134,39 @@
       "slug": "spindle-accessories",
       "subcategories": [
         {
-          "name": "Single Phase"
+          "name": "ER Collet"
         },
         {
-          "name": "Three Phase"
+          "name": "ER Nut"
+        },
+        {
+          "name": "VFD Drive"
+        },
+        {
+          "name": "Toolholder"
+        },
+        {
+          "name": "Spindle Bearing"
+        },
+        {
+          "name": "Toolholder"
+        },
+        {
+          "name": "Gripper"
+        },
+        {
+          "name": "Fork"
+        },
+        {
+          "name": "Connector"
+        }, 
+        {
+          "name": "Clamp"
+        },
+        {
+          "name": "Engraving Tools"
         }
+
       ]
     },
     {
@@ -143,10 +201,10 @@
       "slug": "controller",
       "subcategories": [
         {
-          "name": "Single Phase"
+          "name": "NK 105 G2 & G3"
         },
         {
-          "name": "Three Phase"
+          "name": "Rich Auto"
         }
       ]
     },
