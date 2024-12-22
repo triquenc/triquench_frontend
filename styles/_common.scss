@@ -516,6 +516,26 @@
     }
 }
 
+.has-green-bar_2{
+    padding-bottom: 2.5rem;
+    position: relative;
+
+    &::after {
+        background-color: $green;
+        width: 22rem;
+        height: 0.6rem;
+        left: 30%;
+        transform: translateX(-50%);
+        bottom: 0;
+        content: '';
+        position: absolute;
+        border-radius: 2rem;
+        @include bp("sm-max") {
+            width: 12rem;
+        }
+    }
+}
+
 .form-wrapper {
     display: flex;
     flex-wrap: wrap;
