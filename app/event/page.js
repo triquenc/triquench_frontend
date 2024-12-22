@@ -80,7 +80,7 @@ export default function Events() {
   return (
     <div style={{ width: '100%', backgroundColor: '#fff', fontFamily: 'Arial, sans-serif', lineHeight: '1.6', color: '#333' }}>
       <section style={{
-        backgroundImage: "url('https://res.cloudinary.com/dd1na5drh/image/upload/v1732517200/WhatsApp-Image-2023-06-29-at-11.44.49-AM_pegunx.jpg')",
+        backgroundImage: "url('https://res.cloudinary.com/dd1na5drh/image/upload/v1734611753/events_Desktop_hero_page_bfz1gs.png')",
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         height: '400px',
@@ -99,12 +99,10 @@ export default function Events() {
           left: 0,
           right: 0,
           bottom: 0,
-          backgroundColor: 'rgba(0,0,0,0.5)',
         }}></div>
-        <h1 style={{ fontSize: '3rem', position: 'relative', zIndex: 1 }}>Discover Amazing Events</h1>
       </section>
 
-      <div style={{ width: '90%', maxWidth: '1200px', margin: '0 auto', padding: '0 20px' }}>
+      <div style={{ width: '100%', maxWidth: '1200px', margin: '0 auto', padding: '0 20px'}}>
         <section>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', padding: '2rem 0', justifyContent: 'center' }}>
             {['Exhibition', 'Upcoming Exhibition','CSR By Triquench', 'Triquench Events' ].map((category) => (
@@ -119,13 +117,11 @@ export default function Events() {
                   border: '1px solid #ddd',
                   fontWeight: 'bold',
                   transition: 'all 0.3s ease',
-                  boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
                   cursor: 'pointer',
                   ':hover': {
                     backgroundColor: '#006098',
                     color: '#fff',
                     transform: 'translateY(-2px)',
-                    boxShadow: '0 4px 8px rgba(0,0,0,0.2)'
                   }
                 }}
                 onMouseEnter={(e) => {
