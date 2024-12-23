@@ -95,7 +95,7 @@ const Header = forwardRef((props, ref) => {
             <div className="logo-wrapper">
               <a href="/">
                 <Image
-                  src="/images/site-logo.svg"
+                  src="https://res.cloudinary.com/dd1na5drh/image/upload/v1733206579/TQI_About_tpell6.png"
                   width={86}
                   height={75}
                   alt="Triquench Logo"
