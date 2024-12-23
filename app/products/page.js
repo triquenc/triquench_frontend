@@ -290,7 +290,7 @@ export default function Products() {
                 bannerImage="https://res.cloudinary.com/dd1na5drh/image/upload/v1734679442/IMG_2915_uxq8np.png"
                 className="product-banner"
                 buttonText="Shop Now"
-                buttonUrl="/product"
+                buttonUrl="/products"
             />
             <section className="product-listing">
                 <div className="container">
