@@ -22,7 +22,7 @@ export default function EventDetails({ params }) {
   useEffect(() => {
     const fetchEvent = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/events/${id}`);
+        const response = await fetch(`https://d1w2b5et10ojep.cloudfront.net/api/events/${id}`);
         if (!response.ok) {
           throw new Error('Failed to fetch event details');
         }
@@ -102,7 +102,7 @@ export default function EventDetails({ params }) {
     if (hasLiked) return; // Prevent further clicks if already liked
 
     try {
-      const response = await fetch(`http://localhost:5000/api/event/like`, {
+      const response = await fetch(`https://d1w2b5et10ojep.cloudfront.net/api/event/like`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
