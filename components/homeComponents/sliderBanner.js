@@ -48,6 +48,28 @@ export default function SliderBanner() {
                 autoplay={{ delay: 6000 }} // Enable autoplay with delay
                 fadeEffect={{ crossFade: true }}
               >
+                 
+                 <SwiperSlide>
+                  <div className="swiper-flex-wrap">
+                    <div className="left">
+                      {/*<span className="sub-title">Building High Trust </span>*/}
+                      <h1 className="h1" style={{ textAlign: 'center' }}>A One-Stop CNC Shop</h1>
+                      <p>
+                      Your one-stop shop for precision CNC solutions, including spindle motors, guideways, servo motors, controllers, and essential accessories.</p>
+                      <div className="btn-wrapper m-t-20">
+                        {/*<a href="https://shop.triquenchindia.com" target="_blank" className="white-btn" title="Shop Now">
+                        Shop Now
+                        </a>*/}
+                        <a href="/products"  target="_blank" className="white-btn" title="View Products">
+                        View Products
+                        </a>
+                      </div>
+                    </div>
+                    <div className="right">
+                      <Image src="https://res.cloudinary.com/dd1na5drh/image/upload/v1734947790/all_products_1_bublid.png" width={530} height={350} alt="Slider Item1 Image"/>
+                    </div>
+                  </div>
+                </SwiperSlide>
                 <SwiperSlide>
                   <div className="swiper-flex-wrap">
                     <div className="left">

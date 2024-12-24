@@ -22,7 +22,7 @@ export default function EventDetails({ params }) {
   useEffect(() => {
     const fetchEvent = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/events/${id}`);
+        const response = await fetch(`https://d1w2b5et10ojep.cloudfront.net/api/event/getEventById/${id}`);
         if (!response.ok) {
           throw new Error('Failed to fetch event details');
         }
@@ -48,7 +48,7 @@ export default function EventDetails({ params }) {
     }
     
     try {
-        const response = await fetch('http://localhost:5000/api/event/create-comment', {
+        const response = await fetch('https://d1w2b5et10ojep.cloudfront.net/api/event/create-comment', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -68,7 +68,7 @@ export default function EventDetails({ params }) {
 
         if (result.success) {
             // Refetch the event details to update the state
-            const eventResponse = await fetch(`http://localhost:5000/api/events/${event._id}`);
+            const eventResponse = await fetch(`https://d1w2b5et10ojep.cloudfront.net/api/event/getEventById/${event._id}`);
             if (!eventResponse.ok) {
                 throw new Error('Failed to fetch updated event details');
             }
@@ -102,7 +102,7 @@ export default function EventDetails({ params }) {
     if (hasLiked) return; // Prevent further clicks if already liked
 
     try {
-      const response = await fetch(`http://localhost:5000/api/event/like`, {
+      const response = await fetch(`https://d1w2b5et10ojep.cloudfront.net/api/event/like`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -119,7 +119,7 @@ export default function EventDetails({ params }) {
       const result = await response.json();
 
       // Refetch the event details to update the state
-      const eventResponse = await fetch(`http://localhost:5000/api/events/${event._id}`);
+      const eventResponse = await fetch(`https://d1w2b5et10ojep.cloudfront.net/api/event/getEventById/${event._id}`);
       if (!eventResponse.ok) {
         throw new Error('Failed to fetch updated event details');
       }
@@ -307,10 +307,7 @@ export default function EventDetails({ params }) {
                   <ThumbsUp style={{ marginRight: '5px' }} />
                   <span>{event.likes} Likes</span>
                 </div>
-                <div style={{ marginRight: '20px', display: 'flex', alignItems: 'center' }}>
-                  <MessageCircle style={{ marginRight: '5px' }} />
-                  <span>{event.comments.length} Comments</span>
-                </div>
+                
                 <div style={{ display: 'flex', alignItems: 'center' }}>
                   <Share style={{ marginRight: '5px' }} />
                   <span>Share</span>
@@ -318,107 +315,7 @@ export default function EventDetails({ params }) {
               </div>
             </div>
 
-            {/* Comments Section */}
-            <div style={{
-              backgroundColor: 'white',
-              borderRadius: '8px', 
-              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-              padding: '20px',
-            }}>
-            <strong>Comments ( {event.comments.length} )</strong>
-              {event.comments.map((comment, index) => (
-                <div key={index} style={{
-                  backgroundColor: '#f8f8f8',
-                  padding: '10px',
-                  borderRadius: '8px',
-                  marginBottom: '10px',
-                }}>
-                  <div style={{ 
-                    fontWeight: '700',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '5px'
-                  }}>
-                    <User  size={16} />
-                    {comment.user}
-                  </div>
-                  <div style={{ marginTop: '5px' }}>• {comment.content}</div>
-                </div>
-              ))}
-              <form onSubmit={handleCommentSubmit} style={{
-                display: 'flex',
-                alignItems: 'flex-end',
-                gap: '10px',
-                marginTop: '10px',
-                padding: '15px',
-                border: '1px solid #e5e7eb',
-                borderRadius: '8px',
-                backgroundColor: '#f9fafb'
-              }}>
-                <div style={{ width: '25%' }}>
-                  <label style={{
-                    display: 'block',
-                    marginBottom: '5px',
-                    fontSize: '14px',
-                    color: '#666'
-                  }}>
-                    Your Name
-                  </label>
-                  <input 
-                    type="text" 
-                    placeholder="Enter name..." 
-                    value={commentUser}
-                    onChange={(e) => setCommentUser(e.target.value)}
-                    style={{
-                      width: '100%',
-                      padding: '8px',
-                      border: '1px solid #ccc',
-                      borderRadius: '6px',
-                      transition: 'border-color 0.3s',
-                    }} 
-                  />
-                </div>
-                <div style={{ flex: 1 }}>
-                  <label style={{
-                    display: 'block',
-                    marginBottom: '5px',
-                    fontSize: '14px',
-                    color: '#666'
-                  }}>
-                    Your Comment
-                  </label>
-                  <input 
-                    type="text" 
-                    placeholder="Write your comment..." 
-                    value={commentContent}
-                    onChange={(e) => setCommentContent(e.target.value)}
-                    style={{
-                      width: '100%',
-                      padding: '8px',
-                      border: '1px solid #ccc',
-                      borderRadius: '6px',
-                      transition: 'border-color 0.3s',
-                    }}
-                  />
-                </div>
-                <button type="submit" style={{
-                  backgroundColor: '#3b82f6',
-                  color: '#fff',
-                  border: 'none',
-                  padding: '8px 16px',
-                  height: '37px',
-                  borderRadius: '6px',
-                  cursor: 'pointer',
-                  transition: 'background-color 0.3s',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '5px'
-                }}>
-                  <Send size={16} />
-                  <span>Send</span>
-                </button>
-              </form>
-            </div>
+            
           </div>
 
           {/* Right Section - Related Events */}
