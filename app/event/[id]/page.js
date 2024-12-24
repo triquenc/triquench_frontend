@@ -48,7 +48,7 @@ export default function EventDetails({ params }) {
     }
     
     try {
-        const response = await fetch('http://localhost:5000/api/event/create-comment', {
+        const response = await fetch('https://d1w2b5et10ojep.cloudfront.net/api/event/create-comment', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -68,7 +68,7 @@ export default function EventDetails({ params }) {
 
         if (result.success) {
             // Refetch the event details to update the state
-            const eventResponse = await fetch(`http://localhost:5000/api/events/${event._id}`);
+            const eventResponse = await fetch(`https://d1w2b5et10ojep.cloudfront.net/api/events/${event._id}`);
             if (!eventResponse.ok) {
                 throw new Error('Failed to fetch updated event details');
             }
@@ -119,7 +119,7 @@ export default function EventDetails({ params }) {
       const result = await response.json();
 
       // Refetch the event details to update the state
-      const eventResponse = await fetch(`http://localhost:5000/api/events/${event._id}`);
+      const eventResponse = await fetch(`https://d1w2b5et10ojep.cloudfront.net/api/events/${event._id}`);
       if (!eventResponse.ok) {
         throw new Error('Failed to fetch updated event details');
       }
