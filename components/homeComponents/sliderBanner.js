@@ -50,10 +50,7 @@ export default function SliderBanner() {
               >
                  <SwiperSlide>
                   <div className="swiper-flex-wrap">
-                    <div className="l
-
-
-eft">
+                    <div className="left">
                       {/*<span className="sub-title">Building High Trust </span>*/}
                       <h1 className="h1" style={{ textAlign: 'center' }}>A One-Stop CNC Shop</h1>
                       <p>
