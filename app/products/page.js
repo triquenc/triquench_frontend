@@ -86,7 +86,7 @@ export default function Products() {
     };
 
     const handleSeeDetailsClick = (id) => {
-        router.push(`/product/${id}`);
+        router.push(`/products/${id}`);
     };
 
     // Fetch all products for total count
