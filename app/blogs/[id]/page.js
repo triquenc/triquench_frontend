@@ -12,7 +12,7 @@ export default function BlogDetail({ params }) {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const response = await fetch(`https://d1w2b5et10ojep.cloudfront.net/api/blog/getBlogById/${id}`);
+        const response = await fetch(`https://d1w2b5et100jep.cloudfront.net/api/blogs/${id}`);
         const data = await response.json();
         setBlog(data);
       } catch (error) {
