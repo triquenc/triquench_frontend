@@ -2,7 +2,8 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import InnerPageBanner from "@/components/commonComponents/innerpagebanner";
-import { useRouter } from "next/compat/router";
+//import { useRouter } from "next/compat/router";
+import { useRouter } from "next/navigation";
 import { FaSearch, FaChevronDown } from "react-icons/fa"; // Import the search and dropdown icons
 import categoriesData from './categories.json';
 
