@@ -60,7 +60,7 @@ export default function Products() {
 
     const fetchCategoryData = async (category, subcategory = '', subSubcategory = '') => {
         try {
-            let url = `https://d1w2b5et10ojep.cloudfront.net/api/product/category/${encodeURIComponent(category)}`;
+            let url = `https://d1w2b5et10ojep.cloudfront.net/api/products/category/${encodeURIComponent(category)}`;
             
             // Add query parameters
             const params = new URLSearchParams();
