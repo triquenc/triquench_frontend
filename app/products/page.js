@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import InnerPageBanner from "@/components/commonComponents/innerpagebanner";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/compat/router";
 import { FaSearch, FaChevronDown } from "react-icons/fa"; // Import the search and dropdown icons
 import categoriesData from './categories.json';
 
@@ -290,7 +290,7 @@ export default function Products() {
                 bannerImage="https://res.cloudinary.com/dd1na5drh/image/upload/v1734679442/IMG_2915_uxq8np.png"
                 className="product-banner"
                 buttonText="Shop Now"
-                buttonUrl="/product"
+                buttonUrl="/products"
             />
             <section className="product-listing">
                 <div className="container">

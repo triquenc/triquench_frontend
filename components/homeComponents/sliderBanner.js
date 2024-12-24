@@ -48,10 +48,12 @@ export default function SliderBanner() {
                 autoplay={{ delay: 6000 }} // Enable autoplay with delay
                 fadeEffect={{ crossFade: true }}
               >
-                 
                  <SwiperSlide>
                   <div className="swiper-flex-wrap">
-                    <div className="left">
+                    <div className="l
+
+
+eft">
                       {/*<span className="sub-title">Building High Trust </span>*/}
                       <h1 className="h1" style={{ textAlign: 'center' }}>A One-Stop CNC Shop</h1>
                       <p>

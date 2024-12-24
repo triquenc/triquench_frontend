@@ -22,6 +22,7 @@ export default function EventDetails({ params }) {
   useEffect(() => {
     const fetchEvent = async () => {
       try {
+
         const response = await fetch(`https://d1w2b5et10ojep.cloudfront.net/api/event/getEventById/${id}`);
         if (!response.ok) {
           throw new Error('Failed to fetch event details');
@@ -68,7 +69,9 @@ export default function EventDetails({ params }) {
 
         if (result.success) {
             // Refetch the event details to update the state
+
             const eventResponse = await fetch(`https://d1w2b5et10ojep.cloudfront.net/api/event/getEventById/${event._id}`);
+
             if (!eventResponse.ok) {
                 throw new Error('Failed to fetch updated event details');
             }
@@ -119,6 +122,7 @@ export default function EventDetails({ params }) {
       const result = await response.json();
 
       // Refetch the event details to update the state
+
       const eventResponse = await fetch(`https://d1w2b5et10ojep.cloudfront.net/api/event/getEventById/${event._id}`);
       if (!eventResponse.ok) {
         throw new Error('Failed to fetch updated event details');
