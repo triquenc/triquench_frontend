@@ -54,7 +54,7 @@ export default function SliderBanner() {
                       {/*<span className="sub-title">Building High Trust </span>*/}
                       <h1 className="h1" style={{ textAlign: 'center' }}>A One-Stop CNC Shop</h1>
                       <p>
-                      Your one-stop shop for precision CNC solutions, including spindle motors, guideways, servo motors, controllers, and essential accessories.</p>
+                      Your ultimate destination for precision CNC solutions, offering spindle motors, guideways, servo motors, controllers, bearings, VFDs, gearboxes, drag chains, and all essential accessories.</p>
                       <div className="btn-wrapper m-t-20">
                         {/*<a href="https://shop.triquenchindia.com" target="_blank" className="white-btn" title="Shop Now">
                         Shop Now
@@ -69,6 +69,7 @@ export default function SliderBanner() {
                     </div>
                   </div>
                 </SwiperSlide>
+
                 <SwiperSlide>
                   <div className="swiper-flex-wrap">
                     <div className="left">
@@ -85,7 +86,7 @@ export default function SliderBanner() {
                       </div>
                     </div>
                     <div className="right">
-                      <Image src="https://res.cloudinary.com/dd1na5drh/image/upload/v1733572505/Slider_1_img_cwvo54.png" width={530} height={350} alt="Slider Item1 Image"/>
+                      <Image src="https://res.cloudinary.com/dd1na5drh/image/upload/v1735101811/Main_slider_1_bvfpyw.png" width={530} height={350} alt="Slider Item1 Image"/>
                     </div>
                   </div>
                 </SwiperSlide>
@@ -103,10 +104,30 @@ export default function SliderBanner() {
                       </div>
                   </div>
                   <div className="right">
-                    <Image src="https://res.cloudinary.com/dd1na5drh/image/upload/v1733572625/Slider_2_img_hi1uod.png" alt="Slider Item2 Image" width={530} height={350}/>
+                    <Image src="https://res.cloudinary.com/dd1na5drh/image/upload/v1735101836/Main_slider_3_q2lriy.png" alt="Slider Item2 Image" width={530} height={350}/>
                   </div>
                 </div>
                 </SwiperSlide>
+
+                <SwiperSlide>
+                <div className="swiper-flex-wrap">
+                  <div className="left">
+                      {/*<span className="sub-title">Building High Trust </span>*/}
+                      <h2 className="h1" style={{ textAlign: 'center' }}>Belt-Driven Spindle Motors | Precision CNC Spindle Solutions</h2>
+                      <p>High-performance Belt-Driven Spindle Motors for precise CNC machining. Engineered for durability, speed, and unmatched accuracy.</p>
+                      <div className="btn-wrapper m-t-20">
+                       
+                      <a href="/products"  target="_blank" className="white-btn" title="View Products">
+                        View Products
+                        </a>
+                      </div>
+                  </div>
+                  <div className="right">
+                    <Image src="https://res.cloudinary.com/dd1na5drh/image/upload/v1735101838/Main_slider_4_f1ucbs.png" alt="Slider Item2 Image" width={530} height={350}/>
+                  </div>
+                </div>
+                </SwiperSlide>
+
                 <SwiperSlide>
                 <div className="swiper-flex-wrap">
                   <div className="left">
@@ -121,17 +142,17 @@ export default function SliderBanner() {
                       </div>
                   </div>
                   <div className="right">
-                    <Image src="https://res.cloudinary.com/dd1na5drh/image/upload/v1733572675/Slider_3_img_wbvqda.png" alt="Slider Item3 Image" width={530} height={350}/>
+                    <Image src="https://res.cloudinary.com/dd1na5drh/image/upload/v1735101838/Main_slider_5_mvo1yr.png" alt="Slider Item3 Image" width={530} height={350}/>
                   </div>
                 </div>
                 </SwiperSlide>
+
                 <SwiperSlide>
                 <div className="swiper-flex-wrap">
                   <div className="left">
                       {/*<span className="sub-title">Building High Trust </span>*/}
-                      <h2 className="h1" style={{ textAlign: 'center' }}>
-                        Spindles, VFD's, Tool Holders & More</h2>
-                      <p>Welcome to Triquench India Pvt. Ltd., your trusted CNC spindle manufacturer. Explore our range of CNC spindles, VFDs, tool holders, bearings, and machine accessories. Worldwide delivery!</p>
+                      <h2 className="h1" style={{ textAlign: 'center' }}>Precision VFD Drives | Reliable Motor Control Solutions</h2>
+                      <p>Efficient VFD drives for precise control, reliable performance, and energy savings in industrial applications.</p>
                       <div className="btn-wrapper m-t-20">
                        
                       <a href="/products"  target="_blank" className="white-btn" title="View Products">
@@ -140,10 +161,48 @@ export default function SliderBanner() {
                       </div>
                   </div>
                   <div className="right">
-                    <Image src="https://res.cloudinary.com/dd1na5drh/image/upload/v1733572391/Slider_4_img_xt3kp0.png" alt="Slider Item3 Image" width={530} height={350}/>
+                    <Image src="https://res.cloudinary.com/dd1na5drh/image/upload/v1735101840/Main_Slider_6_exbbwu.png" alt="Slider Item3 Image" width={530} height={350}/>
                   </div>
                 </div>
                 </SwiperSlide>
+
+                <SwiperSlide>
+                <div className="swiper-flex-wrap">
+                  <div className="left">
+                      {/*<span className="sub-title">Building High Trust </span>*/}
+                      <h2 className="h1" style={{ textAlign: 'center' }}>Precision Gearboxes for Superior Performance</h2>
+                      <p>Precision Planetary and Cycloidal Gearboxes for superior performance, durability, and efficiency in industrial applications.</p>
+                      <div className="btn-wrapper m-t-20">
+                       
+                      <a href="/products"  target="_blank" className="white-btn" title="View Products">
+                        View Products
+                        </a>
+                      </div>
+                  </div>
+                  <div className="right">
+                    <Image src="https://res.cloudinary.com/dd1na5drh/image/upload/v1735101838/Main_slider_8_cqexkn.png" alt="Slider Item3 Image" width={530} height={350}/>
+                  </div>
+                </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                <div className="swiper-flex-wrap">
+                  <div className="left">
+                      {/*<span className="sub-title">Building High Trust </span>*/}
+                      <h2 className="h1" style={{ textAlign: 'center' }}>High-Quality Laser Components for CO₂ and Fiber Lasers</h2>
+                      <p>Upgrade your laser systems with our premium components for CO₂ and fiber lasers, built for maximum performance, durability, and efficiency.</p>
+                      <div className="btn-wrapper m-t-20">
+                       
+                      <a href="/products"  target="_blank" className="white-btn" title="View Products">
+                        View Products
+                        </a>
+                      </div>
+                  </div>
+                  <div className="right">
+                    <Image src="https://res.cloudinary.com/dd1na5drh/image/upload/v1735101838/Main_Slider_10_wucoqu.png" alt="Slider Item3 Image" width={530} height={350}/>
+                  </div>
+                </div>
+                </SwiperSlide>
+
               </Swiper>
             </div>
           </div>

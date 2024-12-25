@@ -189,7 +189,7 @@ export default function Products() {
                                 }}></span>
                                 <a
                                     href="#"
-                                    style={{
+                                    style={{ 
                                         color: '#006098',
                                         textDecoration: 'none',
                                         cursor: 'pointer',
