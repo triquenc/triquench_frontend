@@ -15,7 +15,7 @@ export default function Contactus() {
         className="contact-banner"
         buttonText="Reach Out"
         buttonUrl="tel:+919601111615" // Replace with your phone number
-        />
+      />
         <section className="contact-form-block">
           <div className="container">
             <div className="contact-form-inner">
