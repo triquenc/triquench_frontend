@@ -14,8 +14,8 @@ export default function Contactus() {
         bannerImage="https://res.cloudinary.com/dd1na5drh/image/upload/v1734679455/IMG_2980_pdvjfa.png"
         className="contact-banner"
         buttonText="Reach Out"
-        buttonUrl="/contact-form"
-      />
+        buttonUrl="tel:+919601111615" // Replace with your phone number
+        />
         <section className="contact-form-block">
           <div className="container">
             <div className="contact-form-inner">
