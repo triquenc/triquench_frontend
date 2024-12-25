@@ -171,25 +171,10 @@
       "slug": "laser-parts",
       "subcategories": [
         {
-          "name": "Laser Head"
+          "name": "Fiber Laser"
         },
         {
-          "name": "Source"
-        },
-        {
-          "name": "Controller"
-        },
-        {
-          "name": "CO2 Tube"
-        },
-        {
-          "name": "Fiber Laser Controller"
-        },
-        {
-          "name": "CO2 Blower"
-        },
-        {
-          "name": "Motion Systems"
+          "name": "CO2"
         }
       ]
     },
