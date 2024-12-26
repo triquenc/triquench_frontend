@@ -384,7 +384,6 @@ export default function ProductDetail({ params }) {
           max-width: 400px;
           text-align: center;
         }
-
         .close-btn {
           position: absolute;
           top: 16px;
