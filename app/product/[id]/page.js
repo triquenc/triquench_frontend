@@ -33,6 +33,7 @@ export default function ProductDetail({ params }) {
   const [headerHeight, setHeaderHeight] = useState(0);
   const [phoneNumber, setPhoneNumber] = useState('');
   const [otp, setOtp] = useState('');
+  const [showThankYouPopup, setShowThankYouPopup] = useState(false); // Added state for thank you popup
   // const router = useRouter();
 
   // Fetch product data on component mount
@@ -67,10 +68,9 @@ export default function ProductDetail({ params }) {
   };
 
   const getQuoteModal = async () => {
-    const token = Cookies.get('token'); // Get the token from cookies
+    const token = Cookies.get('token');
 
     if (token) {
-      // If token exists, call add-product-name API
       try {
         const response = await fetch('https://d1w2b5et10ojep.cloudfront.net/api/getAquote/add-product-name', {
           method: 'POST',
@@ -83,16 +83,16 @@ export default function ProductDetail({ params }) {
 
         const data = await response.json();
         if (response.ok) {
-          toast.success(data.message); // Show success notification
+          setShowThankYouPopup(true);
+          setTimeout(() => setShowThankYouPopup(false), 5000); // Increased to 5 seconds for longer visibility
         } else {
-          toast.error(data.message || 'Failed to add product name'); // Show error notification
+          toast.error(data.message || 'Failed to add product name');
         }
       } catch (error) {
         console.error('Error adding product name:', error);
-        toast.error('Failed to add product name'); // Show error notification
+        toast.error('Failed to add product name');
       }
     } else {
-      // If no token, open the modal to send OTP
       setIsOpen(true);
     }
   };
@@ -134,18 +134,16 @@ export default function ProductDetail({ params }) {
       });
       
       const data = await response.json();
-      console.log("Verify OTP response data:", data); // Log the response
+      console.log("Verify OTP response data:", data);
 
         if (response.ok) {
-            // Ensure that the token is present in the response
             if (data.token) {
-                // Store JWT token in cookies instead of localStorage
-                Cookies.set('token', data.token); // Token will expire in 7 days
+                Cookies.set('token', data.token);
                 toast.success(data.message);
                 closeModal();
-
-                // Proceed with adding the product name
                 await addProductName(data.token, product?.title);
+                setShowThankYouPopup(true); // Show the thank you popup
+                setTimeout(() => setShowThankYouPopup(false), 3000); // Hide the popup after 3 seconds
             } else {
                 toast.error('Token not found in response');
             }
@@ -343,6 +341,86 @@ export default function ProductDetail({ params }) {
 
       <RequestQuote />
 
+      {showThankYouPopup && (
+        <div className="modal-overlay">
+          <div className="thank-you-popup">
+            <button onClick={() => setShowThankYouPopup(false)} className="close-btn">
+              <Image src="/images/cross.svg" height={25} width={25} alt="Close" />
+            </button>
+            <div className="popup-content">
+              <div className="check-icon">
+                <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="32" cy="32" r="32" fill="#4CAF50"/>
+                  <path d="M20 32L28 40L44 24" stroke="white" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+              <h2>Thank you for reaching out!</h2>
+              <p>Your quote request has been received. Our team will analyze your requirements and get back to you shortly.</p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <style jsx>{`
+        .modal-overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: rgba(0, 0, 0, 0.5);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 1000;
+        }
+
+        .thank-you-popup {
+          background: white;
+          padding: 40px;
+          border-radius: 12px;
+          position: relative;
+          width: 90%;
+          max-width: 400px;
+          text-align: center;
+        }
+        .close-btn {
+          position: absolute;
+          top: 16px;
+          right: 16px;
+          background: none;
+          border: none;
+          cursor: pointer;
+        }
+
+        .popup-content {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 16px;
+        }
+
+        .check-icon {
+          width: 64px;
+          height: 64px;
+          margin-bottom: 8px;
+        }
+
+        .thank-you-popup h2 {
+          font-size: 24px;
+          font-weight: 600;
+          color: #333;
+          margin: 0 0 16px 0;
+        }
+
+        .thank-you-popup p {
+          font-size: 16px;
+          color: #666;
+          margin: 0;
+          line-height: 1.5;
+        }
+      `}</style>
     </div>
   );
 }
+

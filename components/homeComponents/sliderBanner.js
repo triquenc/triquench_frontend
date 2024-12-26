@@ -39,15 +39,18 @@ export default function SliderBanner() {
             </div>
 
             <div className="slider-wrapper">
-              <Swiper
-                modules={[Navigation ]} // Include modules here
-                spaceBetween={0} // Adjust the spacing between slides
-                slidesPerView={1} // Number of slides visible at the same time
-                navigation // Enable navigation arrows
-                effect="fade"
-                autoplay={{ delay: 6000 }} // Enable autoplay with delay
-                fadeEffect={{ crossFade: true }}
-              >
+            <Swiper
+              modules={[Navigation, Autoplay]} // Include the Autoplay module
+              spaceBetween={0} // Adjust the spacing between slides
+              slidesPerView={1} // Number of slides visible at the same time
+              navigation // Enable navigation arrows
+              effect="fade"
+              autoplay={{
+                delay: 10000, // Set auto-slide interval to 10 seconds
+                disableOnInteraction: false, // Ensure autoplay continues after interaction
+              }}
+              fadeEffect={{ crossFade: true }}
+            >
                  <SwiperSlide>
                   <div className="swiper-flex-wrap">
                     <div className="left">

@@ -418,6 +418,16 @@ const Header = forwardRef((props, ref) => {
                 <li style={{
                   borderBottom: '1px solid #eee'
                 }}>
+                  <a href="/contact" style={{
+                    display: 'block',
+                    padding: '15px 20px',
+                    color: '#333',
+                    textDecoration: 'none'
+                  }}>Contact</a>
+                </li>
+                <li style={{
+                  borderBottom: '1px solid #eee'
+                }}>
                    <a href="tel:+919601111615" className="border-btn">
                 Call Now{" "}
               </a>
@@ -429,6 +439,6 @@ const Header = forwardRef((props, ref) => {
       </header>
     );
   });
-
+ 
   export default Header;
 
