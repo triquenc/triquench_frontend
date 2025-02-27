@@ -1,0 +1,218 @@
+{
+  "categories": [
+    {
+      "name": "CNC Spindle Motor",
+      "slug": "cnc-spindle-motor",
+      "subcategories": [
+        {
+          "name": "CNC ATC Spindle",
+          "subcategories": [
+            "Air Cooled",
+            "Water Cooled"
+          ]
+        },
+        {
+          "name": "CNC MTC Spindle",
+          "subcategories": [
+            "Air Cooled",
+            "Water Cooled"
+          ]
+        },
+        {
+          "name": "Belt Driven Spindle",
+          "subcategories":[
+            "Lathe Spindle",
+            "Milling Spindle"
+          ]
+        },
+        {
+          "name": "EDGE Banding Spindle"
+        }
+      ]
+    },
+    {
+      "name": "Spindle Servo Motor",
+      "slug": "spindle-servo-motor",
+      "subcategories": [
+        {
+          "name": "Axis Servo Motor",
+          "subcategories": [
+            {
+              "name": "Subcategory 5",
+              "subcategories": ["Sub-subcategory 5", "Sub-subcategory 6"]
+            }
+          ]
+        },
+        {
+          "name": "Spindle Servo"
+        },
+        {
+          "name": "Drive"
+        }
+      ]
+    },
+    {
+      "name": "AC Servo Motor",
+      "slug": "ac-servo-motor",
+      "subcategories": [
+        {
+          "name": "Stepper Motor"
+        },
+        {
+          "name": "Easy Servo Motor"
+        },
+        {
+          "name": "Servo Motor"
+        }
+      ]
+    },
+    {
+      "name": "CNC Router Accessories",
+      "slug": "cnc-router-accessories",
+      "subcategories": [
+        {
+          "name": "LM Guideways"
+        },
+        {
+          "name": "Ball Screw"
+        },
+        {
+          "name": "Rack & Pnion"
+        },
+        {
+          "name": "Chiller"
+        },
+        {
+          "name": "VFD"
+        },
+        {
+          "name": "Controller"
+        },
+        {
+          "name": "Hydro Pneumatic Cylinder"
+        },
+        {
+          "name": "Cable"
+        },    
+        {
+          "name": "Drag Chain"
+        },
+        {
+          "name": "Axis Cupling"
+        },
+        {
+          "name": "BK - BF Nut Housing"
+        }
+      ]
+    },
+    {
+      "name": "Spindle Bearing",
+      "slug": "spindle-bearing",
+      "subcategories": [
+        {
+          "name": "Angular Contact Steel Ball Bearing"
+        },
+        {
+          "name": "Angular Contact Ceramic Ball Bearing"
+        }
+      ]
+    },
+    {
+      "name": "Gearbox",
+      "slug": "gearbox",
+      "subcategories": [
+        {
+          "name": "Planetary Gearbox"
+        },
+        {
+          "name": "Cycloidal Gearbox"
+        }
+      ]
+    },
+    {
+      "name": "Spindle Accessories",
+      "slug": "spindle-accessories",
+      "subcategories": [
+        {
+          "name": "ER Collet"
+        },
+        {
+          "name": "ER Nut"
+        },
+        {
+          "name": "VFD Drive"
+        },
+        {
+          "name": "Toolholder"
+        },
+        {
+          "name": "Spindle Bearing"
+        },
+        {
+          "name": "Gripper"
+        },
+        {
+          "name": "Fork"
+        },
+        {
+          "name": "Connector"
+        }, 
+        {
+          "name": "Clamp"
+        },
+        {
+          "name": "Engraving Tools"
+        }
+
+      ]
+    },
+    {
+      "name": "Laser Parts",
+      "slug": "laser-parts",
+      "subcategories": [
+        {
+          "name": "Fiber Laser"
+        },
+        {
+          "name": "CO2"
+        }
+      ]
+    },
+    {
+      "name": "Controller",
+      "slug": "controller",
+      "subcategories": [
+        {
+          "name": "NK 105 G2 & G3"
+        },
+        {
+          "name": "Rich Auto"
+        }
+      ]
+    },
+    {
+      "name": "Chiller",
+      "slug": "chiller",
+      "subcategories": [
+        {
+          "name": "Oil Cooled"
+        },
+        {
+          "name": "Water Cooled"
+        }
+      ]
+    },
+    {
+      "name": "Engraving Tools",
+      "slug": "engraving-tools",
+      "subcategories": [
+        {
+          "name": "CNC Stone Carving Tools"
+        },
+        {
+          "name": "CNC Wood Carving Tools"
+        }
+      ]
+    }
+  ]
+} 

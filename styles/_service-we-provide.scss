@@ -1,6 +1,6 @@
 .service-we-provide {
     background-color: $lightblue;   
-    padding: 10rem 0;
+    padding: 5rem 0;
     margin-bottom: -5rem;
     position: relative;
     @include bp("xl-max") {
@@ -139,7 +139,7 @@
                     top: -3.7rem;
                 }
                 a {
-                    padding: 1.2rem 3rem;
+                    padding: 1.0rem 2rem;
                     border-radius: 1.6rem;
                     background-color: $primaryColor;
                     min-width: 29rem;

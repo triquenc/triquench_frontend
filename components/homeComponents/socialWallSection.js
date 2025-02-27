@@ -9,13 +9,19 @@ export default function SocialWallSection() {
           <div className="title-block">
             <h2 className="has-green-bar">SOCIAL WALL</h2>
           </div>
-          <div className="social-grid">
+            <div className="social-grid">
             <div className="social-grid-item">
+            <a 
+              href="https://www.instagram.com/triquench_spindlemotor/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="social-grid-inner">
               <div className="social-grid-inner">
                 <div className="img-wrapper">
                   <picture className='bg-img'> 
-                    <source srcSet="/images/social-post1.webp" type="image/webp"/>
-                    <Image src="/images/social-post1.jpg" height={190} width={340} alt="Post" className='bg-img'/>
+                    <Image src="https://res.cloudinary.com/dd1na5drh/image/upload/v1734436537/SOCIAL_WALL_plain_3_tmla8a.png" height={200} width={340} alt="Post" className='bg-img'/>
+                    <source srcSet="https://res.cloudinary.com/dd1na5drh/image/upload/v1734436537/SOCIAL_WALL_plain_3_tmla8a.png" type="image/webp"/>
+                    <Image src="https://res.cloudinary.com/dd1na5drh/image/upload/v1734436537/SOCIAL_WALL_plain_3_tmla8a.png" height={200} width={340} alt="Post" className='bg-img'/>
                   </picture>
                 </div>
                <div className="bottom-outer">
@@ -24,13 +30,12 @@ export default function SocialWallSection() {
                     <Image src="/images/facebook-blue.svg" height={20} width={20} alt="facebook"/>
                     </em>
                     <p>
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry.
-                    </p>
-                    <p className="company-name">Triquench</p>
-                    <span className="date">Triquench_ Sept 12</span>
+                    Maximize Productivity and Precision with TriQuench's Automatic Tool Changer (ATC) Spindle for Your CNC Machine!
+                   </p>
+                    <p className="company-name">TriQuench INDIA Pvt. Ltd.</p>
+                 {/*  <span className="date">Triquench_ Sept 12</span>*/}
                   </div>
-                  <div className="action-row">
+                  {/*  <div className="action-row">
                     <div className="left">
                       <ul>
                         <li>
@@ -56,15 +61,23 @@ export default function SocialWallSection() {
                         </em>
                     </div>
                   </div>
+                   */}
                </div>
+                 
               </div>
+              </a>
             </div>
             <div className="social-grid-item">
+            <a 
+              href="https://www.instagram.com/triquench_spindlemotor/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="social-grid-inner">
               <div className="social-grid-inner">
                 <div className="img-wrapper">
                   <picture className='bg-img'> 
-                    <source srcSet="/images/social-post2.webp" type="image/webp"/>
-                    <Image src="/images/social-post2.jpg" height={190} width={340} alt="Post" className='bg-img'/>
+                    <source srcSet="https://res.cloudinary.com/dd1na5drh/image/upload/v1734436498/SOCIAL_WALL_plain_2_wdlll4.png" type="image/webp"/>
+                    <Image src="https://res.cloudinary.com/dd1na5drh/image/upload/v1734436498/SOCIAL_WALL_plain_2_wdlll4.png" height={190} width={340} alt="Post" className='bg-img'/>
                   </picture>
                 </div>
                <div className="bottom-outer">
@@ -73,13 +86,12 @@ export default function SocialWallSection() {
                     <Image src="/images/insta-blue.svg" height={20} width={20} alt="Instagram Icon"/>
                   </em>
                   <p>
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry.
+                  Unlock superior machining with our BT40 Motorized Spindle—perfect for CNC Milling, Automotive, and Aerospace industries!
                   </p>
-                  <p className="company-name">Triquench</p>
-                  <span className="date">Triquench_ Sept 12</span>
+                  <p className="company-name">TriQuench INDIA Pvt. Ltd.</p>
+                 {/* <span className="date">Triquench_ Sept 12</span>*/}
                 </div>
-                <div className="action-row">
+                {/*<div className="action-row">
                   <div className="left">
                   <ul>
                         <li>
@@ -105,15 +117,22 @@ export default function SocialWallSection() {
                       </em>
                   </div>
                 </div>
+                */}
                </div>
               </div>
+              </a>
             </div>
             <div className="social-grid-item">
+                <a 
+              href="https://www.instagram.com/triquench_spindlemotor/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="social-grid-inner">
               <div className="social-grid-inner">
                 <div className="img-wrapper">
                   <picture className='bg-img'> 
-                    <source srcSet="/images/social-post3.webp" type="image/webp" />
-                    <Image src="/images/social-post3.jpg" height={190} width={340} alt="Post" className='bg-img'/>
+                    <source srcSet="https://res.cloudinary.com/dd1na5drh/image/upload/v1734436466/SOCIAL_WALL_plain_1_pnqtwq.png" type="image/webp" />
+                    <Image src="https://res.cloudinary.com/dd1na5drh/image/upload/v1734436466/SOCIAL_WALL_plain_1_pnqtwq.png" height={190} width={340} alt="Post" className='bg-img'/>
                   </picture>
                 </div>
                <div className="bottom-outer">
@@ -122,13 +141,13 @@ export default function SocialWallSection() {
                       <Image src="/images/insta-blue.svg" height={20} width={20} alt="Instagram Icon"/>
                     </em>
                     <p>
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry.
+                    TriQuench India offers premium-quality LM Guideways (Linear Motion Rail & Block) for precise and smooth movement in your CNC machines
+
                     </p>
-                    <p className="company-name">Triquench</p>
-                    <span className="date">Triquench_ Sept 12</span>
+                    <p className="company-name">TriQuench INDIA Pvt. Ltd.</p>
+                     {/* <span className="date">Triquench_ Sept 12</span> */}
                   </div>
-                  <div className="action-row">
+                 {/* <div className="action-row">
                     <div className="left">
                       <ul>
                           <li>
@@ -154,8 +173,10 @@ export default function SocialWallSection() {
                         </em>
                     </div>
                   </div>
+                 */}
                </div>
               </div>
+              </a>
             </div>
           </div>
         </div>
