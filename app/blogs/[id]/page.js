@@ -24,11 +24,12 @@ export default function BlogDetail({ params }) {
   }, [id]);
 
   const popularPosts = [
-    { id: 1, title: "Exploring AI in Web Development" },
-    { id: 2, title: "Top JavaScript Frameworks in 2024" },
-    { id: 3, title: "How to Build Scalable Web Applications" },
-    { id: 4, title: "The Future of Progressive Web Apps" },
-    { id: 5, title: "The Future of Progressive Web Apps" },
+    { id: 1, title: "CNC Spindle Motor" },
+    { id: 2, title: "CNC Router Accessories" },
+    { id: 3, title: "Spindle Bearing" },
+    { id: 4, title: "Fiber Laser Machine Parts" },
+    { id: 5, title: "Engraving Tools" },
+
   ];
 
   if (!blog) return <p>Loading...</p>;
