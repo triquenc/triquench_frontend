@@ -40,7 +40,7 @@ export default function Events() {
           id: eventId,
         }),
       });
-
+      
       if (!response.ok) {
         throw new Error('Failed to like the event');
       }
