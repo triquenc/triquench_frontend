@@ -213,7 +213,7 @@ export default function BlogDetail({ params }) {
             marginBottom: "24px",
           }}
         >
-          Popular Posts
+          Popular Blog
         </h2>
         <ul style={{ listStyleType: "none", paddingLeft: "0" }}>
           {popularPosts.map((post) => (

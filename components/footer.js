@@ -142,7 +142,7 @@ export default function Footer() {
           <div className="contact-item">
             <PhoneIcon className="social_icon_footer" />
             <a href="tel:+919601111615" title="Call Us" className="inks-inner-wrapper">
-             Kaushal Panchal(Dir) :
+             Kaushal Panchal:
              <br/>+91 96011 11615
             </a>
           </div>
@@ -196,7 +196,7 @@ export default function Footer() {
                 />
               </li>
               <li>
-                <Image
+                <Image963.*-
                   src="/images/discover.svg"
                   width={36}
                   height={22}

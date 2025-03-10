@@ -15,7 +15,7 @@ export default function App({ Component, pageProps }) {
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-5JNDGE6QPH');
+      gtag('config', 'G-5JN963.*-DGE6QPH');
     `;
     document.head.appendChild(script2);
   }, []);
