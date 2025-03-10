@@ -11,7 +11,7 @@ export default function RequestQuote() {
                     <div className="request-quote-inner">
                         <div className="request-quote-left">
                             <h2>Request Quote</h2>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy. </p>
+                            <p>Share your requirements, and we’ll provide a tailored quote. Explore our premium CNC spindles, VFDs, tool holders, and more for unmatched performance.</p>
                             <a href="https://www.spindlemotor.in/contact" className="site-btn">SUBMIT ENQUIRY</a>
                         </div>
                         <div className="request-quote-right">

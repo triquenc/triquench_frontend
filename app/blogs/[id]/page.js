@@ -12,8 +12,7 @@ export default function BlogDetail({ params }) {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        // Use the correct URL for fetching the blog
-        const response = await fetch(`https://d1w2b5et100jep.cloudfront.net/api/blogs/${id}`);
+        const response = await fetch(`https://d1w2b5et10ojep.cloudfront.net/api/blog/getBlogById/${id}`);
         const data = await response.json();
         setBlog(data);
       } catch (error) {
@@ -30,6 +29,7 @@ export default function BlogDetail({ params }) {
     { id: 3, title: "Spindle Bearing" },
     { id: 4, title: "Fiber Laser Machine Parts" },
     { id: 5, title: "Engraving Tools" },
+
   ];
 
   if (!blog) return <p>Loading...</p>;
@@ -55,15 +55,16 @@ export default function BlogDetail({ params }) {
           overflow: "hidden",
         }}
       >
+        {/* Blog Image */}
         <div style={{ position: "relative" }}>
           <img
             src={blog.image?.url || "https://via.placeholder.com/800x400"}
             alt={blog.image?.alt_text || "Blog Image"}
             style={{
               width: "100%",
-              height: "auto",
-              maxHeight: "600px",
-              objectFit: "contain",
+              height: "auto", // Changed from fixed 400px to auto
+              maxHeight: "600px", // Added max height
+              objectFit: "contain", // Changed from cover to contain
               transition: "transform 0.3s ease",
             }}
             onMouseOver={(e) => (e.target.style.transform = "scale(1.05)")}
@@ -71,13 +72,14 @@ export default function BlogDetail({ params }) {
           />
           <div
             style={{
-              position: "absolute",
+              position: "absolute", 
               top: "20px",
               left: "20px",
               display: "flex",
               gap: "10px",
             }}
           >
+            {/* Dynamic Category */}
             <span
               style={{
                 padding: "4px 10px",
@@ -96,6 +98,7 @@ export default function BlogDetail({ params }) {
           </div>
         </div>
 
+        {/* Blog Content */}
         <div style={{ padding: "32px" }}>
           <h1
             style={{
@@ -144,6 +147,7 @@ export default function BlogDetail({ params }) {
           >
             <p>{blog.description}</p>
 
+            {/* Render Sections Dynamically */}
             {blog.sections?.map((section, index) => (
               <div key={index}>
                 <h3
@@ -164,6 +168,7 @@ export default function BlogDetail({ params }) {
             ))}
           </div>
 
+          {/* Tags Section */}
           <div style={{ marginTop: "40px" }}>
             <h4
               style={{
@@ -199,10 +204,13 @@ export default function BlogDetail({ params }) {
       {/* Right Section: Popular Posts */}
       <div
         style={{
-          flex: "0 0 30%",
+          flex: "0 0 30%", // Default width for desktop
           boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
           borderRadius: "12px",
+          
           padding: "24px",
+          height: "39rem"
+          // minHeight: "auto", // Dynamically adjust the height to content
         }}
       >
         <h2
@@ -215,6 +223,7 @@ export default function BlogDetail({ params }) {
         >
           Popular Blog
         </h2>
+        {/* Popular Posts List */}
         <ul style={{ listStyleType: "none", paddingLeft: "0" }}>
           {popularPosts.map((post) => (
             <li
@@ -243,6 +252,23 @@ export default function BlogDetail({ params }) {
           ))}
         </ul>
       </div>
+
+      {/* Media Queries for Mobile Responsiveness */}
+      <style jsx>{`
+        @media (max-width: 768px) {
+          div {
+            flex-direction: column !important; /* Stack blog content and popular posts vertically on mobile */
+            gap: 20px;
+          }
+          .blog-content {
+            width: 100% !important;
+          }
+          .popular-posts {
+            width: 100%;
+            margin-top: 20px;
+          }
+        }
+      `}</style>
     </div>
   );
 }
