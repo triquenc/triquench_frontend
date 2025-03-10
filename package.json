@@ -16,6 +16,7 @@
     "next": "^14.2.24",
     "preact": "^10.25.3",
     "query-string": "^9.1.1",
+
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-gtm-module": "^2.0.11",

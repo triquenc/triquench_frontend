@@ -196,7 +196,7 @@ export default function Footer() {
                 />
               </li>
               <li>
-                <Image
+                <Image963.*-
                   src="/images/discover.svg"
                   width={36}
                   height={22}
