@@ -1,4 +1,6 @@
 import Image from "next/image";
+import BackToTop from './commonComponents/BackToTop';
+import { EnvelopeIcon, PhoneIcon, MapPinIcon } from "@heroicons/react/24/outline"; // Import icons
 
 export default function Footer() {
   return (
@@ -27,29 +29,30 @@ export default function Footer() {
               <span className="title">Follow Us</span>
               <ul className="d-flex">
                 <li>
-                  <a href="" title="facebook">
+                  <a href="https://www.facebook.com/spindlemotorTQI" title="facebook">
                     <Image
-                      src="/images/facebook.svg"
-                      width={14}
-                      height={14}
+                      src="/favicon/Facebook_square_icon.svg"
+                      width={15}
+                      height={11}
                       alt="Facebook Icon"
                     />
                   </a>
                 </li>
                 <li>
-                  <a href="" title="Instagram">
+                  <a href="https://www.instagram.com/triquench_spindlemotor/" title="Instagram">
                     <Image
-                      src="/images/insta.svg"
-                      width={14}
-                      height={14}
+                      src="/favicon/icons8-instagram.svg"
+                      width={30}
+                      height={30}
                       alt="Instagram Icon"
                     />
+
                   </a>
                 </li>
                 <li>
-                  <a href="" title="Youtube">
+                  <a href="https://www.youtube.com/channel/UCnlvf2-Ml9cgDiAXeEncYkA" title="Youtube">
                     <Image
-                      src="/images/youtube.svg"
+                      src="/favicon/icons8-linkedin.svg"
                       width={15}
                       height={11}
                       alt="youtube Icon"
@@ -57,12 +60,22 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a href="" title="X">
+                  <a href="https://x.com/triquenchindia" title="X">
                     <Image
                       width={12}
                       height={12}
-                      src="/images/x-logo.svg"
+                      src="/favicon/icons8-twitterx.svg"
                       alt="X Icon"
+                    />
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.linkedin.com/company/triquenchindia/" title="Linkedin">
+                    <Image
+                      width={20}
+                      height={20}
+                      src="/favicon/icons8-youtube.svg"
+                      alt="Linkedin icon"
                     />
                   </a>
                 </li>
@@ -75,52 +88,23 @@ export default function Footer() {
                 <span className="footer-title">Categories</span>
                 <ul>
                   <li>
-                    <a href="/products" title="Spindle Motor ATC">
+                    <a href="/products?category=cnc-spindle-motor" title="Spindle Motor ATC">
                       Spindle Motor ATC
                     </a>
                   </li>
                   <li>
-                  <a href="/products" title="Spindle Motor MTC">
+                    <a href="/products?category=cnc-spindle-motor" title="Spindle Motor MTC">
                       Spindle Motor MTC
                     </a>
                   </li>
                   <li>
-                    <a href="/products" title="VFD">
+                    <a href="/products?category=cnc-spindle-motor" title="VFD">
                       VFD
                     </a>
                   </li>
                   <li>
-                    <a href="/products" title="Spindle Bearing">
+                    <a href="/products?category=cnc-spindle-motor" title="Spindle Bearing">
                       Spindle Bearing
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div className="links-inner-wrapper">
-                <span className="footer-title">Quick links</span>
-                <ul>
-                  <li>
-                    <a href="/" title="Home">
-                      Home
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/products" title="Categories">
-                      Categories
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/contact" title="Contact">
-                      Contact
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      title="Products"
-                      href="https://shop.triquenchindia.com"
-                      target="_blank"
-                    >
-                      Our Store
                     </a>
                   </li>
                 </ul>
@@ -129,44 +113,55 @@ export default function Footer() {
                 <span className="footer-title">Policy</span>
                 <ul>
                   <li>
-                    <a href="" title="Privacy policy">
+                    <a href="/PrivacyPolicy" title="Privacy policy">
                       Privacy policy
                     </a>
                   </li>
                   <li>
-                    <a href="" title="Refund policy">
+                    <a href="/Return" title="Refund policy">
                       Refund policy
                     </a>
                   </li>
                   <li>
-                    <a href="" title="Terms of service">
+                    <a href="/terms" title="Terms of service">
                       Terms of service
-                    </a>
-                  </li>
-                  <li>
-                    <a href="" title="Contact information">
-                      Contact information
                     </a>
                   </li>
                 </ul>
               </div>
             </div>
           </div>
-          <div className="footer-contact-wrapper">
-            <span className="contact-title">Contact Us</span>
-            <a href="mailto:support@triquench.com" title="Mail Us">
-              support@triquench.com
-            </a>
-            <a href="tel:+91898783678" title="Call Us">
-              +91 89878 3678
+          <div className="links-inner-wrapper">
+          <span className="footer-title"><b>Contact</b></span>
+          <div className="contact-item">
+            <EnvelopeIcon className="social_icon_footer" />
+            <a href="mailto:support@triquench.com" title="Mail Us" className="inks-inner-wrapper">
+              info@triquenchindia.com
             </a>
           </div>
+          <div className="contact-item">
+            <PhoneIcon className="social_icon_footer" />
+            <a href="tel:+919601111615" title="Call Us" className="inks-inner-wrapper">
+             Kaushal Panchal :
+             <br/>+91 96011 11615
+            </a>
+          </div>
+          {/*<div className="contact-item">
+          <MapPinIcon  className="social_icon_footer" />
+          <p className="links-inner-wrapper">
+            D-01, Sumel Business Park - 7,
+            <br/>N.H.-08, Road,
+            nr. Soni Ni Chawl <br/> Road, Rakhial, Ahmedabad,<br/> Gujarat 380023
+            </p>
+            </div>*/}
         </div>
-        <div className="footer-bottom d-flex align-center justify-sb">
+
+        </div>
+        <div className="footer-bottom d-flex align-center justify-center">
           <div className="left">
             © <span className="year">2024</span>, Triquench India PVT. LTD.
           </div>
-          <div className="right">
+          {/* <div className="right">
             <ul className="d-flex align-center">
               <li>
                 <Image
@@ -201,7 +196,7 @@ export default function Footer() {
                 />
               </li>
               <li>
-                <Image
+                <Image963.*-
                   src="/images/discover.svg"
                   width={36}
                   height={22}
@@ -217,9 +212,10 @@ export default function Footer() {
                 />
               </li>
             </ul>
-          </div>
+          </div> */}
         </div>
       </div>
+      <BackToTop />
     </footer>
   );
 }

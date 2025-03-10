@@ -1,47 +1,45 @@
 import React, { forwardRef, useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 
 const HomeProductList = forwardRef((props, ref) => {
   const [categoryOpen, setMenuOpen] = useState(false);
-  const [activeCategory, setActiveCategory] = useState("CNC Spindle Motor"); // Default active category
+  const [activeCategory, setActiveCategory] = useState("CNC Spindle Motor");
   const [products, setProducts] = useState([]);
+  const [currentCategoryIndex, setCurrentCategoryIndex] = useState(0);
   const listBarRef = useRef(null);
   const categoryTitleRef = useRef(null);
 
-  // Category list
   const categories = [
-    'CNC Spindle Motor',
-    'Spindle Servo Motor',
-    'AC Servo Motor',
-    'CNC Router Accessories',
-    'Spindle Bearing',
-    'Gearbox',
-    'Spindle Accessories',
-    'Laser Parts',
-    'Controller',
-    'Chiller',
-    'Engraving Tools'
+    "CNC Spindle Motor",
+    "Spindle Servo Motor",
+    "AC Servo Motor",
+    "CNC Router Accessories",
+    "Spindle Bearing",
+    "Gearbox",
+    "Spindle Accessories",
+    "Laser Parts",
+    "Controller",
+    "Chiller",
+    "Engraving Tools",
   ];
 
-  // Fetch products based on active category
   const fetchProducts = async (category) => {
     try {
       const response = await fetch(
-        `http://triquench.ap-south-1.elasticbeanstalk.com/api/product/all?category=${encodeURIComponent(category)}&trending=true`
+        `https://triquench-backend.vercel.app/api/product/all?category=${encodeURIComponent(category)}&trending=true`
       );
       const data = await response.json();
-      setProducts(data); // Update the products state with the fetched data
+      setProducts(data);
     } catch (error) {
       console.error("Error fetching products:", error);
     }
   };
 
-  // Fetch products when activeCategory changes
   useEffect(() => {
     fetchProducts(activeCategory);
   }, [activeCategory]);
 
-  // Toggle the open-category class on body
   useEffect(() => {
     if (categoryOpen) {
       document.body.classList.add("open-category");
@@ -56,7 +54,7 @@ const HomeProductList = forwardRef((props, ref) => {
         categoryTitleRef.current &&
         !categoryTitleRef.current.contains(event.target)
       ) {
-        setMenuOpen(false); // Close the menu
+        setMenuOpen(false);
       }
     };
 
@@ -73,65 +71,169 @@ const HomeProductList = forwardRef((props, ref) => {
   };
 
   const handleCategoryClick = (category) => {
-    event.preventDefault()
     setActiveCategory(category);
-    setMenuOpen(false); // Close the menu on category click
+    setMenuOpen(false);
   };
 
-  const handleSeeDetailsClick = (id) => {
-    // Programmatically navigate to the product detail page
-    router.push(`/product/${id}`);
-};
+  const handleNextCategory = () => {
+    if (currentCategoryIndex + 4 < categories.length) {
+      setCurrentCategoryIndex((prev) => prev + 4);
+    }
+  };
+
+  const handlePreviousCategory = () => {
+    if (currentCategoryIndex > 0) {
+      setCurrentCategoryIndex((prev) => prev - 4);
+    }
+  };
+
+  // Get visible categories
+  const visibleCategories = categories.slice(
+    currentCategoryIndex,
+    currentCategoryIndex + 4
+  );
 
   return (
     <>
       <section className="home-product-list">
-        <div className="container">
+        <div className="container" style={{ position: 'relative' }}>
           <div className="title-block">
-            <span className="sub-title">We have the best quality products</span>
-            <h2 className="has-green-bar">OUR PRODUCTS</h2>
-          </div>
-          <div className="category-wrapper">
+            {/* <span className="sub-title">We have the best quality products</span> */}
+            <h2 
+  className="has-green-bar" 
+  style={{ fontFamily: 'sans-serif', textTransform: 'capitalize' }}
+>
+  We have the best quality products
+</h2>
+           </div>
+          <div
+            style={{
+              position: "relative",
+              marginBottom: "30px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "20px",
+            }}
+          >
+            <button
+              onClick={handlePreviousCategory}
+              disabled={currentCategoryIndex === 0}
+              style={{
+                backgroundColor: currentCategoryIndex === 0 ? "#ccc" : "#006098",
+                color: "#fff",
+                border: "none",
+                borderRadius: "50%",
+                width: "40px",
+                height: "40px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                cursor: currentCategoryIndex === 0 ? "not-allowed" : "pointer",
+                boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+                position: "absolute",  // Updated position
+                left: "10px",  // Align to the left of the container
+                zIndex: 2,
+                transition: "all 0.3s ease",
+              }}
+            >
+              <FaArrowLeft style={{ fontSize: "18px" }} />
+            </button>
+
             <div
-              className="catogary-title"
-              onClick={toggleCategory}
-              ref={categoryTitleRef}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "15px",
+                padding: "20px",
+                overflowX: "hidden",
+                whiteSpace: "nowrap",
+                cursor: "grab",
+                WebkitOverflowScrolling: "touch",
+                transition: "transform 0.5s ease-out",
+                maxWidth: "calc(100% - 100px)",
+              }}
             >
-              <h3>{activeCategory}</h3>
-              <em>
-                <Image src="/images/slider-arrow.svg" alt="arrow" width={15} height={10} />
-              </em>
-            </div>
-            <ul
-              className={`list-bar ${categoryOpen ? "open" : ""}`}
-              ref={listBarRef}
-            >
-              {categories.map((category, i) => (
-                <li key={i} className={activeCategory === category ? "active" : ""}>
-                  <a
-                    href="#"
-                    title={category}
-                    onClick={() => handleCategoryClick(category)}
-                  >
-                    {category}
-                  </a>
-                </li>
+              {visibleCategories.map((category, i) => (
+                <button
+                  key={i}
+                  onClick={() => handleCategoryClick(category)}
+                  style={{
+                    padding: "10px 25px",
+                    backgroundColor:
+                      activeCategory === category ? "#006098" : "#fff",
+                    color: activeCategory === category ? "#fff" : "#333",
+                    border: "1px solid #ddd",
+                    borderRadius: "25px",
+                    cursor: "pointer",
+                    fontSize: "16px",
+                    transition: "all 0.3s ease",
+                    minWidth: "240px",
+                    textAlign: "center",
+                    boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+                    flex: "0 0 auto",
+                    userSelect: "none",
+                    transform:
+                      activeCategory === category ? "scale(1.05)" : "scale(1)",
+                    opacity: activeCategory === category ? 1 : 0.7,
+                  }}
+                >
+                  {category}
+                </button>
               ))}
-            </ul>
+            </div>
+
+            <button
+              onClick={handleNextCategory}
+              disabled={currentCategoryIndex + 4 >= categories.length}
+              style={{
+                backgroundColor:
+                  currentCategoryIndex + 4 >= categories.length
+                    ? "#ccc"
+                    : "#006098",
+                color: "#fff",
+                border: "none",
+                borderRadius: "50%",
+                width: "40px",
+                height: "40px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                cursor:
+                  currentCategoryIndex + 4 >= categories.length
+                    ? "not-allowed"
+                    : "pointer",
+                boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+                position: "absolute",  // Updated position
+                right: "10px",  // Align to the right of the container
+                zIndex: 2,
+                transition: "all 0.3s ease",
+              }}
+            >
+              <FaArrowRight style={{ fontSize: "18px" }} />
+            </button>
           </div>
 
           <div className="home-product-grid">
             {products.length > 0 ? (
               products.map((product) => (
-                <div key={product._id} 
-                className="home-product-grid-item">
-                  <a href={`/product/${product._id}`} className="home-product-grid-inner">
+                <div key={product._id} className="home-product-grid-item">
+                  <a
+                    href={`/product/${product._id}`}
+                    className="home-product-grid-inner"
+                  >
                     <div className="normal-div">
                       <div className="img-block">
-                        <Image src={product?.images[0]?.url} width={228} height={228} alt={product?.title} />
+                        <Image
+                          src={product?.images[0]?.url}
+                          width={228}
+                          height={228}
+                          alt={product?.title}
+                        />
                       </div>
-                      <p>{product?.title}</p>
-                    </div>
+                      <p style={{ fontSize: "18px", fontWeight: "600", maxWidth: "600px" }}>
+                        {product?.title}</p>
+                      </div>
                     <div className="hover-div">
                       <p className="title">{product?.title}</p>
                       <p>{product?.description}</p>
@@ -140,9 +242,9 @@ const HomeProductList = forwardRef((props, ref) => {
                 </div>
               ))
             ) : (
-              <p style={{
-                margin: "auto"
-              }}>No trending products available for this category.</p>
+              <p style={{ margin: "auto" }}>
+                No trending products available for this category.
+              </p>
             )}
           </div>
         </div>

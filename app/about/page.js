@@ -7,12 +7,14 @@ import OurVision from '@/components/aboutComponents/ourVision';
 export default function Aboutus() {
     return (
       <div>
-        <InnerPageBanner 
+       {/*} <InnerPageBanner 
         title="About Us"
         subtitle="TRIQUENCH"
         paragraph="We provide “Intelligent Spindle Solutions” and aspire to be of service to society and grow along with it."
-        bannerImage="/images/about-banner.png"
-        />
+        bannerImage="/images/building png.png"
+        />*/}
+
+        <img src='https://res.cloudinary.com/dd1na5drh/image/upload/v1733749854/about_us_Desktop_hero_page_fhoeql.png'></img>
         <WhoWeAre />
         <WhyChooseTriquench />
         <MeetOurTeam />

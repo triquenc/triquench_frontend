@@ -10,8 +10,9 @@
 
     .header-wrapper {
         display: flex;
-        align-items: center;
-        justify-content: space-between;
+        justify-content: space-between; /* Ensures items are spaced evenly */
+        align-items: center; /* Vertically center the items */
+      
 
         .logo-wrapper {
             max-width: 14.6rem;
@@ -35,7 +36,7 @@
         }
 
         .navigation-wrapper {
-            flex: 1;
+            display: flex;
 
             @include bp("tablet-max") {
                 position: fixed;
@@ -57,7 +58,9 @@
             }
 
             ul {
+                list-style: none;
                 display: flex;
+                gap: 20px; /* Space between menu items */
                 justify-content: center;
 
                 @include bp(tablet-max) {
@@ -97,6 +100,32 @@
 
         }
 
+        .submenu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #006098;
+            z-index: 1;
+            
+            li {
+              a {
+                color: #fff; // Ensure submenu text is white
+                display: flex;
+                align-items: center;
+  
+                img {
+                  margin-right: 10px; // Add spacing between image and text
+                }
+              }
+            }
+            .has-submenu.open .submenu {
+                display: block;
+              }
+        }
+          
+       
+          
         .contact-wrapper {
             max-width: 14.6rem;
             flex: 0 0 14.6rem;
@@ -300,21 +329,24 @@
                     display: block;
                     margin-bottom: 1rem;
                 }
+                img {
+                    width: 50px;
+                }
 
                 ul {
                     li {
-                        a {
+                        a { 
                             width: 2.9rem;
                             height: 2.9rem;
                             display: flex;
                             align-items: center;
                             justify-content: center;
-                            background-color: $primaryColor;
-                            padding: 0.8rem;
-                            border-radius: 50%;
+                            //background-color: $primaryColor;
+                            //padding: 0.8rem;
+                            //border-radius: 100%;
 
                             &:hover {
-                                background-color: $darkblue;
+                                background-color: $primaryColor;
                             }
                         }
 
@@ -353,7 +385,7 @@
 
             a {
                 display: block;
-                font-size: 2rem;
+                font-size:1.6rem;
                 font-weight: 600;
 
                 &:hover {
@@ -406,8 +438,8 @@
                 }
 
                 .links-inner-wrapper {
-                    max-width: 33.33%;
-                    flex: 0 0 33.33%;
+                    max-width: 50%;
+                    flex: 0 0 50%;
 
                     @include bp("xs-max") {
                         max-width: 100%;
@@ -480,6 +512,26 @@
             @include bp("sm-max") {
                 width: 12rem;
             }
+        }
+    }
+}
+
+.has-green-bar_2{
+    padding-bottom: 2.5rem;
+    position: relative;
+
+    &::after {
+        background-color: $green;
+        width: 22rem;
+        height: 0.6rem;
+        left: 30%;
+        transform: translateX(-50%);
+        bottom: 0;
+        content: '';
+        position: absolute;
+        border-radius: 2rem;
+        @include bp("sm-max") {
+            width: 12rem;
         }
     }
 }
@@ -653,3 +705,25 @@
         }
     }
 }
+.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background-color: #006098;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    &:hover {
+        background-color: #015483;
+    }
+  }
+  
+  

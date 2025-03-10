@@ -22,20 +22,19 @@ const FormSection = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://triquench.ap-south-1.elasticbeanstalk.com/api/form/submit", {
+      const response = await fetch("https://d1w2b5et10ojep.cloudfront.net/api/form/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
         body: JSON.stringify(formData)
       });
+      
+      const data = await response.json();
 
       if (response.ok) {
-        const data = await response.json();
-        console.log("Form submitted successfully:", data);
-
         // Show success notification
-        setNotification("Form submitted successfully!");
+        setNotification(data.message);
 
         // Optional: Reset form after successful submission
         setFormData({
@@ -51,12 +50,12 @@ const FormSection = () => {
           setNotification("");
         }, 3000);
       } else {
-        console.error("Error submitting form:", response.statusText);
-        setNotification("Failed to submit the form.");
+        // console.error("Error submitting form:", response.statusText);
+        setNotification(data.message);
       }
     } catch (error) {
       console.error("Error submitting form:", error);
-      setNotification("An error occurred. Please try again.");
+      setNotification(data.message);
     }
   };
 
@@ -73,6 +72,7 @@ const FormSection = () => {
               placeholder="Enter Full Name"
               value={formData.name}
               onChange={handleChange}
+              required
             />
           </div>
           <div className="form-group email-field">
@@ -84,6 +84,7 @@ const FormSection = () => {
               placeholder="Enter Email"
               value={formData.email}
               onChange={handleChange}
+              required
             />
           </div>
           <div className="form-group company-field">
@@ -95,17 +96,19 @@ const FormSection = () => {
               placeholder="Enter Company"
               value={formData.company}
               onChange={handleChange}
+              required
             />
           </div>
           <div className="form-group phone-field">
             <label htmlFor="mobile">Phone Number</label>
             <input
-              type="text"
+              type="number"
               id="mobile"
               name="mobile"
               placeholder="Enter Phone Number"
               value={formData.mobile}
               onChange={handleChange}
+              required
             />
           </div>
           <div className="form-group">
@@ -116,7 +119,9 @@ const FormSection = () => {
               placeholder="Type a message here"
               value={formData.message}
               onChange={handleChange}
-            />
+              required 
+              
+              />
           </div>
           <div className="form-group">
             <button type="submit" className="site-btn">
