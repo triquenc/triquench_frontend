@@ -1,6 +1,30 @@
 import React, { forwardRef, useState, useEffect } from "react";
 import Image from "next/image";
 
+<head>
+  <title>Triquench India - CNC Spindle Motors & Industrial Automation Parts</title>
+  <meta name="description" content="Triquench India offers high-quality CNC spindle motors, servo motors, controller systems, and industrial automation components for manufacturing needs. Browse our products or call +919601111615 for assistance." />
+  
+
+  <meta name="keywords" content="CNC spindle motor, spindle servo motor, AC servo motor, CNC router accessories, spindle bearing, gearbox, laser parts, controller, industrial automation" />
+  <meta name="author" content="Triquench India" />
+  
+ 
+  <meta property="og:title" content="Triquench India - CNC Spindle Motors & Industrial Automation Parts" />
+  <meta property="og:description" content="High-quality CNC spindle motors, servo motors, controller systems, and industrial automation components for manufacturing needs." />
+  <meta property="og:image" content="/images/site-logo.svg" />
+  <meta property="og:url" content="https://triquenchindia.com" />
+  <meta property="og:type" content="website" />
+  
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Triquench India - CNC Spindle Motors & Industrial Automation Parts" />
+  <meta name="twitter:description" content="High-quality CNC spindle motors, servo motors, controller systems, and industrial automation components for manufacturing needs." />
+  <meta name="twitter:image" content="/images/site-logo.svg" />
+  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
 
 const globalStyles = `
   @media (max-width: 768px) {
@@ -89,6 +113,9 @@ const Header = forwardRef((props, ref) => {
     ];
 
     return (
+
+      
+      
       <header className="site-header p-t-10 p-b-13" ref={ref}>
         <div className="container">
           <div className="header-wrapper">
