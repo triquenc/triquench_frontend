@@ -6,17 +6,14 @@ import Image from "next/image";
   <meta name="description" content="Triquench India offers high-quality CNC spindle motors, servo motors, controller systems, and industrial automation components for manufacturing needs. Browse our products or call +919601111615 for assistance." />
   
 
-  <meta name="keywords" content="CNC spindle motor, spindle servo motor, AC servo motor, CNC router accessories, spindle bearing, gearbox, laser parts, controller, industrial automation" />
-  <meta name="author" content="Triquench India" />
-  
- 
+<h1><meta name="keywords" content="CNC Spindle Motor, Spindle Servo Motor, AC Servo Motor, CNC Router Accessories, Spindle Bearing, Gearbox, Laser Parts, Controller, Industrial Automation" /></h1>
+  <h1><meta name="author" content="Triquench India" /></h1>
   <meta property="og:title" content="Triquench India - CNC Spindle Motors & Industrial Automation Parts" />
   <meta property="og:description" content="High-quality CNC spindle motors, servo motors, controller systems, and industrial automation components for manufacturing needs." />
   <meta property="og:image" content="/images/site-logo.svg" />
   <meta property="og:url" content="https://triquenchindia.com" />
   <meta property="og:type" content="website" />
   
-
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Triquench India - CNC Spindle Motors & Industrial Automation Parts" />
   <meta name="twitter:description" content="High-quality CNC spindle motors, servo motors, controller systems, and industrial automation components for manufacturing needs." />
