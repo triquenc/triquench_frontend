@@ -2,27 +2,26 @@ import React, { forwardRef, useState, useEffect } from "react";
 import Image from "next/image";
 
 <head>
-  <title>Triquench India - CNC Spindle Motors & Industrial Automation Parts</title>
-  <meta name="description" content="Triquench India offers high-quality CNC spindle motors, servo motors, controller systems, and industrial automation components for manufacturing needs. Browse our products or call +919601111615 for assistance." />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
+  <title>Triquench India - CNC Spindle Motors & Industrial Automation Parts</title>
+  <meta name="description" content="Triuench India offers high-quality CNC spindle motors, servo motors, controller systems, and industrial automation components for manufacturing needs. Browse our products or call +919601111615 for assistance." />
+  <meta name="keywords" content="CNC Spindle Motor, Spindle Servo Motor, AC Servo Motor, CNC Router Accessories, Spindle Bearing, Gearbox, Laser Parts, Controller, Industrial Automation, CNC ATC Spindle, CNC MTC Spindle, Axis Servo Motor, CNC Router Machine Accessories, CNC Spindle Bearing, NK105 G2 Controller" />
+  <meta name="keywords" content="CNC ATC Spindle Motor, CNC MTC Spindle Motor, Axis Servo Motor, CNC Router Accessories, Spindle Bearing, Gearbox, Laser Parts, Controller, Industrial Automation, CNC ATC Spindle, CNC MTC Spindle, Axis Servo Motor, CNC Router Machine Accessories, CNC Spindle Bearing, NK105 G2 Controller" />
 
-<h1><meta name="keywords" content="CNC Spindle Motor, Spindle Servo Motor, AC Servo Motor, CNC Router Accessories, Spindle Bearing, Gearbox, Laser Parts, Controller, Industrial Automation" /></h1>
-  <h1><meta name="author" content="Triquench India" /></h1>
+  <meta name="author" content="Triquench India" />
+
   <meta property="og:title" content="Triquench India - CNC Spindle Motors & Industrial Automation Parts" />
   <meta property="og:description" content="High-quality CNC spindle motors, servo motors, controller systems, and industrial automation components for manufacturing needs." />
   <meta property="og:image" content="/images/site-logo.svg" />
-  <meta property="og:url" content="https://triquenchindia.com" />
+  <meta property="og:url" content="https://www.spindlemotor.in/" />
   <meta property="og:type" content="website" />
-  
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Triquench India - CNC Spindle Motors & Industrial Automation Parts" />
   <meta name="twitter:description" content="High-quality CNC spindle motors, servo motors, controller systems, and industrial automation components for manufacturing needs." />
   <meta name="twitter:image" content="/images/site-logo.svg" />
-  
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
-
 const globalStyles = `
   @media (max-width: 768px) {
     .mobile-menu::-webkit-scrollbar {

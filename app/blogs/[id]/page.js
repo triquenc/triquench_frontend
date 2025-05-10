@@ -1,22 +1,39 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { FaUser, FaCalendar, FaBookOpen, FaEye } from "react-icons/fa";
 
 export default function BlogDetail({ params }) {
-  const router = useRouter();
   const [blog, setBlog] = useState(null);
-  const { id } = params;
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+  
+  // Get ID directly from params
+  const id = params?.id;
 
   useEffect(() => {
     const fetchBlog = async () => {
+      if (!id) {
+        setError("Blog ID not found");
+        setIsLoading(false);
+        return;
+      }
+
       try {
-        const response = await fetch(`https://d1w2b5et10ojep.cloudfront.net/api/blog/getBlogById/${id}`);
+        setIsLoading(true);
+        const response = await fetch(`http://localhost:5000/api/blog/getBlogById/${id}`);
+        
+        if (!response.ok) {
+          throw new Error(`Failed to fetch blog: ${response.status}`);
+        }
+        
         const data = await response.json();
         setBlog(data);
       } catch (error) {
         console.error("Error fetching blog:", error);
+        setError("Failed to load blog. Please try again later.");
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -29,10 +46,47 @@ export default function BlogDetail({ params }) {
     { id: 3, title: "Spindle Bearing" },
     { id: 4, title: "Fiber Laser Machine Parts" },
     { id: 5, title: "Engraving Tools" },
-
   ];
 
-  if (!blog) return <p>Loading...</p>;
+  // Show loading state
+  if (isLoading) return (
+    <div style={{ 
+      display: "flex", 
+      justifyContent: "center", 
+      alignItems: "center", 
+      height: "50vh",
+      fontSize: "1.8rem"
+    }}>
+      Loading blog content...
+    </div>
+  );
+
+  // Show error state
+  if (error) return (
+    <div style={{ 
+      display: "flex", 
+      justifyContent: "center", 
+      alignItems: "center", 
+      height: "50vh",
+      color: "red",
+      fontSize: "1.8rem"
+    }}>
+      {error}
+    </div>
+  );
+
+  // Show not found state
+  if (!blog) return (
+    <div style={{ 
+      display: "flex", 
+      justifyContent: "center", 
+      alignItems: "center", 
+      height: "50vh",
+      fontSize: "1.8rem"
+    }}>
+      Blog not found
+    </div>
+  );
 
   return (
     <div
@@ -80,21 +134,23 @@ export default function BlogDetail({ params }) {
             }}
           >
             {/* Dynamic Category */}
-            <span
-              style={{
-                padding: "4px 10px",
-                backgroundColor: "#3498db",
-                color: "white",
-                borderRadius: "20px",
-                fontSize: "1rem",
-                fontWeight: "600",
-                display: "flex",
-                alignItems: "center",
-                textTransform: "uppercase",
-              }}
-            >
-              {blog.category}
-            </span>
+            {blog.category && (
+              <span
+                style={{
+                  padding: "4px 10px",
+                  backgroundColor: "#3498db",
+                  color: "white",
+                  borderRadius: "20px",
+                  fontSize: "1rem",
+                  fontWeight: "600",
+                  display: "flex",
+                  alignItems: "center",
+                  textTransform: "uppercase",
+                }}
+              >
+                {blog.category}
+              </span>
+            )}
           </div>
         </div>
 
@@ -118,6 +174,7 @@ export default function BlogDetail({ params }) {
               fontSize: "1.2rem",
               color: "#718096",
               marginBottom: "32px",
+              flexWrap: "wrap", // Allow icons to wrap on smaller screens
             }}
           >
             <span>
@@ -134,7 +191,7 @@ export default function BlogDetail({ params }) {
             </span>
             <span>
               <FaEye style={{ fontSize: "1.8rem", color: "#3498db" }} />{" "}
-              {blog.views} views
+              {blog.views || 0} views
             </span>
           </div>
           <div
@@ -169,35 +226,37 @@ export default function BlogDetail({ params }) {
           </div>
 
           {/* Tags Section */}
-          <div style={{ marginTop: "40px" }}>
-            <h4
-              style={{
-                fontSize: "2rem",
-                color: "#3498db",
-                marginBottom: "10px",
-              }}
-            >
-              Tags
-            </h4>
-            {blog.tags?.map((tag, index) => (
-              <span
-                key={index}
+          {blog.tags && blog.tags.length > 0 && (
+            <div style={{ marginTop: "40px" }}>
+              <h4
                 style={{
-                  padding: "6px 12px",
-                  backgroundColor: "#3498db",
-                  color: "white",
-                  borderRadius: "20px",
-                  fontSize: "1rem",
-                  fontWeight: "600",
-                  textTransform: "uppercase",
-                  marginRight: "10px",
+                  fontSize: "2rem",
+                  color: "#3498db",
                   marginBottom: "10px",
                 }}
               >
-                {tag}
-              </span>
-            ))}
-          </div>
+                Tags
+              </h4>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
+                {blog.tags.map((tag, index) => (
+                  <span
+                    key={index}
+                    style={{
+                      padding: "6px 12px",
+                      backgroundColor: "#3498db",
+                      color: "white",
+                      borderRadius: "20px",
+                      fontSize: "1rem",
+                      fontWeight: "600",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
@@ -207,10 +266,9 @@ export default function BlogDetail({ params }) {
           flex: "0 0 30%", // Default width for desktop
           boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
           borderRadius: "12px",
-          
           padding: "24px",
-          height: "39rem"
-          // minHeight: "auto", // Dynamically adjust the height to content
+          height: "fit-content", // Changed from fixed height to fit-content
+          maxHeight: "39rem",
         }}
       >
         <h2
@@ -235,7 +293,7 @@ export default function BlogDetail({ params }) {
               }}
             >
               <a
-                href="#"
+                href={`/blogs/${post.id}`}
                 style={{
                   fontSize: "1.2rem",
                   fontWeight: "600",
