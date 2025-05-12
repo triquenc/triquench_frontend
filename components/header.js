@@ -11,7 +11,6 @@ import Image from "next/image";
   <meta name="keywords" content="CNC ATC Spindle Motor, CNC MTC Spindle Motor, Axis Servo Motor, CNC Router Accessories, Spindle Bearing, Gearbox, Laser Parts, Controller, Industrial Automation, CNC ATC Spindle, CNC MTC Spindle, Axis Servo Motor, CNC Router Machine Accessories, CNC Spindle Bearing, NK105 G2 Controller" />
 
   <meta name="author" content="Triquench India" />
-
   <meta property="og:title" content="Triquench India - CNC Spindle Motors & Industrial Automation Parts" />
   <meta property="og:description" content="High-quality CNC spindle motors, servo motors, controller systems, and industrial automation components for manufacturing needs." />
   <meta property="og:image" content="/images/site-logo.svg" />
@@ -21,6 +20,14 @@ import Image from "next/image";
   <meta name="twitter:title" content="Triquench India - CNC Spindle Motors & Industrial Automation Parts" />
   <meta name="twitter:description" content="High-quality CNC spindle motors, servo motors, controller systems, and industrial automation components for manufacturing needs." />
   <meta name="twitter:image" content="/images/site-logo.svg" />
+
+ <meta name="description"
+          content="Triquench India offers high-quality CNC spindle motors, servo motors, controller systems, and industrial automation components for manufacturing needs. Browse our products or call +919601111615 for assistance."/>
+        <meta
+          name="keywords"
+          content="cnc spindle, cnc spindles, cnc spindle motor, spindle motor CNC, spindle motor, spindle motors, bt40 spindle, spindle cnc, CNC water cooled spindle, CNC Air Cooled Spindle"
+        />
+
 </head>
 const globalStyles = `
   @media (max-width: 768px) {

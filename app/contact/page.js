@@ -9,7 +9,7 @@ export default function Contactus() {
       <div>
         <InnerPageBanner 
         title="Contact Us"
-        subtitle="ENQUIRY"
+        subtitle="ENQUIRY"  
         paragraph="We provide “Intelligent Spindle Solutions” and aspire to be of service to society and grow along with it."
         bannerImage="https://res.cloudinary.com/dd1na5drh/image/upload/v1734679455/IMG_2980_pdvjfa.png"
         className="contact-banner"
