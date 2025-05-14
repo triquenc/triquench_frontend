@@ -1,5 +1,6 @@
 import React, { forwardRef, useState, useEffect } from "react";
 import Image from "next/image";
+import { Helmet } from 'react-helmet';
 
 <head>
   <meta charset="UTF-8" />
@@ -20,13 +21,50 @@ import Image from "next/image";
   <meta name="twitter:title" content="Triquench India - CNC Spindle Motors & Industrial Automation Parts" />
   <meta name="twitter:description" content="High-quality CNC spindle motors, servo motors, controller systems, and industrial automation components for manufacturing needs." />
   <meta name="twitter:image" content="/images/site-logo.svg" />
+  <title>ATC Spindle for CNC Machines | High-Speed Precision</title>
+  <Helmet>
+  <title>ATC Spindle for CNC Machines | High-Speed Precision</title>
+  <meta name="description" content="Shop high-performance ATC Spindles for CNC machines. Designed for automatic tool change with precision, speed, and durability for industrial use." />
+</Helmet>
+<Helmet>
+  <title>CNC Tool Holder | Precision Tool Holding Solutions</title>
+  <meta name="description" content="Discover CNC tool holders built for accuracy and durability. Ideal for milling, drilling, and turning operations in modern CNC setups." />
+</Helmet>
+<Helmet>
+  <title>Spindle Lathe for CNC Turning | High Accuracy</title>
+  <meta name="description" content="Buy robust spindle lathes for CNC turning centers. Engineered for smooth rotation, long service life, and precision cutting performance." />
+</Helmet>
 
+<Helmet>
+  <title>BT40 Tool Holder | Stable CNC Tool Holding System</title>
+  <meta name="description" content="Premium BT40 Tool Holders designed for high-speed CNC machines. Ensures accuracy, rigidity, and quick tool changes during operations." />
+</Helmet>
+<Helmet>
+  <title>Spindle Accessories for CNC | Enhance Performance</title>
+  <meta name="description" content="Browse our range of spindle accessories including flanges, tool clamps, and cooling systems to optimize your CNC spindle’s output." />
+</Helmet>
+<Helmet>
+  <title>Tool Holder for CNC Machines | Strong & Accurate Grip</title>
+  <meta name="description" content="Get reliable tool holders suitable for all CNC operations. Engineered for strength, precision, and long-term performance." />
+</Helmet>
+<Helmet>
+  <title>CNC Machine Accessories | One-Stop CNC Parts Supplier</title>
+  <meta name="description" content="Find all essential CNC machine accessories including tool holders, spindles, drag chains, couplings, and more. Quality parts at affordable prices." />
+</Helmet>
+<Helmet>
+  <title>CNC Wood Carving Spindle | High-Speed Woodworking Spindle</title>
+  <meta name="description" content="Shop CNC spindles made for wood carving and engraving. Perfect for woodworking CNC routers and creative woodcraft applications." />
+</Helmet>
+<Helmet>
+  <title>CNC Router Machine Price in India | Affordable CNC Routers</title>
+  <meta name="description" content="Explore and compare CNC Router Machine prices in India. Get the best deals for woodworking, signage, and industrial CNC machines." />
+</Helmet>
+
+  <meta name="description" content="Shop high-performance ATC Spindles for CNC machines. Designed for automatic tool change with precision, speed, and durability for industrial use." />
  <meta name="description"
-          content="Triquench India offers high-quality CNC spindle motors, servo motors, controller systems, and industrial automation components for manufacturing needs. Browse our products or call +919601111615 for assistance."/>
-        <meta
-          name="keywords"
-          content="cnc spindle, cnc spindles, cnc spindle motor, spindle motor CNC, spindle motor, spindle motors, bt40 spindle, spindle cnc, CNC water cooled spindle, CNC Air Cooled Spindle"
-        />
+   content="Triquench India offers high-quality CNC spindle motors, servo motors, controller systems, and industrial automation components for manufacturing needs. Browse our products or call +919601111615 for assistance."/>
+<meta  name="keywords"
+          content="cnc spindle, cnc spindles, cnc spindle motor, spindle motor CNC, spindle motor, spindle motors, bt40 spindle, spindle cnc, CNC water cooled spindle, CNC Air Cooled Spindle"/>
 
 </head>
 const globalStyles = `
