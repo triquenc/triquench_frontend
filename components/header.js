@@ -59,12 +59,100 @@ import { Helmet } from 'react-helmet';
   <title>CNC Router Machine Price in India | Affordable CNC Routers</title>
   <meta name="description" content="Explore and compare CNC Router Machine prices in India. Get the best deals for woodworking, signage, and industrial CNC machines." />
 </Helmet>
+ <Helmet>
+        <title>CNC Router Motor | High-Speed, Durable & Precision Spindle Motors</title>
+        <meta
+          name="description"
+          content="Discover premium CNC router motors designed for high-speed, precision cutting. Ideal for woodworking, plastic, and metal applications. Shop durable, energy-efficient spindle motors now!"
+        />
+        <meta name="keywords" content="CNC router motor, spindle motor, high-speed CNC motor, durable router motor, CNC cutting motor" />
+      </Helmet>
+
+       <main>
+        <h1>High-Performance CNC Router Motors for Precision Cutting</h1>
+      </main>
+
+       <Helmet>
+        <title>CNC Router Motor | High-Speed, Durable & Precision Spindle Motors</title>
+        <meta
+          name="description"
+          content="Discover premium CNC router motors designed for high-speed, precision cutting. Ideal for woodworking, plastic, and metal applications. Shop durable, energy-efficient spindle motors now!"
+        />
+        <meta name="keywords" content="CNC router motor, spindle motor, high-speed CNC motor, durable router motor, CNC cutting motor" />
+      </Helmet>
 
   <meta name="description" content="Shop high-performance ATC Spindles for CNC machines. Designed for automatic tool change with precision, speed, and durability for industrial use." />
  <meta name="description"
    content="Triquench India offers high-quality CNC spindle motors, servo motors, controller systems, and industrial automation components for manufacturing needs. Browse our products or call +919601111615 for assistance."/>
 <meta  name="keywords"
           content="cnc spindle, cnc spindles, cnc spindle motor, spindle motor CNC, spindle motor, spindle motors, bt40 spindle, spindle cnc, CNC water cooled spindle, CNC Air Cooled Spindle"/>
+
+    <Helmet>
+        <title>CNC Bangle Making Machine | Precision Jewelry CNC Router</title>
+        <meta
+          name="description"
+          content="Explore high-precision CNC bangle making machines designed for gold, silver, and metal jewelry crafting. Ideal for small to large-scale jewelry manufacturers."
+        />
+        <meta
+          name="keywords"
+          content="CNC bangle making machine, jewelry CNC machine, gold bangle router, CNC machine for bangles, silver bangle machine, CNC jewelry machine"
+        />
+      </Helmet>
+
+    <Helmet>
+        <title>High-Performance ATC Spindle Motors for CNC | Precision & Power</title>
+        <meta
+          name="description"
+          content="Explore top-quality ATC spindle motors built for speed, precision, and durability. Perfect for CNC machines, our automatic tool change spindles boost productivity and accuracy."
+        />
+        <meta
+          name="keywords"
+          content="CNC ATC spindle, Automatic Tool Changer Spindle, Gold Bangle Router, CNC Machine For Bangles, Silver Bangle Machine, CNC Jewelry Machine, ATC spindle motor, high-speed spindle motor, CNC spindle with ATC, industrial spindle motor, servo spindle motor, precision spindle for CNC, ATC spindle for milling machine, powerful spindle motor for CNC"
+        />
+
+      </Helmet>
+
+      <main>
+        <h1>Advanced CNC Bangle Making Machines for Jewelry Manufacturers</h1>
+      </main>
+ <Helmet>
+
+
+  
+    <Helmet>
+        <title>High-Precision ISO Spindle Motors for CNC Machines </title>
+        <meta
+          name="description"
+          content="Discover reliable ISO spindle motors designed for CNC precision and performance. Available in ISO 30 and ISO 40 formats—ideal for milling, drilling, and industrial machining."
+        />
+        <meta
+  name="keywords"
+  content="CNC ATC spindle, Automatic Tool Changer Spindle, Gold Bangle Router, CNC Machine For Bangles, Silver Bangle Machine, CNC Jewelry Machine, ATC spindle motor, high-speed spindle motor, CNC spindle with ATC, industrial spindle motor, servo spindle motor, precision spindle for CNC, ATC spindle for milling machine, powerful spindle motor for CNC, ISO spindle motor, CNC ISO spindle motor, high-precision ISO spindle, ISO standard spindle motor, ISO spindle for CNC machine, industrial ISO spindle motor, ISO tool holder spindle, ISO spindle motor for milling, ISO 30 spindle motor, ISO 40 CNC spindle"
+/>
+</Helmet>
+
+      <main>
+        <h1>Advanced CNC Bangle Making Machines for Jewelry Manufacturers</h1>
+      </main>
+ <Helmet>
+
+  
+ </Helmet>
+        <title>Single & Three Phase Spindle Motor VFD | CNC Variable Frequency Drives</title>
+        <meta 
+          name="description"
+          content="Shop high-quality single-phase and three-phase spindle motor VFDs for CNC machines. Reliable and efficient variable frequency drives for precise spindle control and speed regulation."
+        />
+        <meta
+          name="keywords"
+          content="single phase VFD, three phase VFD, spindle motor drive, CNC VFD, variable frequency drive, spindle VFD, VFD for CNC machines, 1 phase to 3 phase VFD"
+        />
+      </Helmet>
+
+      <main>
+        <h1>Single & Three Phase Spindle Motor VFDs for CNC Machines</h1>
+        {/* Product specs, models, and details go here */}
+      </main>
 
 </head>
 const globalStyles = `
