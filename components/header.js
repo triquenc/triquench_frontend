@@ -5,7 +5,11 @@ import { Helmet } from 'react-helmet';
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
+<SeoTags
+  title="ISO30 9kW CNC Spindle Motor – TriQuench"
+  description="Powerful ISO30 9kW CNC spindle motor for high-speed and precision routing. Ideal for wood, plastic, and aluminum CNC machines."
+  keywords="ISO30 spindle, 9kW spindle motor, CNC wood router motor, high speed spindle, aluminum cutting motor"
+/>
   <title>Triquench India - CNC Spindle Motors & Industrial Automation Parts</title>
   <meta name="description" content="Triuench India offers high-quality CNC spindle motors, servo motors, controller systems, and industrial automation components for manufacturing needs. Browse our products or call +919601111615 for assistance." />
   <meta name="keywords" content="CNC Spindle Motor, Spindle Servo Motor, AC Servo Motor, CNC Router Accessories, Spindle Bearing, Gearbox, Laser Parts, Controller, Industrial Automation, CNC ATC Spindle, CNC MTC Spindle, Axis Servo Motor, CNC Router Machine Accessories, CNC Spindle Bearing, NK105 G2 Controller" />
@@ -118,6 +122,22 @@ import { Helmet } from 'react-helmet';
  <Helmet>
 
 
+<Helmet>
+  <title>Variable Frequency Drive for CNC | Precision Control for CNC Machines</title>
+  <meta
+    name="title"
+    content="Variable Frequency Drive for CNC | Precision Control for CNC Machines"
+  />
+  <meta
+    name="description"
+    content="Discover high-performance Variable Frequency Drives (VFDs) for CNC machines. Improve speed control, reduce energy consumption, and ensure smooth motor operation for all CNC applications."
+  />
+  <meta
+    name="keywords"
+    content="Variable Frequency Drive for CNC, CNC VFD Motor Controller, VFD for CNC Spindle Motor, CNC Machine Speed Control VFD, High-Performance VFD for CNC Applications"
+  />
+</Helmet>
+
   
     <Helmet>
         <title>High-Precision ISO Spindle Motors for CNC Machines </title>
@@ -145,7 +165,7 @@ import { Helmet } from 'react-helmet';
         />
         <meta
           name="keywords"
-          content="single phase VFD, three phase VFD, spindle motor drive, CNC VFD, variable frequency drive, spindle VFD, VFD for CNC machines, 1 phase to 3 phase VFD"
+          content="CNC Router VFD Supplier in India, single phase VFD, three phase VFD, spindle motor drive, CNC VFD, variable frequency drive, spindle VFD, VFD for CNC machines, 1 phase to 3 phase VFD"
         />
       </Helmet>
 
@@ -153,6 +173,7 @@ import { Helmet } from 'react-helmet';
         <h1>Single & Three Phase Spindle Motor VFDs for CNC Machines</h1>
         {/* Product specs, models, and details go here */}
       </main>
+      
 
 </head>
 const globalStyles = `
