@@ -96,9 +96,9 @@ export default function EventDetails({ params }) {
   }
 
   const relatedEvents = [
-    { id: 1, title: "Blood Donation", date: "24th October 2024", location: "TriQuench India Pvt Ltd" },
-    { id: 2, title: "Food Donation", date: "21th December 2024", location: "TriQuench India Pvt Ltd" },
-    { id: 3, title: "Rudra Pooja", date: "3rd September 2023", location: "TriQuench India Pvt Ltd" },
+    { id: 1, title: "Jazz in the Park", date: "August 5, 2023", location: "Central Park, New York" },
+    { id: 2, title: "Rock Concert", date: "September 15, 2023", location: "Madison Square Garden, New York" },
+    { id: 3, title: "EDM Night Festival", date: "October 1, 2023", location: "Brooklyn Steel, New York" },
   ];
 
   const handleLikeClick = async () => {
