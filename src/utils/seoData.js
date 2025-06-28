@@ -155,19 +155,130 @@ const seoPages = [
     description: 'Planetary gearboxes made for high-speed spindle motors. Achieve reliable torque at top RPMs for advanced machines.',
     keywords: 'planetary gearbox for spindle motor, high speed gearbox, spindle motor gearbox, precision gear system'
   },
+ {
+  slug: 'controller',
+  title: 'NK105 G2 & G3 CNC Controller | High-Precision Motion Control',
+  description: 'Upgrade your CNC machines with NK105 G2 and G3 controllers for high-precision motion control, easy setup, and long-lasting durability in industrial applications.',
+  keywords: 'NK105 G2 controller, NK105 G3 controller, CNC router motion controller, durable CNC controller, precision NK105 motion control, long life CNC controller, NK105 G2 vs G3, affordable NK105 controller price'
+},
   {
-    slug: 'planetary-gearbox',
-    title: 'Multi-Stage Planetary Gearbox | Increased Torque & Load Capacity',
-    description: 'Multi-stage planetary gearboxes deliver increased torque and higher load-bearing capacity for industrial machines.',
-    keywords: 'multi-stage planetary gearbox, high torque gearbox, heavy load gearbox, industrial gear drive'
+  slug: 'controller-nk105-g2',
+  title: 'Controller NK105 G2 | High-Precision CNC Motion Control',
+  description: 'Upgrade your CNC setup with the NK105 G2 controller, offering precise and stable motion control for woodworking, milling, and other CNC machines.',
+  keywords: 'Controller NK105 G2, NK105 G2 CNC controller, high-precision CNC control, durable CNC controller, motion control NK105 G2'
+}
+,
+{
+  slug: 'controller-nk105-g3',
+  title: 'Controller NK105 G3 | Durable Motion Control for CNC Machines',
+  description: 'Get accurate motion control with the NK105 G3 CNC controller, designed for woodworking and milling machines with long-term durability and easy setup.',
+  keywords: 'Controller NK105 G3, NK105 G3 CNC controller, CNC motion control, durable CNC controller, NK105 G3 for woodworking machines'
+}
+, 
+{
+  slug: 'nk105-cnc-controller',
+  title: 'NK105 CNC Controller | Precision & Durable CNC Motion Control',
+  description: 'Discover the NK105 CNC controller for smooth, stable motion control in woodworking, milling, and spindle motor machines.',
+  keywords: 'NK105 CNC controller, precision CNC control, durable CNC controller, NK105 motion control system'
+}
+,
+{
+  slug: 'nk105-motion-controller',
+  title: 'NK105 Motion Controller | Reliable Motion Control for CNC',
+  description: 'Power your CNC machines with the NK105 motion controller, built for accuracy, stability, and long-term industrial use.',
+  keywords: 'NK105 motion controller, CNC motion control, accurate CNC controller, long-life motion controller'
+}
+, 
+{
+  slug: 'cnc-router-accessories',
+  title: 'CNC Router Controller NK105 | High-Performance CNC Motion',
+  description: 'Upgrade your CNC router with the NK105 controller for reliable, smooth, and high-performance motion control.',
+  keywords: 'CNC router controller NK105, NK105 controller for CNC routers, precision router motion control, stable CNC controller'
+},
+{
+  slug: 'cnc-router-accessories',
+  title: 'NK105 G2 CNC Controller Features | Precision Motion Control',
+  description: 'Discover all key features of the NK105 G2 CNC controller, including high-precision motion control and robust industrial design.',
+  keywords: 'NK105 G2 CNC controller features, NK105 G2 controller specs, high-precision CNC controller, durable CNC control system'
+}, 
+{
+  slug: 'cnc-router-accessories',
+  title: 'NK105 G3 Motion Control System | Durable CNC Motion Solution',
+  description: 'Upgrade your CNC machines with the NK105 G3 motion control system for stable, precise control and long-term industrial performance.',
+  keywords: 'NK105 G3 motion control system, durable CNC motion control, high-precision CNC control system, NK105 G3 controller'
+},
+{
+  slug: 'cnc-router-accessories',
+  title: 'CNC Controller NK105 for Woodworking Machines | Precision Routing',
+  description: 'Get smooth, stable CNC control for woodworking machines with the NK105 controller, built for accurate carving, milling, and routing.',
+  keywords: 'CNC controller NK105 for woodworking machines, NK105 woodworking controller, stable CNC woodworking control, accurate CNC router control'
+},
+{
+  slug: 'cnc-router-accessories',
+  title: 'Controller NK105 G2 vs G3 | Detailed Comparison',
+  description: 'Compare the NK105 G2 and G3 controllers to choose the right CNC control system for your machines with detailed features and specs.',
+  keywords: 'Controller NK105 G2 vs G3 comparison, NK105 G2 vs G3 features, NK105 G2 vs G3 differences, CNC controller comparison'
+}, 
+{
+  slug: 'cnc-router-accessories',
+  title: 'NK105 Controller for Spindle Motor Machines | Reliable CNC Control',
+  description: 'Ensure precision and stability for spindle motor machines with the NK105 CNC controller, built for high-performance industrial use.',
+  keywords: 'NK105 controller for spindle motor machines, CNC spindle motor controller, stable spindle motion control, durable CNC control'
+},
+{
+    slug: 'cnc-router-accessories',
+    title: 'Ball Screw for CNC Wood Router | High Precision Motion',
+    description: 'Upgrade your CNC wood router with high-quality ball screws designed for smooth, precise, and backlash-free motion.',
+    keywords: 'Ball screw for CNC wood router, CNC ball screw system, wood router motion control, high precision ball screw'
   },
   {
-    slug: 'planetary-gearbox',
-    title: 'Precision & Durable Planetary Gearbox | Long Life Industrial Gear',
-    description: 'Get precision-engineered and highly durable planetary gearboxes for consistent industrial performance and long service life.',
-    keywords: 'precision planetary gearbox, durable gearbox, long life gear reducer, industrial transmission gearbox'
+    slug: 'cnc-router-accessories',
+    title: 'Linear Guideways for CNC Router | Smooth & Accurate',
+    description: 'Boost your CNC router performance with durable linear guideways that ensure high accuracy and smooth linear motion.',
+    keywords: 'Linear guideways for CNC router, CNC linear motion system, precision guide rails, smooth motion CNC parts'
+  },
+  {
+    slug: 'cnc-router-accessories',
+    title: 'Hiwin LM Guide for Wood Router | Precision CNC Motion',
+    description: 'Install Hiwin LM guides on your CNC wood router for unmatched precision, smooth travel, and durability.',
+    keywords: 'Hiwin LM guide for wood router, Hiwin linear guideways, CNC guide rails for woodworking, wood router LM guide'
+  },
+  {
+    slug: 'cnc-router-accessories',
+    title: 'Rack and Pinion for CNC Woodworking Machine | Heavy-Duty Performance',
+    description: 'Enhance the strength and speed of your CNC woodworking machine with premium rack and pinion drive systems.',
+    keywords: 'Rack and pinion for CNC woodworking machine, CNC router drive system, woodworking CNC rack gear'
+  },
+  {
+    slug: 'cnc-router-accessories',
+    title: 'Tool Holders for CNC Wood Machines | Secure & Precise Tooling',
+    description: 'Shop durable tool holders for CNC wood machines for accurate and stable cutting performance in every operation.',
+    keywords: 'Tool holders for CNC wood machines, CNC spindle tool holders, router bit holders, woodworking CNC tools'
+  },
+  {
+    slug: 'cnc-router-accessories',
+    title: 'VFD Drive for CNC Wood Router | Speed Control Made Easy',
+    description: 'Control spindle speeds efficiently with a reliable VFD drive made specifically for CNC wood routers.',
+    keywords: 'VFD drive for CNC wood router, CNC spindle speed controller, wood router VFD, inverter drive CNC'
+  },
+  {
+    slug: 'cnc-router-accessories',
+    title: 'Spindle Driver for CNC Router | Smooth Spindle Operation',
+    description: 'Get consistent power and control with a spindle driver for your CNC router, perfect for high-speed woodworking.',
+    keywords: 'Spindle driver for CNC router, CNC motor driver, wood router spindle controller, stable spindle operation'
+  },
+  {
+    slug: 'cnc-router-accessories',
+    title: 'CNC Control Panel for Wood Router | Complete Machine Command',
+    description: 'Install an advanced CNC control panel to manage all wood router functions with precision and ease.',
+    keywords: 'CNC control panel for wood router, CNC router operator panel, machine control box, woodworking control panel'
+  },
+  {
+    slug: 'cnc-router-accessories',
+    title: 'Complete CNC Router Accessories Kit | One-Stop CNC Upgrade',
+    description: 'Get everything you need in one place with a complete CNC router accessories kit including spindle, VFD, tools, and more.',
+    keywords: 'Complete CNC router accessories kit, CNC upgrade kit, wood router accessories, all-in-one CNC router parts'
   }
- 
 
 ];
 
