@@ -278,7 +278,116 @@ const seoPages = [
     title: 'Complete CNC Router Accessories Kit | One-Stop CNC Upgrade',
     description: 'Get everything you need in one place with a complete CNC router accessories kit including spindle, VFD, tools, and more.',
     keywords: 'Complete CNC router accessories kit, CNC upgrade kit, wood router accessories, all-in-one CNC router parts'
-  }
+  }, 
+    {
+    slug: 'cnc-router-accessories',
+    title: 'CNC Pattern Making Machine Spindle | High-Torque Motor by TQI',
+    description: 'Buy high-speed, heavy-duty spindle motors for CNC pattern making machines. Ideal for foundry and wood pattern work. Air & water cooled options available.',
+    keywords: 'CNC Pattern Making Machine Spindle, spindle motor for CNC pattern machine, high torque CNC spindle, CNC spindle for foundry pattern, wood pattern spindle motor'
+  }, 
+
+  {
+  slug: 'cnc-router-accessories',
+  title: 'Spindle for CNC Pattern Router | Precision Cutting with TQI Motors',
+  description: 'Explore high-performance spindles for CNC pattern routers, designed for wood and foundry applications. Achieve accurate and smooth pattern cutting with TQI.',
+  keywords: 'Spindle for CNC Pattern Router, CNC router spindle motor, high torque spindle for pattern making, spindle for foundry CNC, wood pattern spindle motor'
+}, 
+{
+  slug: 'cnc-router-accessories',
+  title: 'Spindle for CNC Pattern Router | High-Performance CNC Spindle by TQI',
+  description: 'Get the best spindle for CNC pattern router machines. Ideal for wood and foundry pattern making with high torque, precision, and durability. Air & water cooled options available.',
+  keywords: 'Spindle for CNC Pattern Router, CNC router spindle motor, pattern making spindle, high torque CNC spindle, wood pattern spindle, foundry CNC spindle'
+},
+{
+  slug: 'cnc-router-accessories',
+  title: 'CNC Spindle Supplier in India | High-Quality Spindle Motors by TQI',
+  description: 'Trusted CNC spindle supplier in India offering high-performance spindle motors for routers, milling, and pattern making. Fast delivery and reliable support.',
+  keywords: 'CNC Spindle Supplier India, spindle motor manufacturer India, CNC router spindle supplier, high torque spindle India, TQI spindle motors'
+}, 
+{
+  slug: 'cnc-router-accessories',
+  title: 'Direct Drive Spindle for CNC Routers | High-Speed Precision by TQI',
+  description: 'Discover high-performance direct drive spindles for CNC routers. Designed for precision, low vibration, and high RPM. Ideal for woodworking and pattern making.',
+  keywords: 'Direct Drive Spindle for CNC Routers, CNC router spindle motor, high speed spindle, low vibration spindle, direct drive CNC spindle, TQI spindle motors'
+},
+{
+  slug: 'cnc-router-accessories',
+  title: 'VFD Spindle for CNC Pattern Machine | Precision Control with TQI Spindles',
+  description: 'Enhance your CNC pattern machine with a VFD spindle for smooth speed control and precision cutting. Ideal for wood and foundry pattern applications.',
+  keywords: 'VFD Spindle for CNC Pattern Machine, variable frequency spindle motor, CNC pattern spindle, precision spindle control, TQI spindle for CNC router'
+},
+{
+  slug: 'cnc-router-accessories',
+  title: 'Pattern Prototyping Spindle | High-Precision CNC Spindles by TQI',
+  description: 'Discover high-precision spindles designed for pattern prototyping. Ideal for CNC applications in wood, foundry, and mold pattern development.',
+  keywords: 'Pattern Prototyping Spindle, CNC spindle for prototyping, high precision spindle, spindle motor for pattern making, TQI CNC spindle'
+}, 
+{
+  slug: 'cnc-router-accessories',
+  title: 'CNC Router Motor for Pattern Making | Powerful & Precise by TQI',
+  description: 'Explore high-performance CNC router motors for pattern making. Designed for precision, durability, and smooth operation in wood and foundry applications.',
+  keywords: 'CNC Router Motor for Pattern Making, pattern making spindle motor, CNC motor for wood patterns, high torque router motor, TQI CNC spindle'
+},
+
+{
+  slug: 'cnc-router-accessories',
+  title: 'High RPM CNC Spindle for Mold Patterns | Precision Spindle by TQI',
+  description: 'Get high RPM CNC spindles designed for mold pattern machining. Ideal for precision cutting in foundry and industrial pattern making applications.',
+  keywords: 'High RPM CNC Spindle for Mold Patterns, CNC spindle for mold making, high speed spindle motor, precision spindle for patterns, TQI CNC spindle'
+},
+{
+  slug: 'cnc-router-accessories',
+  title: 'Wood Pattern Making Spindle Motor | Durable CNC Spindles by TQI',
+  description: 'Shop high-performance spindle motors for wood pattern making. Engineered for durability, precision, and smooth operation in CNC router applications.',
+  keywords: 'Wood Pattern Making Spindle Motor, CNC spindle for wood pattern, durable spindle motor, high torque wood router spindle, TQI CNC spindle motor'
+},
+
+{
+  slug: 'cnc-router-accessories',
+  title: 'Pattern Making Router Spindle Motor | High-Performance CNC Spindle by TQI',
+  description: 'Find precision-engineered router spindle motors for CNC pattern making. Ideal for wood, mold, and foundry pattern applications with high speed and torque.',
+  keywords: 'Pattern Making Router Spindle Motor, CNC router spindle for pattern making, high torque spindle motor, wood pattern CNC spindle, TQI spindle motor'
+},
+
+{
+  slug: 'cnc-router-accessories',
+  title: 'Spindle for 3D Pattern CNC Machine | High Precision Spindles by TQI',
+  description: 'Discover high-precision spindles for 3D pattern CNC machines. Perfect for complex mold and wood pattern applications requiring accuracy and performance.',
+  keywords: 'Spindle for 3D Pattern CNC Machine, 3D CNC spindle motor, high precision spindle, CNC spindle for mold patterns, TQI CNC router spindle'
+},
+{
+  slug: 'cnc-router-accessories',
+  title: 'Servo Spindle Motor for CNC Pattern Cutter | High Torque by TQI',
+  description: 'Get high-performance servo spindle motors for CNC pattern cutters. Engineered for precision, speed, and durability in wood and mold pattern applications.',
+  keywords: 'Servo Spindle Motor for CNC Pattern Cutter, CNC servo spindle, high torque spindle motor, precision spindle for pattern making, TQI servo spindle motor'
+},
+
+{
+  slug: 'cnc-router-accessories',
+  title: 'Precision Spindle for Wood & Aluminum Pattern Milling | TQI CNC Spindles',
+  description: 'Shop high-precision CNC spindles for wood and aluminum pattern milling. Designed for accuracy, durability, and smooth performance in industrial applications.',
+  keywords: 'Precision Spindle for Wood & Aluminum Pattern Milling, CNC spindle for wood and aluminum, high accuracy spindle motor, pattern milling spindle, TQI CNC spindle'
+},
+
+{
+  slug: 'cnc-router-accessories',
+  title: 'ATC Spindle Motor for CNC Pattern Machine | Automatic Tool Change by TQI',
+  description: 'Upgrade your CNC pattern machine with an ATC spindle motor for fast and precise automatic tool changes. Ideal for pattern making and mold applications.',
+  keywords: 'ATC Spindle Motor for CNC Pattern Machine, automatic tool change spindle, CNC spindle motor with ATC, pattern making spindle, TQI ATC spindle motor'
+},
+{
+  slug: 'cnc-router-accessories',
+  title: 'ISO 30 Spindle for Pattern Router Machine | High-Speed CNC Spindle by TQI',
+  description: 'Explore ISO 30 spindle motors for pattern router machines. Designed for precision, durability, and high-speed machining in wood and mold pattern applications.',
+  keywords: 'ISO 30 Spindle for Pattern Router Machine, ISO30 CNC spindle, high speed spindle motor, CNC spindle for pattern making, TQI spindle motor'
+},
+
+{
+  slug: 'cnc-router-accessories',
+  title: 'Water Cooled Spindle for Industrial Pattern Making | High Efficiency by TQI',
+  description: 'Discover water cooled spindle motors designed for industrial pattern making. Ensure long-lasting performance with efficient cooling and high-speed precision.',
+  keywords: 'Water Cooled Spindle for Industrial Pattern Making, industrial CNC spindle, water cooled spindle motor, high performance spindle, TQI spindle for pattern making'
+}
 
 ];
 
