@@ -387,7 +387,153 @@ const seoPages = [
   title: 'Water Cooled Spindle for Industrial Pattern Making | High Efficiency by TQI',
   description: 'Discover water cooled spindle motors designed for industrial pattern making. Ensure long-lasting performance with efficient cooling and high-speed precision.',
   keywords: 'Water Cooled Spindle for Industrial Pattern Making, industrial CNC spindle, water cooled spindle motor, high performance spindle, TQI spindle for pattern making'
-}
+}, 
+{
+  slug: 'spindle-servo-motor',
+  title: 'CNC Spindle Motor | Servo Spindle Motor',
+  description: 'Discover water cooled spindle motors designed for industrial pattern making. Ensure long-lasting performance with efficient cooling and high-speed precision.',
+  keywords: 'Water Cooled Spindle for Industrial Pattern Making, industrial CNC spindle, water cooled spindle motor, high performance spindle, TQI spindle for pattern making'
+},
+{
+  slug: 'cnc-spindle-motor',
+  title: '6000 RPM Saw Spindle Motor | CNC Wood & Panel Cutting',
+  description: 'High-performance 6000 RPM saw spindle motor ideal for CNC wood cutting, panel saws, and aluminum applications. Durable, efficient, and built for precision cutting tasks.',
+  keywords: '6000 RPM saw spindle motor, CNC saw spindle motor, spindle motor for wood cutting, high speed saw blade spindle, TQI 6000 rpm spindle for panel saw, aluminum cutting spindle motor'
+},
+{
+
+  slug: 'cnc-spindle-motor',
+  title: 'Saw Blade Spindle Motor | High Torque CNC Spindle',
+  description: 'Explore high-torque saw blade spindle motors for CNC applications. Ideal for wood, aluminum, and panel cutting with smooth performance and long-lasting durability.',
+  keywords: 'Saw blade spindle motor, CNC saw spindle, high torque spindle motor, spindle for wood cutting, TQI saw blade spindle, circular saw spindle motor, industrial cutting spindle'
+},
+{
+  slug: 'cnc-spindle-motor',
+  title: 'High Power Saw Spindle for CNC | Heavy-Duty Cutting Motor',
+  description: 'Get high power saw spindles for CNC machines designed for demanding cutting applications. Ideal for industrial wood, panel, and aluminum cutting with consistent high-speed output.',
+  keywords: 'High power saw spindle for CNC, heavy-duty spindle motor, CNC cutting spindle, industrial saw spindle, high torque CNC spindle, TQI spindle motor for CNC saw'
+},
+ {
+    slug: 'cnc-spindle-motor',
+    title: 'Cnc Spindle Motor | High Performance CNC Spindle Motor',
+    description: 'Find top-quality cnc spindle motor for your CNC applications. Suitable for wood, metal, and industrial machining with reliable performance and durability.',
+    keywords: 'cnc spindle motor, CNC spindle, CNC router motor, high-speed spindle, industrial spindle motor, TQI cnc spindle motor'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: 'Cnc Router Spindle | High Performance CNC Spindle Motor',
+    description: 'Find top-quality cnc router spindle for your CNC applications. Suitable for wood, metal, and industrial machining with reliable performance and durability.',
+    keywords: 'cnc router spindle, CNC spindle, CNC router motor, high-speed spindle, industrial spindle motor, TQI cnc router spindle'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: 'Water-Cooled Spindle | High Performance CNC Spindle Motor',
+    description: 'Find top-quality water-cooled spindle for your CNC applications. Suitable for wood, metal, and industrial machining with reliable performance and durability.',
+    keywords: 'water-cooled spindle, CNC spindle, CNC router motor, high-speed spindle, industrial spindle motor, TQI water-cooled spindle'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: 'Air-Cooled Spindle Motor | High Performance CNC Spindle Motor',
+    description: 'Find top-quality air-cooled spindle motor for your CNC applications. Suitable for wood, metal, and industrial machining with reliable performance and durability.',
+    keywords: 'air-cooled spindle motor, CNC spindle, CNC router motor, high-speed spindle, industrial spindle motor, TQI air-cooled spindle motor'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: '2.2Kw Spindle Motor | High Performance CNC Spindle Motor',
+    description: 'Find top-quality 2.2kw spindle motor for your CNC applications. Suitable for wood, metal, and industrial machining with reliable performance and durability.',
+    keywords: '2.2kw spindle motor, CNC spindle, CNC router motor, high-speed spindle, industrial spindle motor, TQI 2.2kw spindle motor'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: '3.7 Kw Cnc Spindle | High Performance CNC Spindle Motor',
+    description: 'Find top-quality 3.7 kw cnc spindle for your CNC applications. Suitable for wood, metal, and industrial machining with reliable performance and durability.',
+    keywords: '3.7 kw cnc spindle, CNC spindle, CNC router motor, high-speed spindle, industrial spindle motor, TQI 3.7 kw cnc spindle'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: 'Servo Spindle Motor | High Performance CNC Spindle Motor',
+    description: 'Find top-quality servo spindle motor for your CNC applications. Suitable for wood, metal, and industrial machining with reliable performance and durability.',
+    keywords: 'servo spindle motor, CNC spindle, CNC router motor, high-speed spindle, industrial spindle motor, TQI servo spindle motor'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: 'Atc Spindle Motor | High Performance CNC Spindle Motor',
+    description: 'Find top-quality atc spindle motor for your CNC applications. Suitable for wood, metal, and industrial machining with reliable performance and durability.',
+    keywords: 'atc spindle motor, CNC spindle, CNC router motor, high-speed spindle, industrial spindle motor, TQI atc spindle motor'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: 'Best Cnc Spindle Motor For Wood | High Performance CNC Spindle Motor',
+    description: 'Find top-quality best cnc spindle motor for wood for your CNC applications. Suitable for wood, metal, and industrial machining with reliable performance and durability.',
+    keywords: 'best cnc spindle motor for wood, CNC spindle, CNC router motor, high-speed spindle, industrial spindle motor, TQI best cnc spindle motor for wood'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: '7.5 Kw Cnc Spindle Motor | High Performance CNC Spindle Motor',
+    description: 'Find top-quality 7.5 kw cnc spindle motor for your CNC applications. Suitable for wood, metal, and industrial machining with reliable performance and durability.',
+    keywords: '7.5 kw cnc spindle motor, CNC spindle, CNC router motor, high-speed spindle, industrial spindle motor, TQI 7.5 kw cnc spindle motor'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: 'Buy Cnc Spindle Motor India | High Performance CNC Spindle Motor',
+    description: 'Find top-quality buy cnc spindle motor india for your CNC applications. Suitable for wood, metal, and industrial machining with reliable performance and durability.',
+    keywords: 'buy cnc spindle motor india, CNC spindle, CNC router motor, high-speed spindle, industrial spindle motor, TQI buy cnc spindle motor india'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: '3 Phase Cnc Spindle 220V | High Performance CNC Spindle Motor',
+    description: 'Find top-quality 3 phase cnc spindle 220v for your CNC applications. Suitable for wood, metal, and industrial machining with reliable performance and durability.',
+    keywords: '3 phase cnc spindle 220v, CNC spindle, CNC router motor, high-speed spindle, industrial spindle motor, TQI 3 phase cnc spindle 220v'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: 'Er20 Cnc Spindle Motor Kit | High Performance CNC Spindle Motor',
+    description: 'Find top-quality er20 cnc spindle motor kit for your CNC applications. Suitable for wood, metal, and industrial machining with reliable performance and durability.',
+    keywords: 'er20 cnc spindle motor kit, CNC spindle, CNC router motor, high-speed spindle, industrial spindle motor, TQI er20 cnc spindle motor kit'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: 'Cnc Spindle Motor With Vfd | High Performance CNC Spindle Motor',
+    description: 'Find top-quality cnc spindle motor with vfd for your CNC applications. Suitable for wood, metal, and industrial machining with reliable performance and durability.',
+    keywords: 'cnc spindle motor with vfd, CNC spindle, CNC router motor, high-speed spindle, industrial spindle motor, TQI cnc spindle motor with vfd'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: 'Cnc Spindle Motor Manufacturers In India | High Performance CNC Spindle Motor',
+    description: 'Find top-quality cnc spindle motor manufacturers in india for your CNC applications. Suitable for wood, metal, and industrial machining with reliable performance and durability.',
+    keywords: 'cnc spindle motor manufacturers in india, CNC spindle, CNC router motor, high-speed spindle, industrial spindle motor, TQI cnc spindle motor manufacturers in india'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: 'Cnc Spindle Motor Supplier Ahmedabad | High Performance CNC Spindle Motor',
+    description: 'Find top-quality cnc spindle motor supplier ahmedabad for your CNC applications. Suitable for wood, metal, and industrial machining with reliable performance and durability.',
+    keywords: 'cnc spindle motor supplier ahmedabad, CNC spindle, CNC router motor, high-speed spindle, industrial spindle motor, TQI cnc spindle motor supplier ahmedabad'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: 'Cnc Router Spindle Price In India | High Performance CNC Spindle Motor',
+    description: 'Find top-quality cnc router spindle price in india for your CNC applications. Suitable for wood, metal, and industrial machining with reliable performance and durability.',
+    keywords: 'cnc router spindle price in india, CNC spindle, CNC router motor, high-speed spindle, industrial spindle motor, TQI cnc router spindle price in india'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: 'High-Speed Spindle Motor 24000 Rpm | High Performance CNC Spindle Motor',
+    description: 'Find top-quality high-speed spindle motor 24000 rpm for your CNC applications. Suitable for wood, metal, and industrial machining with reliable performance and durability.',
+    keywords: 'high-speed spindle motor 24000 rpm, CNC spindle, CNC router motor, high-speed spindle, industrial spindle motor, TQI high-speed spindle motor 24000 rpm'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: 'High Torque Spindle Motor | High Performance CNC Spindle Motor',
+    description: 'Find top-quality high torque spindle motor for your CNC applications. Suitable for wood, metal, and industrial machining with reliable performance and durability.',
+    keywords: 'high torque spindle motor, CNC spindle, CNC router motor, high-speed spindle, industrial spindle motor, TQI high torque spindle motor'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: 'Low Noise Cnc Spindle | High Performance CNC Spindle Motor',
+    description: 'Find top-quality low noise cnc spindle for your CNC applications. Suitable for wood, metal, and industrial machining with reliable performance and durability.',
+    keywords: 'low noise cnc spindle, CNC spindle, CNC router motor, high-speed spindle, industrial spindle motor, TQI low noise cnc spindle'
+  }
+
 
 ];
 
