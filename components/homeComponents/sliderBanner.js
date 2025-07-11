@@ -89,8 +89,13 @@ export default function SliderBanner() {
                       </div>
                     </div>
                     <div className="right">
-                      <Image src="https://res.cloudinary.com/dd1na5drh/image/upload/v1735101811/Main_slider_1_bvfpyw.png" width={530} height={350} alt="Slider Item1 Image"/>
-                    </div>
+                    <Image 
+                      src="https://res.cloudinary.com/dd1na5drh/image/upload/v1735101811/Main_slider_1_bvfpyw.png" 
+                      width={530} 
+                      height={350} 
+                      alt="Slider Item1 Image"
+                    />
+                  </div>
                   </div>
                 </SwiperSlide>
                 <SwiperSlide>
