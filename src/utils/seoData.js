@@ -541,115 +541,115 @@ const seoPages = [
     keywords: 'low noise cnc spindle, CNC spindle, CNC router motor, high-speed spindle, industrial spindle motor, TQI low noise cnc spindle'
   },
   {
-    slug: 'high-speed-spindle',
+    slug: 'cnc-spindle-motor',
     title: 'High-Speed Spindle for CNC Machines | Precision Performance',
     description: 'Discover high-speed spindles ideal for CNC routers, engravers, and cutting machines. Enhanced accuracy and smooth operation at top RPMs.',
     keywords: 'high-speed spindle motor, CNC spindle motor, precision spindle, fast RPM CNC spindle, router spindle'
   },
   {
-    slug: 'woodworking-spindle',
+    slug: 'cnc-spindle-motor',
     title: 'CNC Spindle for Woodworking | Durable & Accurate Spindle Solutions',
     description: 'Explore premium woodworking spindle motors designed for CNC routers. Reliable, vibration-free, and long-lasting.',
     keywords: 'woodworking spindle motor, CNC spindle for wood, wood router spindle, low vibration spindle'
   },
   {
-    slug: 'water-cooled-spindle',
+    slug: 'cnc-spindle-motor',
     title: 'Water Cooled CNC Spindle | Quiet & Efficient Spindle Motor',
     description: 'Efficient water-cooled spindle for silent and continuous operation. Perfect for long-duration CNC cutting and engraving tasks.',
     keywords: 'water cooled CNC spindle, quiet spindle motor, 2.2kw spindle, efficient spindle cooling'
   },
   {
-    slug: 'air-cooled-spindle',
+    slug: 'cnc-spindle-motor',
     title: 'Air Cooled CNC Spindle | Hassle-Free Cooling System',
     description: 'Air-cooled spindle motors with simple installation and maintenance. Suitable for wood, plastic, and aluminum CNC applications.',
     keywords: 'air cooled CNC spindle, low maintenance spindle, DIY CNC spindle, aluminum spindle motor'
   },
   {
-    slug: 'cnc-router-spindle',
+    slug: 'cnc-spindle-motor',
     title: 'CNC Router Spindle Motor | Powerful & Precise Motor for Routing',
     description: 'Upgrade your CNC router with a high-performance spindle motor for accurate and powerful cutting, carving, and shaping.',
     keywords: 'CNC router spindle, router spindle motor, powerful spindle motor, carving spindle for router'
   },
   {
-    slug: 'spindle-motor-price',
+    slug: 'cnc-spindle-motor',
     title: 'CNC Spindle Motor Price | Affordable Options for Every Application',
     description: 'Compare spindle motor prices and choose from budget to premium models. Get durable and reliable performance at competitive rates.',
     keywords: 'CNC spindle price, cheap CNC spindle, budget spindle motor, affordable spindle for CNC'
   },
   {
-    slug: 'atc-spindle-motor',
+    slug: 'cnc-spindle-motor',
     title: 'ATC Spindle Motor for CNC | Automatic Tool Change High-Speed Motor',
     description: 'Shop ATC CNC spindle motors for fast and efficient tool changes. Improve productivity and precision in CNC machining.',
     keywords: 'ATC spindle motor, automatic tool changer spindle, CNC ATC spindle, ISO30 spindle motor'
   },
   {
-    slug: 'spindle-motor-supplier',
+    slug: 'cnc-spindle-motor',
     title: 'CNC Spindle Motor Supplier India | Reliable OEM for Industrial Needs',
     description: 'Trusted CNC spindle motor supplier in India. Offering OEM-quality motors with excellent service and on-time delivery.',
     keywords: 'CNC spindle supplier India, spindle motor OEM, industrial spindle supplier, buy spindle in India'
   },
   {
-    slug: 'servo-spindle-motor',
+    slug: 'cnc-spindle-motor',
     title: 'CNC Servo Spindle Motor | High Precision & Torque Performance',
     description: 'Browse servo spindle motors ideal for high-speed and precision CNC machining. Stable torque and responsive control.',
     keywords: 'servo spindle motor, CNC servo motor, torque spindle, high-accuracy servo spindle'
   },
   {
-    slug: 'mini-cnc-spindle',
+    slug: 'cnc-spindle-motor',
     title: 'Mini CNC Spindle Motor | Compact and Efficient for Small Machines',
     description: 'Compact mini spindle motors ideal for desktop and small CNC routers. Perfect for hobbyists and precision micro-machining.',
     keywords: 'mini CNC spindle, small spindle motor, compact CNC spindle, desktop CNC motor'
   },
   {
-    slug: 'engraving-spindle',
+    slug: 'cnc-spindle-motor',
     title: 'Engraving Spindle Motor | High-Speed Precision for Laser & CNC',
     description: 'Precision engraving spindles for CNC and laser engraving machines. High-speed and smooth finish for detailed jobs.',
     keywords: 'engraving spindle motor, CNC engraving spindle, laser engraving spindle, precision engraving motor'
   },
   {
-    slug: 'metal-cutting-spindle',
+    slug: 'cnc-spindle-motor',
     title: 'Spindle Motor for Metal Cutting | Heavy-Duty CNC Spindle',
     description: 'Strong and durable CNC spindle motors built for cutting and milling metals. Reliable torque and heat resistance.',
     keywords: 'metal cutting spindle, heavy duty CNC spindle, milling spindle motor, metal machining spindle'
   },
   {
-    slug: 'spindle-for-aluminum',
+    slug: 'cnc-spindle-motor',
     title: 'Aluminum Cutting CNC Spindle | High-Speed Precision Spindle Motor',
     description: 'Specialized spindle motors for aluminum machining. High RPM and accurate feed rate for smooth finishes.',
     keywords: 'aluminum CNC spindle, spindle for aluminum, aluminum milling motor, high RPM aluminum spindle'
   },
   {
-    slug: 'iso30-spindle-motor',
+    slug: 'cnc-spindle-motor',
     title: 'ISO30 CNC Spindle | Balanced Tool Holding for Precision Work',
     description: 'Reliable ISO30 spindle motors for CNC routers and mills. Ideal for heavy-duty and continuous machining tasks.',
     keywords: 'ISO30 spindle motor, CNC ISO30 tool holder, ISO spindle, ATC ISO30 CNC spindle'
   },
   {
-    slug: 'spindle-motor-dealer',
+    slug: 'cnc-spindle-motor',
     title: 'CNC Spindle Motor Dealers in India | Wholesale & Retail Suppliers',
     description: 'Find trusted CNC spindle motor dealers and distributors across India. Affordable bulk supply and service support.',
     keywords: 'CNC spindle dealer, spindle distributor India, wholesale spindle motor, CNC motor supplier'
   },
   {
-    slug: 'industrial-spindle',
+    slug: 'cnc-spindle-motor',
     title: 'Industrial Spindle Motor for CNC | Rugged and Long-Lasting Design',
     description: 'Industrial-grade spindle motors engineered for durability and performance in continuous CNC operations.',
     keywords: 'industrial CNC spindle, rugged spindle motor, heavy duty spindle, factory CNC spindle'
   },
   {
-    slug: '3kw-spindle-motor',
+    slug: 'cnc-spindle-motor',
     title: '3kW CNC Spindle Motor | Power & Performance for Cutting Tasks',
     description: 'Get 3kW spindle motors designed for CNC routers and milling machines. High efficiency, low vibration, and strong cutting ability.',
     keywords: '3kw spindle motor, powerful CNC spindle, 3kw CNC router motor, medium spindle motor'
   },
   {
-    slug: '9kw-spindle-motor',
+    slug: 'cnc-spindle-motor',
     title: '9kW CNC Spindle Motor | Heavy-Duty Spindle for Industrial Use',
     description: '9kW CNC spindle motor for large-scale CNC machines. Excellent torque, smooth rotation, and reliable industrial performance.',
     keywords: '9kw CNC spindle, heavy spindle motor, industrial CNC motor, high power spindle'
   },
   {
-    slug: 'router-spindle-accessories',
+    slug: 'cnc-spindle-motor',
     title: 'CNC Spindle Accessories | Tool Holders, Mounts & Cooling Systems',
     description: 'Complete your spindle setup with top-quality accessories including tool holders, brackets, cooling systems, and more.',
     keywords: 'CNC spindle accessories, spindle tool holders, spindle cooling system, mounting brackets for spindle'
