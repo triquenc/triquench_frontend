@@ -653,8 +653,128 @@ const seoPages = [
     title: 'CNC Spindle Accessories | Tool Holders, Mounts & Cooling Systems',
     description: 'Complete your spindle setup with top-quality accessories including tool holders, brackets, cooling systems, and more.',
     keywords: 'CNC spindle accessories, spindle tool holders, spindle cooling system, mounting brackets for spindle'
+  },
+{
+    slug: 'what-is-cnc-spindle-motor',
+    title: 'What is a CNC Spindle Motor? | CNC Basics Explained',
+    description: 'Learn what a CNC spindle motor is and how it powers your CNC machine for precision cutting and milling.',
+    keywords: 'CNC spindle motor, what is CNC spindle, spindle motor basics, CNC machine motor'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: 'How Does a Spindle Motor Work in a CNC Machine?',
+    description: 'Explore how spindle motors function in CNC machines and why they are crucial for performance.',
+    keywords: 'how spindle motor works, CNC spindle working, CNC motor function, spindle mechanism'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: 'Best Spindle Motor for CNC Wood Routers',
+    description: 'Find the top spindle motors ideal for CNC woodworking routers including air and water-cooled options.',
+    keywords: 'CNC wood router spindle, best spindle motor wood, woodworking CNC motor'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: 'Where Can I Buy CNC Spindle Motor in India?',
+    description: 'Looking for reliable CNC spindle motor suppliers in India? Find top options and contact details here.',
+    keywords: 'buy spindle motor India, CNC spindle motor supplier, spindle motor Ahmedabad'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: 'Air-Cooled vs Water-Cooled Spindle Motors – What’s the Difference?',
+    description: 'Compare air-cooled and water-cooled CNC spindle motors to choose the best for your application.',
+    keywords: 'air cooled spindle, water cooled spindle, spindle comparison, cooling types CNC'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: 'How to Choose the Right CNC Spindle Motor for Engraving',
+    description: 'A complete guide to selecting the best spindle motor for engraving applications on CNC machines.',
+    keywords: 'engraving spindle motor, best motor for engraving, CNC spindle engraving'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: 'Top-Rated CNC Spindle Motors for Metal Cutting',
+    description: 'Discover high-performance CNC spindle motors ideal for precision metal cutting operations.',
+    keywords: 'metal cutting spindle, best CNC spindle, heavy duty spindle motor'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: 'Best 7.5kW CNC Spindle Motor for Industrial Use',
+    description: 'Explore the most reliable 7.5kW CNC spindle motors built for high-torque, industrial CNC machining.',
+    keywords: '7.5kW spindle, industrial CNC motor, powerful spindle motor'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: 'CNC Spindle Motor Suppliers Near Me',
+    description: 'Find local suppliers of CNC spindle motors and accessories with fast delivery and service.',
+    keywords: 'CNC spindle near me, local spindle supplier, spindle motor nearby'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: 'Is a Water-Cooled CNC Spindle Better for Long Operations?',
+    description: 'Understand the advantages of water-cooled spindle motors for extended CNC machining tasks.',
+    keywords: 'water cooled spindle motor, long run spindle, CNC cooling motor'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: 'What is the Best Spindle Motor for Acrylic CNC Cutting?',
+    description: 'See which spindle motors are ideal for smooth and precise acrylic cutting on CNC machines.',
+    keywords: 'acrylic spindle motor, CNC for acrylic, best spindle for cutting plastic'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: 'Where to Get High-Speed CNC Spindle Motors for Routers',
+    description: 'Browse top-rated high-speed spindle motors perfect for CNC routers and precision work.',
+    keywords: 'high speed spindle, CNC router motor, fast spindle CNC'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: 'Why is My CNC Spindle Motor Overheating?',
+    description: 'Troubleshoot spindle overheating issues and learn how to prevent motor damage in CNC setups.',
+    keywords: 'CNC spindle overheating, spindle heat issue, cooling problems motor'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: 'How to Maintain a CNC Spindle Motor',
+    description: 'Keep your CNC spindle motor running efficiently with proper maintenance and care tips.',
+    keywords: 'spindle maintenance, CNC motor care, cleaning spindle motor'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: 'Best ATC Spindle Motor for CNC Automatic Tool Changing',
+    description: 'Explore automatic tool change (ATC) spindle motors with speed and flexibility for advanced CNC use.',
+    keywords: 'ATC spindle motor, automatic tool change spindle, ISO30 ISO20 spindle'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: 'Affordable CNC Spindle Motors with High RPM',
+    description: 'Shop for budget-friendly CNC spindle motors that deliver high RPM and performance.',
+    keywords: 'high rpm spindle, low cost CNC motor, budget spindle motor'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: 'Most Powerful Spindle Motor for Heavy-Duty CNC',
+    description: 'Find the most powerful spindle motors designed for heavy-duty CNC cutting and milling.',
+    keywords: 'powerful spindle motor, CNC heavy spindle, industrial CNC spindle'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: 'Can I Replace My CNC Spindle Motor Myself?',
+    description: 'Learn the steps and risks involved in replacing your CNC spindle motor on your own.',
+    keywords: 'replace spindle motor, DIY spindle replacement, CNC motor install'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: 'Where to Buy Spindle Motors in Ahmedabad or Gujarat',
+    description: 'Get the best CNC spindle motors from trusted suppliers in Ahmedabad and across Gujarat.',
+    keywords: 'spindle supplier Ahmedabad, Gujarat CNC spindle, buy motor locally'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: 'Best Spindle Motor Brands for CNC Machines in India',
+    description: 'Compare leading CNC spindle motor brands available in India for quality and reliability.',
+    keywords: 'top spindle brands, best CNC motor India, reliable spindle manufacturers'
   }
-];
 
+];
 
 export default seoPages;
