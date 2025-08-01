@@ -773,6 +773,66 @@ const seoPages = [
     title: 'Best Spindle Motor Brands for CNC Machines in India',
     description: 'Compare leading CNC spindle motor brands available in India for quality and reliability.',
     keywords: 'top spindle brands, best CNC motor India, reliable spindle manufacturers'
+  },
+   {
+    slug: 'cnc-spindle-motor-manufacturer-india',
+    title: 'Top CNC Spindle Motor Manufacturers in India | Reliable & Efficient',
+    description: 'Discover leading CNC spindle motor manufacturers in India offering high-performance and durable spindle solutions for industrial needs.',
+    keywords: 'cnc spindle motor manufacturer India, industrial spindle motors, reliable CNC motors'
+  },
+  {
+    slug: 'cnc-spindle-motor-supplier-gujarat',
+    title: 'Trusted CNC Spindle Motor Suppliers in Gujarat | Fast Delivery',
+    description: 'Explore CNC spindle motor suppliers in Gujarat offering a wide range of motors for CNC routers, wood carving, and metal cutting.',
+    keywords: 'cnc spindle motor Gujarat, spindle motor supplier Gujarat, CNC motor distributor'
+  },
+  {
+    slug: 'air-cooled-spindle-motor-wood-carving',
+    title: 'Air Cooled CNC Spindle Motor for Wood Carving | High-Speed & Durable',
+    description: 'Shop air-cooled CNC spindle motors perfect for wood carving and engraving applications. Efficient, low-maintenance, and durable.',
+    keywords: 'air cooled spindle motor, wood carving motor, cnc wood engraving motor'
+  },
+  {
+    slug: '7-5kw-spindle-motor-price-ahmedabad',
+    title: '7.5kW CNC Spindle Motor Price in Ahmedabad | Best Deals',
+    description: 'Get the best price for 7.5kW spindle motors in Ahmedabad. Ideal for heavy-duty CNC operations with superior performance.',
+    keywords: '7.5kw spindle motor Ahmedabad, cnc motor price Gujarat, heavy-duty spindle'
+  },
+  {
+    slug: 'best-cnc-router-spindle-mdf',
+    title: 'Best CNC Router Spindle for MDF Cutting | High Precision Motors',
+    description: 'Find the most reliable CNC router spindles for cutting MDF with precision. Shop now for high-performance motors.',
+    keywords: 'best cnc router spindle, mdf cutting spindle, cnc accessories for mdf'
+  },
+  {
+    slug: 'vfd-spindle-motor-cnc-router',
+    title: 'VFD Spindle Motor for CNC Router | Speed Control & Efficiency',
+    description: 'Enhance your CNC router with a VFD-compatible spindle motor for better speed control and smoother performance.',
+    keywords: 'vfd spindle motor, spindle with vfd, cnc router motor vfd'
+  },
+  {
+    slug: 'cnc-spindle-motor-dealer-maharashtra',
+    title: 'CNC Spindle Motor Dealers in Maharashtra | Authorized Suppliers',
+    description: 'Find authorized CNC spindle motor dealers in Maharashtra for industrial and commercial use.',
+    keywords: 'cnc spindle dealer Maharashtra, spindle suppliers Maharashtra, cnc motor India'
+  },
+  {
+    slug: 'iso20-spindle-motor-engraving',
+    title: 'ISO20 Spindle Motor for CNC Engraving | Compact & Accurate',
+    description: 'Buy ISO20 spindle motors designed for high-speed engraving and precision CNC tasks.',
+    keywords: 'iso20 spindle motor, engraving spindle motor, cnc compact spindle'
+  },
+  {
+    slug: 'buy-cnc-spindle-motor-online-india',
+    title: 'Buy CNC Spindle Motor Online in India | Fast Shipping & Warranty',
+    description: 'Shop CNC spindle motors online in India. Trusted quality, fast shipping, and full support.',
+    keywords: 'buy cnc spindle motor, online spindle motor India, cnc motor e-commerce'
+  },
+  {
+    slug: '3-7kw-water-cooled-spindle-motor-price',
+    title: '3.7kW Water Cooled Spindle Motor Price | CNC Performance Upgrade',
+    description: 'Get updated prices for 3.7kW water cooled spindle motors. Ideal for cooling-intensive and precision CNC work.',
+    keywords: '3.7kw spindle motor price, water cooled cnc spindle, cnc spindle cooling'
   }
 
 ];
