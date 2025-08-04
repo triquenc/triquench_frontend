@@ -655,7 +655,7 @@ const seoPages = [
     keywords: 'CNC spindle accessories, spindle tool holders, spindle cooling system, mounting brackets for spindle'
   },
 {
-    slug: 'what-is-cnc-spindle-motor',
+    slug: 'cnc-spindle-motor',
     title: 'What is a CNC Spindle Motor? | CNC Basics Explained',
     description: 'Learn what a CNC spindle motor is and how it powers your CNC machine for precision cutting and milling.',
     keywords: 'CNC spindle motor, what is CNC spindle, spindle motor basics, CNC machine motor'
@@ -833,6 +833,65 @@ const seoPages = [
     title: '3.7kW Water Cooled Spindle Motor Price | CNC Performance Upgrade',
     description: 'Get updated prices for 3.7kW water cooled spindle motors. Ideal for cooling-intensive and precision CNC work.',
     keywords: '3.7kw spindle motor price, water cooled cnc spindle, cnc spindle cooling'
+  },  {
+    slug: 'cnc-spindle-motor',
+    title: 'What is a CNC Spindle Motor? | CNC Basics Explained',
+    description: 'Learn what a CNC spindle motor is and how it powers your CNC machine for precision cutting and engraving.',
+    keywords: 'cnc spindle motor, spindle motor basics, cnc motor working'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: 'Air-Cooled vs Water-Cooled CNC Spindle | Which is Better?',
+    description: 'Understand the key differences between air-cooled and water-cooled spindle motors for your CNC application.',
+    keywords: 'air cooled spindle, water cooled spindle, cnc spindle comparison'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: 'Buy CNC Spindle Motor Online | Best Prices & Brands',
+    description: 'Shop top CNC spindle motors online. Compare brands, features, and pricing for your next CNC upgrade.',
+    keywords: 'buy cnc spindle motor, cnc spindle price, spindle motor online'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: '7.5kW Spindle Motor Price in India | High Power CNC Motor',
+    description: 'Explore current prices for 7.5kW CNC spindle motors. High torque motors ideal for heavy-duty machining.',
+    keywords: '7.5kw spindle motor, cnc heavy motor, 7.5kw cnc motor price'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: 'Best CNC Spindle for Wood Router | Smooth & Precise Cuts',
+    description: 'Find the best spindle motor options for CNC wood routers. Achieve smoother cuts and better detailing.',
+    keywords: 'wood router spindle, best cnc motor for wood, router motor'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: 'CNC Spindle Motor Working Principle | Explained Simply',
+    description: 'Discover how CNC spindle motors operate and deliver rotation for precise cutting operations.',
+    keywords: 'spindle motor working, cnc motor principle, how spindle works'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: '3.7kW Water Cooled Spindle Motor Price | CNC Performance Upgrade',
+    description: 'Get updated prices for 3.7kW water cooled spindle motors. Ideal for cooling-intensive and precision CNC work.',
+    keywords: '3.7kw spindle motor price, water cooled cnc spindle, cnc spindle cooling'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: 'Automatic Tool Changer Spindle Motor (ATC) | CNC Automation',
+    description: 'Enhance automation with ATC spindle motors for CNC machines. Improve efficiency and tool change times.',
+    keywords: 'atc spindle motor, cnc automatic spindle, tool changer motor'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: 'CNC Spindle Motor Manufacturer in India | Trusted Supplier',
+    description: 'Top CNC spindle motor manufacturers in India offering durable, efficient motors for every application.',
+    keywords: 'cnc spindle manufacturer india, spindle supplier, cnc motor dealer'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: 'Water Cooled Spindle Motor Dealer in Ahmedabad | Best Price',
+    description: 'Find the best water cooled CNC spindle motor dealers in Ahmedabad. Competitive pricing and expert support.',
+    keywords: 'spindle motor ahmedabad, water cooled cnc ahmedabad, dealer cnc motor'
   }
 
 ];
