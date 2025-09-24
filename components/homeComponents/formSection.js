@@ -22,21 +22,24 @@ const FormSection = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("https://d1w2b5et10ojep.cloudfront.net/api/form/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(formData)
-      });
-      
+      const response = await fetch(
+        "http://localhost:5000/api/form/submit",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(formData)
+        }
+      );
+
       const data = await response.json();
 
       if (response.ok) {
         // Show success notification
-        setNotification(data.message);
+        setNotification(data.message || "Message sent successfully!");
 
-        // Optional: Reset form after successful submission
+        // Reset form after successful submission
         setFormData({
           name: "",
           email: "",
@@ -50,12 +53,11 @@ const FormSection = () => {
           setNotification("");
         }, 3000);
       } else {
-        // console.error("Error submitting form:", response.statusText);
-        setNotification(data.message);
+        setNotification(data.message || "Failed to send email");
       }
     } catch (error) {
       console.error("Error submitting form:", error);
-      setNotification(data.message);
+      setNotification("Error: Unable to connect to server. Please try again later.");
     }
   };
 
@@ -102,7 +104,7 @@ const FormSection = () => {
           <div className="form-group phone-field">
             <label htmlFor="mobile">Phone Number</label>
             <input
-              type="number"
+              type="tel"
               id="mobile"
               name="mobile"
               placeholder="Enter Phone Number"
@@ -119,9 +121,8 @@ const FormSection = () => {
               placeholder="Type a message here"
               value={formData.message}
               onChange={handleChange}
-              required 
-              
-              />
+              required
+            />
           </div>
           <div className="form-group">
             <button type="submit" className="site-btn">

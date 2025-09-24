@@ -29,7 +29,7 @@ const seoPages = [
     description: 'Get fiber laser sources, Raytools BT240S, BT220 heads, CO2 laser controllers, and more. Industrial laser parts for precision cutting and marking.',
     keywords: 'Raytools laser head, fiber laser parts, CO2 laser controller, fiber laser source, BT240S 3000W, BT220 2000W, JPT fiber laser, laser cutting accessories'
   },
-  {
+  { 
     slug: 'tool-holder',
     title: 'CNC Tool Holders - BT40, ISO, ER Collet | CNC Machine Accessories',
     description: 'Browse premium tool holders for CNC routers and lathes. BT40, ISO tool holders, ER collet chucks, and spindle accessories available for high-precision work.',
@@ -892,6 +892,631 @@ const seoPages = [
     title: 'Water Cooled Spindle Motor Dealer in Ahmedabad | Best Price',
     description: 'Find the best water cooled CNC spindle motor dealers in Ahmedabad. Competitive pricing and expert support.',
     keywords: 'spindle motor ahmedabad, water cooled cnc ahmedabad, dealer cnc motor'
+  }, 
+  {
+slug:"cnc-spindle-motor",
+title:'Why use CNC Spindle Motor ',
+description:'Find the best water cooled CNC spindle motor dealers in Ahmedabad. Competitive pricing and expert support.',
+keywords:'CNC Spindle Motor',
+
+  }, {
+    slug: 'cnc-spindle',
+    title: 'High-Performance CNC Spindles | TriQuench India',
+    description: 'Explore durable and efficient CNC spindles designed for precision machining and routing applications.',
+    keywords: 'cnc spindle, precision cnc spindles, spindle for cnc router'
+  },
+  {
+    slug: 'cnc-router-spindle',
+    title: 'Best CNC Router Spindle Motors for Precision Carving',
+    description: 'Buy top-quality CNC router spindles for wood, plastic, and metal cutting. High torque, low noise.',
+    keywords: 'cnc router spindle, router spindle motor, carving spindle'
+  },
+  {
+    slug: 'cnc-spindle-motor',
+    title: 'Top CNC Spindle Motors | Water & Air Cooled Options',
+    description: 'Browse high-speed CNC spindle motors ideal for routers, mills, and engraving machines.',
+    keywords: 'cnc spindle motor, water cooled spindle, air cooled spindle motor'
+  },
+  {
+    slug: 'bt40-spindle',
+    title: 'BT40 CNC Spindle Motors for Milling and Drilling',
+    description: 'Shop premium BT40 spindle motors for CNC machining centers. High precision, strong build.',
+    keywords: 'bt40 spindle, bt40 cnc spindle motor, bt40 milling spindle'
+  },
+  {
+    slug: 'spindle-accessories',
+    title: 'CNC Spindle Accessories | Collets, Holders & Bearings',
+    description: 'Complete your spindle setup with high-quality spindle accessories like ER collets, tool holders, and bearings.',
+    keywords: 'spindle accessories, cnc tool holders, er collet, spindle bearings'
+  },
+  {
+    slug: 'atc-spindle',
+    title: 'Automatic Tool Change (ATC) Spindle Motors',
+    description: 'Buy reliable ATC spindles for faster and automated CNC tool changes with ISO, HSK, and BT holders.',
+    keywords: 'atc spindle, automatic tool change spindle, hsk spindle motor'
+  },
+  {
+    slug: 'mtc-spindle',
+    title: 'Manual Tool Change (MTC) CNC Spindles',
+    description: 'MTC spindles for manual tool change operations in wood, metal, and acrylic CNC applications.',
+    keywords: 'mtc spindle, cnc spindle motor mtc, manual tool change spindle'
+  },
+  {
+    slug: 'water-cooled-spindle',
+    title: 'Water Cooled Spindle Motors for CNC Machines',
+    description: 'High-efficiency water-cooled spindle motors with low vibration and stable temperature.',
+    keywords: 'water cooled spindle, cnc spindle motor, spindle water cooling'
+  },
+  {
+    slug: 'air-cooled-spindle',
+    title: 'Air Cooled Spindle Motors for CNC Routing',
+    description: 'Buy air-cooled spindles for high-speed CNC cutting and engraving operations.',
+    keywords: 'air cooled spindle, cnc router motor, spindle with air cooling'
+  },
+  {
+    slug: 'cnc-tool-holder',
+    title: 'Tool Holders for CNC Spindles - BT, ISO, ER',
+    description: 'Explore a range of CNC tool holders for spindle compatibility including BT40, ISO30, ER32.',
+    keywords: 'cnc tool holder, bt40 tool holder, iso collet, er collet holder'
+  },
+  {
+    slug: 'bt40-tool-holder',
+    title: 'BT40 Tool Holders | High Precision CNC Tooling',
+    description: 'Shop BT40 holders for CNC machines. Suitable for milling, drilling, and engraving operations.',
+    keywords: 'bt40 tool holder, cnc tool holder, bt40 spindle tool holder'
+  },
+  {
+    slug: 'wood-carving-spindle',
+    title: 'CNC Spindle Motors for Wood Carving Machines',
+    description: 'High torque CNC wood carving spindles. Ideal for decorative and industrial woodwork.',
+    keywords: 'wood carving spindle, cnc spindle motor for wood, router spindle for wood'
+  },
+  {
+    slug: 'stone-carving-spindle',
+    title: 'Stone Carving CNC Spindle Motors | Durable & Powerful',
+    description: 'Spindles designed for stone engraving and cutting. High power, dust-resistant designs.',
+    keywords: 'stone carving spindle, stone engraving spindle motor, cnc stone spindle'
+  },
+  {
+    slug: 'jewellery-spindle',
+    title: 'Jewellery CNC Spindle Motors | High Precision',
+    description: 'Spindle motors designed for jewellery CNC machines including bangle making and stone setting.',
+    keywords: 'jewellery spindle motor, bangle cnc spindle, precision spindle for jewellery'
+  },
+  {
+    slug: 'vfd-for-spindle',
+    title: 'VFD for Spindle Motors | Delta, Teco, Fuji Drives',
+    description: 'Buy compatible VFD drives for all types of spindle motors - single phase & 3 phase.',
+    keywords: 'vfd for spindle motor, delta vfd, spindle vfd drive'
+  },
+  {
+    slug: 'servo-spindle-motor',
+    title: 'Servo Spindle Motors | Accurate & Efficient',
+    description: 'CNC servo spindle motors for high-speed and high-precision machining tasks.',
+    keywords: 'servo spindle motor, high torque spindle, cnc spindle servo'
+  },
+  {
+    slug: 'iso-spindle-motor',
+    title: 'ISO Spindle Motors for CNC Applications',
+    description: 'ISO collet-compatible spindle motors for routers, mills, and engraving systems.',
+    keywords: 'iso spindle motor, cnc iso spindle, iso collet spindle'
+  },
+  {
+    slug: 'belt-driven-spindle',
+    title: 'Belt Driven Spindle Motors for Milling Machines',
+    description: 'Browse belt-driven CNC spindles for smooth milling operations with reduced vibration.',
+    keywords: 'belt-driven spindle, spindle belt, milling spindle motor'
+  },
+  {
+    slug: 'cnc-wood-carving-spindle',
+    title: 'Wood Carving CNC Spindle | High-Speed Router Motors',
+    description: 'Precision spindle motors designed for wood carving CNC routers.',
+    keywords: 'wood carving spindle motor, cnc router spindle wood, carving router motor'
+  },
+  {
+    slug: 'fiber-laser-cutting-source',
+    title: 'Fiber Laser Source for CNC Laser Cutting Machines',
+    description: 'High-performance fiber laser sources for metal cutting, engraving and industrial marking.',
+    keywords: 'fiber laser source, cnc laser cutting, laser engraving source'
+  },
+  {
+    slug: 'co2-laser-parts',
+    title: 'CO2 Laser Parts | Power Supply, Controller & Accessories',
+    description: 'Shop CO2 laser power supplies and controllers for laser cutting machines.',
+    keywords: 'co2 laser power supply, laser controller, co2 laser parts'
+  },
+  {
+    slug: 'router-bits-wood-carving',
+    title: 'Wood Carving Router Bits | CNC Engraving Tools',
+    description: 'quality wood carving bits for CNC routers. Suitable for detailed and artistic cutting.',
+    keywords: 'wood carving router bits, cnc router tools, engraving router bits'
+  }, 
+  {
+  slug: 'axis-servo-motor-with-brake',
+  title: 'Axis Servo Motor with Brake | Precision CNC Position Holding',
+  description: 'Get Axis Servo Motors with brake for accurate position holding in CNC machines and automation systems. Perfect for preventing shaft rotation during power-off conditions.',
+  keywords: 'axis servo motor with brake, cnc servo motor brake, servo motor position holding, servo motor for cnc machines, industrial servo motor with brake, high torque servo motor with brake'
+},
+{
+  slug: 'axis-servo-motor-without-brake',
+  title: 'Axis Servo Motor without Brake | High-Speed CNC Motion Control',
+  description: 'Buy Axis Servo Motors without brake for smooth, high-speed, and efficient CNC operations. Ideal for continuous motion applications in industrial automation.',
+  keywords: 'axis servo motor without brake, cnc servo motor, industrial servo motor, high speed servo motor, axis motor without brake, servo drive motor without brake'
+},
+
+ {
+    slug: "best-lm-guideways-manufacturer-in-india",
+    title: "Best LM Guideways Manufacturer in India",
+    description: "Top LM guideways manufacturer in India offering precision rails and blocks for CNC and automation.",
+    keywords: "LM guideways manufacturer India, linear guide maker, LM rails and blocks"
+  },
+  {
+    slug: "high-precision-lm-guideways-for-cnc-machines",
+    title: "High Precision LM Guideways for CNC Machines",
+    description: "Shop high precision LM guideways for CNC machines to improve accuracy, rigidity, and smooth motion.",
+    keywords: "precision LM guideways, CNC linear rails, LM rail block"
+  },
+  {
+    slug: "heavy-duty-lm-guideways-for-industrial-use",
+    title: "Heavy Duty LM Guideways for Industrial Use",
+    description: "Durable heavy duty LM guideways designed for high load industrial applications and long service life.",
+    keywords: "heavy duty linear guideways, industrial LM rails, high load LM guides"
+  },
+  {
+    slug: "linear-motion-guideways-for-cnc-router-machines",
+    title: "Linear Motion Guideways for CNC Router Machines",
+    description: "Reliable linear motion guideways and rails for CNC router machines used in wood, acrylic, and aluminum.",
+    keywords: "CNC router linear rails, router LM guideways, LM rail for router"
+  },
+  {
+    slug: "affordable-lm-guideways-supplier-in-india",
+    title: "Affordable LM Guideways Supplier in India",
+    description: "Buy cost-effective LM guideways in India from a trusted supplier with quick delivery and support.",
+    keywords: "LM guideways supplier India, budget LM rails, low cost linear guideways"
+  },
+  {
+    slug: "buy-lm-rail-and-block-online-in-india",
+    title: "Buy LM Rail and Block Online in India",
+    description: "Order LM rail and block sets online in India—multiple sizes, preload options, and fast shipping.",
+    keywords: "LM rail and block, buy linear rails India, LM carriage block"
+  },
+  {
+    slug: "precision-linear-guideways-for-milling-machines",
+    title: "Precision Linear Guideways for Milling Machines",
+    description: "High accuracy linear guideways for milling machines to improve surface finish and repeatability.",
+    keywords: "milling machine linear guides, precision LM rails, mill LM guideway"
+  },
+  {
+    slug: "durable-lm-guideways-for-woodworking-cnc",
+    title: "Durable LM Guideways for Woodworking CNC",
+    description: "Moisture-resistant, durable LM guideways for woodworking CNC routers with smooth, quiet motion.",
+    keywords: "wood CNC LM rails, woodworking linear guides, router guideways"
+  },
+  {
+    slug: "lm-guideways-for-heavy-load-applications",
+    title: "LM Guideways for Heavy Load Applications",
+    description: "Select LM guideways engineered for heavy load applications with high static and dynamic capacity.",
+    keywords: "high load LM guideways, heavy duty linear rails, load rated guides"
+  },
+  {
+    slug: "high-quality-lm-guideways-for-automation",
+    title: "High Quality LM Guideways for Automation",
+    description: "Premium LM guideways for factory automation, gantries, pick-and-place, and motion control.",
+    keywords: "automation linear guides, LM rails for robotics, motion control guideways"
+  },
+  {
+    slug: "lm-block-and-rail-for-cnc-machining-centers",
+    title: "LM Block and Rail for CNC Machining Centers",
+    description: "Matched LM block and rail sets for CNC machining centers with high rigidity and low friction.",
+    keywords: "CNC machining center rails, LM block rail set, linear motion guides"
+  },
+  {
+    slug: "cnc-machine-spare-parts-lm-guideways",
+    title: "CNC Machine Spare Parts: LM Guideways",
+    description: "Genuine LM guideways and spares for CNC machines—blocks, rails, seals, and accessories.",
+    keywords: "CNC spare parts LM, replacement linear rails, LM blocks"
+  },
+  {
+    slug: "industrial-linear-guideways-for-automation-systems",
+    title: "Industrial Linear Guideways for Automation Systems",
+    description: "Industrial linear guideways for conveyors, assembly lines, and automated production systems.",
+    keywords: "industrial linear guide, factory LM rails, automation guideways"
+  },
+  {
+    slug: "lm-guideways-for-high-speed-machining",
+    title: "LM Guideways for High Speed Machining",
+    description: "Low friction LM guideways optimized for high speed machining with stable accuracy.",
+    keywords: "high speed linear rails, low friction LM guides, HSM guideways"
+  },
+  {
+    slug: "compact-lm-guideways-for-small-cnc-machines",
+    title: "Compact LM Guideways for Small CNC Machines",
+    description: "Space-saving compact LM guideways ideal for desktop and small footprint CNC machines.",
+    keywords: "compact linear guides, mini LM rails, small CNC guideways"
+  },
+  {
+    slug: "lm-rail-and-block-manufacturer-in-ahmedabad",
+    title: "LM Rail and Block Manufacturer in Ahmedabad",
+    description: "Ahmedabad-based manufacturer of LM rails and blocks supplying Gujarat and PAN India.",
+    keywords: "LM rail manufacturer Ahmedabad, linear guide Gujarat, LM blocks"
+  },
+  {
+    slug: "exporter-of-lm-guideways-and-linear-rails",
+    title: "Exporter of LM Guideways and Linear Rails",
+    description: "Global exporter of LM guideways and linear rails—quality compliance and export packing.",
+    keywords: "LM guideways exporter, linear rails export, overseas LM supplier"
+  },
+  {
+    slug: "lm-guideways-with-ball-bearing-design",
+    title: "LM Guideways with Ball Bearing Design",
+    description: "Smooth ball bearing LM guideways with high load capacity and excellent running accuracy.",
+    keywords: "ball bearing linear guides, recirculating ball LM rails, LM block balls"
+  },
+  {
+    slug: "lm-guideways-for-precision-motion-control",
+    title: "LM Guideways for Precision Motion Control",
+    description: "Choose LM guideways for precision motion control in robotics, metrology, and automation.",
+    keywords: "precision motion linear guides, robotic LM rails, metrology guideways"
+  },
+  {
+    slug: "customized-lm-guideways-for-cnc-applications",
+    title: "Customized LM Guideways for CNC Applications",
+    description: "Custom LM guideways—sizes, preload, seals, and coatings tailored for your CNC application.",
+    keywords: "custom linear guideways, tailored LM rails, special preload LM block"
+  },
+ {
+    slug: 'max-fiber-laser-source',
+    title: 'Max Fiber Laser Source | High Power CNC Laser Source Supplier',
+    description: 'Buy original Max Fiber Laser Sources with stable performance and long service life for fiber laser cutting machines.',
+    keywords: 'max fiber laser source india, cnc fiber laser source, max laser source supplier'
+  },
+  {
+    slug: 'max-laser-source-1kw',
+    title: '1kW Max Fiber Laser Source | Reliable CNC Laser Cutting Source',
+    description: 'High-efficiency 1kW Max Fiber Laser Source for precision CNC laser cutting with durability and consistent performance.',
+    keywords: '1kw max laser source india, fiber laser source 1000w, max source supplier'
+  },
+  {
+    slug: 'max-laser-source-2kw',
+    title: '2kW Max Fiber Laser Source | CNC Fiber Laser Supplier India',
+    description: 'Durable 2kW Max Fiber Laser Source suitable for metal cutting CNC machines with stability and efficiency.',
+    keywords: '2kw max fiber laser source, cnc fiber laser cutting source, max laser supplier india'
+  },
+  {
+    slug: 'max-laser-source-3kw',
+    title: '3kW Max Fiber Laser Source | Precision Laser Source India',
+    description: 'Powerful 3kW Max Fiber Laser Source offering high precision cutting performance for CNC fiber laser machines.',
+    keywords: '3kw max fiber laser source india, cnc laser source, fiber laser source supplier'
+  },
+  {
+    slug: 'max-laser-source-6kw',
+    title: '6kW Max Fiber Laser Source | High Power CNC Laser Source',
+    description: 'Top-quality 6kW Max Fiber Laser Source for industrial CNC cutting machines with high performance and stability.',
+    keywords: '6kw max fiber laser source india, cnc max source supplier, fiber laser source 6000w'
+  },
+  {
+    slug: 'fiber-laser-head',
+    title: 'Fiber Laser Head | High Precision CNC Laser Cutting Head',
+    description: 'Premium fiber laser cutting heads designed for Max Fiber Laser Sources with long service life and cutting accuracy.',
+    keywords: 'fiber laser head india, cnc laser cutting head, laser head supplier'
+  },
+  {
+    slug: 'raytools-laser-head',
+    title: 'Raytools Fiber Laser Head | CNC Cutting Head Supplier India',
+    description: 'Original Raytools fiber laser cutting heads compatible with Max Fiber Laser Sources for CNC machines.',
+    keywords: 'raytools fiber laser head india, cnc laser head supplier, raytools cutting head'
+  },
+  {
+    slug: 'wsx-fiber-laser-head',
+    title: 'WSX Fiber Laser Head | CNC Laser Cutting Head Dealer',
+    description: 'Durable WSX fiber laser heads for CNC fiber laser cutting with high-speed performance and reliability.',
+    keywords: 'wsx fiber laser head india, cnc fiber laser cutting head, wsx laser head supplier'
+  },
+  {
+    slug: 'au3tech-laser-head',
+    title: 'Au3tech Fiber Laser Head | High Performance CNC Cutting Head',
+    description: 'Reliable Au3tech fiber laser cutting heads designed for smooth cutting with Max Fiber Laser Source.',
+    keywords: 'au3tech fiber laser head india, cnc fiber laser supplier, fiber laser cutting head'
+  },
+  {
+    slug: 'fiber-laser-source-and-head',
+    title: 'Fiber Laser Source and Head | Max Source & CNC Laser Head Supplier',
+    description: 'Complete CNC fiber laser solutions including Max Fiber Laser Source and Fiber Laser Cutting Heads.',
+    keywords: 'fiber laser source and head india, cnc laser cutting source, max fiber laser head supplier'
+  },
+  {
+    slug: 'fiber-laser-cutting-machine-parts',
+    title: 'Fiber Laser Cutting Machine Parts | Source, Head & Controller',
+    description: 'Get all fiber laser cutting machine parts including Max source, laser head, and CNC controllers at best prices.',
+    keywords: 'fiber laser cutting machine parts, cnc laser source and head, laser controller supplier india'
+  },
+  {
+    slug: 'cnc-fiber-laser-accessories',
+    title: 'CNC Fiber Laser Accessories | Laser Head, Nozzle & Source',
+    description: 'Wide range of CNC fiber laser accessories such as heads, nozzles, sources, and controllers.',
+    keywords: 'cnc fiber laser accessories india, laser nozzle supplier, fiber laser head parts'
+  },
+  {
+    slug: 'fiber-laser-controller',
+    title: 'Fiber Laser Controller | CNC Laser Cutting Machine Control System',
+    description: 'Advanced fiber laser controllers for CNC cutting machines with high precision and easy integration.',
+    keywords: 'fiber laser controller india, cnc laser cutting controller, fiber laser control system'
+  },
+  {
+    slug: 'fiber-laser-nozzles',
+    title: 'Fiber Laser Nozzles | High Precision Cutting Accessories',
+    description: 'Best quality fiber laser nozzles for CNC cutting heads ensuring accurate and smooth cutting.',
+    keywords: 'fiber laser nozzles india, cnc laser cutting nozzle, fiber laser consumables'
+  },
+  {
+    slug: 'fiber-laser-source-dealer',
+    title: 'Fiber Laser Source Dealer in India | Max Fiber Laser Supplier',
+    description: 'Trusted fiber laser source dealer in India supplying Max fiber laser sources with warranty and support.',
+    keywords: 'fiber laser source dealer india, max source supplier, cnc laser source distributor'
+  },
+
+  {
+    slug: 'max-fiber-laser-source-ahmedabad',
+    title: 'Max Fiber Laser Source in Ahmedabad | Trusted CNC Laser Supplier',
+    description: 'Get high-performance Max Fiber Laser Sources in Ahmedabad. Reliable supplier for CNC laser cutting machines with long service life.',
+    keywords: 'max fiber laser source ahmedabad, cnc fiber laser supplier ahmedabad, fiber laser source dealer'
+  },
+  {
+    slug: 'fiber-laser-head-ahmedabad',
+    title: 'Fiber Laser Head Supplier in Ahmedabad | CNC Laser Cutting Head',
+    description: 'Leading supplier of fiber laser cutting heads in Ahmedabad for CNC machines. Compatible with Max Fiber Laser Sources.',
+    keywords: 'fiber laser head ahmedabad, cnc laser head supplier, laser cutting head dealer'
+  },
+  {
+    slug: 'raytools-laser-head-ahmedabad',
+    title: 'Raytools Laser Head in Ahmedabad | CNC Fiber Laser Cutting Head',
+    description: 'Buy original Raytools fiber laser cutting heads in Ahmedabad with high precision and long service life.',
+    keywords: 'raytools laser head ahmedabad, cnc fiber laser head supplier, laser head dealer'
+  },
+  {
+    slug: 'wsx-laser-head-ahmedabad',
+    title: 'WSX Fiber Laser Head Supplier in Ahmedabad | CNC Laser Dealer',
+    description: 'High-quality WSX fiber laser heads available in Ahmedabad. Trusted CNC laser cutting head supplier.',
+    keywords: 'wsx fiber laser head ahmedabad, cnc laser head supplier, wsx cnc cutting head'
+  },
+  {
+    slug: 'fiber-laser-source-head-ahmedabad',
+    title: 'Fiber Laser Source & Head in Ahmedabad | CNC Laser Supplier',
+    description: 'Complete CNC fiber laser solutions in Ahmedabad with Max Fiber Laser Source and Fiber Laser Cutting Heads.',
+    keywords: 'fiber laser source ahmedabad, cnc laser head supplier ahmedabad, max fiber laser dealer'
+  },
+  {
+    slug: 'high-precision-lm-guideways',
+    title: 'High Precision LM Guideways for CNC Machines',
+    description: 'Shop high precision LM guideways designed for CNC machines. Ensure accurate motion, durability, and smooth linear performance.',
+    keywords: 'high precision LM guideways, CNC machine LM rails, linear guideways for CNC'
+  },
+  {
+    slug: 'heavy-duty-lm-guideways',
+    title: 'Heavy Duty LM Guideways for Industrial Use',
+    description: 'Durable and reliable heavy duty LM guideways ideal for industrial CNC machines and automation systems.',
+    keywords: 'heavy duty LM guideways, industrial LM rails, CNC heavy load guideways'
+  },
+  {
+    slug: 'lm-guideways-cnc-router',
+    title: 'Linear Motion Guideways for CNC Router Machines',
+    description: 'Buy linear motion guideways for CNC router machines. Designed for precision cutting and smooth operation.',
+    keywords: 'linear motion guideways, CNC router LM rails, LM guideways for CNC routers'
+  },
+  {
+    slug: 'affordable-lm-guideways-india',
+    title: 'Affordable LM Guideways Supplier in India',
+    description: 'Find affordable LM guideways in India. Cost-effective solutions with premium quality for CNC and industrial applications.',
+    keywords: 'affordable LM guideways India, LM rails supplier India, cheap CNC guideways'
+  },
+  {
+    slug: 'buy-lm-rail-block-online',
+    title: 'Buy LM Rail and Block Online in India',
+    description: 'Order LM rails and blocks online in India. High-quality linear motion solutions for CNC and automation machines.',
+    keywords: 'LM rail block India, buy LM guideways online, CNC LM block rail supplier'
+  },
+  {
+    slug: 'precision-linear-guideways',
+    title: 'Precision Linear Guideways for Milling Machines',
+    description: 'Premium precision linear guideways for milling machines. Improve accuracy and machine performance with LM rails.',
+    keywords: 'precision linear guideways, LM rails for milling, CNC milling guideways'
+  },
+  {
+    slug: 'durable-lm-guideways-woodworking',
+    title: 'Durable LM Guideways for Woodworking CNC',
+    description: 'Durable LM guideways designed for woodworking CNC machines. Smooth, accurate, and long-lasting performance.',
+    keywords: 'LM guideways woodworking CNC, CNC LM rails for wood, durable linear guideways'
+  },
+  {
+    slug: 'lm-guideways-heavy-load',
+    title: 'LM Guideways for Heavy Load Applications',
+    description: 'High strength LM guideways for heavy load CNC and automation applications. Built for industrial reliability.',
+    keywords: 'heavy load LM guideways, industrial CNC guideways, LM rails high capacity'
+  },
+  {
+    slug: 'high-quality-lm-guideways-automation',
+    title: 'High Quality LM Guideways for Automation',
+    description: 'Top-quality LM guideways for automation machines. Smooth linear motion with precision engineering.',
+    keywords: 'LM guideways automation, linear rails automation, high quality CNC LM guideways'
+  },
+  {
+    slug: 'lm-block-rail-cnc-machining',
+    title: 'LM Block and Rail for CNC Machining Centers',
+    description: 'Reliable LM block and rail sets for CNC machining centers. Ensure accuracy and smooth linear motion.',
+    keywords: 'LM block rail CNC, CNC machining LM guideways, CNC LM rails'
+  },
+  {
+    slug: 'cnc-machine-spare-lm-guideways',
+    title: 'CNC Machine Spare Parts - LM Guideways',
+    description: 'Spare LM guideways for CNC machines. Premium spare parts to maintain accuracy and performance.',
+    keywords: 'CNC spare parts LM guideways, CNC LM rails, LM guideways for machines'
+  },
+  {
+    slug: 'industrial-linear-guideways',
+    title: 'Industrial Linear Guideways for Automation Systems',
+    description: 'Industrial-grade linear guideways for automation and CNC machines. Designed for reliability and efficiency.',
+    keywords: 'industrial linear guideways, LM rails automation, CNC automation guideways'
+  },
+  {
+    slug: 'lm-guideways-high-speed',
+    title: 'LM Guideways for High Speed Machining',
+    description: 'Precision LM guideways for high speed machining applications. Smooth motion and long service life.',
+    keywords: 'LM guideways high speed, CNC machining LM rails, linear rails for speed'
+  },
+  {
+    slug: 'compact-lm-guideways-small-cnc',
+    title: 'Compact LM Guideways for Small CNC Machines',
+    description: 'Compact LM guideways suitable for small CNC machines. Accurate, durable, and efficient.',
+    keywords: 'compact LM guideways, small CNC LM rails, linear rails for mini CNC'
+  },
+  {
+    slug: 'lm-rail-block-manufacturer-ahmedabad',
+    title: 'LM Rail and Block Manufacturer in Ahmedabad',
+    description: 'Trusted LM rail and block manufacturer in Ahmedabad. High-quality linear motion products for CNC and automation.',
+    keywords: 'LM rail block manufacturer Ahmedabad, LM guideways Ahmedabad, CNC linear rails supplier'
+  },
+  {
+    slug: 'lm-guideways-exporter',
+    title: 'Exporter of LM Guideways and Linear Rails',
+    description: 'Exporter of premium LM guideways and linear rails worldwide. Trusted supplier for CNC and industrial automation.',
+    keywords: 'LM guideways exporter, linear rails supplier, CNC guideways export'
+  },
+  {
+    slug: 'lm-guideways-ball-bearing',
+    title: 'LM Guideways with Ball Bearing Design',
+    description: 'Smooth linear motion with LM guideways featuring ball bearing design. Precision engineered for CNC machines.',
+    keywords: 'LM guideways ball bearing, ball bearing linear rails, CNC guideways with bearing'
+  },
+  {
+    slug: 'lm-guideways-motion-control',
+    title: 'LM Guideways for Precision Motion Control',
+    description: 'Precision LM guideways for motion control applications. Ideal for CNC, milling, and automation systems.',
+    keywords: 'LM guideways motion control, precision motion rails, CNC LM guideways'
+  },
+  {
+    slug: 'lm-guideways-cnc-applications',
+    title: 'LM Guideways for CNC Applications',
+    description: 'Reliable LM guideways for CNC applications. Improve performance, accuracy, and durability in CNC machines.',
+    keywords: 'LM guideways CNC, CNC linear rails, LM rails CNC applications'
+  },  {
+    slug: 'best-cnc-spindle-motor-manufacturer-india',
+    title: 'Best CNC Spindle Motor Manufacturer in India | High Precision Spindles',
+    description: 'Trusted CNC spindle motor manufacturer in India offering precision spindle motors, ATC spindles, and custom solutions for industrial and woodworking applications.',
+    keywords: 'best CNC spindle motor manufacturer in India, cnc spindle manufacturer india, precision spindle motors india, buy CNC spindle india'
+  },
+  {
+    slug: 'high-precision-cnc-atc-spindle-supplier-ahmedabad',
+    title: 'High Precision CNC ATC Spindle Supplier in Ahmedabad',
+    description: 'High precision ATC spindle supplier in Ahmedabad providing automatic tool changing spindles for CNC routers and machining centers with fast lead times and warranty support.',
+    keywords: 'high precision CNC ATC spindle supplier Ahmedabad, ATC spindle Ahmedabad, automatic tool changer supplier Ahmedabad, CNC ATC spindle india'
+  },
+  {
+    slug: 'air-cooled-spindle-motor-for-cnc-router-machines',
+    title: 'Air Cooled Spindle Motor for CNC Router Machines | Reliable & Efficient',
+    description: 'Air cooled spindle motors optimized for CNC routers — low maintenance, high RPM options and compatible with VFDs for woodworking and light metal cutting.',
+    keywords: 'air cooled spindle motor for CNC router, CNC router air cooled spindle, air-cooled spindle motor india, buy air cooled spindle'
+  },
+  {
+    slug: 'water-cooled-spindle-motor-heavy-duty-cnc-machining',
+    title: 'Water Cooled Spindle Motor for Heavy Duty CNC Machining',
+    description: 'Robust water cooled spindle motors for heavy duty CNC machining applications — improved cooling, longer duty cycles and stable high-speed performance.',
+    keywords: 'water cooled spindle motor for heavy duty CNC machining, water-cooled CNC spindle, heavy duty spindle motor india, spindle motor with water cooling'
+  },
+  {
+    slug: 'automatic-tool-changing-spindle-manufacturer-india',
+    title: 'Automatic Tool Changing (ATC) Spindle Manufacturer in India',
+    description: 'Manufacturer of automatic tool changing (ATC) spindles for CNC routers and mills in India — customizable ATC spindles for OEMs and machine builders.',
+    keywords: 'automatic tool changing spindle manufacturer India, ATC spindle manufacturer India, ATC spindle OEM india, buy ATC spindle'
+  },
+  {
+    slug: 'cnc-spindle-motor-repair-service-gujarat',
+    title: 'CNC Spindle Motor Repair and Service in Gujarat',
+    description: 'Professional CNC spindle motor repair and maintenance services in Gujarat — diagnostics, rewinds, bearing replacement and onsite spindle servicing.',
+    keywords: 'CNC spindle motor repair Gujarat, spindle service Gujarat, spindle motor repair near me, spindle maintenance Gujarat'
+  },
+  {
+    slug: 'affordable-cnc-spindle-motor-for-woodworking-machines',
+    title: 'Affordable CNC Spindle Motor for Woodworking Machines',
+    description: 'Cost-effective spindle motors designed for woodworking CNC machines — high RPM, efficient cooling options and reliable performance for furniture and cabinetry work.',
+    keywords: 'affordable CNC spindle motor woodworking, cheap spindle motor for CNC router, woodworking spindle motor india, budget CNC spindle'
+  },
+  {
+    slug: 'high-speed-spindle-motor-for-milling-and-engraving',
+    title: 'High Speed Spindle Motor for Milling and Engraving',
+    description: 'High speed spindle motors suitable for precision milling and engraving — options with ER collets, high RPM ratings and low runout for fine detail work.',
+    keywords: 'high speed spindle motor milling engraving, high rpm spindle motor, spindle for engraving, precision high speed spindle'
+  },
+  {
+    slug: '7-5-kw-spindle-motor-supplier-for-cnc-routers',
+    title: '7.5 kW Spindle Motor Supplier for CNC Routers',
+    description: '7.5 kW spindle motor supplier for heavy CNC routers — high torque, long shaft options and compatibility with VFD drives for industrial routing tasks.',
+    keywords: '7.5 kW spindle motor supplier, 7.5kW spindle for CNC router, 7.5 kw spindle india, buy 7.5 kW spindle motor'
+  },
+  {
+    slug: 'precision-spindle-bearings-for-cnc-machines-india',
+    title: 'Precision Spindle Bearings for CNC Machines | High Accuracy Bearings',
+    description: 'Precision spindle bearings and bearing kits for CNC machines — angular contact and hybrid ceramic options for improved rigidity and longer life.',
+    keywords: 'precision spindle bearings CNC India, spindle bearings for CNC machines, angular contact bearings spindle, buy spindle bearings india'
+  },
+  {
+    slug: 'cnc-machine-accessories-supplier-ahmedabad-gujarat',
+    title: 'CNC Machine Accessories Supplier in Ahmedabad, Gujarat',
+    description: 'Complete range of CNC machine accessories in Ahmedabad — tool holders, collets, VFDs, cables, drag chains and spare parts for routers and milling machines.',
+    keywords: 'CNC machine accessories supplier Ahmedabad Gujarat, cnc accessories Ahmedabad, cnc spare parts Gujarat, buy CNC accessories Ahmedabad'
+  },
+  {
+    slug: 'lm-guideways-block-manufacturer-cnc-machines',
+    title: 'LM Guideways and Block Manufacturer for CNC Machines',
+    description: 'Manufacturer of high precision LM guideways and blocks for CNC machines — hardened rails, low friction blocks and custom rail lengths for automation projects.',
+    keywords: 'LM guideways and block manufacturer, lm guideway manufacturer india, linear guide block supplier, hiwin style guideways india'
+  },
+  {
+    slug: 'rack-and-pinion-supplier-cnc-routers-india',
+    title: 'Rack & Pinion Supplier for CNC Routers in India',
+    description: 'Rack and pinion systems for CNC routers — precision-cut racks, helical pinions and mounting accessories for robust linear drive solutions.',
+    keywords: 'rack and pinion supplier for CNC routers India, rack pinion for cnc, gearbox rack pinion supplier, buy rack and pinion india'
+  },
+  {
+    slug: 'industrial-spindle-motor-exporter-from-india',
+    title: 'Industrial Spindle Motor Exporter from India | Quality Spindles',
+    description: 'Export-quality industrial spindle motors from India — ISO certified manufacturing, export packing, OEM partnerships and global shipping options.',
+    keywords: 'industrial spindle motor exporter from India, spindle exporter india, export spindle motor, OEM spindle exporter'
+  },
+  {
+    slug: 'iso20-atc-spindle-motor-for-cnc-router',
+    title: 'ISO20 ATC Spindle Motor for CNC Router | Compact ATC Spindle',
+    description: 'ISO20 ATC spindle motors for CNC routers — compact automatic tool change spindles with ER collets and compatible tool magazines for light-to-medium duty machines.',
+    keywords: 'ISO20 ATC spindle motor CNC router, iso20 atc spindle, atc iso20 spindle india, buy iso20 atc spindle'
+  },
+  {
+    slug: 'heavy-duty-cnc-spindle-stone-marble-cutting',
+    title: 'Heavy Duty CNC Spindle for Stone and Marble Cutting',
+    description: 'Heavy duty CNC spindles engineered for stone and marble cutting — high torque, robust bearings and rugged housings for continuous operation in stone shops.',
+    keywords: 'heavy duty CNC spindle for stone marble cutting, stone cutting spindle, marble cutting spindle motor, heavy duty spindle india'
+  },
+  {
+    slug: 'cnc-spindle-motor-distributor-gujarat-maharashtra',
+    title: 'CNC Spindle Motor Distributor in Gujarat and Maharashtra',
+    description: 'Regional distributor of CNC spindle motors across Gujarat and Maharashtra — local stock, technical support and quick delivery for industrial clients.',
+    keywords: 'CNC spindle motor distributor Gujarat Maharashtra, spindle distributor Gujarat, spindle dealer Maharashtra, local spindle supplier'
+  },
+  {
+    slug: 'customized-spindle-solutions-for-cnc-machinery',
+    title: 'Customized Spindle Solutions for CNC Machinery',
+    description: 'Customized spindle design and manufacturing services for CNC machinery — tailor power, shaft length, cooling type and mounting options to your machine specs.',
+    keywords: 'customized spindle solutions CNC, custom spindle manufacturer, tailor-made spindle solutions india, spindle customization services'
+  },
+  {
+    slug: 'cnc-router-spindle-with-vfd-drive-package',
+    title: 'CNC Router Spindle with VFD Drive Package | Complete Bundle',
+    description: 'Complete CNC router spindle + VFD drive packages — matched performance, wiring harnesses, mounting flanges and technical support for easy integration.',
+    keywords: 'CNC router spindle with VFD drive package, spindle + vfd bundle, router spindle with inverter, buy spindle vfd package india'
+  },
+  {
+    slug: 'high-torque-cnc-spindle-motor-for-metal-cutting',
+    title: 'High Torque CNC Spindle Motor for Metal Cutting',
+    description: 'High torque spindle motors designed for metal cutting and heavy milling — low-speed high-torque options with strong bearings and efficient cooling systems.',
+    keywords: 'high torque CNC spindle motor metal cutting, torque spindle for metal cutting, low rpm high torque spindle, metal cutting spindle india'
   }
 
 ];
