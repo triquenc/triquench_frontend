@@ -71,7 +71,7 @@
         { "name": "Chiller", "slug": "chiller" },
         { "name": "VFD", "slug": "vfd" },
         { "name": "Controller", "slug": "controller" },
-        { "name": "Hydro Pneumatic Cylinder", "slug": "hydro-pneumatic-cylinder" },
+        { "name": "Hydro Pneumatic Cylinder", "slug": "hydro-pneuma tic-cylinder" },
         { "name": "Cable", "slug": "cable" },
         { "name": "Drag Chain", "slug": "drag-chain" },
         { "name": "Axis Coupling", "slug": "axis-coupling" },
