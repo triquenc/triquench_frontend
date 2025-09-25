@@ -1,13 +1,13 @@
-// components/SeoTags.js
-
-import Head from 'next/head';
+// src/components/SeoTags.js
+import React from 'react';
+import { Helmet } from 'react-helmet';
 
 const SeoTags = ({ title, description, keywords }) => (
-  <Head>
-    {title && <title>{title}</title>}
-    {description && <meta name="description" content={description} />}
-    {keywords && <meta name="keywords" content={keywords} />}
-  </Head>
+  <Helmet>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+  </Helmet>
 );
 
 export default SeoTags;
