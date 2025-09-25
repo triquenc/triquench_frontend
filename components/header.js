@@ -118,6 +118,22 @@ import { Helmet } from 'react-helmet';
  <Helmet>
 
 
+<Helmet>
+  <title>Variable Frequency Drive for CNC | Precision Control for CNC Machines</title>
+  <meta
+    name="title"
+    content="Variable Frequency Drive for CNC | Precision Control for CNC Machines"
+  />
+  <meta
+    name="description"
+    content="Discover high-performance Variable Frequency Drives (VFDs) for CNC machines. Improve speed control, reduce energy consumption, and ensure smooth motor operation for all CNC applications."
+  />
+  <meta
+    name="keywords"
+    content="Variable Frequency Drive for CNC, CNC VFD Motor Controller, VFD for CNC Spindle Motor, CNC Machine Speed Control VFD, High-Performance VFD for CNC Applications"
+  />
+</Helmet>
+
   
     <Helmet>
         <title>High-Precision ISO Spindle Motors for CNC Machines </title>
@@ -145,7 +161,7 @@ import { Helmet } from 'react-helmet';
         />
         <meta
           name="keywords"
-          content="single phase VFD, three phase VFD, spindle motor drive, CNC VFD, variable frequency drive, spindle VFD, VFD for CNC machines, 1 phase to 3 phase VFD"
+          content="CNC Router VFD Supplier in India, single phase VFD, three phase VFD, spindle motor drive, CNC VFD, variable frequency drive, spindle VFD, VFD for CNC machines, 1 phase to 3 phase VFD"
         />
       </Helmet>
 
@@ -153,6 +169,7 @@ import { Helmet } from 'react-helmet';
         <h1>Single & Three Phase Spindle Motor VFDs for CNC Machines</h1>
         {/* Product specs, models, and details go here */}
       </main>
+      
 
 </head>
 const globalStyles = `
