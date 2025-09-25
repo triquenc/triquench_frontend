@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import Script from "next/script";
 import "@/styles/_globals.scss";
+import SpindleMotorSEO from './components/SpindleMotorSEO';
+
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
@@ -20,6 +22,10 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <Component {...pageProps} />
+    <div className="App">
+      <SpindleMotorSEO />
+    </div>
+
     </>
   );
 }

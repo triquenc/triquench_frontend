@@ -23,6 +23,7 @@ export default function Products() {
     const [currentPage, setCurrentPage] = useState(1);
     const [searchQuery, setSearchQuery] = useState("");
     const [breadcrumb, setBreadcrumb] = useState([]);
+    const [usingApiResults, setUsingApiResults] = useState(false);
     const productsPerPage = 15;
     const router = useRouter();
 
@@ -39,7 +40,6 @@ export default function Products() {
     }, [categorySlug, categories]);
 
     const handleCategoryClick = (category, subcategory = '', subSubcategory = '') => {
-        console.log("Category clicked:", { category, subcategory, subSubcategory });
         setActiveCategory(category);
         setCurrentPage(1);
         window.scrollTo({ top: 500, behavior: 'smooth' });
@@ -48,6 +48,11 @@ export default function Products() {
         if (subcategory) newBreadcrumb.push(subcategory);
         if (subSubcategory) newBreadcrumb.push(subSubcategory);
         setBreadcrumb(newBreadcrumb);
+        
+        // Reset API flag when going to main category only
+        if (!subcategory && !subSubcategory) {
+            setUsingApiResults(false);
+        }
         
         fetchCategoryData(category, subcategory, subSubcategory);
     };
@@ -61,7 +66,11 @@ export default function Products() {
 
     const fetchCategoryData = async (category, subcategory = '', subSubcategory = '') => {
         try {
-            let url = `https://d1w2b5et10ojep.cloudfront.net/api/product/category/${encodeURIComponent(category)}`;
+            // Set flag to indicate we're using API results
+            setUsingApiResults(subcategory !== '' || subSubcategory !== '');
+            
+            // Use localhost for development
+            let url = `http://localhost:5000/api/product/category/${encodeURIComponent(category)}`;
             
             // Add query parameters
             const params = new URLSearchParams();
@@ -71,18 +80,15 @@ export default function Products() {
             if (params.toString()) {
                 url += `?${params.toString()}`;
             }
-
-            console.log("Fetching URL:", url);
-            console.log("Parameters:", { category, subcategory, subSubcategory });
             
             const response = await fetch(url);
             const data = await response.json();
-            console.log("Received data:", data);
             
             setProducts(data || []);
         } catch (error) {
             console.error("Error fetching category data:", error);
             setProducts([]);
+            setUsingApiResults(false);
         }
     };
 
@@ -106,8 +112,13 @@ export default function Products() {
         fetchAllProducts();
     }, []);
 
-    // Filter products based on category and search
+    // Filter products based on category and search - only when NOT using API filtering
     useEffect(() => {
+        // Skip local filtering if we're using API results
+        if (usingApiResults) {
+            return; // Let fetchCategoryData handle the filtering
+        }
+        
         let filteredProducts = [...allProducts];
         
         // Apply category filter
@@ -124,11 +135,19 @@ export default function Products() {
             );
         }
 
+        console.log("Local filtering applied:", filteredProducts.length, "products");
         setProducts(filteredProducts);
-    }, [activeCategory, allProducts, searchQuery]);
+    }, [activeCategory, allProducts, searchQuery, usingApiResults]);
 
-    // Sorting products based on selected option
+    // Sorting products based on selected option - avoid state mutation
     useEffect(() => {
+        // Skip sorting if we have API results for subcategories
+        if (usingApiResults) {
+            return;
+        }
+        
+        if (products.length === 0) return;
+        
         let sortedProducts = [...products];
 
         switch (sortingOption) {
@@ -139,20 +158,20 @@ export default function Products() {
                 sortedProducts.sort((a, b) => b.title.localeCompare(a.title));
                 break;
             case "Popular":
-                sortedProducts.sort((a, b) => b.popularity - a.popularity);
+                sortedProducts.sort((a, b) => (b.popularity || 0) - (a.popularity || 0));
                 break;
             case "Latest":
-                sortedProducts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+                sortedProducts.sort((a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0));
                 break;
             case "Rating":
-                sortedProducts.sort((a, b) => b.rating - a.rating);
+                sortedProducts.sort((a, b) => (b.rating || 0) - (a.rating || 0));
                 break;
             default:
                 break;
         }
 
         setProducts(sortedProducts);
-    }, [sortingOption]);
+    }, [sortingOption, usingApiResults]);
 
     // Get current products based on page and productsPerPage
     const indexOfLastProduct = currentPage * productsPerPage;
@@ -176,9 +195,11 @@ export default function Products() {
                     const categoryPath = `${parentCategory}/${subcategoryName}`;
                     const isExpanded = expandedCategories[categoryPath];
 
-                    if (typeof subcategory === 'string') {
+                    if (typeof subcategory === 'string' || !subcategory.subcategories || subcategory.subcategories.length === 0) {
+                        // This is a leaf node (string or object without subcategories)
+                        const displayName = typeof subcategory === 'string' ? subcategory : subcategory.name;
                         return (
-                            <li key={subcategory} style={{ marginBottom: '5px', position: 'relative' }}>
+                            <li key={displayName} style={{ marginBottom: '5px', position: 'relative' }}>
                                 <span style={{
                                     position: 'absolute',
                                     left: '-15px',
@@ -200,12 +221,22 @@ export default function Products() {
                                     onClick={(e) => {
                                         e.preventDefault();
                                         e.stopPropagation();
-                                        // Extract category hierarchy from path
-                                        const [mainCategory, subCategory] = parentCategory.split('/');
-                                        handleCategoryClick(mainCategory, subCategory, subcategory);
+                                        
+                                        // This is always a leaf node (string or object without subcategories)
+                                        const pathParts = parentCategory.split('/');
+                                        
+                                        if (pathParts.length === 2) {
+                                            // pathParts = [mainCategory, subcategory], displayName = sub-subcategory
+                                            const [mainCategory, subCategory] = pathParts;
+                                            handleCategoryClick(mainCategory, subCategory, displayName);
+                                        } else if (pathParts.length === 1) {
+                                            // pathParts = [mainCategory], displayName = subcategory
+                                            const mainCategory = pathParts[0];
+                                            handleCategoryClick(mainCategory, displayName);
+                                        }
                                     }}
                                 >
-                                    {subcategory}
+                                    {displayName}
                                 </a>
                             </li>
                         );
@@ -231,9 +262,13 @@ export default function Products() {
                                         onClick={(e) => {
                                             e.preventDefault();
                                             e.stopPropagation();
-                                            // Extract category hierarchy from path
-                                            const [mainCategory] = parentCategory ? parentCategory.split('/') : [parentCategory];
-                                            handleCategoryClick(mainCategory || subcategory.name, subcategory.name);
+                                            
+                                            // This is a subcategory with potential sub-subcategories
+                                            const pathParts = parentCategory.split('/');
+                                            
+                                            // This should always be a direct subcategory under main category
+                                            const mainCategory = pathParts[0];
+                                            handleCategoryClick(mainCategory, subcategory.name);
                                         }}
                                     >
                                         {subcategory.name}
@@ -248,12 +283,14 @@ export default function Products() {
                                                 toggleCategory(categoryPath);
                                             }}
                                         >
-                                            <FaChevronDown
-                                                style={{
-                                                    transition: 'transform 0.3s',
-                                                    transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)'
-                                                }}
-                                            />
+                                            {subcategory.subcategories && subcategory.subcategories.length > 0 ? (
+                                                <FaChevronDown
+                                                    style={{
+                                                        transition: 'transform 0.3s',
+                                                        transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)'
+                                                    }}
+                                                />
+                                            ) : null}
                                         </div>
                                     </a>
                                 </div>
@@ -613,4 +650,3 @@ export default function Products() {
         </div>
     );
 }
-
