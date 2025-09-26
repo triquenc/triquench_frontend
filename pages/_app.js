@@ -1,6 +1,7 @@
+// pages/_app.js
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import Script from "next/script";
+import SpindleMotorSEO from "../components/SpindleMotorSEO";
 import "@/styles/_globals.scss";
 import SpindleMotorSEO from './components/SpindleMotorSEO';
 
@@ -21,6 +22,10 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
+      {/* SEO Tags Component */}
+      <SpindleMotorSEO />
+
+      {/* Main Page Component */}
       <Component {...pageProps} />
     <div className="App">
       <SpindleMotorSEO />
