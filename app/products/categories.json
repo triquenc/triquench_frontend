@@ -6,27 +6,30 @@
       "subcategories": [
         {
           "name": "CNC ATC Spindle",
+          "slug": "cnc-atc-spindle",
           "subcategories": [
-            { "name": "Air Cooled" },
-            { "name": "Water Cooled" }
+            "Air Cooled",
+            "Water Cooled"
           ]
         },
         {
           "name": "CNC MTC Spindle",
+          "slug": "cnc-mtc-spindle",
           "subcategories": [
-            { "name": "Air Cooled" },
-            { "name": "Water Cooled" }
+            "Air Cooled",
+            "Water Cooled"
           ]
         },
         {
           "name": "Belt Driven Spindle",
-          "subcategories": [
-            { "name": "Lathe Spindle" },
-            { "name": "Milling Spindle" }
+          "subcategories":[
+            "Lathe Spindle",
+            "Milling Spindle"
           ]
         },
         {
-          "name": "EDGE Banding Spindle"
+          "name": "EDGE Banding Spindle",
+          "slug": "edge-banding-spindle"
         }
       ]
     },
@@ -35,13 +38,21 @@
       "slug": "spindle-servo-motor",
       "subcategories": [
         {
-          "name": "Axis Servo Motor"
+          "name": "Axis Servo Motor",
+          "subcategories": [
+            {
+              "name": "Subcategory 5",
+              "subcategories": ["Sub-subcategory 5", "Sub-subcategory 6"]
+            }
+          ]
         },
         {
-          "name": "Spindle Servo"
+          "name": "Spindle Servo",
+          "slug": "spindle-servo"
         },
         {
-          "name": "Drive"
+          "name": "Drive",
+          "slug": "drive"
         }
       ]
     },
@@ -49,15 +60,9 @@
       "name": "AC Servo Motor",
       "slug": "ac-servo-motor",
       "subcategories": [
-        {
-          "name": "Stepper Motor"
-        },
-        {
-          "name": "Easy Servo Motor"
-        },
-        {
-          "name": "Servo Motor"
-        }
+        { "name": "Stepper Motor", "slug": "stepper-motor" },
+        { "name": "Easy Servo Motor", "slug": "easy-servo-motor" },
+        { "name": "Servo Motor", "slug": "servo-motor" }
       ]
     },
     {
@@ -71,7 +76,7 @@
           "name": "Ball Screw"
         },
         {
-          "name": "Rack & Pinion"
+          "name": "Rack & Pnion"
         },
         {
           "name": "Chiller"
@@ -87,12 +92,12 @@
         },
         {
           "name": "Cable"
-        },
+        },    
         {
           "name": "Drag Chain"
         },
         {
-          "name": "Axis Coupling"
+          "name": "Axis Cupling"
         },
         {
           "name": "BK - BF Nut Housing"
@@ -103,24 +108,16 @@
       "name": "Spindle Bearing",
       "slug": "spindle-bearing",
       "subcategories": [
-        {
-          "name": "Angular Contact Steel Ball Bearing"
-        },
-        {
-          "name": "Angular Contact Ceramic Ball Bearing"
-        }
+        { "name": "Angular Contact Steel Ball Bearing", "slug": "angular-contact-steel-ball-bearing" },
+        { "name": "Angular Contact Ceramic Ball Bearing", "slug": "angular-contact-ceramic-ball-bearing" }
       ]
     },
     {
       "name": "Gearbox",
       "slug": "gearbox",
       "subcategories": [
-        {
-          "name": "Planetary Gearbox"
-        },
-        {
-          "name": "Cycloidal Gearbox"
-        }
+        { "name": "Planetary Gearbox", "slug": "planetary-gearbox" },
+        { "name": "Cycloidal Gearbox", "slug": "cycloidal-gearbox" }
       ]
     },
     {
@@ -150,13 +147,14 @@
         },
         {
           "name": "Connector"
-        },
+        }, 
         {
           "name": "Clamp"
         },
         {
           "name": "Engraving Tools"
         }
+
       ]
     },
     {
@@ -167,9 +165,6 @@
           "name": "Fiber Laser"
         },
         {
-          "name": "Source"
-        },
-        {
           "name": "CO2"
         }
       ]
@@ -178,36 +173,24 @@
       "name": "Controller",
       "slug": "controller",
       "subcategories": [
-        {
-          "name": "NK 105 G2 & G3"
-        },
-        {
-          "name": "Rich Auto"
-        }
+        { "name": "NK 105 G2 & G3", "slug": "nk-105-g2-g3" },
+        { "name": "Rich Auto", "slug": "rich-auto" }
       ]
     },
     {
       "name": "Chiller",
       "slug": "chiller",
       "subcategories": [
-        {
-          "name": "Oil Cooled"
-        },
-        {
-          "name": "Water Cooled"
-        }
+        { "name": "Oil Cooled", "slug": "oil-cooled" },
+        { "name": "Water Cooled", "slug": "water-cooled" }
       ]
     },
     {
       "name": "Engraving Tools",
       "slug": "engraving-tools",
       "subcategories": [
-        {
-          "name": "CNC Stone Carving Tools"
-        },
-        {
-          "name": "CNC Wood Carving Tools"
-        }
+        { "name": "CNC Stone Carving Tools", "slug": "cnc-stone-carving-tools" },
+        { "name": "CNC Wood Carving Tools", "slug": "cnc-wood-carving-tools" }
       ]
     }
   ]
