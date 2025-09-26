@@ -1,6 +1,5 @@
 const seoPages = [
   {
-<<<<<<< HEAD
     slug: "milling-machine",
     title: "CNC Spindle Motor for Milling Machine | High Precision & Durability",
     description: "Shop high-performance CNC spindle motors for milling machines at TriQuench India. Engineered for precision, power, and reliability.",
@@ -13,53 +12,49 @@ const seoPages = [
     keywords: "CNC spindle motor for laser cutting machine"
   },
   {
-    slug: "water-cooled-spindle",
+    slug: "cnc-mtc-spindle",
     title: "Water Cooled CNC Spindle Motor | Consistent Cooling & Performance",
     description: "Buy water cooled CNC spindle motors for enhanced thermal stability and continuous operation. Ideal for long-run CNC jobs.",
     keywords: "CNC spindle motor with water cooling"
   },
   {
-    slug: "air-cooled-spindle",
+    slug: "cnc-mtc-spindle",
     title: "Air Cooled CNC Spindle Motor | Compact & Low Maintenance",
     description: "Discover air cooled CNC spindle motors designed for efficient, low-maintenance performance across a variety of CNC machines.",
     keywords: "CNC spindle motor with air cooling"
   },
   {
-    slug: "er-collet-spindle",
+    slug: "cnc-mtc-spindle",
     title: "CNC Spindle Motor with ER Collet Chuck | Versatile & Precise",
     description: "High-quality CNC spindle motors compatible with ER collet chucks. Perfect for multi-tool setups and precise workholding.",
     keywords: "CNC spindle motor with ER collet chuck"
   },
   {
-    slug: "hsk-collet-spindle",
+    slug: "cnc-mtc-spindle",
     title: "CNC Spindle Motor with HSK Collet Chuck | High-Speed Tool Holding",
     description: "Advanced spindle motors featuring HSK collet compatibility for high-speed CNC applications. Reliable and rigid tool clamping.",
     keywords: "CNC spindle motor with HSK collet chuck"
   },
   {
-    slug: "iso-collet-spindle",
+    slug: "cnc-mtc-spindle",
     title: "CNC Spindle Motor with ISO Collet Chuck | ISO Standard Precision",
     description: "CNC spindle motors with ISO collet chucks for standardized, efficient tool holding. Ideal for ISO-compatible CNC machines.",
     keywords: "CNC spindle motor with ISO collet chuck"
   },
   {
-    slug: "servo-spindle-motor",
+    slug: "cnc-mtc-spindle",
     title: "Servo Spindle Motors for CNC Machines | Speed & Accuracy",
     description: "Buy high-speed servo spindle motors for CNC machines. Ensure fast acceleration and precise cutting control.",
     keywords: "servo spindle motor"
   },
   {
-    slug: "co2-laser-power-supply",
+    slug: "cnc-mtc-spindle",
     title: "CO2 Laser Power Supply | Reliable Source for Laser Machines",
     description: "Top-quality CO2 laser power supplies for smooth and stable laser performance. Compatible with a range of CNC laser systems.",
     keywords: "CO2 laser power supply"
-  }
-];
-
-export default seoPages;
-
-=======
-    slug: 'cnc-spindle-motor',
+  },
+  {
+    slug: 'cnc-mtc-spindle',
     title: 'Spindle Motors, CNC Accessories & Laser Parts | TriQuench India Pvt. Ltd.',
     description: 'Discover CNC spindle motors, VFD drives, servo motors, tool holders, laser accessories, and more at TriQuench India. High precision solutions for industrial and CNC needs.',
     keywords: 'CNC spindle motor, spindle servo motor, AC servo motor, CNC router accessories, VFD drive, fiber laser parts, tool holders, spindle bearings, CNC machine accessories, high speed spindle, water cooled spindle'
@@ -228,28 +223,28 @@ export default seoPages;
 }
 ,
 {
-  slug: 'controller-nk105-g3',
+  slug: 'Controller',
   title: 'Controller NK105 G3 | Durable Motion Control for CNC Machines',
   description: 'Get accurate motion control with the NK105 G3 CNC controller, designed for woodworking and milling machines with long-term durability and easy setup.',
   keywords: 'Controller NK105 G3, NK105 G3 CNC controller, CNC motion control, durable CNC controller, NK105 G3 for woodworking machines'
 }
 , 
 {
-  slug: 'nk105-cnc-controller',
+  slug: 'Controller',
   title: 'NK105 CNC Controller | Precision & Durable CNC Motion Control',
   description: 'Discover the NK105 CNC controller for smooth, stable motion control in woodworking, milling, and spindle motor machines.',
   keywords: 'NK105 CNC controller, precision CNC control, durable CNC controller, NK105 motion control system'
 }
 ,
 {
-  slug: 'nk105-motion-controller',
+  slug: 'Controller',
   title: 'NK105 Motion Controller | Reliable Motion Control for CNC',
   description: 'Power your CNC machines with the NK105 motion controller, built for accuracy, stability, and long-term industrial use.',
   keywords: 'NK105 motion controller, CNC motion control, accurate CNC controller, long-life motion controller'
 }
 , 
 {
-  slug: 'cnc-router-accessories',
+  slug: 'Controller',
   title: 'CNC Router Controller NK105 | High-Performance CNC Motion',
   description: 'Upgrade your CNC router with the NK105 controller for reliable, smooth, and high-performance motion control.',
   keywords: 'CNC router controller NK105, NK105 controller for CNC routers, precision router motion control, stable CNC controller'
@@ -1019,92 +1014,92 @@ keywords:'CNC Spindle Motor',
     keywords: 'cnc tool holder, bt40 tool holder, iso collet, er collet holder'
   },
   {
-    slug: 'bt40-tool-holder',
+    slug: 'Controller',
     title: 'BT40 Tool Holders | High Precision CNC Tooling',
     description: 'Shop BT40 holders for CNC machines. Suitable for milling, drilling, and engraving operations.',
     keywords: 'bt40 tool holder, cnc tool holder, bt40 spindle tool holder'
   },
   {
-    slug: 'wood-carving-spindle',
+    slug: 'Controller',
     title: 'CNC Spindle Motors for Wood Carving Machines',
     description: 'High torque CNC wood carving spindles. Ideal for decorative and industrial woodwork.',
     keywords: 'wood carving spindle, cnc spindle motor for wood, router spindle for wood'
   },
   {
-    slug: 'stone-carving-spindle',
+    slug: 'Controller',
     title: 'Stone Carving CNC Spindle Motors | Durable & Powerful',
     description: 'Spindles designed for stone engraving and cutting. High power, dust-resistant designs.',
     keywords: 'stone carving spindle, stone engraving spindle motor, cnc stone spindle'
   },
   {
-    slug: 'jewellery-spindle',
+    slug: 'Controller',
     title: 'Jewellery CNC Spindle Motors | High Precision',
     description: 'Spindle motors designed for jewellery CNC machines including bangle making and stone setting.',
     keywords: 'jewellery spindle motor, bangle cnc spindle, precision spindle for jewellery'
   },
   {
-    slug: 'vfd-for-spindle',
+    slug: 'Controller',
     title: 'VFD for Spindle Motors | Delta, Teco, Fuji Drives',
     description: 'Buy compatible VFD drives for all types of spindle motors - single phase & 3 phase.',
     keywords: 'vfd for spindle motor, delta vfd, spindle vfd drive'
   },
   {
-    slug: 'servo-spindle-motor',
+    slug: 'Controller',
     title: 'Servo Spindle Motors | Accurate & Efficient',
     description: 'CNC servo spindle motors for high-speed and high-precision machining tasks.',
     keywords: 'servo spindle motor, high torque spindle, cnc spindle servo'
   },
   {
-    slug: 'iso-spindle-motor',
+    slug: 'Controller',
     title: 'ISO Spindle Motors for CNC Applications',
     description: 'ISO collet-compatible spindle motors for routers, mills, and engraving systems.',
     keywords: 'iso spindle motor, cnc iso spindle, iso collet spindle'
   },
   {
-    slug: 'belt-driven-spindle',
+    slug: 'Controller',
     title: 'Belt Driven Spindle Motors for Milling Machines',
     description: 'Browse belt-driven CNC spindles for smooth milling operations with reduced vibration.',
     keywords: 'belt-driven spindle, spindle belt, milling spindle motor'
   },
   {
-    slug: 'cnc-wood-carving-spindle',
+    slug: 'Controller',
     title: 'Wood Carving CNC Spindle | High-Speed Router Motors',
     description: 'Precision spindle motors designed for wood carving CNC routers.',
     keywords: 'wood carving spindle motor, cnc router spindle wood, carving router motor'
   },
   {
-    slug: 'fiber-laser-cutting-source',
+    slug: 'Controller',
     title: 'Fiber Laser Source for CNC Laser Cutting Machines',
     description: 'High-performance fiber laser sources for metal cutting, engraving and industrial marking.',
     keywords: 'fiber laser source, cnc laser cutting, laser engraving source'
   },
   {
-    slug: 'co2-laser-parts',
+    slug: 'Controller',
     title: 'CO2 Laser Parts | Power Supply, Controller & Accessories',
     description: 'Shop CO2 laser power supplies and controllers for laser cutting machines.',
     keywords: 'co2 laser power supply, laser controller, co2 laser parts'
   },
   {
-    slug: 'router-bits-wood-carving',
+    slug: 'Controller',
     title: 'Wood Carving Router Bits | CNC Engraving Tools',
     description: 'quality wood carving bits for CNC routers. Suitable for detailed and artistic cutting.',
     keywords: 'wood carving router bits, cnc router tools, engraving router bits'
   }, 
   {
-  slug: 'axis-servo-motor-with-brake',
+  slug: 'Controller',
   title: 'Axis Servo Motor with Brake | Precision CNC Position Holding',
   description: 'Get Axis Servo Motors with brake for accurate position holding in CNC machines and automation systems. Perfect for preventing shaft rotation during power-off conditions.',
   keywords: 'axis servo motor with brake, cnc servo motor brake, servo motor position holding, servo motor for cnc machines, industrial servo motor with brake, high torque servo motor with brake'
 },
 {
-  slug: 'axis-servo-motor-without-brake',
+  slug: 'Controller',
   title: 'Axis Servo Motor without Brake | High-Speed CNC Motion Control',
   description: 'Buy Axis Servo Motors without brake for smooth, high-speed, and efficient CNC operations. Ideal for continuous motion applications in industrial automation.',
   keywords: 'axis servo motor without brake, cnc servo motor, industrial servo motor, high speed servo motor, axis motor without brake, servo drive motor without brake'
 },
 
  {
-    slug: "best-lm-guideways-manufacturer-in-india",
+    slug: "Controller",
     title: "Best LM Guideways Manufacturer in India",
     description: "Top LM guideways manufacturer in India offering precision rails and blocks for CNC and automation.",
     keywords: "LM guideways manufacturer India, linear guide maker, LM rails and blocks"
@@ -1576,9 +1571,143 @@ keywords:'CNC Spindle Motor',
     title: 'High Torque CNC Spindle Motor for Metal Cutting',
     description: 'High torque spindle motors designed for metal cutting and heavy milling — low-speed high-torque options with strong bearings and efficient cooling systems.',
     keywords: 'high torque CNC spindle motor metal cutting, torque spindle for metal cutting, low rpm high torque spindle, metal cutting spindle india'
+  },
+  [
+  {
+    "slug": "high-torque-cnc-spindle-motor-for-metal-cutting",
+    "title": "High Torque CNC Spindle Motor for Metal Cutting",
+    "description": "High torque spindle motors designed for metal cutting and heavy milling — low-speed high-torque options with strong bearings and efficient cooling systems.",
+    "keywords": "high torque CNC spindle motor metal cutting, torque spindle for metal cutting, low rpm high torque spindle, metal cutting spindle india"
+  },
+  {
+    "slug": "axis-servo-motor-supplier-india",
+    "title": "Axis Servo Motor Supplier — India",
+    "description": "Precision axis servo motors for CNC axes and robotics — compact, high-precision, with options for encoder feedback and flange mounting for fast, accurate motion control.",
+    "keywords": "axis servo motor supplier india, axis servo motors india, servo motor for cnc axis, encoder servo motor india"
+  },
+  {
+    "slug": "cnc-router-spindle-motor-supplier-india",
+    "title": "CNC Router Spindle Motor Supplier — India",
+    "description": "Spindle motors tailored for CNC routers: high-speed, balanced rotors, and models optimized for wood, composite and light metal routing with easy mounting solutions.",
+    "keywords": "cnc router spindle motor supplier india, router spindle motor india, high speed router spindle, woodworking spindle motor india"
+  },
+  {
+    "slug": "cnc-milling-spindle-motor-supplier-india",
+    "title": "CNC Milling Spindle Motor Supplier — India",
+    "description": "Robust spindle motors for milling applications — variable speed control, high torque at low RPM, and options for water-cooling or air-cooling for heavy-duty milling.",
+    "keywords": "cnc milling spindle motor supplier india, milling spindle motor india, vfd spindle motor milling, heavy milling spindle india"
+  },
+  {
+    "slug": "spindle-accessories",
+    "title": "CNC Engraving Spindle Motor — India",
+    "description": "Compact and high-RPM spindle motors for precision engraving on wood, acrylic, and light metals — low vibration and tight runout for crisp engraving results.",
+    "keywords": "cnc engraving spindle motor india, engraving spindle motor, high rpm engraving spindle, precision engraving motor india"
+  },
+  {
+    "slug": "spindle-accessories",
+    "title": "Woodworking CNC Spindle Motor Supplier — India",
+    "description": "Spindles optimized for woodworking: smooth finish, high RPM range, low noise and easy tool change options to improve cut quality and throughput in wood shops.",
+    "keywords": "woodworking cnc spindle motor supplier india, woodworking spindle motor india, router spindle for wood, wood cnc spindle supplier"
+  },
+  {
+    "slug": "spindle-accessories",
+    "title": "7.5 kW CNC Spindle Motor Supplier — India",
+    "description": "Industrial 7.5 kW spindle motors for heavy-duty machining — robust bearings, efficient cooling, and compatibility with common VFDs for stable, continuous operation.",
+    "keywords": "7.5 kW cnc spindle motor supplier india, 7.5kw spindle motor india, 7.5 kw spindle for cnc, heavy duty spindle 7.5kw"
+  },
+  {
+    "slug": "spindle-accessories",
+    "title": "VFD Drive for CNC Spindle Motor — India",
+    "description": "Variable Frequency Drives (VFD) optimized for spindle control: smooth speed regulation, programmable ramps, and compatibility with common spindle motors and encoders.",
+    "keywords": "vfd drive for cnc spindle motor india, spindle vfd india, vfd for spindle motor, cnc spindle drive india"
+  },
+  {
+    "slug": "spindle-accessories",
+    "title": "VFD Drive for CNC Milling Machine — India",
+    "description": "VFD solutions tuned for milling machines — torque boost, multi-stage ramping, braking functions and protections for long-term reliable milling performance.",
+    "keywords": "vfd drive for cnc milling machine india, milling vfd india, vfd for milling machine, cnc milling drive india"
+  },
+  {
+    "slug": "spindle-accessories",
+    "title": "Fiber Laser VFD Drive Supplier — India",
+    "description": "VFD drives specifically for fiber laser systems and their pump motors — low-noise, precise control and protections for laser source and auxiliary systems.",
+    "keywords": "fiber laser vfd drive supplier india, fiber laser vfd india, vfd for laser, laser pump motor vfd india"
+  },
+  {
+    "slug": "spindle-accessories",
+    "title": "CNC Router Motor VFD Drive — India",
+    "description": "VFD drives for CNC router motors — fast acceleration profiles, PWM filtering for spindle control, and remote control compatibility for router automation.",
+    "keywords": "cnc router motor vfd drive india, router motor vfd india, vfd for router spindle, cnc router drive india"
+  },
+  {
+    "slug": "spindle-accessories",
+    "title": "CNC Conveyor Motor VFD Drive — India",
+    "description": "VFD drives for conveyor and material-handling motors — adjustable speed, soft-start/stop, torque control and fault protection for automation lines.",
+    "keywords": "cnc conveyor motor vfd drive india, conveyor vfd india, vfd for conveyor motor, material handling vfd india"
+  },
+  {
+    "slug": "spindle-accessories",
+    "title": "VFD for CNC Hydraulic Cylinder — India",
+    "description": "Drives and control interfaces for hydraulic pump motors used with CNC hydraulic cylinders — smooth flow control, safety interlocks and energy-efficient operation.",
+    "keywords": "vfd for cnc hydraulic cylinder india, hydraulic cylinder vfd india, vfd for hydraulic pump, cnc hydraulic drive india"
+  },
+  {
+    "slug": "spindle-accessories",
+    "title": "Industrial AC Motor VFD Drive — India",
+    "description": "Industrial-grade VFD drives for AC motors: heavy-duty enclosures, advanced motor protections, fieldbus support and scalable control for factory automation.",
+    "keywords": "industrial ac motor vfd drive india, ac motor vfd india, industrial vfd drive, ac motor drive supplier india"
+  },
+  {
+    "slug": "spindle-accessories",
+    "title": "CNC Servo Motor Supplier — India",
+    "description": "High-performance servo motors for CNC applications — low inertia options, high torque-density, and integrated encoder feedback for closed-loop position control.",
+    "keywords": "cnc servo motor supplier india, servo motor supplier india, closed loop servo motor, cnc motion servo india"
+  },
+  {
+    "slug": "spindle-accessories",
+    "title": "AC Servo Motor Manufacturer — India",
+    "description": "AC servo motor manufacturers offering customizable torque, flange mounting sizes, and feedback options for OEM and retrofit CNC systems across India.",
+    "keywords": "ac servo motor manufacturer india, ac servo motor india, servo motor manufacturer, ac servo manufacturer india"
+  },
+  {
+    "slug": "controller",
+    "title": "LM Guideways Supplier — India",
+    "description": "Precision LM guideways and blocks for linear motion systems — hardened rails, low-friction blocks, and high-load capacity for CNC and automation equipment.",
+    "keywords": "lm guideways supplier india, linear motion guideways india, lm rail and block supplier, precision guideways india"
+  },
+  {
+    "slug": "controller",
+    "title": "CNC Linear Rail Supplier — India",
+    "description": "Linear rails for CNC and automation — multiple sizes, preloaded options, and hardened raceways to ensure precision motion and long service life.",
+    "keywords": "cnc linear rail supplier india, linear rail supplier india, cnc linear rail india, precision linear rail india"
+  },
+  {
+    "slug": "controller",
+    "title": "CNC Tool Holder Supplier — India",
+    "description": "Tool holders and adapters for milling and routing — precision taper fits, balance grade holders and quick-change systems to reduce setup time.",
+    "keywords": "cnc tool holder supplier india, tool holder supplier india, milling tool holder india, precision tool holders india"
+  },
+  {
+    "slug": "laser-parts",
+    "title": "CNC Collet Chuck Supplier — India",
+    "description": "High-precision collet chucks for spindles and toolholding — low runout, multiple collet sizes and secure clamping for improved surface finish and tool life.",
+    "keywords": "cnc collet chuck supplier india, collet chuck supplier india, low runout collet chuck, toolholding collet india"
+  },
+  {
+    "slug": "laser-parts",
+    "title": "CNC Drag Chain Supplier — India",
+    "description": "Durable drag chains and cable carriers for CNC machines — UV-resistant, low-noise designs with modular links for easy routing and maintenance.",
+    "keywords": "cnc drag chain supplier india, drag chain supplier india, cable carrier india, cable chain cnc india"
+  },
+  {
+    "slug": "laser-parts",
+    "title": "Fiber Laser Head Supplier — India",
+    "description": "Fiber laser cutting and marking heads with high-precision optics, focal control and protective windows — suitable for metal cutting and marking applications.",
+    "keywords": "fiber laser head supplier india, fiber laser head india, laser cutting head supplier, fiber laser marking head india"
   }
+]
+
 
 ];
 
 export default seoPages;
->>>>>>> origin/new-feature

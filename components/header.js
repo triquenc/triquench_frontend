@@ -1,198 +1,6 @@
-'use client';
-
-import React, { forwardRef, useState, useEffect } from "react";
-import Image from "next/image";
-<<<<<<< HEAD
-import { Helmet } from 'react-helmet';
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>Triquench India - CNC Spindle Motors & Industrial Automation Parts</title>
-  <meta name="description" content="Triuench India offers high-quality CNC spindle motors, servo motors, controller systems, and industrial automation components for manufacturing needs. Browse our products or call +919601111615 for assistance." />
-  <meta name="keywords" content="CNC Spindle Motor, Spindle Servo Motor, AC Servo Motor, CNC Router Accessories, Spindle Bearing, Gearbox, Laser Parts, Controller, Industrial Automation, CNC ATC Spindle, CNC MTC Spindle, Axis Servo Motor, CNC Router Machine Accessories, CNC Spindle Bearing, NK105 G2 Controller" />
-  <meta name="keywords" content="CNC ATC Spindle Motor, CNC MTC Spindle Motor, Axis Servo Motor, CNC Router Accessories, Spindle Bearing, Gearbox, Laser Parts, Controller, Industrial Automation, CNC ATC Spindle, CNC MTC Spindle, Axis Servo Motor, CNC Router Machine Accessories, CNC Spindle Bearing, NK105 G2 Controller" />
-
-  <meta name="author" content="Triquench India" />
-  <meta property="og:title" content="Triquench India - CNC Spindle Motors & Industrial Automation Parts" />
-  <meta property="og:description" content="High-quality CNC spindle motors, servo motors, controller systems, and industrial automation components for manufacturing needs." />
-  <meta property="og:image" content="/images/site-logo.svg" />
-  <meta property="og:url" content="https://www.spindlemotor.in/" />
-  <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Triquench India - CNC Spindle Motors & Industrial Automation Parts" />
-  <meta name="twitter:description" content="High-quality CNC spindle motors, servo motors, controller systems, and industrial automation components for manufacturing needs." />
-  <meta name="twitter:image" content="/images/site-logo.svg" />
-  <title>ATC Spindle for CNC Machines | High-Speed Precision</title>
-  <Helmet>
-  <title>ATC Spindle for CNC Machines | High-Speed Precision</title>
-  <meta name="description" content="Shop high-performance ATC Spindles for CNC machines. Designed for automatic tool change with precision, speed, and durability for industrial use." />
-</Helmet>
-<Helmet>
-  <title>CNC Tool Holder | Precision Tool Holding Solutions</title>
-  <meta name="description" content="Discover CNC tool holders built for accuracy and durability. Ideal for milling, drilling, and turning operations in modern CNC setups." />
-</Helmet>
-<Helmet>
-  <title>Spindle Lathe for CNC Turning | High Accuracy</title>
-  <meta name="description" content="Buy robust spindle lathes for CNC turning centers. Engineered for smooth rotation, long service life, and precision cutting performance." />
-</Helmet>
-
-<Helmet>
-  <title>BT40 Tool Holder | Stable CNC Tool Holding System</title>
-  <meta name="description" content="Premium BT40 Tool Holders designed for high-speed CNC machines. Ensures accuracy, rigidity, and quick tool changes during operations." />
-</Helmet>
-<Helmet>
-  <title>Spindle Accessories for CNC | Enhance Performance</title>
-  <meta name="description" content="Browse our range of spindle accessories including flanges, tool clamps, and cooling systems to optimize your CNC spindle’s output." />
-</Helmet>
-<Helmet>
-  <title>Tool Holder for CNC Machines | Strong & Accurate Grip</title>
-  <meta name="description" content="Get reliable tool holders suitable for all CNC operations. Engineered for strength, precision, and long-term performance." />
-</Helmet>
-<Helmet>
-  <title>CNC Machine Accessories | One-Stop CNC Parts Supplier</title>
-  <meta name="description" content="Find all essential CNC machine accessories including tool holders, spindles, drag chains, couplings, and more. Quality parts at affordable prices." />
-</Helmet>
-<Helmet>
-  <title>CNC Wood Carving Spindle | High-Speed Woodworking Spindle</title>
-  <meta name="description" content="Shop CNC spindles made for wood carving and engraving. Perfect for woodworking CNC routers and creative woodcraft applications." />
-</Helmet>
-<Helmet>
-  <title>CNC Router Machine Price in India | Affordable CNC Routers</title>
-  <meta name="description" content="Explore and compare CNC Router Machine prices in India. Get the best deals for woodworking, signage, and industrial CNC machines." />
-</Helmet>
- <Helmet>
-        <title>CNC Router Motor | High-Speed, Durable & Precision Spindle Motors</title>
-        <meta
-          name="description"
-          content="Discover premium CNC router motors designed for high-speed, precision cutting. Ideal for woodworking, plastic, and metal applications. Shop durable, energy-efficient spindle motors now!"
-        />
-        <meta name="keywords" content="CNC router motor, spindle motor, high-speed CNC motor, durable router motor, CNC cutting motor" />
-      </Helmet>
-
-       <main>
-        <h1>High-Performance CNC Router Motors for Precision Cutting</h1>
-      </main>
-
-       <Helmet>
-        <title>CNC Router Motor | High-Speed, Durable & Precision Spindle Motors</title>
-        <meta
-          name="description"
-          content="Discover premium CNC router motors designed for high-speed, precision cutting. Ideal for woodworking, plastic, and metal applications. Shop durable, energy-efficient spindle motors now!"
-        />
-        <meta name="keywords" content="CNC router motor, spindle motor, high-speed CNC motor, durable router motor, CNC cutting motor" />
-      </Helmet>
-
-  <meta name="description" content="Shop high-performance ATC Spindles for CNC machines. Designed for automatic tool change with precision, speed, and durability for industrial use." />
- <meta name="description"
-   content="Triquench India offers high-quality CNC spindle motors, servo motors, controller systems, and industrial automation components for manufacturing needs. Browse our products or call +919601111615 for assistance."/>
-<meta  name="keywords"
-          content="cnc spindle, cnc spindles, cnc spindle motor, spindle motor CNC, spindle motor, spindle motors, bt40 spindle, spindle cnc, CNC water cooled spindle, CNC Air Cooled Spindle"/>
-
-    <Helmet>
-        <title>CNC Bangle Making Machine | Precision Jewelry CNC Router</title>
-        <meta
-          name="description"
-          content="Explore high-precision CNC bangle making machines designed for gold, silver, and metal jewelry crafting. Ideal for small to large-scale jewelry manufacturers."
-        />
-        <meta
-          name="keywords"
-          content="CNC bangle making machine, jewelry CNC machine, gold bangle router, CNC machine for bangles, silver bangle machine, CNC jewelry machine"
-        />
-      </Helmet>
-
-    <Helmet>
-        <title>High-Performance ATC Spindle Motors for CNC | Precision & Power</title>
-        <meta
-          name="description"
-          content="Explore top-quality ATC spindle motors built for speed, precision, and durability. Perfect for CNC machines, our automatic tool change spindles boost productivity and accuracy."
-        />
-        <meta
-          name="keywords"
-          content="CNC ATC spindle, Automatic Tool Changer Spindle, Gold Bangle Router, CNC Machine For Bangles, Silver Bangle Machine, CNC Jewelry Machine, ATC spindle motor, high-speed spindle motor, CNC spindle with ATC, industrial spindle motor, servo spindle motor, precision spindle for CNC, ATC spindle for milling machine, powerful spindle motor for CNC"
-        />
-
-      </Helmet>
-
-      <main>
-        <h1>Advanced CNC Bangle Making Machines for Jewelry Manufacturers</h1>
-      </main>
- <Helmet>
-
-
-<Helmet>
-  <title>Variable Frequency Drive for CNC | Precision Control for CNC Machines</title>
-  <meta
-    name="title"
-    content="Variable Frequency Drive for CNC | Precision Control for CNC Machines"
-  />
-  <meta
-    name="description"
-    content="Discover high-performance Variable Frequency Drives (VFDs) for CNC machines. Improve speed control, reduce energy consumption, and ensure smooth motor operation for all CNC applications."
-  />
-  <meta
-    name="keywords"
-    content="Variable Frequency Drive for CNC, CNC VFD Motor Controller, VFD for CNC Spindle Motor, CNC Machine Speed Control VFD, High-Performance VFD for CNC Applications"
-  />
-</Helmet>
-
-  
-    <Helmet>
-        <title>High-Precision ISO Spindle Motors for CNC Machines </title>
-        <meta
-          name="description"
-          content="Discover reliable ISO spindle motors designed for CNC precision and performance. Available in ISO 30 and ISO 40 formats—ideal for milling, drilling, and industrial machining."
-        />
-        <meta
-  name="keywords"
-  content="CNC ATC spindle, Automatic Tool Changer Spindle, Gold Bangle Router, CNC Machine For Bangles, Silver Bangle Machine, CNC Jewelry Machine, ATC spindle motor, high-speed spindle motor, CNC spindle with ATC, industrial spindle motor, servo spindle motor, precision spindle for CNC, ATC spindle for milling machine, powerful spindle motor for CNC, ISO spindle motor, CNC ISO spindle motor, high-precision ISO spindle, ISO standard spindle motor, ISO spindle for CNC machine, industrial ISO spindle motor, ISO tool holder spindle, ISO spindle motor for milling, ISO 30 spindle motor, ISO 40 CNC spindle"
-/>
-</Helmet>
-
-      <main>
-        <h1>Advanced CNC Bangle Making Machines for Jewelry Manufacturers</h1>
-      </main>
- <Helmet>
-
-  
- </Helmet>
-        <title>Single & Three Phase Spindle Motor VFD | CNC Variable Frequency Drives</title>
-        <meta 
-          name="description"
-          content="Shop high-quality single-phase and three-phase spindle motor VFDs for CNC machines. Reliable and efficient variable frequency drives for precise spindle control and speed regulation."
-        />
-        <meta
-          name="keywords"
-          content="CNC Router VFD Supplier in India, single phase VFD, three phase VFD, spindle motor drive, CNC VFD, variable frequency drive, spindle VFD, VFD for CNC machines, 1 phase to 3 phase VFD"
-        />
-      </Helmet>
-
-      <main>
-        <h1>Single & Three Phase Spindle Motor VFDs for CNC Machines</h1>
-        {/* Product specs, models, and details go here */}
-      </main>
-      
-
-</head>
-const globalStyles = `
-  @media (max-width: 768px) {
-    .mobile-menu::-webkit-scrollbar {
-      width: 8px;
-    }
-    .mobile-menu::-webkit-scrollbar-track {
-      background: #f5f5f5;
-    }
-    .mobile-menu::-webkit-scrollbar-thumb {
-      background-color: #006098;
-      border-radius: 20px;
-      border: 3px solid #f5f5f5;
-    }
-  }
-`;
-=======
+import React, { useState, useEffect, forwardRef } from "react";
 import Head from "next/head";
->>>>>>> origin/new-feature
+import Image from "next/image";
 
 const Header = forwardRef((props, ref) => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -277,30 +85,42 @@ const Header = forwardRef((props, ref) => {
                 <Image src="/images/site-logo.svg" width={86} height={75} alt="Triquench Logo" />
               </a>
             </div>
+
+            {/* Desktop navigation */}
             <nav className="navigation-wrapper">
               <ul>
                 <li><a title="Home" href="/">Home</a></li>
                 <li className="has-submenu" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                   <a title="Products" href="/products">Products</a>
                   {hoveredProduct && (
-                    <div className="products-dropdown" style={{
-                      position: "absolute", top: "100%", height: "150px", left: 0, width: "100%",
-                      backgroundColor: "#006098", zIndex: 1000, transition: "opacity 0.3s ease-in-out", opacity: 1, padding: "5px"
-                    }}>
-                      <div className="products-grid" style={{
-                        display: "grid", gridTemplateColumns: "repeat(8, 1fr)", gap: "10px",
-                        width: "100%", maxWidth: "1200px", margin: "0 auto"
-                      }}>
+                    <div
+                      className="products-dropdown"
+                      style={{
+                        position: "absolute", top: "100%", height: "150px", left: 0, width: "100%",
+                        backgroundColor: "#006098", zIndex: 1000, transition: "opacity 0.3s ease-in-out", opacity: 1, padding: "5px"
+                      }}
+                    >
+                      <div
+                        className="products-grid"
+                        style={{
+                          display: "grid", gridTemplateColumns: "repeat(8, 1fr)", gap: "10px",
+                          width: "100%", maxWidth: "1200px", margin: "0 auto"
+                        }}
+                      >
                         {products.map((product, index) => (
-                          <div key={index} className="product-item" style={{
-                            textAlign: "center", padding: "2px", cursor: "pointer",
-                            transition: "transform 0.3s, border-color 0.3s", border: "2px solid transparent", borderRadius: "8px"
-                          }}
-                            onMouseEnter={e => {
+                          <div
+                            key={index}
+                            className="product-item"
+                            style={{
+                              textAlign: "center", padding: "2px", cursor: "pointer",
+                              transition: "transform 0.3s, border-color 0.3s",
+                              border: "2px solid transparent", borderRadius: "8px"
+                            }}
+                            onMouseEnter={(e) => {
                               e.currentTarget.style.transform = "scale(1.05)";
                               e.currentTarget.style.borderColor = "#3b82f6";
                             }}
-                            onMouseLeave={e => {
+                            onMouseLeave={(e) => {
                               e.currentTarget.style.transform = "scale(1)";
                               e.currentTarget.style.borderColor = "transparent";
                             }}
@@ -329,51 +149,71 @@ const Header = forwardRef((props, ref) => {
               </ul>
             </nav>
 
+            {/* Contact + hamburger */}
             <div className="contact-wrapper d-flex align-center justify-end">
               <a href="tel:+919601111615" className="border-btn">
                 Call Now <Image src="/images/call-ic.svg" width={25} height={18} alt="call-ic" />
               </a>
-              <div className="hamburger-icon" onClick={toggleMenu}><span></span><span></span><span></span></div>
+              <div className="hamburger-icon" onClick={toggleMenu}>
+                <span></span><span></span><span></span>
+              </div>
             </div>
           </div>
         </div>
 
+        {/* Mobile menu */}
         {menuOpen && (
-          <div className="mobile-menu" style={{
-            position: 'fixed', top: '100px', left: 0, width: '100%',
-            height: 'calc(100vh - 100px)', backgroundColor: 'white',
-            boxShadow: '0 2px 4px rgba(0,0,0,0.1)', zIndex: 1000,
-            display: typeof window !== 'undefined' && window.innerWidth <= 768 ? 'block' : 'none',
-            overflowY: 'auto', scrollbarWidth: 'thin', scrollbarColor: '#006098 #f5f5f5'
-          }}>
+          <div
+            className="mobile-menu"
+            style={{
+              position: 'fixed', top: '100px', left: 0, width: '100%',
+              height: 'calc(100vh - 100px)', backgroundColor: 'white',
+              boxShadow: '0 2px 4px rgba(0,0,0,0.1)', zIndex: 1000,
+              display: typeof window !== 'undefined' && window.innerWidth <= 768 ? 'block' : 'none',
+              overflowY: 'auto', scrollbarWidth: 'thin', scrollbarColor: '#006098 #f5f5f5'
+            }}
+          >
             <nav>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, paddingBottom: '20px' }}>
-                <li style={{ borderBottom: '1px solid #eee' }}><a href="/" style={{ display: 'block', padding: '15px 20px', color: '#333', textDecoration: 'none' }}>Home</a></li>
                 <li style={{ borderBottom: '1px solid #eee' }}>
-                  <div onClick={() => setMobileProductsOpen(!mobileProductsOpen)} style={{
-                    display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-                    padding: '15px 20px', cursor: 'pointer', color: '#333'
-                  }}>
+                  <a href="/" style={{ display: 'block', padding: '15px 20px', color: '#333', textDecoration: 'none' }}>Home</a>
+                </li>
+                <li style={{ borderBottom: '1px solid #eee' }}>
+                  <div
+                    onClick={() => setMobileProductsOpen(!mobileProductsOpen)}
+                    style={{
+                      display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                      padding: '15px 20px', cursor: 'pointer', color: '#333'
+                    }}
+                  >
                     <span>Products</span>
                     <span style={{ transform: mobileProductsOpen ? 'rotate(180deg)' : 'rotate(0)', transition: 'transform 0.3s' }}>▼</span>
                   </div>
                   {mobileProductsOpen && (
                     <ul style={{ listStyle: 'none', padding: '0 0 0 20px', margin: 0, backgroundColor: '#f5f5f5' }}>
                       {products.map((product, index) => (
-                        <li key={index} style={{
-                          padding: '10px 20px', borderBottom: '1px solid #eee',
-                          backgroundColor: hoveredItem === index ? '#e0e0e0' : 'transparent',
-                          transition: 'all 0.3s ease'
-                        }}
-                          onMouseEnter={() => handleItemHover(index)}
-                          onMouseLeave={handleItemLeave}>
-                          <a href={product.href} style={{
-                            display: 'flex', alignItems: 'center', gap: '10px',
-                            textDecoration: 'none', color: hoveredItem === index ? '#006098' : '#333',
-                            transform: hoveredItem === index ? 'translateX(10px)' : 'translateX(0)',
+                        <li
+                          key={index}
+                          style={{
+                            padding: '10px 20px', borderBottom: '1px solid #eee',
+                            backgroundColor: hoveredItem === index ? '#e0e0e0' : 'transparent',
                             transition: 'all 0.3s ease'
-                          }}>
-                            <span style={{ fontSize: '14px', fontWeight: hoveredItem === index ? 'bold' : 'normal' }}>{product.label}</span>
+                          }}
+                          onMouseEnter={() => handleItemHover(index)}
+                          onMouseLeave={handleItemLeave}
+                        >
+                          <a
+                            href={product.href}
+                            style={{
+                              display: 'flex', alignItems: 'center', gap: '10px',
+                              textDecoration: 'none', color: hoveredItem === index ? '#006098' : '#333',
+                              transform: hoveredItem === index ? 'translateX(10px)' : 'translateX(0)',
+                              transition: 'all 0.3s ease'
+                            }}
+                          >
+                            <span style={{ fontSize: '14px', fontWeight: hoveredItem === index ? 'bold' : 'normal' }}>
+                              {product.label}
+                            </span>
                           </a>
                         </li>
                       ))}
