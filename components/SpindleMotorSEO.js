@@ -2,7 +2,7 @@
 import React from "react";
 import { useRouter } from "next/router";
 import SeoTags from "./SeoTags";
-import seoPages from "@/src/utils/seoData"; // ✅ use absolute import
+import seoPages from "@/src/utils/seoData"; // ✅ using absolute import
 
 const SpindleMotorSEO = () => {
   const router = useRouter();
