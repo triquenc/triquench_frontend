@@ -22,8 +22,9 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
-      {/* SEO Tags Component */}
-      <SpindleMotorSEO />
+      {/* SEO Tags Component */} 
+      <SpindleMotorSEO /> 
+      {/* new Page Component */}
 
       {/* Main Page Component */}
       <Component {...pageProps} />
