@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import SpindleMotorSEO from "../components/SpindleMotorSEO";
 import "@/styles/_globals.scss";
-import SpindleMotorSEO from './components/SpindleMotorSEO';
 
 
 export default function App({ Component, pageProps }) {
