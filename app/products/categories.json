@@ -8,23 +8,24 @@
           "name": "CNC ATC Spindle",
           "slug": "cnc-atc-spindle",
           "subcategories": [
-            "Air Cooled",
-            "Water Cooled"
+            { "name": "Air Cooled", "slug": "air-cooled" },
+            { "name": "Water Cooled", "slug": "water-cooled" }
           ]
         },
         {
           "name": "CNC MTC Spindle",
           "slug": "cnc-mtc-spindle",
           "subcategories": [
-            "Air Cooled",
-            "Water Cooled"
+            { "name": "Air Cooled", "slug": "air-cooled" },
+            { "name": "Water Cooled", "slug": "water-cooled" }
           ]
         },
         {
           "name": "Belt Driven Spindle",
-          "subcategories":[
-            "Lathe Spindle",
-            "Milling Spindle"
+          "slug": "belt-driven-spindle",
+          "subcategories": [
+            { "name": "Lathe Spindle", "slug": "lathe-spindle" },
+            { "name": "Milling Spindle", "slug": "milling-spindle" }
           ]
         },
         {
@@ -39,10 +40,15 @@
       "subcategories": [
         {
           "name": "Axis Servo Motor",
+          "slug": "axis-servo-motor",
           "subcategories": [
             {
               "name": "Subcategory 5",
-              "subcategories": ["Sub-subcategory 5", "Sub-subcategory 6"]
+              "slug": "subcategory-5",
+              "subcategories": [
+                { "name": "Sub-subcategory 5", "slug": "sub-subcategory-5" },
+                { "name": "Sub-subcategory 6", "slug": "sub-subcategory-6" }
+              ]
             }
           ]
         },
@@ -69,39 +75,17 @@
       "name": "CNC Router Accessories",
       "slug": "cnc-router-accessories",
       "subcategories": [
-        {
-          "name": "LM Guideways"
-        },
-        {
-          "name": "Ball Screw"
-        },
-        {
-          "name": "Rack & Pnion"
-        },
-        {
-          "name": "Chiller"
-        },
-        {
-          "name": "VFD"
-        },
-        {
-          "name": "Controller"
-        },
-        {
-          "name": "Hydro Pneumatic Cylinder"
-        },
-        {
-          "name": "Cable"
-        },    
-        {
-          "name": "Drag Chain"
-        },
-        {
-          "name": "Axis Cupling"
-        },
-        {
-          "name": "BK - BF Nut Housing"
-        }
+        { "name": "LM Guideways", "slug": "lm-guideways" },
+        { "name": "Ball Screw", "slug": "ball-screw" },
+        { "name": "Rack & Pinion", "slug": "rack-and-pinion" },
+        { "name": "Chiller", "slug": "chiller" },
+        { "name": "VFD", "slug": "vfd" },
+        { "name": "Controller", "slug": "controller" },
+        { "name": "Hydro Pneumatic Cylinder", "slug": "hydro-pneumatic-cylinder" },
+        { "name": "Cable", "slug": "cable" },
+        { "name": "Drag Chain", "slug": "drag-chain" },
+        { "name": "Axis Coupling", "slug": "axis-coupling" },
+        { "name": "BK - BF Nut Housing", "slug": "bk-bf-nut-housing" }
       ]
     },
     {
@@ -124,49 +108,24 @@
       "name": "Spindle Accessories",
       "slug": "spindle-accessories",
       "subcategories": [
-        {
-          "name": "ER Collet"
-        },
-        {
-          "name": "ER Nut"
-        },
-        {
-          "name": "VFD Drive"
-        },
-        {
-          "name": "Toolholder"
-        },
-        {
-          "name": "Spindle Bearing"
-        },
-        {
-          "name": "Gripper"
-        },
-        {
-          "name": "Fork"
-        },
-        {
-          "name": "Connector"
-        }, 
-        {
-          "name": "Clamp"
-        },
-        {
-          "name": "Engraving Tools"
-        }
-
+        { "name": "ER Collet", "slug": "er-collet" },
+        { "name": "ER Nut", "slug": "er-nut" },
+        { "name": "VFD Drive", "slug": "vfd-drive" },
+        { "name": "Toolholder", "slug": "toolholder" },
+        { "name": "Spindle Bearing", "slug": "spindle-bearing" },
+        { "name": "Gripper", "slug": "gripper" },
+        { "name": "Fork", "slug": "fork" },
+        { "name": "Connector", "slug": "connector" },
+        { "name": "Clamp", "slug": "clamp" },
+        { "name": "Engraving Tools", "slug": "engraving-tools" }
       ]
     },
     {
       "name": "Laser Parts",
       "slug": "laser-parts",
       "subcategories": [
-        {
-          "name": "Fiber Laser"
-        },
-        {
-          "name": "CO2"
-        }
+        { "name": "Fiber Laser", "slug": "fiber-laser" },
+        { "name": "CO2", "slug": "co2" }
       ]
     },
     {

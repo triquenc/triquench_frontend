@@ -2,18 +2,19 @@
 import React from "react";
 import { useRouter } from "next/router";
 import SeoTags from "./SeoTags";
-import seoPages from "@/src/utils/seoData"; // ✅ use absolute import
+import seoPages from "@/src/utils/seoData";
 
 const SpindleMotorSEO = () => {
   const router = useRouter();
+  const currentPath = router.asPath.split("?")[0]; // remove query params
 
-  // Handle root ("/") separately, otherwise get the last segment as slug
-  const path = router.pathname === "/" ? "" : router.pathname.split("/").pop();
+  // Normalize path to match slugs in your seoPages config
+  const normalizedSlug = currentPath === "/" ? "" : currentPath.replace(/^\/+|\/+$/g, "");
 
-  // Find matching SEO entry
-  const seo = seoPages.find((page) => page.slug === path);
+  // Find SEO entry matching full slug (e.g., "products/spindle")
+  const seo = seoPages.find((page) => page.slug === normalizedSlug);
 
-  if (!seo) return null; // Fallback if no match found
+  if (!seo) return null;
 
   return (
     <SeoTags
