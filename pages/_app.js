@@ -1,8 +1,9 @@
 // pages/_app.js
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-//import "@/styles/_globals.scss";
-import SpindleMotorSEO from "@/components/SpindleMotorSEO"; // Use alias if configured
+import SpindleMotorSEO from "../components/SpindleMotorSEO";
+import "@/styles/_globals.scss";
+
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
@@ -20,11 +21,16 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
-      {/* Global SEO Tags - optional, can be overridden per page */}
-      <SpindleMotorSEO />
+      {/* SEO Tags Component */} 
+      <SpindleMotorSEO /> 
+      {/* new Page Component */}
 
-      {/* Main Component */}
-    {/*  <Component {...pageProps} /> */} 
+      {/* Main Page Component */}
+      <Component {...pageProps} />
+    <div className="App">
+      <SpindleMotorSEO />
+    </div>
+
     </>
   );
 }

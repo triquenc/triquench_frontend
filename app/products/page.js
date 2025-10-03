@@ -66,10 +66,6 @@ export default function Products() {
 
     const fetchCategoryData = async (category, subcategory = '', subSubcategory = '') => {
         try {
-            // Set flag to indicate we're using API results
-            setUsingApiResults(subcategory !== '' || subSubcategory !== '');
-            
-            // Use localhost for development
             let url = `https://d1w2b5et10ojep.cloudfront.net/api/product/category/${encodeURIComponent(category)}`;
             
             // Add query parameters
