@@ -2,24 +2,41 @@
 import React from "react";
 import { useRouter } from "next/router";
 import SeoTags from "./SeoTags";
-import seoPages from "@/src/utils/seoData"; // ✅ using absolute import
+import seoPages from "@/src/utils/seoData";
 
 const SpindleMotorSEO = () => {
   const router = useRouter();
+  const currentPath = router.asPath.split("?")[0];
 
-  // Handle root ("/") separately, otherwise get the last segment as slug
-  const path = router.pathname === "/" ? "" : router.pathname.split("/").pop();
+  const normalizedSlug = currentPath
+    .replace(/\/+$/, "")   // remove trailing slash
+    .replace(/^\/+/, "");  // remove leading slash
 
-  // Find matching SEO entry
-  const seo = seoPages.find((page) => page.slug === path);
+  const seo =
+    seoPages.find((page) => normalizedSlug === page.slug) ||
+    seoPages.find((page) => normalizedSlug.startsWith(page.slug));
 
-  if (!seo) return null; // Fallback if no match found
+  if (process.env.NODE_ENV === "development") {
+    console.log("SEO Match:", normalizedSlug, seo);
+  }
+
+  if (!seo) {
+    return (
+      <SeoTags
+        title="TriQuench India - CNC Spindle Motors & Accessories"
+        description="Premium quality CNC spindle motors and machine accessories from TriQuench India. Trusted manufacturer and supplier."
+        keywords="CNC spindle motor, CNC accessories, TriQuench India"
+      />
+    );
+  }
 
   return (
     <SeoTags
       title={seo.title}
       description={seo.description}
       keywords={seo.keywords}
+      url={seo.url}
+      image={seo.image}
     />
   );
 };
