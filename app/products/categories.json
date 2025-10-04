@@ -38,8 +38,9 @@
           "name": "Axis Servo Motor",
           "slug": "axis-servo-motor"
         },
-        {
-          "name": "Spindle Servo"
+       {
+          "name": "Spindle Servo",
+          "slug": "Spindle Servo"
         },
         {
           "name": "Drive"
