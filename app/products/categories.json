@@ -22,6 +22,7 @@
         },
         {
           "name": "Belt Driven Spindle",
+          "slug": "belt-driven-spindle",
           "subcategories": [
             { "name": "Lathe Spindle", "slug": "lathe-spindle" },
             { "name": "Milling Spindle", "slug": "milling-spindle" }
@@ -55,9 +56,18 @@
       "name": "AC Servo Motor",
       "slug": "ac-servo-motor",
       "subcategories": [
-        { "name": "Stepper Motor", "slug": "stepper-motor" },
-        { "name": "Easy Servo Motor", "slug": "easy-servo-motor" },
-        { "name": "Servo Motor", "slug": "servo-motor" }
+        {
+          "name": "Stepper Motor",
+          "slug": "stepper-motor"
+        },
+        {
+          "name": "Easy Servo Motor",
+          "slug": "easy-servo-motor"
+        },
+        {
+          "name": "Servo Motor",
+          "slug": "servo-motor"
+        }
       ]
     },
     {
@@ -81,32 +91,48 @@
       "name": "Spindle Bearing",
       "slug": "spindle-bearing",
       "subcategories": [
-        { "name": "Angular Contact Steel Ball Bearing", "slug": "angular-contact-steel-ball-bearing" },
-        { "name": "Angular Contact Ceramic Ball Bearing", "slug": "angular-contact-ceramic-ball-bearing" }
+        {
+          "name": "Angular Contact Steel Ball Bearing",
+          "slug": "angular-contact-steel-ball-bearing"
+        },
+        {
+          "name": "Angular Contact Ceramic Ball Bearing",
+          "slug": "angular-contact-ceramic-ball-bearing"
+        }
+
       ]
     },
     {
       "name": "Gearbox",
       "slug": "gearbox",
       "subcategories": [
-        { "name": "Planetary Gearbox", "slug": "planetary-gearbox" },
-        { "name": "Cycloidal Gearbox", "slug": "cycloidal-gearbox" }
+        {
+          "name": "Planetary Gearbox",
+          "slug": "planetary-gearbox"
+        },
+        {
+          "name": "Cycloidal Gearbox",
+          "slug": "cycloidal-gearbox"
+        }
+=======
+       
       ]
     },
     {
       "name": "Spindle Accessories",
       "slug": "spindle-accessories",
       "subcategories": [
-        { "name": "ER Collet" },
-        { "name": "ER Nut" },
-        { "name": "VFD Drive" },
-        { "name": "Toolholder" },
-        { "name": "Spindle Bearing" },
-        { "name": "Gripper" },
-        { "name": "Fork" },
-        { "name": "Connector" },
-        { "name": "Clamp" },
-        { "name": "Engraving Tools" }
+        { "name": "ER Collet", "slug": "er-collet" },
+        { "name": "ER Nut", "slug": "er-nut" },
+        { "name": "VFD Drive", "slug": "vfd-drive" },
+        { "name": "Toolholder", "slug": "toolholder" },
+        { "name": "spindle-bearing", "slug": "spindle-bearing" },
+        { "name": "Gripper", "slug": "gripper" },
+        { "name": "Fork", "slug": "fork" },
+        { "name": "Connector", "slug": "connector" },
+        { "name": "Clamp", "slug": "clamp" },
+        { "name": "Engraving Tools", "slug": "engraving-tools" }
+
       ]
     },
     {
@@ -122,24 +148,35 @@
       "name": "Controller",
       "slug": "controller",
       "subcategories": [
-        { "name": "NK 105 G2 & G3", "slug": "nk-105-g2-g3" },
-        { "name": "Rich Auto", "slug": "rich-auto" }
+        {
+          "name": "NK 105 G2 & G3",
+          "slug": "nk-105-g2-g3"
+        },
+        {
+          "name": "Rich Auto",
+          "slug": "rich-auto"
+        }
+
       ]
     },
     {
       "name": "Chiller",
-      "slug": "chiller",
-      "subcategories": [
-        { "name": "Oil Cooled", "slug": "oil-cooled" },
-        { "name": "Water Cooled", "slug": "water-cooled" }
-      ]
+      "slug": "chiller"
+
     },
     {
       "name": "Engraving Tools",
       "slug": "engraving-tools",
       "subcategories": [
-        { "name": "CNC Stone Carving Tools", "slug": "cnc-stone-carving-tools" },
-        { "name": "CNC Wood Carving Tools", "slug": "cnc-wood-carving-tools" }
+        {
+          "name": "CNC Stone Carving Tools",
+          "slug": "cnc-stone-carving-tools"
+        },
+        {
+          "name": "CNC Wood Carving Tools",
+          "slug": "cnc-wood-carving-tools"
+        }
+
       ]
     }
   ]
