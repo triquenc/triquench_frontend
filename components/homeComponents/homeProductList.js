@@ -1,4 +1,10 @@
-import React, { forwardRef, useState, useEffect, useRef } from "react";
+import React, {
+  forwardRef,
+  useState,
+  useEffect,
+  useRef,
+  useCallback, // <-- Import useCallback
+} from "react";
 import Image from "next/image";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 
@@ -44,7 +50,7 @@ const HomeProductList = forwardRef((props, ref) => {
   const [categoryOpen, setMenuOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState("CNC Spindle Motor");
   const [products, setProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(false); // <-- ADDED: Loading state
+  const [isLoading, setIsLoading] = useState(true); // <-- *** FIXED: Set initial state to true ***
   const [currentCategoryIndex, setCurrentCategoryIndex] = useState(0);
   const [itemsToShow, setItemsToShow] = useState(4); // desktop default
   const [isMobile, setIsMobile] = useState(false); // <=480
@@ -66,8 +72,9 @@ const HomeProductList = forwardRef((props, ref) => {
     "Engraving Tools",
   ];
 
-  const fetchProducts = async (category) => {
-    setIsLoading(true); // <-- ADDED: Start loading
+  // *** LINT FIX 1: Wrapped in useCallback to safely use in useEffect ***
+  const fetchProducts = useCallback(async (category) => {
+    setIsLoading(true);
     try {
       const response = await fetch(
         `https://triquench-backend.vercel.app/api/product/all?category=${encodeURIComponent(
@@ -80,13 +87,13 @@ const HomeProductList = forwardRef((props, ref) => {
       console.error("Error fetching products:", error);
       setProducts([]);
     } finally {
-      setIsLoading(false); // <-- ADDED: Stop loading (in try or catch)
+      setIsLoading(false);
     }
-  };
+  }, []); // This function has no dependencies, so the array is empty
 
   useEffect(() => {
     fetchProducts(activeCategory);
-  }, [activeCategory]);
+  }, [activeCategory, fetchProducts]); // <-- Added fetchProducts to dependency array
 
   // Responsive detection & small-screen adjustments (<375)
   useEffect(() => {
@@ -118,8 +125,7 @@ const HomeProductList = forwardRef((props, ref) => {
     update();
     window.addEventListener("resize", update);
     return () => window.removeEventListener("resize", update);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [categories.length]); // <-- *** LINT FIX 2: Added missing dependency ***
 
   // Close category list when clicking outside
   useEffect(() => {
@@ -269,7 +275,7 @@ const HomeProductList = forwardRef((props, ref) => {
                 whiteSpace: "nowrap",
                 maxWidth: "calc(100% - 100px)",
                 justifyContent: "center",
-                position: "relative", 
+                position: "relative",
                 zIndex: 1, // <-- ADDED
               }}
             >
@@ -341,7 +347,7 @@ const HomeProductList = forwardRef((props, ref) => {
             </button>
           </div>
 
-          {/* Product grid (CHANGED) */}
+          {/* Product grid */}
           <div className="home-product-grid">
             {isLoading ? (
               // Show spinner while loading
@@ -392,5 +398,8 @@ const HomeProductList = forwardRef((props, ref) => {
     </>
   );
 });
+
+// Add display name for better debugging
+HomeProductList.displayName = "HomeProductList";
 
 export default HomeProductList;
