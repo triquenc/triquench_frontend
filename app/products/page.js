@@ -24,20 +24,24 @@ export default function Products() {
     const [searchQuery, setSearchQuery] = useState("");
     const [breadcrumb, setBreadcrumb] = useState([]);
     const [usingApiResults, setUsingApiResults] = useState(false);
+    const [isLoading, setIsLoading] = useState(true); // <-- ADDED: Loading state
     const productsPerPage = 15;
     const router = useRouter();
 
     const categories = categoriesData.categories;
 
+    // Added eslint-disable to prevent infinite loop if fetchCategoryData is added as a dep
+    /* eslint-disable react-hooks/exhaustive-deps */
     useEffect(() => {
         if (categorySlug && categories.length > 0) {
             const category = categories.find(cat => cat.slug === categorySlug);
             if (category) {
                 setActiveCategory(category.name);
-                fetchCategoryData(category.name);
+                fetchCategoryData(category.name); // This will now set loading state
             }
         }
     }, [categorySlug, categories]);
+    /* eslint-enable react-hooks/exhaustive-deps */
 
     const handleCategoryClick = (category, subcategory = '', subSubcategory = '') => {
         setActiveCategory(category);
@@ -52,6 +56,9 @@ export default function Products() {
         // Reset API flag when going to main category only
         if (!subcategory && !subSubcategory) {
             setUsingApiResults(false);
+        } else {
+             // Set API flag if we are fetching a subcategory
+            setUsingApiResults(true); 
         }
         
         fetchCategoryData(category, subcategory, subSubcategory);
@@ -65,6 +72,7 @@ export default function Products() {
     };
 
     const fetchCategoryData = async (category, subcategory = '', subSubcategory = '') => {
+        setIsLoading(true); // <-- MODIFIED
         try {
             let url = `https://d1w2b5et10ojep.cloudfront.net/api/product/category/${encodeURIComponent(category)}`;
             
@@ -85,6 +93,8 @@ export default function Products() {
             console.error("Error fetching category data:", error);
             setProducts([]);
             setUsingApiResults(false);
+        } finally {
+            setIsLoading(false); // <-- MODIFIED
         }
     };
 
@@ -95,6 +105,7 @@ export default function Products() {
     // Fetch all products for total count
     useEffect(() => {
         const fetchAllProducts = async () => {
+            setIsLoading(true); // <-- MODIFIED
             try {
                 const response = await fetch("https://triquench-backend.vercel.app/api/product/all");
                 const data = await response.json();
@@ -102,11 +113,16 @@ export default function Products() {
                 setProducts(data || []);
             } catch (error) {
                 console.error("Error fetching all products:", error);
+            } finally {
+                setIsLoading(false); // <-- MODIFIED
             }
         };
 
-        fetchAllProducts();
-    }, []);
+        // Only fetch all products if no category slug is present in the URL
+        if (!categorySlug) {
+            fetchAllProducts();
+        }
+    }, [categorySlug]); // <-- MODIFIED: Added categorySlug dependency
 
     // Filter products based on category and search - only when NOT using API filtering
     useEffect(() => {
@@ -138,7 +154,7 @@ export default function Products() {
     // Sorting products based on selected option - avoid state mutation
     useEffect(() => {
         // Skip sorting if we have API results for subcategories
-        if (usingApiResults) {
+        if (usingApiResults || isLoading) { // <-- MODIFIED: Also skip if loading
             return;
         }
         
@@ -166,8 +182,11 @@ export default function Products() {
                 break;
         }
 
-        setProducts(sortedProducts);
-    }, [sortingOption, usingApiResults]);
+        // Only set state if the array order has actually changed
+        if (JSON.stringify(products) !== JSON.stringify(sortedProducts)) {
+            setProducts(sortedProducts);
+        }
+    }, [sortingOption, usingApiResults, products, isLoading]); // <-- MODIFIED: Added products & isLoading
 
     // Get current products based on page and productsPerPage
     const indexOfLastProduct = currentPage * productsPerPage;
@@ -303,7 +322,6 @@ export default function Products() {
     // Add this function to handle breadcrumb navigation
     const handleBreadcrumbClick = (index) => {
         const newBreadcrumb = breadcrumb.slice(0, index + 1);
-        setBreadcrumb(newBreadcrumb);
         
         // Get the category info based on clicked breadcrumb level
         const category = newBreadcrumb[0];
@@ -311,20 +329,20 @@ export default function Products() {
         const subSubcategory = newBreadcrumb[2] || '';
         
         // Update active category and fetch data
-        setActiveCategory(category);
-        fetchCategoryData(category, subcategory, subSubcategory);
+        setActiveCategory(category); // Set active category
+        handleCategoryClick(category, subcategory, subSubcategory); // Use existing handler
     };
 
     return (
         <div>
              <InnerPageBanner
-                title="OUR PRODUCTS"
-                subtitle="CATALOGUE"
-                paragraph="In India, Known for our Active and Dynamic Customer Service Practices and catering to a broad assortment of product categories"
-                bannerImage="https://res.cloudinary.com/dd1na5drh/image/upload/v1734679442/IMG_2915_uxq8np.png"
-                className="product-banner"
-                buttonText="Shop Now"
-                buttonUrl="/products"
+               title="OUR PRODUCTS"
+               subtitle="CATALOGUE"
+               paragraph="In India, Known for our Active and Dynamic Customer Service Practices and catering to a broad assortment of product categories"
+               bannerImage="https://res.cloudinary.com/dd1na5drh/image/upload/v1734679442/IMG_2915_uxq8np.png"
+               className="product-banner"
+               buttonText="Shop Now"
+               buttonUrl="/products"
             />
             <section className="product-listing">
                 <div className="container">
@@ -381,13 +399,51 @@ export default function Products() {
                             </ul>
                         </div>
                         <div className="product-listing-right">
-                            <div className="product-heading">
-                                <span className="product-count">
+                            {/* --- MODIFIED FOR RESPONSIVENESS --- */}
+                            <div 
+                                className="product-heading"
+                                style={{
+                                    display: 'flex',
+                                    flexWrap: 'wrap',
+                                    justifyContent: 'space-between',
+                                    alignItems: 'center',
+                                    gap: '20px',
+                                    marginBottom: '20px'
+                                }}
+                            >
+                                <span 
+                                    className="product-count"
+                                    style={{
+                                        flex: '1 0 auto', // Allows it to take space
+                                        fontSize: '18px', 
+                                        fontWeight: '600'
+                                    }}
+                                >
                                     Showing {currentProducts.length} of {products.length} products
                                 </span>
-                                <div className="controls-wrapper" style={{display: 'flex', alignItems: 'center', gap: '20px'}}>
-                                    <div className="search-bar" style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
-                                        <FaSearch style={{ position: 'absolute', left: '10px', color: '#888' }} />
+                                <div 
+                                    className="controls-wrapper" 
+                                    style={{
+                                        display: 'flex', 
+                                        alignItems: 'center', 
+                                        gap: '20px', 
+                                        flexWrap: 'wrap', // Allows search/sort to stack
+                                        flex: '1 1 300px', // Allows wrapper to grow/shrink
+                                        maxWidth: '100%', // Ensure it doesn't overflow
+                                        justifyContent: 'flex-end'
+                                    }}
+                                >
+                                    <div 
+                                        className="search-bar" 
+                                        style={{ 
+                                            position: 'relative', 
+                                            display: 'flex', 
+                                            alignItems: 'center',
+                                            flex: '1 1 200px', // Search bar can grow/shrink
+                                            minWidth: '200px'
+                                        }}
+                                    >
+                                        <FaSearch style={{ position: 'absolute', left: '10px', color: '#888', zIndex: 1 }} />
                                         <input
                                             type="search"
                                             placeholder="Search products..."
@@ -397,12 +453,20 @@ export default function Products() {
                                                 padding: '8px 12px 8px 30px',
                                                 border: '1px solid #ddd',
                                                 borderRadius: '4px',
-                                                width: '250px',
+                                                width: '100%', // <-- FIX: Make width flexible
                                                 fontSize: '14px'
                                             }}
                                         />
                                     </div>
-                                    <div className="sorting-dropdown" style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
+                                    <div 
+                                        className="sorting-dropdown" 
+                                        style={{
+                                            display: 'flex', 
+                                            alignItems: 'center', 
+                                            gap: '10px',
+                                            flex: '0 0 auto' // Sort dropdown doesn't grow
+                                        }}
+                                    >
                                         <label htmlFor="sorting-options" style={{fontSize: '14px', color: '#333'}}>Sort By: </label>
                                         <select
                                             id="sorting-options"
@@ -427,6 +491,7 @@ export default function Products() {
                                     </div>
                                 </div>
                             </div>
+
                             {breadcrumb.length > 0 && (
                                 <div style={{
                                     padding: '10px 0',
@@ -438,7 +503,8 @@ export default function Products() {
                                         gap: '8px',
                                         color: '#666',
                                         fontSize: '14px',
-                                        justifyContent: "right"
+                                        justifyContent: "right",
+                                        flexWrap: "wrap" // Added for responsive breadcrumbs
                                     }}>
                                         {breadcrumb.map((item, index) => (
                                             <span key={index} style={{ display: 'flex', alignItems: 'center' }}>
@@ -449,9 +515,18 @@ export default function Products() {
                                                         color: index === breadcrumb.length - 1 ? '#006098' : '#666',
                                                         cursor: 'pointer',
                                                         transition: 'color 0.3s ease',
-                                                        '&:hover': {
-                                                            color: '#006098',
-                                                            textDecoration: 'underline'
+                                                        // REMOVED: Invalid '&:hover' syntax
+                                                    }}
+                                                    onMouseOver={(e) => { 
+                                                        if (index !== breadcrumb.length - 1) {
+                                                            e.target.style.color = '#006098';
+                                                            e.target.style.textDecoration = 'underline';
+                                                        }
+                                                    }}
+                                                    onMouseOut={(e) => {
+                                                        if (index !== breadcrumb.length - 1) {
+                                                            e.target.style.color = '#666';
+                                                            e.target.style.textDecoration = 'none';
                                                         }
                                                     }}
                                                 >
@@ -463,8 +538,31 @@ export default function Products() {
                                 </div>
                             )}
 
+                            {/* --- MODIFIED RENDER LOGIC --- */}
                             <div className="product-grid">
-                                {currentProducts.length > 0 ? (
+                                {isLoading ? (
+                                    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', minHeight: '200px', gap: '10px' }}>
+                                        {/* Simple CSS Spinner */}
+                                        <style>
+                                            {`
+                                            .loader-spinner {
+                                                border: 4px solid #f3f3f3; /* Light grey */
+                                                border-top: 4px solid #006098; /* Blue */
+                                                border-radius: 50%;
+                                                width: 30px;
+                                                height: 30px;
+                                                animation: spin 1s linear infinite;
+                                            }
+                                            @keyframes spin {
+                                                0% { transform: rotate(0deg); }
+                                                100% { transform: rotate(360deg); }
+                                            }
+                                            `}
+                                        </style>
+                                        <div className="loader-spinner"></div>
+                                        <p style={{ margin: "0", fontSize: '16px' }}>Please wait...</p>
+                                    </div>
+                                ) : currentProducts.length > 0 ? (
                                     currentProducts.map((product) => (
                                         <div key={product._id} className="product-grid-item">
                                             <div className="product-grid-inner">
@@ -486,6 +584,7 @@ export default function Products() {
                                                     <a
                                                         onClick={() => handleSeeDetailsClick(product._id)}
                                                         className="border-btn"
+                                                        style={{ cursor: 'pointer' }} // Add cursor pointer to <a>
                                                     >
                                                         See Details
                                                     </a>
@@ -502,143 +601,126 @@ export default function Products() {
                                     </p>
                                 )}
                             </div>
-                           {/* Pagination */}
-                            <div 
-                                className="pagination" 
-                                style={{
-                                    width: '100%',
-                                    maxWidth: '800px',
-                                    margin: '0 auto',
-                                    display: 'flex',
-                                    flexWrap: 'wrap',
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                    padding: '20px',
-                                    gap: '10px',
-                                    marginTop: '60px',
-                                    marginBottom: '80px'
-                                }}
-                            >
-                                <button
-                                    onClick={() => handlePageChange(currentPage - 1)}
-                                    disabled={currentPage === 1}
-                                    style={{
-                                        padding: '10px 15px',
-                                        border: '2px solid #006098',
-                                        borderRadius: '8px',
-                                        fontSize: '14px',
-                                        fontWeight: '600',
-                                        background: '#006098',
-                                        color: '#ffffff',
-                                        opacity: currentPage === 1 ? 0.5 : 1,
-                                        cursor: currentPage === 1 ? 'not-allowed' : 'pointer',
-                                        transition: 'all 0.3s ease',
-                                        minWidth: '100px',
-                                        '@media (max-width: 600px)': {
-                                            minWidth: '80px',
-                                            padding: '8px 12px',
-                                            fontSize: '12px'
-                                        }
-                                    }}
-                                >
-                                    Previous
-                                </button>
 
+                           {/* Pagination */}
+                           {/* MODIFIED: Hide if loading or only 1 page */}
+                           {!isLoading && totalPages > 1 && (
                                 <div 
-                                    className="page-numbers" 
+                                    className="pagination" 
                                     style={{
+                                        width: '100%',
+                                        maxWidth: '800px',
+                                        margin: '0 auto',
                                         display: 'flex',
                                         flexWrap: 'wrap',
                                         justifyContent: 'center',
                                         alignItems: 'center',
-                                        gap: '8px',
-                                        '@media (max-width: 600px)': {
-                                            gap: '4px'
-                                        }
+                                        padding: '20px',
+                                        gap: '10px',
+                                        marginTop: '60px',
+                                        marginBottom: '80px'
                                     }}
                                 >
-                                    {Array.from({ length: totalPages }, (_, index) => {
-                                        const pageNum = index + 1;
-                                        const showPage = pageNum === 1 || 
-                                                    pageNum === totalPages ||
-                                                    Math.abs(currentPage - pageNum) <= 2 ||
-                                                    (currentPage <= 4 && pageNum <= 5) ||
-                                                    (currentPage >= totalPages - 3 && pageNum >= totalPages - 4);
+                                    <button
+                                        onClick={() => handlePageChange(currentPage - 1)}
+                                        disabled={currentPage === 1}
+                                        style={{
+                                            padding: '10px 15px',
+                                            border: '2px solid #006098',
+                                            borderRadius: '8px',
+                                            fontSize: '14px',
+                                            fontWeight: '600',
+                                            background: '#006098',
+                                            color: '#ffffff',
+                                            opacity: currentPage === 1 ? 0.5 : 1,
+                                            cursor: currentPage === 1 ? 'not-allowed' : 'pointer',
+                                            transition: 'all 0.3s ease',
+                                            minWidth: '100px',
+                                            // REMOVED: Invalid '@media' syntax
+                                        }}
+                                    >
+                                        Previous
+                                    </button>
 
-                                        if (!showPage && (pageNum === 2 || pageNum === totalPages - 1)) {
+                                    <div 
+                                        className="page-numbers" 
+                                        style={{
+                                            display: 'flex',
+                                            flexWrap: 'wrap',
+                                            justifyContent: 'center',
+                                            alignItems: 'center',
+                                            gap: '8px',
+                                            // REMOVED: Invalid '@media' syntax
+                                        }}
+                                    >
+                                        {Array.from({ length: totalPages }, (_, index) => {
+                                            const pageNum = index + 1;
+                                            
+                                            // More robust pagination logic
+                                            const showPage = pageNum === 1 || 
+                                                           pageNum === totalPages ||
+                                                           (pageNum >= currentPage - 2 && pageNum <= currentPage + 2);
+
+                                            if (!showPage) {
+                                                if (pageNum === 2 && currentPage > 4) {
+                                                    return <span key="ellipsis-start" style={{ color: '#666', fontSize: '16px', margin: '0 5px' }}>...</span>;
+                                                }
+                                                if (pageNum === totalPages - 1 && currentPage < totalPages - 3) {
+                                                    return <span key="ellipsis-end" style={{ color: '#666', fontSize: '16px', margin: '0 5px' }}>...</span>;
+                                                }
+                                                return null;
+                                            }
+
                                             return (
-                                                <span 
-                                                    key={`ellipsis-${index}`} 
+                                                <button
+                                                    key={pageNum}
+                                                    onClick={() => handlePageChange(pageNum)}
                                                     style={{
-                                                        color: '#666',
-                                                        fontSize: '16px',
-                                                        margin: '0 5px',
-                                                        '@media (max-width: 600px)': {
-                                                            fontSize: '14px'
-                                                        }
+                                                        padding: '10px 15px',
+                                                        border: '2px solid #006098',
+                                                        borderRadius: '8px',
+                                                        fontSize: '14px',
+                                                        fontWeight: '600',
+                                                        transition: 'all 0.3s ease',
+                                                        background: currentPage === pageNum ? '#006098' : '#ffffff',
+                                                        color: currentPage === pageNum ? '#ffffff' : '#006098',
+                                                        minWidth: '48px',
+                                                        boxShadow: currentPage === pageNum 
+                                                            ? '0 4px 8px rgba(59,130,246,0.3)' 
+                                                            : '0 3px 6px rgba(0,0,0,0.12)',
+                                                        transform: currentPage === pageNum ? 'scale(1.1)' : 'scale(1)',
+                                                        cursor: 'pointer', 
+                                                        // REMOVED: Invalid '@media' syntax
                                                     }}
                                                 >
-                                                    ...
-                                                </span>
+                                                    {pageNum}
+                                                </button>
                                             );
-                                        }
+                                        })}
+                                    </div>
 
-                                        return showPage ? (
-                                            <button
-                                                key={pageNum}
-                                                onClick={() => handlePageChange(pageNum)}
-                                                style={{
-                                                    padding: '10px 15px',
-                                                    border: '2px solid #006098',
-                                                    borderRadius: '8px',
-                                                    fontSize: '14px',
-                                                    fontWeight: '600',
-                                                    transition: 'all 0.3s ease',
-                                                    background: currentPage === pageNum ? '#006098' : '#ffffff',
-                                                    color: currentPage === pageNum ? '#ffffff' : '#006098',
-                                                    minWidth: '48px',
-                                                    boxShadow: currentPage === pageNum 
-                                                        ? '0 4px 8px rgba(59,130,246,0.3)' 
-                                                        : '0 3px 6px rgba(0,0,0,0.12)',
-                                                    transform: currentPage === pageNum ? 'scale(1.1)' : 'scale(1)',
-                                                    '@media (max-width: 600px)': {
-                                                        padding: '8px 12px',
-                                                        fontSize: '12px',
-                                                        minWidth: '40px'
-                                                    }
-                                                }}
-                                            >
-                                                {pageNum}
-                                            </button>
-                                        ) : null;
-                                    })}
+                                    <button
+                                        onClick={() => handlePageChange(currentPage + 1)}
+                                        disabled={currentPage === totalPages}
+                                        style={{
+                                            padding: '10px 15px',
+                                            border: '2px solid #006098',
+                                            borderRadius: '8px',
+                                            fontSize: '14px',
+                                            fontWeight: '600',
+                                            background: '#006098',
+                                            color: '#ffffff',
+                                            opacity: currentPage === totalPages ? 0.5 : 1,
+                                            cursor: currentPage === totalPages ? 'not-allowed' : 'pointer',
+                                            transition: 'all 0.3s ease',
+                                            minWidth: '100px',
+                                            // REMOVED: Invalid '@media' syntax
+                                        }}
+                                    >
+                                        Next
+                                    </button>
                                 </div>
-
-                                <button
-                                    onClick={() => handlePageChange(currentPage + 1)}
-                                    disabled={currentPage === totalPages}
-                                    style={{
-                                        padding: '10px 15px',
-                                        border: '2px solid #006098',
-                                        borderRadius: '8px',
-                                        fontSize: '14px',
-                                        fontWeight: '600',
-                                        background: '#006098',
-                                        color: '#ffffff',
-                                        opacity: currentPage === totalPages ? 0.5 : 1,
-                                        cursor: currentPage === totalPages ? 'not-allowed' : 'pointer',
-                                        transition: 'all 0.3s ease',
-                                        minWidth: '100px',
-                                        '@media (max-width: 600px)': {
-                                            minWidth: '80px',
-                                            padding: '8px 12px',
-                                            fontSize: '12px'
-                                        }
-                                    }}
-                                >
-                                    Next
-                                </button>
-                            </div>
+                            )}
                         </div>
                     </div>
                 </div>

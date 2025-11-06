@@ -13,6 +13,10 @@
     }
 }
 
+.error-message
+{
+    color: red;
+} 
 .contact-form-block {
     padding: 10rem 0;
     @include bp("xl-max") {
