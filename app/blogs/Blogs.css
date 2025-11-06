@@ -1,0 +1,90 @@
+/* Blogs.css - bulletproof single-img banner for 320-425px issues */
+
+.blog-banner {
+  width: 100%;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  background-color: transparent !important;
+  margin: 0;
+  padding: 0;
+}
+
+/* Banner frame: explicit heights per breakpoint so it never collapses */
+.blog-banner__frame {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;       /* remove baseline gap beneath <img> */
+  height: 430px;        /* default desktop */
+  min-height: 160px;
+}
+
+/* Ensure the <img> fills the frame */
+.blog-banner__img {
+  display: block;       /* critical */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;    /* crop to fill without distortion */
+  object-position: center;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* ---- Specific mobile heights that must be applied ---- */
+
+/* Small phones up to 320px */
+@media (max-width: 320px) {
+  .blog-banner__frame { height: 160px; min-height: 140px; }
+}
+
+/* Phones 321 - 375px */
+@media (min-width: 321px) and (max-width: 375px) {
+  .blog-banner__frame { height: 180px; }
+}
+
+/* Phones 376 - 425px <-- CRITICAL RANGE */
+@media (min-width: 376px) and (max-width: 425px) {
+  .blog-banner__frame { height: 200px; }
+}
+
+/* Phones 426 - 599 */
+@media (min-width: 426px) and (max-width: 599px) {
+  .blog-banner__frame { height: 220px; }
+}
+
+/* Tablet 600 - 767 */
+@media (min-width: 600px) and (max-width: 767px) {
+  .blog-banner__frame { height: 260px; }
+}
+
+/* Large tablet 768 - 991 */
+@media (min-width: 768px) and (max-width: 991px) {
+  .blog-banner__frame { height: 320px; }
+}
+
+/* Desktop 992+ */
+@media (min-width: 992px) {
+  .blog-banner__frame { height: 430px; }
+}
+
+/* Replace banner frame rules with these for full-image display */
+.blog-banner__frame {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  /* remove fixed height so image defines height */
+  height: auto;
+  min-height: 120px; /* optional minimum so tiny phones still show something */
+}
+
+/* Use img that scales to container width and keeps aspect ratio */
+.blog-banner__img {
+  display: block;
+  width: 100%;
+  height: auto;        /* IMPORTANT: lets the whole image be visible */
+  object-fit: contain; /* fallback, but not required when height is auto */
+  object-position: center;
+}

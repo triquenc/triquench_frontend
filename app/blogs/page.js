@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { FaCalendarAlt, FaTag, FaBookOpen, FaUser } from "react-icons/fa";
+import "./Blogs.css";
 
 export default function Blogs() {
   const [blogs, setBlogs] = useState([]);
@@ -30,16 +31,32 @@ export default function Blogs() {
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%" }}>
       {/* Banner Section */}
-      <section
-        style={{
-          backgroundImage: "url('https://res.cloudinary.com/dd1na5drh/image/upload/v1734609447/React_blog_Banner_desktop_ilhgqy.png')",
-          height: "430px",
-          width: "100%",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
-      ></section>
+      <section className="blog-banner" aria-label="Blog banner">
+  <div className="blog-banner__frame">
+    <img
+      className="blog-banner__img"
+      src="https://res.cloudinary.com/dd1na5drh/image/upload/v1734609447/React_blog_Banner_desktop_ilhgqy.png"
+      alt="Blog banner"
+      loading="eager"
+      decoding="async"
+      /* srcset lists candidate image URLs with widths — update URLs if you have variants */
+      srcSet="
+        https://res.cloudinary.com/dd1na5drh/image/upload/w_480/v1734609448/React_blog_Banner_mobile_wugyfv.png 480w,
+        https://res.cloudinary.com/dd1na5drh/image/upload/w_768/v1734609448/React_blog_Banner_tablet_cdwtrq.png 768w,
+        https://res.cloudinary.com/dd1na5drh/image/upload/w_1200/v1734609447/React_blog_Banner_desktop_ilhgqy.png 1200w,
+        https://res.cloudinary.com/dd1na5drh/image/upload/w_1800/v1734609447/React_blog_Banner_desktop_ilhgqy.png 1800w
+      "
+      /* sizes tells browser which resource width to choose depending on viewport */
+      sizes="(max-width: 425px) 100vw, (max-width: 991px) 100vw, 100vw"
+      onError={(e) => {
+        console.error("Banner image failed to load:", e?.target?.src);
+        // Fallback: show a solid color data-uri or placeholder image so you can see frame
+        e.target.onerror = null;
+        e.target.src = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='400' viewBox='0 0 1200 400'%3E%3Crect width='1200' height='400' fill='%23e6e6e6'/%3E%3Ctext x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%23666' font-size='24'%3EBanner+image+not+available%3C/text%3E%3C/svg%3E";
+      }}
+    />
+  </div>
+</section>
 
       <div
         style={{
@@ -125,39 +142,7 @@ export default function Blogs() {
           </div>
         </div>
 
-        {/* Popular Posts Sidebar */}
-        <div
-          style={{
-            flex: "1 1 30%",
-            backgroundColor: "#f9f9f9",
-            padding: "20px",
-            borderRadius: "8px",
-            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-          }}
-        >
-          <h3 style={{ fontSize: "20px", fontWeight: "bold", marginBottom: "20px", color: "#3498db" }}>Popular Posts</h3>
-          <ul style={{ listStyle: "none", padding: 0 }}>
-            {popularPosts.map((post) => (
-              <li
-                key={post.id}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  marginBottom: "15px",
-                  borderBottom: "1px solid #ddd",
-                  paddingBottom: "10px",
-                }}
-              >
-                <img
-                  src={post.imageUrl}
-                  alt={post.title}
-                  style={{ width: "60px", height: "60px", borderRadius: "8px", marginRight: "10px", objectFit: "cover" }}
-                />
-                <span style={{ fontSize: "14px", color: "#333" }}>{post.title}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+        
       </div>
     </div>
   );
