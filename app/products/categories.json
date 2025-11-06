@@ -82,13 +82,26 @@
         { "name": "Controller", "slug": "controller" },
         { "name": "Hydro Pneumatic Cylinder", "slug": "hydro-pneumatic-cylinder" },
         { "name": "Cable", "slug": "cable" },
-        { "name": "Drag Chain", "slug": "drag-chain" },
+                   {
+                    "name": "Drag Chain",
+                    "slug": "drag-chain",
+                    "subcategories": [
+                      {
+                        "name": "Open Loop",
+                        "slug": "open-loop"
+                      },
+                      {
+                        "name": "Close Loop",
+                        "slug": "close-loop"
+                      }
+                    ]
+                  },
         { "name": "Axis Coupling", "slug": "axis-coupling" },
         { "name": "BK - BF Nut Housing", "slug": "bk-bf-nut-housing" }
       ]
     },
     {
-      "name": "Spindle Bearing",
+      "name": "Spindle Bearing",           
       "slug": "spindle-bearing",
       "subcategories": [
         {
@@ -114,7 +127,6 @@
           "name": "Cycloidal Gearbox",
           "slug": "cycloidal-gearbox"
         }
-=======
        
       ]
     },
@@ -126,7 +138,7 @@
         { "name": "ER Nut", "slug": "er-nut" },
         { "name": "VFD Drive", "slug": "vfd-drive" },
         { "name": "Toolholder", "slug": "toolholder" },
-        { "name": "spindle-bearing", "slug": "spindle-bearing" },
+        { "name": "Spindle Bearing","slug": "spindle-bearing"},
         { "name": "Gripper", "slug": "gripper" },
         { "name": "Fork", "slug": "fork" },
         { "name": "Connector", "slug": "connector" },
