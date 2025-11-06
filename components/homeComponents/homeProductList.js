@@ -3,12 +3,11 @@ import React, {
   useState,
   useEffect,
   useRef,
-  useCallback, // <-- Import useCallback
+  useCallback,
 } from "react";
 import Image from "next/image";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 
-// A simple, self-contained spinner component
 const SimpleSpinner = () => (
   <div
     style={{
@@ -16,11 +15,10 @@ const SimpleSpinner = () => (
       justifyContent: "center",
       alignItems: "center",
       width: "100%",
-      minHeight: "200px", // Give the grid area some height while loading
+      minHeight: "200px",
       margin: "auto",
     }}
   >
-    {/* Keyframes for the spin animation */}
     <style>
       {`
         @keyframes spin {
@@ -29,11 +27,10 @@ const SimpleSpinner = () => (
         }
       `}
     </style>
-    {/* The spinner element */}
     <div
       style={{
-        border: "4px solid #f3f3f3", // Light grey
-        borderTop: "4px solid #006098", // Blue (from your button style)
+        border: "4px solid #f3f3f3",
+        borderTop: "4px solid #006098",
         borderRadius: "50%",
         width: "40px",
         height: "40px",
@@ -50,11 +47,12 @@ const HomeProductList = forwardRef((props, ref) => {
   const [categoryOpen, setMenuOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState("CNC Spindle Motor");
   const [products, setProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true); // <-- *** FIXED: Set initial state to true ***
+  const [isLoading, setIsLoading] = useState(true);
   const [currentCategoryIndex, setCurrentCategoryIndex] = useState(0);
   const [itemsToShow, setItemsToShow] = useState(4); // desktop default
   const [isMobile, setIsMobile] = useState(false); // <=480
   const [isSuperSmall, setIsSuperSmall] = useState(false); // <375
+  const [is1024, setIs1024] = useState(false); // <-- NEW: flag for ~1024px laptop view
   const listBarRef = useRef(null);
   const categoryTitleRef = useRef(null);
 
@@ -72,7 +70,6 @@ const HomeProductList = forwardRef((props, ref) => {
     "Engraving Tools",
   ];
 
-  // *** LINT FIX 1: Wrapped in useCallback to safely use in useEffect ***
   const fetchProducts = useCallback(async (category) => {
     setIsLoading(true);
     try {
@@ -89,11 +86,11 @@ const HomeProductList = forwardRef((props, ref) => {
     } finally {
       setIsLoading(false);
     }
-  }, []); // This function has no dependencies, so the array is empty
+  }, []);
 
   useEffect(() => {
     fetchProducts(activeCategory);
-  }, [activeCategory, fetchProducts]); // <-- Added fetchProducts to dependency array
+  }, [activeCategory, fetchProducts]);
 
   // Responsive detection & small-screen adjustments (<375)
   useEffect(() => {
@@ -101,13 +98,20 @@ const HomeProductList = forwardRef((props, ref) => {
       const w = window.innerWidth;
       const mobile = w <= 480;
       const superSmall = w < 375;
+      // set 1024-ish flag - covers slightly around 1024 so it doesn't flicker on tiny differences
+      const around1024 = w >= 1000 && w <= 1100;
+
       setIsMobile(mobile);
       setIsSuperSmall(superSmall);
+      setIs1024(around1024);
 
       if (superSmall) {
         setItemsToShow(1);
       } else if (mobile) {
         setItemsToShow(1); // mobile <=480 show 1 (you can change to 2 if desired)
+      } else if (around1024) {
+        // <-- TARGETED CHANGE: show 3 items on 1024-like laptop width
+        setItemsToShow(3);
       } else if (w <= 768) {
         setItemsToShow(2);
       } else {
@@ -116,7 +120,7 @@ const HomeProductList = forwardRef((props, ref) => {
 
       // keep index valid
       setCurrentCategoryIndex((idx) => {
-        const chunk = superSmall ? 1 : mobile ? 1 : w <= 768 ? 2 : 4;
+        const chunk = superSmall ? 1 : mobile ? 1 : around1024 ? 3 : w <= 768 ? 2 : 4;
         const maxStart = Math.max(0, categories.length - chunk);
         return Math.min(idx, maxStart);
       });
@@ -125,9 +129,8 @@ const HomeProductList = forwardRef((props, ref) => {
     update();
     window.addEventListener("resize", update);
     return () => window.removeEventListener("resize", update);
-  }, [categories.length]); // <-- *** LINT FIX 2: Added missing dependency ***
+  }, [categories.length]);
 
-  // Close category list when clicking outside
   useEffect(() => {
     if (categoryOpen) document.body.classList.add("open-category");
     else document.body.classList.remove("open-category");
@@ -157,7 +160,6 @@ const HomeProductList = forwardRef((props, ref) => {
     setMenuOpen(false);
   };
 
-  // step: mobile (<=480) and super small (<375) step by 1; desktop step by itemsToShow
   const step = isMobile ? 1 : itemsToShow;
 
   const handleNextCategory = () => {
@@ -171,26 +173,20 @@ const HomeProductList = forwardRef((props, ref) => {
     setCurrentCategoryIndex((prev) => Math.max(prev - step, 0));
   };
 
-  // Visible slice depends on currentCategoryIndex and itemsToShow
   const visibleCategories = categories.slice(
     currentCategoryIndex,
     currentCategoryIndex + itemsToShow
   );
 
-  // Ensure index valid when itemsToShow changes
   useEffect(() => {
     const maxStart = Math.max(0, categories.length - itemsToShow);
     setCurrentCategoryIndex((idx) => Math.min(idx, maxStart));
   }, [itemsToShow, categories.length]);
 
-  // When index/visibleCategories change, scroll the visible button into view (helps mobile arrows + swipe sync)
   useEffect(() => {
     if (!listBarRef.current) return;
-    // listBarRef contains only the buttons for visibleCategories
-    // find the first button in the container and scroll it to center
     const btns = listBarRef.current.querySelectorAll("button");
     if (btns.length === 0) return;
-    // On super small we usually render 1 button, but still scroll center
     const target = btns[0];
     if (target && typeof target.scrollIntoView === "function") {
       try {
@@ -247,7 +243,7 @@ const HomeProductList = forwardRef((props, ref) => {
                 cursor: currentCategoryIndex === 0 ? "not-allowed" : "pointer",
                 boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
                 position: "absolute",
-                left: isSuperSmall ? "6px" : isMobile ? "8px" : "10px",
+                left: isSuperSmall ? "6px" : isMobile ? "8px" : is1024 ? "12px" : "10px",
                 top: isMobile ? "50%" : undefined,
                 transform: isMobile ? "translateY(-50%)" : undefined,
                 zIndex: 2,
@@ -261,22 +257,22 @@ const HomeProductList = forwardRef((props, ref) => {
               <FaArrowLeft style={{ fontSize: isSuperSmall ? 14 : 18 }} />
             </button>
 
-            {/* Category list — desktop unchanged; mobile / super small scrollable and pill narrower */}
+            {/* Category list */}
             <div
               ref={listBarRef}
               style={{
                 display: "flex",
                 alignItems: "center",
                 gap: isSuperSmall ? 10 : 15,
-                padding: isSuperSmall ? "12px 8px" : "20px",
+                padding: isSuperSmall ? "12px 8px" : is1024 ? "14px 12px" : "20px",
                 overflowX: isMobile ? "auto" : "hidden",
                 WebkitOverflowScrolling: "touch",
                 scrollBehavior: "smooth",
                 whiteSpace: "nowrap",
-                maxWidth: "calc(100% - 100px)",
+                maxWidth: is1024 ? "calc(100% - 140px)" : "calc(100% - 100px)",
                 justifyContent: "center",
                 position: "relative",
-                zIndex: 1, // <-- ADDED
+                zIndex: 1,
               }}
             >
               {visibleCategories.map((category, i) => (
@@ -284,7 +280,7 @@ const HomeProductList = forwardRef((props, ref) => {
                   key={i + currentCategoryIndex}
                   onClick={() => handleCategoryClick(category)}
                   style={{
-                    padding: isSuperSmall ? "8px 14px" : "10px 25px",
+                    padding: isSuperSmall ? "8px 14px" : is1024 ? "8px 18px" : "10px 25px",
                     backgroundColor:
                       activeCategory === category ? "#006098" : "#fff",
                     color: activeCategory === category ? "#fff" : "#333",
@@ -293,8 +289,7 @@ const HomeProductList = forwardRef((props, ref) => {
                     cursor: "pointer",
                     fontSize: isSuperSmall ? 14 : 16,
                     transition: "all 0.2s ease",
-                    minWidth:
-                      isSuperSmall ? "68%" : isMobile ? "66%" : "240px",
+                    minWidth: isSuperSmall ? "68%" : isMobile ? "66%" : is1024 ? "180px" : "240px",
                     textAlign: "center",
                     boxShadow:
                       activeCategory === category ? "0 6px 12px rgba(0,0,0,0.12)" :
@@ -336,7 +331,7 @@ const HomeProductList = forwardRef((props, ref) => {
                     "pointer",
                 boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
                 position: "absolute",
-                right: isSuperSmall ? "6px" : isMobile ? "8px" : "10px",
+                right: isSuperSmall ? "6px" : isMobile ? "8px" : is1024 ? "12px" : "10px",
                 top: isMobile ? "50%" : undefined,
                 transform: isMobile ? "translateY(-50%)" : undefined,
                 zIndex: 2,
@@ -350,10 +345,8 @@ const HomeProductList = forwardRef((props, ref) => {
           {/* Product grid */}
           <div className="home-product-grid">
             {isLoading ? (
-              // Show spinner while loading
               <SimpleSpinner />
             ) : products.length > 0 ? (
-              // Show products if they exist
               products.map((product) => (
                 <div key={product._id} className="home-product-grid-item">
                   <a
@@ -387,7 +380,6 @@ const HomeProductList = forwardRef((props, ref) => {
                 </div>
               ))
             ) : (
-              // Show "no products" message if loading is done and products array is empty
               <p style={{ margin: "auto" }}>
                 No trending products available for this category.
               </p>
@@ -399,7 +391,6 @@ const HomeProductList = forwardRef((props, ref) => {
   );
 });
 
-// Add display name for better debugging
 HomeProductList.displayName = "HomeProductList";
 
 export default HomeProductList;
