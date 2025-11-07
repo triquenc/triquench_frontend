@@ -56,7 +56,7 @@ export default function Events() {
         const updatedEvents = [...prevEvents];
         updatedEvents[index] = {
           ...updatedEvents[index],
-          likes: updatedEvents[index].likes + 1, 
+          likes: (updatedEvents[index].likes || 0) + 1,
         };
         return updatedEvents;
       });
@@ -77,29 +77,15 @@ export default function Events() {
     setSelectedCategory(category === 'All Categories' ? '' : category);
   };
 
+  const HERO_IMG = "https://res.cloudinary.com/dd1na5drh/image/upload/v1734611753/events_Desktop_hero_page_bfz1gs.png";
+
   return (
     <div style={{ width: '100%', backgroundColor: '#fff', fontFamily: 'Arial, sans-serif', lineHeight: '1.6', color: '#333' }}>
-      <section style={{
-        backgroundImage: "url('https://res.cloudinary.com/dd1na5drh/image/upload/v1734611753/events_Desktop_hero_page_bfz1gs.png')",
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        height: '400px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        textAlign: 'center',
-        color: '#fff',
-        position: 'relative',
-        width: '100%',
-      }}>
-        <div style={{
-          content: '""',
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-        }}></div>
+      {/* ---------- BANNER: desktop/tablet uses background-image; mobile uses <img> to show full image ---------- */}
+      <section className="hero-banner">
+        <div className="hero-overlay" />
+        {/* Mobile-friendly / 1024px-friendly full-image element; hidden on larger screens */}
+        <img src={HERO_IMG} alt="Events banner" className="hero-img-mobile" />
       </section>
 
       <div style={{ width: '100%', maxWidth: '1200px', margin: '0 auto', padding: '0 20px'}}>
@@ -118,24 +104,19 @@ export default function Events() {
                   fontWeight: 'bold',
                   transition: 'all 0.3s ease',
                   cursor: 'pointer',
-                  ':hover': {
-                    backgroundColor: '#006098',
-                    color: '#fff',
-                    transform: 'translateY(-2px)',
-                  }
                 }}
                 onMouseEnter={(e) => {
-                  e.target.style.backgroundColor = '#006098';
-                  e.target.style.color = '#fff';
-                  e.target.style.transform = 'translateY(-2px)';
-                  e.target.style.boxShadow = '0 4px 8px rgba(0,0,0,0.2)';
+                  e.currentTarget.style.backgroundColor = '#006098';
+                  e.currentTarget.style.color = '#fff';
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                  e.currentTarget.style.boxShadow = '0 4px 8px rgba(0,0,0,0.2)';
                 }}
                 onMouseLeave={(e) => {
                   if (selectedCategory !== category) {
-                    e.target.style.backgroundColor = '#fff';
-                    e.target.style.color = '#006098';
-                    e.target.style.transform = 'translateY(0)';
-                    e.target.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
+                    e.currentTarget.style.backgroundColor = '#fff';
+                    e.currentTarget.style.color = '#006098';
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
                   }
                 }}
               >
@@ -152,10 +133,12 @@ export default function Events() {
                 <div className="social-grid-inner" style={{ boxShadow: '0 4px 8px rgba(0,0,0,0.1)', borderRadius: '8px' }}>
                   <div className="img-wrapper">
                     <picture className='bg-img'>
-                      <source srcSet={event.image.url} type="image/webp" />
-                      <Image src={event.image.url} height={190} width={340} alt={event.title} className='bg-img' />
+                      <source srcSet={event.image?.url} type="image/webp" />
+                      {event.image?.url && (
+                        <Image src={event.image.url} height={190} width={340} alt={event.title} className='bg-img' />
+                      )}
                     </picture>
-                    {event.socialLinks.map((social, index) => {
+                    {Array.isArray(event.socialLinks) && event.socialLinks.map((social, idx) => {
                       const socialStyles = {
                         facebook: {
                           backgroundColor: '#1877f2',
@@ -176,12 +159,12 @@ export default function Events() {
 
                       return (
                         <a 
-                          key={index}
+                          key={idx}
                           href={social.url} 
                           style={{ 
                             position: 'absolute',
                             top: '10px',
-                            right: `${10 + (index * 40)}px`,
+                            right: `${10 + (idx * 40)}px`,
                             width: '30px',
                             height: '30px',
                             borderRadius: '50%',
@@ -202,7 +185,7 @@ export default function Events() {
                       <a href={`/event/${event._id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                         <p className="company-name">{event.title}</p>
                         <p>
-                          {event.description.length > 80 
+                          {event.description && event.description.length > 80 
                             ? <>{event.description.substring(0, 80)}... <span style={{color: '#3b82f6', cursor: 'pointer'}}>Read More</span></>
                             : event.description
                           }
@@ -214,7 +197,7 @@ export default function Events() {
                           <div style={{ display: 'flex', gap: '1rem' }}>
                             <span style={{ display: 'flex', alignItems: 'center' }}>
                               <FaCalendar style={{ marginRight: '0.5rem' }} size="1rem" />
-                              {new Date(event.createdAt).toLocaleDateString()}
+                              {event.createdAt ? new Date(event.createdAt).toLocaleDateString() : ''}
                             </span>
                             <span style={{ display: 'flex', alignItems: 'center' }}>
                               <FaMapMarkerAlt style={{ marginRight: '0.5rem' }} size="1rem" />
@@ -233,12 +216,6 @@ export default function Events() {
                             </em>
                             <span style={{ marginLeft: '5px', color: '#666' }}>{event.likes}</span>
                           </li>
-                          {/* <li style={{ marginRight: '1rem', cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
-                            <em>
-                              <FaRegComment color="#666" size={24} />
-                            </em>
-                            <span style={{ marginLeft: '5px', color: '#666' }}>{event.comments.length}</span>
-                          </li> */}
                           <li style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
                             <em>
                               <HiOutlineShare color="#666" size={24} />
