@@ -1,6 +1,7 @@
 "use client"; // Add this line to indicate that this is a client component
 
 import React, { useState, useEffect } from 'react';
+import styles from './Events.module.css'
 import Image from 'next/image';
 import { HiOutlineShare } from "react-icons/hi";
 import { FaCalendar, FaMapMarkerAlt, FaRegHeart, FaRegComment, FaFacebookF, FaLinkedinIn, FaInstagram, FaEye } from 'react-icons/fa';
@@ -56,7 +57,7 @@ export default function Events() {
         const updatedEvents = [...prevEvents];
         updatedEvents[index] = {
           ...updatedEvents[index],
-          likes: updatedEvents[index].likes + 1, 
+          likes: updatedEvents[index].likes + 1,
         };
         return updatedEvents;
       });
@@ -79,38 +80,30 @@ export default function Events() {
 
   return (
     <div style={{ width: '100%', backgroundColor: '#fff', fontFamily: 'Arial, sans-serif', lineHeight: '1.6', color: '#333' }}>
-      <section style={{
-        backgroundImage: "url('https://res.cloudinary.com/dd1na5drh/image/upload/v1734611753/events_Desktop_hero_page_bfz1gs.png')",
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        height: '400px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        textAlign: 'center',
-        color: '#fff',
-        position: 'relative',
-        width: '100%',
-      }}>
-        <div style={{
-          content: '""',
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-        }}></div>
-      </section>
+      
+    
+   <section className={styles.heroSection}>
+  {/* The inline style is gone, replaced by the CSS class */}
+  <div className={styles.heroOverlay}></div>
 
-      <div style={{ width: '100%', maxWidth: '1200px', margin: '0 auto', padding: '0 20px'}}>
+  {/* Remember to add your content (title, etc.)
+      in a div with z-index: 2 so it shows
+      up on top of the overlay! */}
+  <div style={{ position: 'relative', zIndex: 2 }}>
+    {/* Your text goes here */}
+  </div>
+</section>
+
+
+      <div style={{ width: '100%', maxWidth: '1200px', margin: '0 auto', padding: '0 20px' }}>
         <section>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', padding: '2rem 0', justifyContent: 'center' }}>
-            {['Exhibition', 'Upcoming Exhibition','CSR By Triquench', 'Triquench Events' ].map((category) => (
+            {['Exhibition', 'Upcoming Exhibition', 'CSR By Triquench', 'Triquench Events'].map((category) => (
               <button
                 key={category}
                 onClick={(e) => handleCategoryClick(e, category)}
                 style={{
-                  backgroundColor: selectedCategory === category ? '#006098' : '#fff', 
+                  backgroundColor: selectedCategory === category ? '#006098' : '#fff',
                   color: selectedCategory === category ? '#fff' : '#006098',
                   padding: '0.5rem 1rem',
                   borderRadius: '20px',
@@ -118,11 +111,7 @@ export default function Events() {
                   fontWeight: 'bold',
                   transition: 'all 0.3s ease',
                   cursor: 'pointer',
-                  ':hover': {
-                    backgroundColor: '#006098',
-                    color: '#fff',
-                    transform: 'translateY(-2px)',
-                  }
+                  // Note: ':hover' is not a valid inline style property
                 }}
                 onMouseEnter={(e) => {
                   e.target.style.backgroundColor = '#006098';
@@ -162,7 +151,7 @@ export default function Events() {
                           icon: <FaFacebookF />
                         },
                         instagram: {
-                          backgroundColor: '#E1306C', 
+                          backgroundColor: '#E1306C',
                           icon: <FaInstagram />
                         },
                         linkedin: {
@@ -175,10 +164,10 @@ export default function Events() {
                       if (!style) return null;
 
                       return (
-                        <a 
+                        <a
                           key={index}
-                          href={social.url} 
-                          style={{ 
+                          href={social.url}
+                          style={{
                             position: 'absolute',
                             top: '10px',
                             right: `${10 + (index * 40)}px`,
@@ -202,8 +191,8 @@ export default function Events() {
                       <a href={`/event/${event._id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                         <p className="company-name">{event.title}</p>
                         <p>
-                          {event.description.length > 80 
-                            ? <>{event.description.substring(0, 80)}... <span style={{color: '#3b82f6', cursor: 'pointer'}}>Read More</span></>
+                          {event.description.length > 80
+                            ? <>{event.description.substring(0, 80)}... <span style={{ color: '#3b82f6', cursor: 'pointer' }}>Read More</span></>
                             : event.description
                           }
                         </p>

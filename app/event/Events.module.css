@@ -1,0 +1,26 @@
+/* In your Events.module.css file */
+
+.heroSection {
+  /* --- Mobile-First Styles (Default) --- */
+  background-image: url('https://res.cloudinary.com/dd1na5drh/image/upload/v1734611753/events_Desktop_hero_page_bfz1gs.png');
+  background-size: cover;
+  background-position: center center;
+  
+  height: clamp(250px, 65vh, 400px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  width: 100%;
+}
+
+/* --- Desktop Styles --- */
+/* When screen is 768px or wider, these styles apply */
+@media (min-width: 768px) {
+  .heroSection {
+    background-image: url('https://res.cloudinary.com/dd1na5drh/image/upload/v1734611753/events_Desktop_hero_page_bfz1gs.png');
+    background-position: left center;
+  }
+}
