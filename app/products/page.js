@@ -588,27 +588,7 @@ export default function Products() {
                             {/* --- PRODUCT GRID (with ref) --- */}
                             <div className="product-grid" ref={productGridRef}>
                                 {isLoading ? (
-                                    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', minHeight: '200px', gap: '10px' }}>
-                                        {/* Simple CSS Spinner */}
-                                        <style>
-                                            {`
-                                            .loader-spinner {
-                                                border: 4px solid #f3f3f3; /* Light grey */
-                                                border-top: 4px solid #006098; /* Blue */
-                                                border-radius: 50%;
-                                                width: 30px;
-                                                height: 30px;
-                                                animation: spin 1s linear infinite;
-                                            }
-                                            @keyframes spin {
-                                                0% { transform: rotate(0deg); }
-                                                100% { transform: rotate(360deg); }
-                                            }
-                                            `}
-                                        </style>
-                                        <div className="loader-spinner"></div>
-                                        <p style={{ margin: "0", fontSize: '16px' }}>Please wait...</p>
-                                    </div>
+                                   <SimpleSpinner/>
                                 ) : currentProducts.length > 0 ? (
                                     currentProducts.map((product) => (
                                         // Make whole item clickable to reliably navigate
