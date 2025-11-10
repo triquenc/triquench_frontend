@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import InnerPageBanner from "@/components/commonComponents/innerpagebanner";
 //import { useRouter } from "next/compat/router";
@@ -25,11 +25,56 @@ export default function Products() {
     const [searchQuery, setSearchQuery] = useState("");
     const [breadcrumb, setBreadcrumb] = useState([]);
     const [usingApiResults, setUsingApiResults] = useState(false);
-    const [isLoading, setIsLoading] = useState(true); // <-- ADDED: Loading state
+    const [isLoading, setIsLoading] = useState(true);
     const productsPerPage = 15;
     const router = useRouter();
 
     const categories = categoriesData.categories;
+
+    // ref to the product grid container — used to scroll down to results
+    const productGridRef = useRef(null);
+
+    // Helper: robustly wait until product nodes are in the DOM, then scroll the first match.
+    // Runs only on small devices (320-768px).
+    const scrollWhenReady = (name, timeoutMs = 3000, pollInterval = 200) => {
+      if (!name) return;
+      if (typeof window === 'undefined') return;
+      const w = window.innerWidth;
+      if (w < 320 || w > 768) return; // only for small devices as requested
+
+      const lowerName = name.toLowerCase();
+      const start = Date.now();
+
+      const attempt = () => {
+        const items = Array.from(document.querySelectorAll('.product-grid-item'));
+        for (const item of items) {
+          const text = (item.innerText || item.textContent || '').toLowerCase();
+          if (text.includes(lowerName)) {
+            // scroll to the match
+            item.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+            // visual highlight
+            const prevBoxShadow = item.style.boxShadow;
+            item.style.transition = 'box-shadow 0.35s ease';
+            item.style.boxShadow = '0 6px 18px rgba(0,96,152,0.12)';
+            setTimeout(() => { item.style.boxShadow = prevBoxShadow || ''; }, 1800);
+            return true;
+          }
+        }
+        return false;
+      }; 
+
+      if (attempt()) return; // already present
+
+      const id = setInterval(() => {
+        if (attempt()) {
+          clearInterval(id);
+          return;
+        }
+        if (Date.now() - start > timeoutMs) {
+          clearInterval(id);
+        }
+      }, pollInterval);
+    };
 
     // Added eslint-disable to prevent infinite loop if fetchCategoryData is added as a dep
     /* eslint-disable react-hooks/exhaustive-deps */
@@ -38,17 +83,17 @@ export default function Products() {
             const category = categories.find(cat => cat.slug === categorySlug);
             if (category) {
                 setActiveCategory(category.name);
-                fetchCategoryData(category.name); // This will now set loading state
+                fetchCategoryData(category.name);
             }
         }
     }, [categorySlug, categories]);
     /* eslint-enable react-hooks/exhaustive-deps */
 
-    const handleCategoryClick = (category, subcategory = '', subSubcategory = '') => {
+    // Make handleCategoryClick async so we can trigger scroll logic after requesting data
+    const handleCategoryClick = async (category, subcategory = '', subSubcategory = '') => {
         setActiveCategory(category);
         setCurrentPage(1);
-        window.scrollTo({ top: 500, behavior: 'smooth' });
-        
+
         const newBreadcrumb = [category];
         if (subcategory) newBreadcrumb.push(subcategory);
         if (subSubcategory) newBreadcrumb.push(subSubcategory);
@@ -58,11 +103,30 @@ export default function Products() {
         if (!subcategory && !subSubcategory) {
             setUsingApiResults(false);
         } else {
-             // Set API flag if we are fetching a subcategory
-            setUsingApiResults(true); 
+            setUsingApiResults(true);
         }
-        
+
+        // Trigger data fetch (if any)
         fetchCategoryData(category, subcategory, subSubcategory);
+
+        // Scroll user down to the product list container (so they see results).
+        // On small devices we'll also try to scroll to the specific product after DOM ready.
+        if (productGridRef.current) {
+          // Use smooth scroll to the top of product grid
+          productGridRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+          // fallback: scroll to center of viewport
+          if (typeof window !== 'undefined') {
+            const w = window.innerWidth;
+            if (w > 768) {
+              window.scrollTo({ top: 500, behavior: 'smooth' });
+            }
+          }
+        }
+
+        // For small screens, try to scroll to specific product when it appears
+        const clickedName = subSubcategory || subcategory || category;
+        scrollWhenReady(clickedName, 3500, 200);
     };
 
     const toggleCategory = (categoryPath) => {
@@ -73,7 +137,7 @@ export default function Products() {
     };
 
     const fetchCategoryData = async (category, subcategory = '', subSubcategory = '') => {
-        setIsLoading(true); // <-- MODIFIED
+        setIsLoading(true);
         try {
             let url = `https://d1w2b5et10ojep.cloudfront.net/api/product/category/${encodeURIComponent(category)}`;
             
@@ -88,25 +152,26 @@ export default function Products() {
             
             const response = await fetch(url);
             const data = await response.json();
-            
+
             setProducts(data || []);
         } catch (error) {
             console.error("Error fetching category data:", error);
             setProducts([]);
             setUsingApiResults(false);
         } finally {
-            setIsLoading(false); // <-- MODIFIED
+            setIsLoading(false);
         }
     };
 
     const handleSeeDetailsClick = (id) => {
+        // navigate to product details
         router.push(`/product/${id}`);
     };
 
     // Fetch all products for total count
     useEffect(() => {
         const fetchAllProducts = async () => {
-            setIsLoading(true); // <-- MODIFIED
+            setIsLoading(true);
             try {
                 const response = await fetch("https://triquench-backend.vercel.app/api/product/all");
                 const data = await response.json();
@@ -115,47 +180,39 @@ export default function Products() {
             } catch (error) {
                 console.error("Error fetching all products:", error);
             } finally {
-                setIsLoading(false); // <-- MODIFIED
+                setIsLoading(false);
             }
         };
 
-        // Only fetch all products if no category slug is present in the URL
         if (!categorySlug) {
             fetchAllProducts();
         }
-    }, [categorySlug]); // <-- MODIFIED: Added categorySlug dependency
+    }, [categorySlug]);
 
     // Filter products based on category and search - only when NOT using API filtering
     useEffect(() => {
-        // Skip local filtering if we're using API results
-        if (usingApiResults) {
-            return; // Let fetchCategoryData handle the filtering
-        }
-        
+        if (usingApiResults) return; // Let API results handle filtering
+
         let filteredProducts = [...allProducts];
-        
-        // Apply category filter
+
         if (activeCategory !== "All Products") {
             filteredProducts = filteredProducts.filter(
                 (product) => product.category === activeCategory
             );
         }
 
-        // Apply search filter
         if (searchQuery) {
             filteredProducts = filteredProducts.filter(
                 (product) => product.title.toLowerCase().includes(searchQuery.toLowerCase())
             );
         }
 
-        console.log("Local filtering applied:", filteredProducts.length, "products");
         setProducts(filteredProducts);
     }, [activeCategory, allProducts, searchQuery, usingApiResults]);
 
     // Sorting products based on selected option - avoid state mutation
     useEffect(() => {
-        // Skip sorting if we have API results for subcategories
-        if (usingApiResults || isLoading) { // <-- MODIFIED: Also skip if loading
+        if (usingApiResults || isLoading) {
             return;
         }
         
@@ -183,11 +240,10 @@ export default function Products() {
                 break;
         }
 
-        // Only set state if the array order has actually changed
         if (JSON.stringify(products) !== JSON.stringify(sortedProducts)) {
             setProducts(sortedProducts);
         }
-    }, [sortingOption, usingApiResults, products, isLoading]); // <-- MODIFIED: Added products & isLoading
+    }, [sortingOption, usingApiResults, products, isLoading]);
 
     // Get current products based on page and productsPerPage
     const indexOfLastProduct = currentPage * productsPerPage;
@@ -197,7 +253,12 @@ export default function Products() {
     // Handle page change
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
-        window.scrollTo({ top: 500, behavior: 'smooth' }); // Scroll to top
+        if (productGridRef.current && typeof window !== 'undefined') {
+          const w = window.innerWidth;
+          if (w > 768) {
+            productGridRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
     };
 
     // Calculate total pages
@@ -212,7 +273,6 @@ export default function Products() {
                     const isExpanded = expandedCategories[categoryPath];
 
                     if (typeof subcategory === 'string' || !subcategory.subcategories || subcategory.subcategories.length === 0) {
-                        // This is a leaf node (string or object without subcategories)
                         const displayName = typeof subcategory === 'string' ? subcategory : subcategory.name;
                         return (
                             <li key={displayName} style={{ marginBottom: '5px', position: 'relative' }}>
@@ -237,16 +297,11 @@ export default function Products() {
                                     onClick={(e) => {
                                         e.preventDefault();
                                         e.stopPropagation();
-                                        
-                                        // This is always a leaf node (string or object without subcategories)
                                         const pathParts = parentCategory.split('/');
-                                        
                                         if (pathParts.length === 2) {
-                                            // pathParts = [mainCategory, subcategory], displayName = sub-subcategory
                                             const [mainCategory, subCategory] = pathParts;
                                             handleCategoryClick(mainCategory, subCategory, displayName);
                                         } else if (pathParts.length === 1) {
-                                            // pathParts = [mainCategory], displayName = subcategory
                                             const mainCategory = pathParts[0];
                                             handleCategoryClick(mainCategory, displayName);
                                         }
@@ -278,11 +333,7 @@ export default function Products() {
                                         onClick={(e) => {
                                             e.preventDefault();
                                             e.stopPropagation();
-                                            
-                                            // This is a subcategory with potential sub-subcategories
                                             const pathParts = parentCategory.split('/');
-                                            
-                                            // This should always be a direct subcategory under main category
                                             const mainCategory = pathParts[0];
                                             handleCategoryClick(mainCategory, subcategory.name);
                                         }}
@@ -323,15 +374,11 @@ export default function Products() {
     // Add this function to handle breadcrumb navigation
     const handleBreadcrumbClick = (index) => {
         const newBreadcrumb = breadcrumb.slice(0, index + 1);
-        
-        // Get the category info based on clicked breadcrumb level
         const category = newBreadcrumb[0];
         const subcategory = newBreadcrumb[1] || '';
         const subSubcategory = newBreadcrumb[2] || '';
-        
-        // Update active category and fetch data
-        setActiveCategory(category); // Set active category
-        handleCategoryClick(category, subcategory, subSubcategory); // Use existing handler
+        setActiveCategory(category);
+        handleCategoryClick(category, subcategory, subSubcategory);
     };
 
     return (
@@ -516,7 +563,6 @@ export default function Products() {
                                                         color: index === breadcrumb.length - 1 ? '#006098' : '#666',
                                                         cursor: 'pointer',
                                                         transition: 'color 0.3s ease',
-                                                        // REMOVED: Invalid '&:hover' syntax
                                                     }}
                                                     onMouseOver={(e) => { 
                                                         if (index !== breadcrumb.length - 1) {
@@ -539,37 +585,73 @@ export default function Products() {
                                 </div>
                             )}
 
-                            {/* --- MODIFIED RENDER LOGIC --- */}
-                            <div className="product-grid">
+                            {/* --- PRODUCT GRID (with ref) --- */}
+                            <div className="product-grid" ref={productGridRef}>
                                 {isLoading ? (
-                                    <SimpleSpinner/>
+                                    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', minHeight: '200px', gap: '10px' }}>
+                                        {/* Simple CSS Spinner */}
+                                        <style>
+                                            {`
+                                            .loader-spinner {
+                                                border: 4px solid #f3f3f3; /* Light grey */
+                                                border-top: 4px solid #006098; /* Blue */
+                                                border-radius: 50%;
+                                                width: 30px;
+                                                height: 30px;
+                                                animation: spin 1s linear infinite;
+                                            }
+                                            @keyframes spin {
+                                                0% { transform: rotate(0deg); }
+                                                100% { transform: rotate(360deg); }
+                                            }
+                                            `}
+                                        </style>
+                                        <div className="loader-spinner"></div>
+                                        <p style={{ margin: "0", fontSize: '16px' }}>Please wait...</p>
+                                    </div>
                                 ) : currentProducts.length > 0 ? (
                                     currentProducts.map((product) => (
-                                        <div key={product._id} className="product-grid-item">
+                                        // Make whole item clickable to reliably navigate
+                                        <div
+                                            key={product._id}
+                                            className="product-grid-item"
+                                            onClick={() => handleSeeDetailsClick(product._id)}
+                                            style={{ cursor: 'pointer' }}
+                                            role="button"
+                                            tabIndex={0}
+                                            onKeyDown={(e) => { if (e.key === 'Enter') handleSeeDetailsClick(product._id); }}
+                                        >
                                             <div className="product-grid-inner">
                                                 <div className="img-content-block">
-                                                    <div className="img-block" onClick={() => handleSeeDetailsClick(product._id)}>
-                                                        {product.images.map((image) => (
+                                                    <div className="img-block">
+                                                        {Array.isArray(product.images) && product.images.map((image) => (
                                                             <Image
-                                                                key={image._id}
+                                                                key={image._id || image.url}
                                                                 src={image.url}
                                                                 width={218}
                                                                 height={218}
-                                                                alt={image.alt_text || "Product Image"}
+                                                                alt={image.alt_text || product.title || "Product Image"}
                                                             />
                                                         ))}
                                                     </div>
                                                     <p>{product.title}</p>
                                                 </div>
                                                 <div className="product-button-wrapper">
+                                                    {/* Retain 'See Details' and 'Shop Now' links, but the whole card is clickable */}
                                                     <a
-                                                        onClick={() => handleSeeDetailsClick(product._id)}
+                                                        onClick={(e) => { e.stopPropagation(); handleSeeDetailsClick(product._id); }}
                                                         className="border-btn"
-                                                        style={{ cursor: 'pointer' }} // Add cursor pointer to <a>
+                                                        style={{ cursor: 'pointer' }}
                                                     >
                                                         See Details
                                                     </a>
-                                                    <a href={product.shopNowUrl} className="site-btn">
+                                                    <a
+                                                        href={product.shopNowUrl}
+                                                        onClick={(e) => e.stopPropagation()}
+                                                        className="site-btn"
+                                                        target="_blank"
+                                                        rel="noreferrer"
+                                                    >
                                                         Shop Now
                                                     </a>
                                                 </div>
@@ -584,7 +666,6 @@ export default function Products() {
                             </div>
 
                            {/* Pagination */}
-                           {/* MODIFIED: Hide if loading or only 1 page */}
                            {!isLoading && totalPages > 1 && (
                                 <div 
                                     className="pagination" 
@@ -617,7 +698,6 @@ export default function Products() {
                                             cursor: currentPage === 1 ? 'not-allowed' : 'pointer',
                                             transition: 'all 0.3s ease',
                                             minWidth: '100px',
-                                            // REMOVED: Invalid '@media' syntax
                                         }}
                                     >
                                         Previous
@@ -631,13 +711,10 @@ export default function Products() {
                                             justifyContent: 'center',
                                             alignItems: 'center',
                                             gap: '8px',
-                                            // REMOVED: Invalid '@media' syntax
                                         }}
                                     >
                                         {Array.from({ length: totalPages }, (_, index) => {
                                             const pageNum = index + 1;
-                                            
-                                            // More robust pagination logic
                                             const showPage = pageNum === 1 || 
                                                            pageNum === totalPages ||
                                                            (pageNum >= currentPage - 2 && pageNum <= currentPage + 2);
@@ -671,7 +748,6 @@ export default function Products() {
                                                             : '0 3px 6px rgba(0,0,0,0.12)',
                                                         transform: currentPage === pageNum ? 'scale(1.1)' : 'scale(1)',
                                                         cursor: 'pointer', 
-                                                        // REMOVED: Invalid '@media' syntax
                                                     }}
                                                 >
                                                     {pageNum}
@@ -695,7 +771,6 @@ export default function Products() {
                                             cursor: currentPage === totalPages ? 'not-allowed' : 'pointer',
                                             transition: 'all 0.3s ease',
                                             minWidth: '100px',
-                                            // REMOVED: Invalid '@media' syntax
                                         }}
                                     >
                                         Next
