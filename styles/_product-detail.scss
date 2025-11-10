@@ -418,3 +418,163 @@
         }
     }
 }
+/* ---------- Fix: ensure thumbnail left border shows on 320px - 1024px ---------- */
+@media screen and (max-width: 1024px) {
+  .product-detail-slider-section {
+
+    /* Prevent the main-slider side bars from overlapping thumbnails */
+    .thumbmail-slider {
+      .main-slider {
+        &:before,
+        &:after {
+          display: none !important;
+          content: none !important;
+        }
+      }
+
+      /* allow thumbnails to be visible (not clipped) and give a small left inset */
+      .thumb-slider {
+        overflow: visible !important; /* don't clip borders */
+        padding-left: 0.6rem !important; /* ensure leftmost border is visible */
+        margin-right: 0 !important;
+
+        .swiper-slide {
+          box-sizing: border-box !important; /* include border in width calc */
+          border: 0.1rem solid $border4 !important; /* enforce full 4-side border */
+          border-left: 0.1rem solid $border4 !important; /* explicit left border */
+          background-clip: padding-box !important;
+          margin-left: 0 !important;
+          transform: none !important;
+          /* keep a tiny left gap so border isn't visually cut by parent edges */
+        }
+
+        /* make first thumb slightly inset so its left border is clearly visible */
+        .swiper-slide:first-child {
+          margin-left: 0.5rem !important;
+        }
+      } /* .thumb-slider */
+    } /* .thumbmail-slider */
+
+    /* Also ensure wrapper doesn't hide child overflow */
+    .slider-text-wrapper, .thumbmail-slider {
+      overflow: visible !important;
+    }
+  } /* .product-detail-slider-section */
+}
+
+/* extra small phones: keep thumbnail size but keep left border visible */
+@media screen and (max-width: 420px) {
+  .product-detail-slider-section {
+    .thumbmail-slider {
+      .thumb-slider {
+        padding-left: 0.4rem !important;
+        .swiper-slide:first-child {
+          margin-left: 0.35rem !important;
+        }
+      }
+    }
+  }
+}
+
+/* ---------- Fix for mid / large tablets and small desktops: 1024px - 1440px ---------- */
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+  .product-detail-slider-section {
+    /* Prevent side overlays from overlapping thumbnails */
+    .thumbmail-slider {
+      .main-slider {
+        &:before,
+        &:after {
+          /* keep them if you want visual side overlays on very wide screens,
+             but hide here to avoid overlap with thumbnails */
+          display: none !important;
+          content: none !important;
+        }
+      }
+
+      /* Ensure thumbnail area is visible and not clipped */
+      .thumb-slider {
+        overflow: visible !important;
+        padding-left: 0.6rem !important; /* ensure leftmost border is visible */
+        margin-right: 0 !important;
+
+        .swiper-slide {
+          box-sizing: border-box !important;
+          border: 0.12rem solid $border4 !important;
+          background-clip: padding-box !important;
+          margin-left: 0 !important;
+          transform: none !important;
+          /* slightly smaller than desktop default so it fits well in this range */
+          width: 86px !important;
+          height: 86px !important;
+          min-width: 80px !important;
+          min-height: 80px !important;
+          padding: 0.45rem !important;
+          img { width: 100% !important; height: 100% !important; object-fit: contain !important; }
+        }
+
+        .swiper-slide:first-child {
+          margin-left: 0.55rem !important; /* nudge first thumb so left border is visible */
+        }
+
+        /* highlight active thumb nicely */
+        .swiper-slide.swiper-slide-thumb-active {
+          border-color: $primaryColor !important;
+          transform: translateY(-5px) !important;
+          box-shadow: 0 8px 20px rgba(0,0,0,0.06) !important;
+        }
+      } /* .thumb-slider */
+    } /* .thumbmail-slider */
+
+    /* Ensure wrappers don't clip the thumb area */
+    .slider-text-wrapper, .thumbmail-slider {
+      overflow: visible !important;
+    }
+
+    /* Slightly scale down nav arrows so nothing overlaps */
+    .swiper-button-prev,
+    .swiper-button-next {
+      height: 3.8rem !important;
+      width: 3.8rem !important;
+      top: calc(50% + 1.4rem) !important;
+      z-index: 6 !important;
+    }
+  } /* .product-detail-slider-section */
+}
+
+/* -------- Remove main slider navigation arrows (keep everything else unchanged) -------- */
+.product-detail-slider-section {
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+}
+
+/* ---------- Thumbnail box: make border blue and slightly larger ---------- */
+.product-detail-slider-section {
+  .thumbmail-slider {
+    .thumb-slider {
+      .swiper-slide {
+        border: 0.12rem solid #006098 !important; /* blue border */
+        width: 120px !important; /* slightly bigger box */
+        height: 120px !important;
+        transition: all 0.3s ease;
+
+        img {
+          width: 100% !important;
+          height: 100% !important;
+          object-fit: contain !important;
+        }
+      }
+
+      /* keep active thumbnail consistent */
+      .swiper-slide.swiper-slide-thumb-active {
+        border-color: #006098 !important; /* same blue border for active state */
+        transform: scale(1.05) !important; /* slightly lifted effect */
+        box-shadow: 0 4px 10px rgba(0, 96, 152, 0.15) !important;
+      }
+    }
+  }
+}
