@@ -7,41 +7,8 @@ import React, {
 } from "react";
 import Image from "next/image";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
+import SimpleSpinner from "../commonComponents/SimpleSpinner";
 
-const SimpleSpinner = () => (
-  <div
-    style={{
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      width: "100%",
-      minHeight: "200px",
-      margin: "auto",
-    }}
-  >
-    <style>
-      {`
-        @keyframes spin {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
-        }
-      `}
-    </style>
-    <div
-      style={{
-        border: "4px solid #f3f3f3",
-        borderTop: "4px solid #006098",
-        borderRadius: "50%",
-        width: "40px",
-        height: "40px",
-        animation: "spin 1s linear infinite",
-      }}
-    ></div>
-    <span style={{ marginLeft: "10px", fontSize: "16px", color: "#333" }}>
-      Please wait...
-    </span>
-  </div>
-);
 
 const HomeProductList = forwardRef((props, ref) => {
   const [categoryOpen, setMenuOpen] = useState(false);
