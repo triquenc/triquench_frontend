@@ -24,7 +24,7 @@ const FormSection = () => {
 
   const handleSubmit = async (values, { resetForm }) => {
     try {
-      const response = await fetch("https://triquench.ap-south-1.elasticbeanstalk.com/api/form/submit", {
+      const response = await fetch("http://localhost:5000/api/form/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
