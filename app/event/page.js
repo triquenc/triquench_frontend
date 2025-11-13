@@ -15,7 +15,7 @@ export default function Events() {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await fetch('https://d1w2b5et10ojep.cloudfront.net/api/event/getEvents');
+        const response = await fetch('https://d1w2b5et10ojep.cloudfront.net/api/event');
         const data = await response.json();
         setEvents(data);
       } catch (error) {
