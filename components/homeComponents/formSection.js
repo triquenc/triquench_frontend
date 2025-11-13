@@ -22,22 +22,15 @@ const validationSchema = Yup.object({
 const FormSection = () => {
   const [notification, setNotification] = useState("");
 
-const handleSubmit = async (values, { resetForm }) => {
-  try {
-    // ✅ Auto-detect environment (local vs deployed)
-    // const BASE_URL =
-    //   window.location.hostname === "localhost"
-    //     ? "http://localhost:5000" // local backend
-    //     : "https://triquench.ap-south-1.elasticbeanstalk.com"; 
-       
-
-    const response = await fetch(`https://d1w2b5et10ojep.cloudfront.net/api/form/submit`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(values),
-    });
+  const handleSubmit = async (values, { resetForm }) => {
+    try {
+      const response = await fetch("https://triquench.ap-south-1.elasticbeanstalk.com/api/form/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
 
     const data = await response.json();
 
