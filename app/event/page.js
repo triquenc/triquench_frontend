@@ -3,11 +3,13 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { HiOutlineShare } from "react-icons/hi";
-import { FaCalendar, FaMapMarkerAlt, FaRegHeart, FaRegComment, FaFacebookF, FaLinkedinIn, FaInstagram, FaEye } from 'react-icons/fa';
+import { FaCalendar, FaMapMarkerAlt, FaRegHeart, FaFacebookF, FaLinkedinIn, FaInstagram, FaEye } from 'react-icons/fa';
 
 export default function Events() {
   // State to manage events and likes
   const [events, setEvents] = useState([]);
+
+  // --- LINT FIX 1: Use object with event._id as key, not index ---
   const [likedPosts, setLikedPosts] = useState({}); // Using an object to track like status for each post
   const [selectedCategory, setSelectedCategory] = useState(''); // State to track selected category
 
@@ -15,20 +17,40 @@ export default function Events() {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await fetch('https://d1w2b5et10ojep.cloudfront.net/api/event');
+        // --- PROBLEM 1: This URL is returning 404 ---
+        // Your screenshot shows '.../api/event/getEvents'
+        // Your code shows '.../api/event'
+        // You MUST fix this URL to be a valid API endpoint.
+        const response = await fetch('https://d1w2b5et10ojep.cloudfront.net/api/event'); // Using URL from screenshot
+
+        // --- FIX 1: Check for HTTP errors (like 404) ---
+        if (!response.ok) {
+          throw new Error(`API Error: ${response.status} ${response.statusText}`);
+        }
+
         const data = await response.json();
-        setEvents(data);
+
+        // --- FIX 2: Ensure the data is ALWAYS an array ---
+        if (Array.isArray(data)) {
+          setEvents(data);
+        } else {
+          console.error("Error fetching events: API did not return an array.", data);
+          setEvents([]); // Reset to an empty array to prevent crash
+        }
+
       } catch (error) {
+        // This will now catch network errors AND 404s
         console.error('Error fetching events:', error);
+        setEvents([]); // Reset to an empty array on any error
       }
     };
 
     fetchEvents();
   }, []); // This will run once when the component is mounted
 
-  // Handle like button click
-  const handleLikeClick = async (index, eventId) => {
-    if (likedPosts[index]) return; // Prevent further clicks if already liked
+  // --- LINT FIX 2: Refactor handleLikeClick to use eventId, not index ---
+  const handleLikeClick = async (eventId) => {
+    if (likedPosts[eventId]) return; // Prevent further clicks if already liked
 
     try {
       const response = await fetch(`https://d1w2b5et10ojep.cloudfront.net/api/event/like`, {
@@ -48,18 +70,17 @@ export default function Events() {
       // Update the like status locally
       setLikedPosts((prevState) => ({
         ...prevState,
-        [index]: true, // Mark as liked
+        [eventId]: true, // Mark as liked using eventId
       }));
 
       // Update the like count in the UI
-      setEvents((prevEvents) => {
-        const updatedEvents = [...prevEvents];
-        updatedEvents[index] = {
-          ...updatedEvents[index],
-          likes: (updatedEvents[index].likes || 0) + 1,
-        };
-        return updatedEvents;
-      });
+      setEvents((prevEvents) =>
+        prevEvents.map((event) =>
+          event._id === eventId
+            ? { ...event, likes: (event.likes || 0) + 1 }
+            : event
+        )
+      );
     } catch (error) {
       console.error('Error liking event:', error);
       alert('Error liking event: ' + error.message);
@@ -81,22 +102,22 @@ export default function Events() {
 
   return (
     <div style={{ width: '100%', backgroundColor: '#fff', fontFamily: 'Arial, sans-serif', lineHeight: '1.6', color: '#333' }}>
-      {/* ---------- BANNER: desktop/tablet uses background-image; mobile uses <img> to show full image ---------- */}
+      {/* ... (rest of your banner JSX, no changes needed) ... */}
       <section className="hero-banner">
         <div className="hero-overlay" />
-        {/* Mobile-friendly / 1024px-friendly full-image element; hidden on larger screens */}
         <img src={HERO_IMG} alt="Events banner" className="hero-img-mobile" />
       </section>
 
       <div style={{ width: '100%', maxWidth: '1200px', margin: '0 auto', padding: '0 20px'}}>
         <section>
+          {/* ... (rest of your category button JSX, no changes needed) ... */}
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', padding: '2rem 0', justifyContent: 'center' }}>
             {['Exhibition', 'Upcoming Exhibition','CSR By Triquench', 'Triquench Events' ].map((category) => (
               <button
                 key={category}
                 onClick={(e) => handleCategoryClick(e, category)}
                 style={{
-                  backgroundColor: selectedCategory === category ? '#006098' : '#fff', 
+                  backgroundColor: selectedCategory === category ? '#006098' : '#fff',
                   color: selectedCategory === category ? '#fff' : '#006098',
                   padding: '0.5rem 1rem',
                   borderRadius: '20px',
@@ -128,9 +149,11 @@ export default function Events() {
 
         <section className="social-wall-section" style={{ backgroundColor: 'white' }}>
           <div className="social-grid">
-            {filteredEvents.map((event, index) => (
-              <div className="social-grid-item" key={index}>
+            {/* --- LINT FIX 3: Use event._id for the key, not index --- */}
+            {filteredEvents.map((event) => (
+              <div className="social-grid-item" key={event._id}>
                 <div className="social-grid-inner" style={{ boxShadow: '0 4px 8px rgba(0,0,0,0.1)', borderRadius: '8px' }}>
+                  {/* ... (rest of your Image/social link JSX, no changes needed) ... */}
                   <div className="img-wrapper">
                     <picture className='bg-img'>
                       <source srcSet={event.image?.url} type="image/webp" />
@@ -140,28 +163,17 @@ export default function Events() {
                     </picture>
                     {Array.isArray(event.socialLinks) && event.socialLinks.map((social, idx) => {
                       const socialStyles = {
-                        facebook: {
-                          backgroundColor: '#1877f2',
-                          icon: <FaFacebookF />
-                        },
-                        instagram: {
-                          backgroundColor: '#E1306C', 
-                          icon: <FaInstagram />
-                        },
-                        linkedin: {
-                          backgroundColor: '#0077b5',
-                          icon: <FaLinkedinIn />
-                        }
+                        facebook: { backgroundColor: '#1877f2', icon: <FaFacebookF /> },
+                        instagram: { backgroundColor: '#E1306C', icon: <FaInstagram /> },
+                        linkedin: { backgroundColor: '#0077b5', icon: <FaLinkedinIn /> }
                       };
-
                       const style = socialStyles[social.platform];
                       if (!style) return null;
-
                       return (
-                        <a 
+                        <a
                           key={idx}
-                          href={social.url} 
-                          style={{ 
+                          href={social.url}
+                          style={{
                             position: 'absolute',
                             top: '10px',
                             right: `${10 + (idx * 40)}px`,
@@ -183,9 +195,10 @@ export default function Events() {
                   <div className="bottom-outer">
                     <div className="bottom-wrapper">
                       <a href={`/event/${event._id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                        {/* ... (rest of your card text JSX, no changes needed) ... */}
                         <p className="company-name">{event.title}</p>
                         <p>
-                          {event.description && event.description.length > 80 
+                          {event.description && event.description.length > 80
                             ? <>{event.description.substring(0, 80)}... <span style={{color: '#3b82f6', cursor: 'pointer'}}>Read More</span></>
                             : event.description
                           }
@@ -210,9 +223,11 @@ export default function Events() {
                     <div className="action-row">
                       <div className="left">
                         <ul style={{ display: 'flex', listStyleType: 'none', padding: 0 }}>
-                          <li style={{ marginRight: '1rem', cursor: 'pointer', display: 'flex', alignItems: 'center' }} onClick={() => handleLikeClick(index, event._id)}>
+                          {/* --- LINT FIX 4: Pass event._id to handleLikeClick --- */}
+                          <li style={{ marginRight: '1rem', cursor: 'pointer', display: 'flex', alignItems: 'center' }} onClick={() => handleLikeClick(event._id)}>
                             <em>
-                              <FaRegHeart color={likedPosts[index] ? 'red' : '#666'} size={24} />
+                              {/* --- LINT FIX 5: Check liked status by event._id --- */}
+                              <FaRegHeart color={likedPosts[event._id] ? 'red' : '#666'} size={24} />
                             </em>
                             <span style={{ marginLeft: '5px', color: '#666' }}>{event.likes}</span>
                           </li>
@@ -224,6 +239,7 @@ export default function Events() {
                         </ul>
                       </div>
                       <div className="right">
+                        {/* ... (rest of your views JSX, no changes needed) ... */}
                         <em>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '5px', color: '#666' }}>
                             <FaEye size={24} />

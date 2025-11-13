@@ -16,7 +16,7 @@ export default function Blogs() {
   useEffect(() => {
     const fetchAllBlogs = async () => {
       try {
-        const response = await fetch("https://d1w2b5et10ojep.cloudfront.net/api/blog/getBlogs");
+        const response = await fetch("https://d1w2b5et10ojep.cloudfront.net/api/blog");
         if (!response.ok) throw new Error(`Failed: ${response.status}`);
         const data = await response.json();
         setBlogs(data || []);
