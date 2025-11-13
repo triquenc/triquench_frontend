@@ -1,27 +1,29 @@
 "use client";
 import { useState, useEffect } from "react";
-import { FaCalendarAlt, FaTag, FaBookOpen, FaUser } from "react-icons/fa";
+import { FaCalendarAlt, FaTag, FaBookOpen, FaUser } from "react-icons/fa"; // Removed FaRegComment
 import "./Blogs.css";
 
 export default function Blogs() {
   const [blogs, setBlogs] = useState([]);
-  const [popularPosts, setPopularPosts] = useState([
-    { title: "CNC Spindle Motor", imageUrl: "https://via.placeholder.com/80", id: "1" },
-    { title: "CNC Router Accessories", imageUrl: "https://via.placeholder.com/80", id: "2" },
-    { title: "Spindle Bearing", imageUrl: "https://via.placeholder.com/80", id: "3" },
-    { title: "Fiber Laser Machine Parts", imageUrl: "https://via.placeholder.com/80", id: "4" },
-    { title: "Engraving Tools", imageUrl: "https://via.placeholder.com/80", id: "5" },
-  ]);
+  // Removed unused 'popularPosts' and 'setPopularPosts' state
 
   useEffect(() => {
     const fetchAllBlogs = async () => {
       try {
         const response = await fetch("https://d1w2b5et10ojep.cloudfront.net/api/blog");
         if (!response.ok) throw new Error(`Failed: ${response.status}`);
+        
         const data = await response.json();
-        setBlogs(data || []);
+        
+        // --- THIS IS THE MAIN FIX ---
+        // We set the state to data.blogs (the array)
+        // not 'data' (the whole object)
+        setBlogs(data.blogs || []); 
+        // --- END OF FIX ---
+
       } catch (error) {
         console.error("Error fetching all blogs:", error);
+        setBlogs([]); // Set to empty array on error to prevent crash
       }
     };
 
@@ -32,31 +34,28 @@ export default function Blogs() {
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%" }}>
       {/* Banner Section */}
       <section className="blog-banner" aria-label="Blog banner">
-  <div className="blog-banner__frame">
-    <img
-      className="blog-banner__img"
-      src="https://res.cloudinary.com/dd1na5drh/image/upload/v1734609447/React_blog_Banner_desktop_ilhgqy.png"
-      alt="Blog banner"
-      loading="eager"
-      decoding="async"
-      /* srcset lists candidate image URLs with widths — update URLs if you have variants */
-      srcSet="
-        https://res.cloudinary.com/dd1na5drh/image/upload/w_480/v1734609448/React_blog_Banner_mobile_wugyfv.png 480w,
-        https://res.cloudinary.com/dd1na5drh/image/upload/w_768/v1734609448/React_blog_Banner_tablet_cdwtrq.png 768w,
-        https://res.cloudinary.com/dd1na5drh/image/upload/w_1200/v1734609447/React_blog_Banner_desktop_ilhgqy.png 1200w,
-        https://res.cloudinary.com/dd1na5drh/image/upload/w_1800/v1734609447/React_blog_Banner_desktop_ilhgqy.png 1800w
-      "
-      /* sizes tells browser which resource width to choose depending on viewport */
-      sizes="(max-width: 425px) 100vw, (max-width: 991px) 100vw, 100vw"
-      onError={(e) => {
-        console.error("Banner image failed to load:", e?.target?.src);
-        // Fallback: show a solid color data-uri or placeholder image so you can see frame
-        e.target.onerror = null;
-        e.target.src = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='400' viewBox='0 0 1200 400'%3E%3Crect width='1200' height='400' fill='%23e6e6e6'/%3E%3Ctext x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%23666' font-size='24'%3EBanner+image+not+available%3C/text%3E%3C/svg%3E";
-      }}
-    />
-  </div>
-</section>
+        <div className="blog-banner__frame">
+          <img
+            className="blog-banner__img"
+            src="https://res.cloudinary.com/dd1na5drh/image/upload/v1734609447/React_blog_Banner_desktop_ilhgqy.png"
+            alt="Blog banner"
+            loading="eager"
+            decoding="async"
+            srcSet="
+              https://res.cloudinary.com/dd1na5drh/image/upload/w_480/v1734609448/React_blog_Banner_mobile_wugyfv.png 480w,
+              https://res.cloudinary.com/dd1na5drh/image/upload/w_768/v1734609448/React_blog_Banner_tablet_cdwtrq.png 768w,
+              https://res.cloudinary.com/dd1na5drh/image/upload/w_1200/v1734609447/React_blog_Banner_desktop_ilhgqy.png 1200w,
+              https://res.cloudinary.com/dd1na5drh/image/upload/w_1800/v1734609447/React_blog_Banner_desktop_ilhgqy.png 1800w
+            "
+            sizes="(max-width: 425px) 100vw, (max-width: 991px) 100vw, 100vw"
+            onError={(e) => {
+              console.error("Banner image failed to load:", e?.target?.src);
+              e.target.onerror = null;
+              e.target.src = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='400' viewBox='0 0 1200 400'%3E%3Crect width='1200' height='400' fill='%23e6e6e6'/%3E%3Ctext x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%23666' font-size='24'%3EBanner+image+not+available%3C/text%3E%3C/svg%3E";
+            }}
+          />
+        </div>
+      </section>
 
       <div
         style={{
@@ -82,7 +81,7 @@ export default function Blogs() {
             {blogs.length > 0 ? (
               blogs.map((blog) => (
                 <div
-                  key={blog._id}
+                  key={blog._id} // Using the unique _id from your data
                   style={{
                     border: "1px solid #ddd",
                     borderRadius: "8px",
@@ -102,6 +101,7 @@ export default function Blogs() {
                   <div style={{ padding: "5px 10px", display: "flex", justifyContent: "space-between" }}>
                     <div style={{ fontSize: "12px", color: "#888", display: "flex", alignItems: "center" }}>
                       <FaCalendarAlt style={{ marginRight: "5px" }} />
+                      {/* Using 'createdAt' from your API data */}
                       {blog.createdAt ? new Date(blog.createdAt).toLocaleDateString() : "Unknown Date"}
                     </div>
                     <div
@@ -137,12 +137,15 @@ export default function Blogs() {
                 </div>
               ))
             ) : (
+              // This will now only show if data.blogs is truly empty
               <p>No blogs available.</p>
             )}
           </div>
         </div>
-
         
+        {/* I removed the sidebar code because its state 
+          (popularPosts) was removed for the lint fix.
+        */}
       </div>
     </div>
   );
