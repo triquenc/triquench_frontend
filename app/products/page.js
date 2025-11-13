@@ -140,6 +140,7 @@ export default function Products() {
         setIsLoading(true);
         try {
             let url = `https://d1w2b5et10ojep.cloudfront.net/api/product/category/${encodeURIComponent(category)}`;
+            d1w2b5et10ojep.cloudfront.net
             
             // Add query parameters
             const params = new URLSearchParams();
