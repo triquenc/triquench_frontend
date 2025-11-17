@@ -13,9 +13,17 @@ import BrandLogo from "../components/homeComponents/brandLogo";
 import ServiceWeProvide from "../components/commonComponents/serviceWeProvide";
 import Image from "next/image";
 
-export default function Home() {
+import PopupClient from "../components/PopupClient";  
+
+
+export default function Home() {  
   return (
     <div className="home-wrapper">
+
+      {/* Popup MUST be inside return() */}
+      <PopupClient imageSrc="/popup.jpg" />
+
+
       <SliderBanner />
       <HomeProductList />
       <TestimonialSlider />
@@ -23,6 +31,7 @@ export default function Home() {
       <VideoSection />
       <FeatureSection />
       <AboutSection />
+      
       <section className="form-section">
         <div className="container">
           <div className="text-form-wrapper">
@@ -39,11 +48,12 @@ export default function Home() {
               <Image src="/images/submit-query-img.svg" width={416} height={200} alt="Product image" />
             </div>
             <div className="right">
-                <FormSection />
+              <FormSection />
             </div>
           </div>
         </div>
       </section>
+
       <SocialWallSection />
       <BrandLogo />
       <ServiceWeProvide />

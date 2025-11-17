@@ -1,4 +1,4 @@
-"use client"; // This file now contains all client-side logic
+"use client"; 
 
 import { useState, useRef, useLayoutEffect } from "react";
 import Modal from "react-modal";
@@ -7,13 +7,15 @@ import { Thumbs, Autoplay, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/thumbs";
 import Image from "next/image";
-// No longer need useRouter
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import RequestQuote from "@/components/commonComponents/requestQuote";
 import Cookies from 'js-cookie';
 
-// The component now receives the 'product' object as a prop
+// *** FIX: Set this to your LOCAL backend URL for testing ***
+// const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = 'https://d1w2b5et10ojep.cloudfront.net/api'; // (Use this one for production)
+
 export default function ProductDetailClient({ product }) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -25,10 +27,6 @@ export default function ProductDetailClient({ product }) {
   const [otp, setOtp] = useState('');
   const [showThankYouPopup, setShowThankYouPopup] = useState(false);
 
-  // We no longer need the useEffect to fetch data,
-  // as the 'product' is passed directly from the server component.
-
-  // Get header height for smooth scrolling
   useLayoutEffect(() => {
     const headerElement = document.querySelector('.site-header');
     if (headerElement) {
@@ -36,9 +34,8 @@ export default function ProductDetailClient({ product }) {
     }
   }, []);
 
-  // Check if product exists (it should, as the server page handles notFound)
   if (!product) {
-    return <p>Loading...</p>; // Fallback
+    return <p>Loading...</p>; 
   }
 
   const scrollToSection = (sectionRef) => {
@@ -51,7 +48,7 @@ export default function ProductDetailClient({ product }) {
 
     if (token) {
       try {
-        const response = await fetch('https://d1w2b5et10ojep.cloudfront.net/api/getAquote/add-product-name', {
+        const response = await fetch(`${API_BASE_URL}/getAquote/add-product-name`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -79,11 +76,10 @@ export default function ProductDetailClient({ product }) {
   const openOtpModal = () => { setIsOpen(false); setOtpModalIsOpen(true); };
   const closeModal = () => { setIsOpen(false); setOtpModalIsOpen(false); };
 
-  // Send OTP to the provided phone number
   const handleSendOtp = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://d1w2b5et10ojep.cloudfront.net/api/getAquote/send-otp', {
+      const response = await fetch(`${API_BASE_URL}/getAquote/send-otp`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ phoneNumber }),
@@ -102,11 +98,10 @@ export default function ProductDetailClient({ product }) {
     }
   };
 
-  // Verify OTP and store the JWT token
   const handleVerifyOtp = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://d1w2b5et10ojep.cloudfront.net/api/getAquote/verify-otp', {
+      const response = await fetch(`${API_BASE_URL}/getAquote/verify-otp`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ phoneNumber, otp }),
@@ -121,8 +116,8 @@ export default function ProductDetailClient({ product }) {
                 toast.success(data.message);
                 closeModal();
                 await addProductName(data.token, product?.title);
-                setShowThankYouPopup(true); // Show the thank you popup
-                setTimeout(() => setShowThankYouPopup(false), 3000); // Hide the popup after 3 seconds
+                setShowThankYouPopup(true); 
+                setTimeout(() => setShowThankYouPopup(false), 3000);
             } else {
                 toast.error('Token not found in response');
             }
@@ -135,10 +130,9 @@ export default function ProductDetailClient({ product }) {
     }
   };
 
-  // Add the product to the user's list
   const addProductName = async (token, productName) => {
     try {
-      const response = await fetch('https://d1w2b5et10ojep.cloudfront.net/api/getAquote/add-product-name', {
+      const response = await fetch(`${API_BASE_URL}/getAquote/add-product-name`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -158,7 +152,6 @@ export default function ProductDetailClient({ product }) {
       toast.error('Failed to add product');
     }
   };
-
   return (
     <div>
       <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />

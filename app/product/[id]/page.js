@@ -71,4 +71,4 @@ export default async function ProductDetailPage({ params }) {
 
   // Pass the server-fetched product data to the client component
   return <ProductDetailClient product={product} />;
-}
+} 
