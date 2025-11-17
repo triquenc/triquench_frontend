@@ -34,12 +34,77 @@ function ProductPageContent() {
     const categories = categoriesData.categories;
     const productGridRef = useRef(null);
 
-    
+    /**
+     * Robust helper: poll for the first product image element and scroll/highlight it.
+     * This will wait until elements are rendered (useful after filter change / URL replace).
+     */
+    const scrollToFirstProductImage = (timeoutMs = 3000, pollInterval = 150) => {
+        if (typeof window === 'undefined') return;
+        const start = Date.now();
+
+        // Attempt function: find first .product-grid-item .img-block (or fallback to .product-grid)
+        const attempt = () => {
+            const grid = productGridRef.current || document.querySelector('.product-grid');
+            if (!grid) return false;
+
+            // Prefer first product image block
+            const firstImgBlock = grid.querySelector('.product-grid-item .img-block, .product-grid-item img, .product-grid-item .product-grid-inner .img-block');
+            const firstItem = grid.querySelector('.product-grid-item');
+
+            if (firstImgBlock) {
+                // Scroll grid into view first to position correctly
+                try {
+                    grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                } catch (e) {}
+
+                // Then scroll the specific image block into center
+                try {
+                    firstImgBlock.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+                } catch (e) {}
+
+                // flash highlight on the product item (if available) for user clarity
+                const target = firstItem || firstImgBlock;
+                if (target) {
+                    const el = target;
+                    const prevTransition = el.style.transition;
+                    const prevBox = el.style.boxShadow;
+                    el.style.transition = 'box-shadow 0.35s ease';
+                    el.style.boxShadow = '0 6px 22px rgba(0,96,152,0.18)';
+                    setTimeout(() => {
+                        el.style.boxShadow = prevBox || '';
+                        el.style.transition = prevTransition || '';
+                    }, 1600);
+                }
+                return true;
+            }
+
+            // If no product items yet but grid exists, scroll grid into view as fallback
+            if (grid) {
+                try {
+                    grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                } catch (e) {}
+                return false;
+            }
+            return false;
+        };
+
+        if (attempt()) return;
+
+        const id = setInterval(() => {
+            if (attempt()) {
+                clearInterval(id);
+                return;
+            }
+            if (Date.now() - start > timeoutMs) {
+                clearInterval(id);
+            }
+        }, pollInterval);
+    };
+
+    // legacy/mobile-focused scrollWhenReady removed restriction, keep if used elsewhere
     const scrollWhenReady = (name, timeoutMs = 3000, pollInterval = 200) => {
         if (!name) return;
         if (typeof window === 'undefined') return;
-        const w = window.innerWidth;
-        if (w < 320 || w > 768) return; 
 
         const lowerName = name.toLowerCase();
         const start = Date.now();
@@ -49,7 +114,7 @@ function ProductPageContent() {
             for (const item of items) {
                 const text = (item.innerText || item.textContent || '').toLowerCase();
                 if (text.includes(lowerName)) {
-                    item.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+                    try { item.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' }); } catch(e) {}
                     const prevBoxShadow = item.style.boxShadow;
                     item.style.transition = 'box-shadow 0.35s ease';
                     item.style.boxShadow = '0 6px 18px rgba(0,96,152,0.12)';
@@ -58,7 +123,7 @@ function ProductPageContent() {
                 }
             }
             return false;
-        }; 
+        };
 
         if (attempt()) return;
 
@@ -122,7 +187,7 @@ function ProductPageContent() {
     }, [categorySlug, subCategoryParam, subSubCategoryParam, categories, fetchAllProducts]);
 
 
-  
+
     const handleCategoryClick = (category, subcategory = '', subSubcategory = '') => {
         
         const categoryObj = categories.find(cat => cat.name === category);
@@ -134,6 +199,8 @@ function ProductPageContent() {
             setActiveSubSubCategory("");
             setBreadcrumb([]);
             router.push('/products'); 
+            // scroll product grid into view and highlight first image
+            setTimeout(() => scrollToFirstProductImage(), 120);
             return;
         }
 
@@ -157,11 +224,20 @@ function ProductPageContent() {
         // We use 'replace' instead of 'push' to avoid cluttering browser history
         router.replace(`/products?${params.toString()}`);
        
+        // Scroll the grid into view immediately (makes UX feel snappy)
         if (productGridRef.current) {
-            productGridRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            try { productGridRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch(e) {}
         }
-        const clickedName = subSubcategory || subcategory || category;
-        scrollWhenReady(clickedName, 3500, 200);
+
+        // Poll and scroll to first product image element (waits for render after filter)
+        // small timeout to let React render filtered products, then poll
+        setTimeout(() => {
+            scrollToFirstProductImage(3500, 150);
+            // also try name-based highlight if specific sub-subcategory provided
+            if (subSubcategory || subcategory) {
+                scrollWhenReady(subSubcategory || subcategory, 3500, 150);
+            }
+        }, 120);
     };
     // --- END OF MODIFICATION ---
 
@@ -173,6 +249,7 @@ function ProductPageContent() {
         }));
     };
 
+    // === KEEP existing behavior for See Details (internal product page) ===
     const handleSeeDetailsClick = (id) => {
         router.push(`/product/${id}`);
     };
@@ -799,17 +876,3 @@ export default function Products() {
         </Suspense>
     );
 }
-
-
-// import React, { Suspense } from "react";
-// import SimpleSpinner from "@/components/commonComponents/SimpleSpinner";
-// import ProductPageClient from "@/components/productsComponents/ProductPageClient";
-
-// // This wrapper component is REQUIRED for useSearchParams to work
-// export default function Products() {
-//     return (
-//         <Suspense fallback={<SimpleSpinner />}>
-//             <ProductPageClient />
-//         </Suspense>
-//     );
-// } 
