@@ -48,6 +48,7 @@ export default function PopupClient({ imageSrc = "/popup.jpg" }) {
 
           /* Ensures popup scales for very small screens */
           maxHeight: "90vh",
+          overflowY: "auto",
         }}
       >
         {/* Close button */}
