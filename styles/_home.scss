@@ -969,13 +969,25 @@
                 flex-direction: column;
                 justify-content: space-between;
                 background-color: $white;
-                .img-wrapper{
+               /* card.module.scss */
+                    .img-wrapper {
                     position: relative;
-                    padding-bottom: 56%;
-                    picture, img{
-                        border-radius: 2rem 2rem 0 0;
+                    width: 100%;
+                    aspect-ratio: 16 / 10;
+                    overflow: hidden;
+                    border-top-left-radius: 1rem;
+                    border-top-right-radius: 1rem;
+                    background: #f4f4f4;
+
+                    picture, img {
+                        width: 100%;
+                        height: 100%;
+                        display: block;
+                        object-fit: cover;
+                        object-position: center;
                     }
-                }
+                    }
+
                 .absolute-img{
                     position: absolute;
                     right:28.4rem;
