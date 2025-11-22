@@ -12,7 +12,7 @@ export default function SocialWallSection() {
             <div className="social-grid">
             <div className="social-grid-item">
             <a 
-              href="https://www.instagram.com/triquench_spindlemotor/" 
+              href="https://www.facebook.com/spindlemotorTQI" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="social-grid-inner">
@@ -124,7 +124,7 @@ export default function SocialWallSection() {
             </div>
             <div className="social-grid-item">
                 <a 
-              href="https://www.instagram.com/triquench_spindlemotor/" 
+              href="https://www.linkedin.com/company/triquenchindia/" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="social-grid-inner">
@@ -138,7 +138,7 @@ export default function SocialWallSection() {
                <div className="bottom-outer">
                   <div className="bottom-wrapper">
                     <em className="absolute-img">
-                      <Image src="/images/insta-blue.svg" height={20} width={20} alt="Instagram Icon"/>
+                      <Image src="/images/linkedin-icon.svg" height={20} width={20} alt="Instagram Icon"/>
                     </em>
                     <p>
                     TriQuench India offers premium-quality LM Guideways (Linear Motion Rail & Block) for precise and smooth movement in your CNC machines
