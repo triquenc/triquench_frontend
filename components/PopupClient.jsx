@@ -22,7 +22,7 @@ export default function PopupClient({ imageSrc = "/popup.jpg" }) {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        padding: "10px",                 // Mobile safe padding
+        padding: "10px", // Mobile safe padding
       }}
     >
       {/* Overlay */}
@@ -35,57 +35,56 @@ export default function PopupClient({ imageSrc = "/popup.jpg" }) {
         }}
       />
 
-      {/* Popup container (responsive) */}
-      <div
-        style={{
-          position: "relative",
-          width: "100%",
-          maxWidth: "500px",             // Desktop max width
-          borderRadius: "10px",
-          overflow: "hidden",
-          backgroundColor: "#fff",
-          boxShadow: "0 20px 50px rgba(0,0,0,0.5)",
+      {/* Popup container */}
+<div
+  style={{
+    position: "relative",
+    width: "100%",
+    maxWidth: "600px",      // more width for large screens
+    maxHeight: "95vh",      // full screen height safe
+    overflow: "hidden",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  }}
+>
+  {/* Close button stays same */}
+  <button
+    onClick={() => setVisible(false)}
+    aria-label="Close popup"
+    style={{
+      position: "absolute",
+      right: "10px",
+      top: "10px",
+      zIndex: 10,
+      background: "rgba(0,0,0,0.7)",
+      color: "#fff",
+      border: "none",
+      width: "32px",
+      height: "32px",
+      borderRadius: "50%",
+      cursor: "pointer",
+      fontSize: "20px",
+      lineHeight: "32px",
+      textAlign: "center",
+    }}
+  >
+    ×
+  </button>
 
-          /* Ensures popup scales for very small screens */
-          maxHeight: "90vh",
-          overflowY: "auto",
-        }}
-      >
-        {/* Close button */}
-        <button
-          onClick={() => setVisible(false)}
-          aria-label="Close popup"
-          style={{
-            position: "absolute",
-            right: "10px",
-            top: "10px",
-            zIndex: 10,
-            background: "rgba(0,0,0,0.7)",
-            color: "#fff",
-            border: "none",
-            width: "32px",
-            height: "32px",
-            borderRadius: "50%",
-            cursor: "pointer",
-            fontSize: "20px",
-            lineHeight: "32px",
-            textAlign: "center",
-          }}
-        >
-          ×
-        </button>
+  <img
+    src={imageSrc}
+    alt="Popup"
+    style={{
+      width: "100%",
+      height: "100%",
+      maxHeight: "95vh",
+      objectFit: "contain",   // full image always visible
+      display: "block",
+    }}
+  />
+</div>
 
-        {/* Image (auto responsive) */}
-        <img
-          src={imageSrc}
-          alt="Popup"
-          style={{
-            width: "100%",
-            height: "auto",
-            display: "block",
-          }}
-        />
-      </div>
     </div>
   );
 }

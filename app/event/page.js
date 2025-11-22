@@ -21,7 +21,7 @@ export default function Events() {
         // Your screenshot shows '.../api/event/getEvents'
         // Your code shows '.../api/event'
         // You MUST fix this URL to be a valid API endpoint.
-        const response = await fetch('https://d1w2b5et10ojep.cloudfront.net/api/event'); // Using URL from screenshot
+        const response = await fetch('http://localhost:5000/api/event'); // Using URL from screenshot
 
         // --- FIX 1: Check for HTTP errors (like 404) ---
         if (!response.ok) {
