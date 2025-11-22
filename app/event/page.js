@@ -88,9 +88,11 @@ export default function Events() {
   };
 
   // Filter events based on selected category
-  const filteredEvents = selectedCategory
+  const filteredEvents = (selectedCategory
     ? events.filter(event => event.category === selectedCategory)
-    : events;
+    : events
+  ).sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
 
   // Handle category selection without page jump
   const handleCategoryClick = (e, category) => {
@@ -112,7 +114,7 @@ export default function Events() {
         <section>
           {/* ... (rest of your category button JSX, no changes needed) ... */}
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', padding: '2rem 0', justifyContent: 'center' }}>
-            {['Exhibition', 'Upcoming Exhibition','CSR By Triquench', 'Triquench Events' ].map((category) => (
+            {['All Categories','Exhibition', 'Upcoming Exhibition','CSR By Triquench', 'Triquench Events' ].map((category) => (
               <button
                 key={category}
                 onClick={(e) => handleCategoryClick(e, category)}
@@ -162,17 +164,29 @@ export default function Events() {
                       )}
                     </picture>
                     {Array.isArray(event.socialLinks) && event.socialLinks.map((social, idx) => {
-                      const socialStyles = {
-                        facebook: { backgroundColor: '#1877f2', icon: <FaFacebookF /> },
-                        instagram: { backgroundColor: '#E1306C', icon: <FaInstagram /> },
-                        linkedin: { backgroundColor: '#0077b5', icon: <FaLinkedinIn /> }
-                      };
+                     const socialStyles = {
+                      facebook: { 
+                        backgroundColor: '#1877f2', 
+                        icon: <FaFacebookF />,
+                         url: "https://www.facebook.com/spindlemotorTQI"   // <-- YOUR LINK HERE
+                      },
+                      instagram: { 
+                        backgroundColor: '#E1306C', 
+                        icon: <FaInstagram />,
+                        url: "https://www.instagram.com/triquench_spindlemotor/"   // <-- YOUR LINK HERE
+                      },
+                      linkedin: { 
+                        backgroundColor: '#0077b5', 
+                        icon: <FaLinkedinIn />, 
+                        url: "https://www.linkedin.com/company/triquenchindia/"   // <-- YOUR LINK HERE
+                      }
+                    };
                       const style = socialStyles[social.platform];
                       if (!style) return null;
                       return (
                         <a
                           key={idx}
-                          href={social.url}
+                         href={social.url || style.url}
                           style={{
                             position: 'absolute',
                             top: '10px',
