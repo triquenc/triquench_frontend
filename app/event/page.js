@@ -234,34 +234,6 @@ export default function Events() {
                         </div>
                       </a>
                     </div>
-                    <div className="action-row">
-                      <div className="left">
-                        <ul style={{ display: 'flex', listStyleType: 'none', padding: 0 }}>
-                          {/* --- LINT FIX 4: Pass event._id to handleLikeClick --- */}
-                          <li style={{ marginRight: '1rem', cursor: 'pointer', display: 'flex', alignItems: 'center' }} onClick={() => handleLikeClick(event._id)}>
-                            <em>
-                              {/* --- LINT FIX 5: Check liked status by event._id --- */}
-                              <FaRegHeart color={likedPosts[event._id] ? 'red' : '#666'} size={24} />
-                            </em>
-                            <span style={{ marginLeft: '5px', color: '#666' }}>{event.likes}</span>
-                          </li>
-                          <li style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
-                            <em>
-                              <HiOutlineShare color="#666" size={24} />
-                            </em>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="right">
-                        {/* ... (rest of your views JSX, no changes needed) ... */}
-                        <em>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '5px', color: '#666' }}>
-                            <FaEye size={24} />
-                            <span>{event.views}</span>
-                          </div>
-                        </em>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>
