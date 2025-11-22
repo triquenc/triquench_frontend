@@ -22,7 +22,7 @@ export default function PopupClient({ imageSrc = "/popup.jpg" }) {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        padding: "10px", // Mobile safe padding
+        padding: "10px", // mobile safe padding
       }}
     >
       {/* Overlay */}
@@ -35,56 +35,56 @@ export default function PopupClient({ imageSrc = "/popup.jpg" }) {
         }}
       />
 
-      {/* Popup container */}
-<div
-  style={{
-    position: "relative",
-    width: "100%",
-    maxWidth: "600px",      // more width for large screens
-    maxHeight: "95vh",      // full screen height safe
-    overflow: "hidden",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  }}
->
-  {/* Close button stays same */}
-  <button
-    onClick={() => setVisible(false)}
-    aria-label="Close popup"
-    style={{
-      position: "absolute",
-      right: "10px",
-      top: "10px",
-      zIndex: 10,
-      background: "rgba(0,0,0,0.7)",
-      color: "#fff",
-      border: "none",
-      width: "32px",
-      height: "32px",
-      borderRadius: "50%",
-      cursor: "pointer",
-      fontSize: "20px",
-      lineHeight: "32px",
-      textAlign: "center",
-    }}
-  >
-    ×
-  </button>
+      {/* Popup container – shrink-wrap to image */}
+      <div
+        style={{
+          position: "relative",
+          display: "inline-block", // 👈 container fits image size
+          maxWidth: "90vw",
+          maxHeight: "90vh",
+          borderRadius: "10px",
+          overflow: "hidden",
+          backgroundColor: "#fff",
+          boxShadow: "0 20px 50px rgba(0,0,0,0.5)",
+        }}
+      >
+        {/* Close button – now relative to image bounds */}
+        <button
+          onClick={() => setVisible(false)}
+          aria-label="Close popup"
+          style={{
+            position: "absolute",
+            top: "8px",
+            right: "8px",
+            zIndex: 10,
+            background: "rgba(0,0,0,0.7)",
+            color: "#fff",
+            border: "none",
+            width: "28px",
+            height: "28px",
+            borderRadius: "50%",
+            cursor: "pointer",
+            fontSize: "18px",
+            lineHeight: "28px",
+            textAlign: "center",
+          }}
+        >
+          ×
+        </button>
 
-  <img
-    src={imageSrc}
-    alt="Popup"
-    style={{
-      width: "100%",
-      height: "100%",
-      maxHeight: "95vh",
-      objectFit: "contain",   // full image always visible
-      display: "block",
-    }}
-  />
-</div>
-
+        {/* Image – full, no cropping, fits all devices */}
+        <img
+          src={imageSrc}
+          alt="Popup"
+          style={{
+            display: "block",
+            width: "100%",
+            height: "auto",
+            maxWidth: "90vw",
+            maxHeight: "90vh", // never taller than viewport
+          }}
+        />
+      </div>
     </div>
   );
 }
