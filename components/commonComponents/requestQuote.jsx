@@ -8,8 +8,8 @@ import * as Yup from "yup";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-// 1. Define Base URL correctly
-const API_BASE_URL = 'https://d1w2b5et10ojep.cloudfront.net/api';
+// FIX 1: Set Base URL to the ROOT domain (remove the /api from here)
+const API_BASE_URL = 'https://d1w2b5et10ojep.cloudfront.net';
 
 const validationSchema = Yup.object({
   name: Yup.string().required("Name is required"),
@@ -17,7 +17,7 @@ const validationSchema = Yup.object({
   phoneNumber: Yup.string()
     .matches(/^[0-9]+$/, "Phone number must be digits only")
     .min(10, "Phone number must be at least 10 digits")
-    .max(10, "Phone number cannot be more than 10 digits") // Added Max constraint
+    .max(10, "Phone number cannot be more than 10 digits")
     .required("Phone number is required"),
   message: Yup.string().required("Message is required"),
 });
@@ -45,7 +45,9 @@ export default function RequestQuote({ productName }) {
     onSubmit: async (values) => {
       setLoading(true);
       try {
-        const response = await fetch(`${API_BASE_URL}/productInquiry`, {
+        // FIX 2: Explicitly add /api/productInquiry here.
+        // This ensures the final URL is exactly: domain + /api/productInquiry
+        const response = await fetch(`${API_BASE_URL}/api/productInquiry`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -53,12 +55,14 @@ export default function RequestQuote({ productName }) {
           body: JSON.stringify(values),
         });
 
+        // Handle cases where server returns HTML (like 404/500 errors) instead of JSON
         const contentType = response.headers.get("content-type");
         let data;
-        if (contentType && contentType.indexOf("application/json") !== -1) {
+        if (contentType && contentType.includes("application/json")) {
             data = await response.json();
         } else {
-            data = { message: await response.text() };
+            const text = await response.text();
+            data = { message: text || response.statusText };
         }
 
         if (response.ok) {
@@ -66,11 +70,12 @@ export default function RequestQuote({ productName }) {
           closeModal();
         } else {
           console.error("API Error:", data);
-          toast.error(data.message || `Error: ${response.status} Failed to send enquiry`);
+          // Display the actual error message from server or status text
+          toast.error(`Failed: ${data.message || response.statusText}`);
         }
       } catch (error) {
         console.error("Network Error:", error);
-        toast.error("Network error. Please try again later.");
+        toast.error("Network error. Please check your internet connection.");
       } finally {
         setLoading(false);
       }
@@ -149,8 +154,8 @@ export default function RequestQuote({ productName }) {
                 name="phoneNumber"
                 placeholder="Enter Phone Number"
                 {...formik.getFieldProps("phoneNumber")}
-                maxLength={10} // 1. Physical Restriction
-                onInput={(e) => { // 2. Force only numbers
+                maxLength={10} 
+                onInput={(e) => { 
                   e.target.value = e.target.value.replace(/[^0-9]/g, '');
                   formik.handleChange(e);
                 }}
@@ -202,4 +207,4 @@ export default function RequestQuote({ productName }) {
       </Modal>
     </>
   );
-}
+} 
