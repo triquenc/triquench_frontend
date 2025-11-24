@@ -47,7 +47,7 @@ export default function RequestQuote({ productName }) {
       try {
         // FIX 2: Add '/api/productInquiry' manually here.
         // This guarantees the URL is always: Domain + /api/productInquiry
-        const response = await fetch(`${API_BASE_URL}/api/productInquiry`, {
+        const response = await fetch(`${API_BASE_URL}/productInquiry`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
