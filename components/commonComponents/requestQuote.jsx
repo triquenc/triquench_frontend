@@ -8,7 +8,7 @@ import * as Yup from "yup";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const API_BASE_URL = 'https://d1w2b5et10ojep.cloudfront.net/api';
+const API_BASE_URL = 'https://d1w2b5et10ojep.cloudfront.net';
 // const API_BASE_URL = 'http://localhost:5000';
 
 const validationSchema = Yup.object({
