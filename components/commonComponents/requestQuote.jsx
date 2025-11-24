@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Modal from "react-modal";
 import { useFormik } from "formik";
@@ -8,8 +8,8 @@ import * as Yup from "yup";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const API_BASE_URL = 'https://d1w2b5et10ojep.cloudfront.net';
-// const API_BASE_URL = 'http://localhost:5000';
+// 1. Define Base URL correctly
+const API_BASE_URL = 'https://d1w2b5et10ojep.cloudfront.net/api';
 
 const validationSchema = Yup.object({
   name: Yup.string().required("Name is required"),
@@ -17,6 +17,7 @@ const validationSchema = Yup.object({
   phoneNumber: Yup.string()
     .matches(/^[0-9]+$/, "Phone number must be digits only")
     .min(10, "Phone number must be at least 10 digits")
+    .max(10, "Phone number cannot be more than 10 digits") // Added Max constraint
     .required("Phone number is required"),
   message: Yup.string().required("Message is required"),
 });
@@ -31,7 +32,6 @@ export default function RequestQuote({ productName }) {
     formik.resetForm();
   };
 
-  // Update formik initial values when productName prop changes
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -40,12 +40,12 @@ export default function RequestQuote({ productName }) {
       message: "",
       productName: productName || "General Enquiry",
     },
-    enableReinitialize: true, // Important: allows the form to update when productName changes
+    enableReinitialize: true,
     validationSchema: validationSchema,
     onSubmit: async (values) => {
       setLoading(true);
       try {
-        const response = await fetch(`${API_BASE_URL}/api/productInquiry`, {
+        const response = await fetch(`${API_BASE_URL}/productInquiry`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -53,17 +53,24 @@ export default function RequestQuote({ productName }) {
           body: JSON.stringify(values),
         });
 
-        const data = await response.json();
+        const contentType = response.headers.get("content-type");
+        let data;
+        if (contentType && contentType.indexOf("application/json") !== -1) {
+            data = await response.json();
+        } else {
+            data = { message: await response.text() };
+        }
 
         if (response.ok) {
           toast.success(data.message || "Enquiry sent successfully!");
           closeModal();
         } else {
-          toast.error(data.message || "Failed to send enquiry");
+          console.error("API Error:", data);
+          toast.error(data.message || `Error: ${response.status} Failed to send enquiry`);
         }
       } catch (error) {
-        console.error("Error sending enquiry:", error);
-        toast.error("Something went wrong. Please try again.");
+        console.error("Network Error:", error);
+        toast.error("Network error. Please try again later.");
       } finally {
         setLoading(false);
       }
@@ -72,14 +79,12 @@ export default function RequestQuote({ productName }) {
 
   return (
     <>
-      {/* --- Existing Section (Unchanged Styles) --- */}
       <section className="request-quote-section">
         <div className="container">
           <div className="request-quote-inner">
             <div className="request-quote-left">
               <h2>Request Quote</h2>
               <p>Share your requirements, and we’ll provide a tailored quote. Explore our premium CNC spindles, VFDs, tool holders, and more for unmatched performance.</p>
-              {/* Button opens the modal instead of link */}
               <button onClick={openModal} className="site-btn">SUBMIT ENQUIRY</button>
             </div>
             <div className="request-quote-right">
@@ -89,7 +94,6 @@ export default function RequestQuote({ productName }) {
         </div>    
       </section> 
 
-      {/* --- Modal Implementation --- */}
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
@@ -101,12 +105,7 @@ export default function RequestQuote({ productName }) {
         <div className="modal-header">
           <h2>Get a Quote</h2>
           <button onClick={closeModal} className="close-btn">
-            <Image
-              src="/images/cross.svg"
-              height={20}
-              width={20}
-              alt="Close"
-            />
+            <Image src="/images/cross.svg" height={20} width={20} alt="Close" />
           </button>
         </div>
 
@@ -150,6 +149,11 @@ export default function RequestQuote({ productName }) {
                 name="phoneNumber"
                 placeholder="Enter Phone Number"
                 {...formik.getFieldProps("phoneNumber")}
+                maxLength={10} // 1. Physical Restriction
+                onInput={(e) => { // 2. Force only numbers
+                  e.target.value = e.target.value.replace(/[^0-9]/g, '');
+                  formik.handleChange(e);
+                }}
                 className={formik.touched.phoneNumber && formik.errors.phoneNumber ? "input-error" : ""}
               />
               {formik.touched.phoneNumber && formik.errors.phoneNumber && (
@@ -157,7 +161,6 @@ export default function RequestQuote({ productName }) {
               )}
             </div>
 
-            {/* Read Only Product Name Field */}
             <div className="form-group">
               <label htmlFor="productName">Product Interested</label>
               <input
