@@ -8,7 +8,7 @@ import * as Yup from "yup";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-// FIX 1: Set Base URL to the ROOT domain (remove the /api from here)
+// FIX 1: Set Base URL to the ROOT DOMAIN ONLY (Remove '/api' from here)
 const API_BASE_URL = 'https://d1w2b5et10ojep.cloudfront.net';
 
 const validationSchema = Yup.object({
@@ -45,8 +45,8 @@ export default function RequestQuote({ productName }) {
     onSubmit: async (values) => {
       setLoading(true);
       try {
-        // FIX 2: Explicitly add /api/productInquiry here.
-        // This ensures the final URL is exactly: domain + /api/productInquiry
+        // FIX 2: Add '/api/productInquiry' manually here.
+        // This guarantees the URL is always: Domain + /api/productInquiry
         const response = await fetch(`${API_BASE_URL}/api/productInquiry`, {
           method: "POST",
           headers: {
@@ -55,14 +55,13 @@ export default function RequestQuote({ productName }) {
           body: JSON.stringify(values),
         });
 
-        // Handle cases where server returns HTML (like 404/500 errors) instead of JSON
+        // Handle non-JSON responses (like 404/500 HTML pages)
         const contentType = response.headers.get("content-type");
         let data;
-        if (contentType && contentType.includes("application/json")) {
+        if (contentType && contentType.indexOf("application/json") !== -1) {
             data = await response.json();
         } else {
-            const text = await response.text();
-            data = { message: text || response.statusText };
+            data = { message: await response.text() };
         }
 
         if (response.ok) {
@@ -70,12 +69,11 @@ export default function RequestQuote({ productName }) {
           closeModal();
         } else {
           console.error("API Error:", data);
-          // Display the actual error message from server or status text
-          toast.error(`Failed: ${data.message || response.statusText}`);
+          toast.error(data.message || `Error: ${response.status} Failed to send enquiry`);
         }
       } catch (error) {
         console.error("Network Error:", error);
-        toast.error("Network error. Please check your internet connection.");
+        toast.error("Network error. Please try again later.");
       } finally {
         setLoading(false);
       }
@@ -154,8 +152,8 @@ export default function RequestQuote({ productName }) {
                 name="phoneNumber"
                 placeholder="Enter Phone Number"
                 {...formik.getFieldProps("phoneNumber")}
-                maxLength={10} 
-                onInput={(e) => { 
+                maxLength={10}
+                onInput={(e) => {
                   e.target.value = e.target.value.replace(/[^0-9]/g, '');
                   formik.handleChange(e);
                 }}
@@ -207,4 +205,4 @@ export default function RequestQuote({ productName }) {
       </Modal>
     </>
   );
-} 
+}
