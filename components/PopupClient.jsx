@@ -2,12 +2,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";  // <-- Added
 
 export default function PopupClient({ imageSrc = "/popup.jpg" }) {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    // Show popup every time homepage loads
     setVisible(true);
   }, []);
 
@@ -22,7 +22,7 @@ export default function PopupClient({ imageSrc = "/popup.jpg" }) {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        padding: "10px", // mobile safe padding
+        padding: "10px",
       }}
     >
       {/* Overlay */}
@@ -35,11 +35,11 @@ export default function PopupClient({ imageSrc = "/popup.jpg" }) {
         }}
       />
 
-      {/* Popup container – shrink-wrap to image */}
+      {/* Popup Container */}
       <div
         style={{
           position: "relative",
-          display: "inline-block", // 👈 container fits image size
+          display: "inline-block",
           maxWidth: "90vw",
           maxHeight: "90vh",
           borderRadius: "10px",
@@ -48,7 +48,7 @@ export default function PopupClient({ imageSrc = "/popup.jpg" }) {
           boxShadow: "0 20px 50px rgba(0,0,0,0.5)",
         }}
       >
-        {/* Close button – now relative to image bounds */}
+        {/* Close Button */}
         <button
           onClick={() => setVisible(false)}
           aria-label="Close popup"
@@ -72,16 +72,19 @@ export default function PopupClient({ imageSrc = "/popup.jpg" }) {
           ×
         </button>
 
-        {/* Image – full, no cropping, fits all devices */}
-        <img
+        {/* Image (Converted to next/Image) */}
+        <Image
           src={imageSrc}
           alt="Popup"
+          width={800}
+          height={1200}
+          priority
           style={{
             display: "block",
             width: "100%",
             height: "auto",
             maxWidth: "90vw",
-            maxHeight: "90vh", // never taller than viewport
+            maxHeight: "90vh",
           }}
         />
       </div>
