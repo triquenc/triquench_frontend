@@ -48,7 +48,7 @@ const seoPages = [
     keywords: 'planetary gearbox for CNC machines, CNC gearbox, compact gearbox for CNC, high torque gearbox, CNC automation gearbox'
   },
   {
- slug: 'cnc-spindle-motor',    title: 'High Torque Planetary Gearbox | Industrial Automation Gear Solutions',
+ slug: '0',    title: 'High Torque Planetary Gearbox | Industrial Automation Gear Solutions',
     description: 'Discover high torque planetary gearboxes ideal for automation, robotics, and machine tools. Reliable, efficient, and built to withstand heavy-duty operations.',
     keywords: 'high torque planetary gearbox, industrial gearbox, automation gearbox, heavy duty planetary gearbox, power transmission gearbox'
   },

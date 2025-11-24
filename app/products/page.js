@@ -34,96 +34,34 @@ function ProductPageContent() {
     const categories = categoriesData.categories;
     const productGridRef = useRef(null);
 
-    /**
-     * Robust helper: poll for the first product image element and scroll/highlight it.
-     * This will wait until elements are rendered (useful after filter change / URL replace).
-     */
-    const scrollToFirstProductImage = (timeoutMs = 3000, pollInterval = 150) => {
-        if (typeof window === 'undefined') return;
-        const start = Date.now();
-
-        // Attempt function: find first .product-grid-item .img-block (or fallback to .product-grid)
-        const attempt = () => {
-            const grid = productGridRef.current || document.querySelector('.product-grid');
-            if (!grid) return false;
-
-            // Prefer first product image block
-            const firstImgBlock = grid.querySelector('.product-grid-item .img-block, .product-grid-item img, .product-grid-item .product-grid-inner .img-block');
-            const firstItem = grid.querySelector('.product-grid-item');
-
-            if (firstImgBlock) {
-                // Scroll grid into view first to position correctly
-                try {
-                    grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                } catch (e) {}
-
-                // Then scroll the specific image block into center
-                try {
-                    firstImgBlock.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
-                } catch (e) {}
-
-                // flash highlight on the product item (if available) for user clarity
-                const target = firstItem || firstImgBlock;
-                if (target) {
-                    const el = target;
-                    const prevTransition = el.style.transition;
-                    const prevBox = el.style.boxShadow;
-                    el.style.transition = 'box-shadow 0.35s ease';
-                    el.style.boxShadow = '0 6px 22px rgba(0,96,152,0.18)';
-                    setTimeout(() => {
-                        el.style.boxShadow = prevBox || '';
-                        el.style.transition = prevTransition || '';
-                    }, 1600);
-                }
-                return true;
-            }
-
-            // If no product items yet but grid exists, scroll grid into view as fallback
-            if (grid) {
-                try {
-                    grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                } catch (e) {}
-                return false;
-            }
-            return false;
-        };
-
-        if (attempt()) return;
-
-        const id = setInterval(() => {
-            if (attempt()) {
-                clearInterval(id);
-                return;
-            }
-            if (Date.now() - start > timeoutMs) {
-                clearInterval(id);
-            }
-        }, pollInterval);
-    };
-
-    // legacy/mobile-focused scrollWhenReady removed restriction, keep if used elsewhere
+    // Helper: robustly wait until product nodes are in the DOM, then scroll the first match.
+    // Runs only on small devices (320-768px).
     const scrollWhenReady = (name, timeoutMs = 3000, pollInterval = 200) => {
-        if (!name) return;
-        if (typeof window === 'undefined') return;
+      if (!name) return;
+      if (typeof window === 'undefined') return;
+      const w = window.innerWidth;
+      if (w < 320 || w > 768) return; // only for small devices as requested
 
         const lowerName = name.toLowerCase();
         const start = Date.now();
 
-        const attempt = () => {
-            const items = Array.from(document.querySelectorAll('.product-grid-item'));
-            for (const item of items) {
-                const text = (item.innerText || item.textContent || '').toLowerCase();
-                if (text.includes(lowerName)) {
-                    try { item.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' }); } catch(e) {}
-                    const prevBoxShadow = item.style.boxShadow;
-                    item.style.transition = 'box-shadow 0.35s ease';
-                    item.style.boxShadow = '0 6px 18px rgba(0,96,152,0.12)';
-                    setTimeout(() => { item.style.boxShadow = prevBoxShadow || ''; }, 1800);
-                    return true;
-                }
-            }
-            return false;
-        };
+      const attempt = () => {
+        const items = Array.from(document.querySelectorAll('.product-grid-item'));
+        for (const item of items) {
+          const text = (item.innerText || item.textContent || '').toLowerCase();
+          if (text.includes(lowerName)) {
+            // scroll to the match
+            item.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+            // visual highlight
+            const prevBoxShadow = item.style.boxShadow;
+            item.style.transition = 'box-shadow 0.35s ease';
+            item.style.boxShadow = '0 6px 18px rgba(0,96,152,0.12)';
+            setTimeout(() => { item.style.boxShadow = prevBoxShadow || ''; }, 1800);
+            return true;
+          }
+        }
+        return false;
+      }; 
 
         if (attempt()) return;
 
@@ -164,49 +102,14 @@ function ProductPageContent() {
             if (category) {
                 
                 setActiveCategory(category.name);
-                
-                const newBreadcrumb = [category.name];
-                
-                if (subCategoryParam) {
-                    setActiveSubCategory(subCategoryParam);
-                    newBreadcrumb.push(subCategoryParam);
-                }
-                if (subSubCategoryParam) {
-                    setActiveSubSubCategory(subSubCategoryParam);
-                    newBreadcrumb.push(subSubCategoryParam);
-                }
-                setBreadcrumb(newBreadcrumb);
+                fetchCategoryData(category.name);
             }
-        } else {
-            // No category in URL, ensure filters are reset
-            setActiveCategory("All Products");
-            setActiveSubCategory("");
-            setActiveSubSubCategory("");
-            setBreadcrumb([]);
         }
-    }, [categorySlug, subCategoryParam, subSubCategoryParam, categories, fetchAllProducts]);
+    }, [categorySlug, categories]);
+    /* eslint-enable react-hooks/exhaustive-deps */
 
-
-
-    const handleCategoryClick = (category, subcategory = '', subSubcategory = '') => {
-        
-        const categoryObj = categories.find(cat => cat.name === category);
-        
-        if (category === "All Products" || !categoryObj) {
-            // Clicked "All Products". Reset state and update URL.
-            setActiveCategory("All Products");
-            setActiveSubCategory("");
-            setActiveSubSubCategory("");
-            setBreadcrumb([]);
-            router.push('/products'); 
-            // scroll product grid into view and highlight first image
-            setTimeout(() => scrollToFirstProductImage(), 120);
-            return;
-        }
-
-    
-        
-        // 1. Update active filter state
+    // Make handleCategoryClick async so we can trigger scroll logic after requesting data
+    const handleCategoryClick = async (category, subcategory = '', subSubcategory = '') => {
         setActiveCategory(category);
         setActiveSubCategory(subcategory);
         setActiveSubSubCategory(subSubcategory);
@@ -217,27 +120,34 @@ function ProductPageContent() {
         if (subSubcategory) newBreadcrumb.push(subSubcategory);
         setBreadcrumb(newBreadcrumb);
         
-        const params = new URLSearchParams();
-        params.set('category', categoryObj.slug);
-        if (subcategory) params.set('subcategory', subcategory);
-        if (subSubcategory) params.set('subSubcategory', subSubcategory);
-        // We use 'replace' instead of 'push' to avoid cluttering browser history
-        router.replace(`/products?${params.toString()}`);
-       
-        // Scroll the grid into view immediately (makes UX feel snappy)
-        if (productGridRef.current) {
-            try { productGridRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch(e) {}
+        // Reset API flag when going to main category only
+        if (!subcategory && !subSubcategory) {
+            setUsingApiResults(false);
+        } else {
+            setUsingApiResults(true);
         }
 
-        // Poll and scroll to first product image element (waits for render after filter)
-        // small timeout to let React render filtered products, then poll
-        setTimeout(() => {
-            scrollToFirstProductImage(3500, 150);
-            // also try name-based highlight if specific sub-subcategory provided
-            if (subSubcategory || subcategory) {
-                scrollWhenReady(subSubcategory || subcategory, 3500, 150);
+        // Trigger data fetch (if any)
+        fetchCategoryData(category, subcategory, subSubcategory);
+
+        // Scroll user down to the product list container (so they see results).
+        // On small devices we'll also try to scroll to the specific product after DOM ready.
+        if (productGridRef.current) {
+          // Use smooth scroll to the top of product grid
+          productGridRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+          // fallback: scroll to center of viewport
+          if (typeof window !== 'undefined') {
+            const w = window.innerWidth;
+            if (w > 768) {
+              window.scrollTo({ top: 500, behavior: 'smooth' });
             }
-        }, 120);
+          }
+        }
+
+        // For small screens, try to scroll to specific product when it appears
+        const clickedName = subSubcategory || subcategory || category;
+        scrollWhenReady(clickedName, 3500, 200);
     };
     // --- END OF MODIFICATION ---
 
@@ -249,7 +159,34 @@ function ProductPageContent() {
         }));
     };
 
-    // === KEEP existing behavior for See Details (internal product page) ===
+    const fetchCategoryData = async (category, subcategory = '', subSubcategory = '') => {
+        setIsLoading(true);
+        try {
+            let url = `https://d1w2b5et10ojep.cloudfront.net/api/product/category/${encodeURIComponent(category)}`;
+            d1w2b5et10ojep.cloudfront.net
+            
+            // Add query parameters
+            const params = new URLSearchParams();
+            if (subcategory) params.append('subcategory', subcategory);
+            if (subSubcategory) params.append('subSubcategory', subSubcategory);
+            
+            if (params.toString()) {
+                url += `?${params.toString()}`;
+            }
+            
+            const response = await fetch(url);
+            const data = await response.json();
+
+            setProducts(data || []);
+        } catch (error) {
+            console.error("Error fetching category data:", error);
+            setProducts([]);
+            setUsingApiResults(false);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
     const handleSeeDetailsClick = (id) => {
         router.push(`/product/${id}`);
     };
@@ -876,3 +813,18 @@ export default function Products() {
         </Suspense>
     );
 }
+
+
+
+// import React, { Suspense } from "react";
+// import SimpleSpinner from "@/components/commonComponents/SimpleSpinner";
+// import ProductPageClient from "@/components/productsComponents/ProductPageClient";
+
+// // This wrapper component is REQUIRED for useSearchParams to work
+// export default function Products() {
+//     return (
+//         <Suspense fallback={<SimpleSpinner />}>
+//             <ProductPageClient />
+//         </Suspense>
+//     );
+// } 

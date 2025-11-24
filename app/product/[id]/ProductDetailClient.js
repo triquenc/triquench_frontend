@@ -1,4 +1,4 @@
-"use client"; 
+"use client"; // This file now contains all client-side logic
 
 import { useState, useRef, useLayoutEffect } from "react";
 import Modal from "react-modal";
@@ -8,14 +8,14 @@ import "swiper/css";
 import "swiper/css/thumbs";
 import Image from "next/image";
 import { toast, ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 import RequestQuote from "@/components/commonComponents/requestQuote";
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 
-// *** FIX: Set this to your LOCAL backend URL for testing ***
-// const API_BASE_URL = 'http://localhost:5000/api';
-const API_BASE_URL = 'https://d1w2b5et10ojep.cloudfront.net/api'; // (Use this one for production)
-
+// Point to Localhost for testinghttps://d1w2b5et10ojep.cloudfront.net/api
+// const API_BASE_URL = "http://localhost:5000/api"; 
+const API_BASE_URL = "https://d1w2b5et10ojep.cloudfront.net/api"; 
+// The component now receives the 'product' object as a prop
 export default function ProductDetailClient({ product }) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -23,24 +23,27 @@ export default function ProductDetailClient({ product }) {
   const section1Ref = useRef(null);
   const section3Ref = useRef(null);
   const [headerHeight, setHeaderHeight] = useState(0);
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [otp, setOtp] = useState('');
+  
+  // Form States
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [otp, setOtp] = useState("");
   const [showThankYouPopup, setShowThankYouPopup] = useState(false);
 
   useLayoutEffect(() => {
-    const headerElement = document.querySelector('.site-header');
+    const headerElement = document.querySelector(".site-header");
     if (headerElement) {
       setHeaderHeight(headerElement.offsetHeight);
     }
   }, []);
 
+  // Check if product exists (it should, as the server page handles notFound)
   if (!product) {
-    return <p>Loading...</p>; 
+    return <p>Loading...</p>; // Fallback
   }
 
   const scrollToSection = (sectionRef) => {
     const sectionPosition = sectionRef.current.offsetTop - headerHeight;
-    window.scrollTo({ top: sectionPosition - 1, behavior: 'smooth' });
+    window.scrollTo({ top: sectionPosition - 1, behavior: "smooth" });
   };
 
   const getQuoteModal = async () => {
@@ -48,7 +51,7 @@ export default function ProductDetailClient({ product }) {
 
     if (token) {
       try {
-        const response = await fetch(`${API_BASE_URL}/getAquote/add-product-name`, {
+        const response = await fetch('https://d1w2b5et10ojep.cloudfront.net/api/getAquote/add-product-name', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -73,40 +76,49 @@ export default function ProductDetailClient({ product }) {
     }
   };
 
-  const openOtpModal = () => { setIsOpen(false); setOtpModalIsOpen(true); };
-  const closeModal = () => { setIsOpen(false); setOtpModalIsOpen(false); };
+  const openOtpModal = () => {
+    setIsOpen(false);
+    setOtpModalIsOpen(true);
+  };
 
+  const closeModal = () => {
+    setIsOpen(false);
+    setOtpModalIsOpen(false);
+  };
+
+  // Send OTP to the provided phone number
   const handleSendOtp = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${API_BASE_URL}/getAquote/send-otp`, {
+      const response = await fetch('https://d1w2b5et10ojep.cloudfront.net/api/getAquote/send-otp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ phoneNumber }),
       });
 
       const data = await response.json();
+      
       if (response.ok) {
         toast.success(data.message);
         openOtpModal();
       } else {
-        toast.error(data.message || 'Failed to send OTP');
+        toast.error(data.message || "Failed to send OTP");
       }
     } catch (error) {
-      console.error('Error sending OTP:', error);
-      toast.error('Failed to send OTP');
+      console.error("Error sending OTP:", error);
+      toast.error("Server connection failed");
     }
   };
 
   const handleVerifyOtp = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${API_BASE_URL}/getAquote/verify-otp`, {
+      const response = await fetch('https://d1w2b5et10ojep.cloudfront.net/api/getAquote/verify-otp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ phoneNumber, otp }),
       });
-      
+
       const data = await response.json();
       console.log("Verify OTP response data:", data);
 
@@ -116,8 +128,8 @@ export default function ProductDetailClient({ product }) {
                 toast.success(data.message);
                 closeModal();
                 await addProductName(data.token, product?.title);
-                setShowThankYouPopup(true); 
-                setTimeout(() => setShowThankYouPopup(false), 3000);
+                setShowThankYouPopup(true); // Show the thank you popup
+                setTimeout(() => setShowThankYouPopup(false), 3000); // Hide the popup after 3 seconds
             } else {
                 toast.error('Token not found in response');
             }
@@ -130,9 +142,10 @@ export default function ProductDetailClient({ product }) {
     }
   };
 
+  // Add the product to the user's list
   const addProductName = async (token, productName) => {
     try {
-      const response = await fetch(`${API_BASE_URL}/getAquote/add-product-name`, {
+      const response = await fetch('https://d1w2b5et10ojep.cloudfront.net/api/getAquote/add-product-name', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -143,18 +156,37 @@ export default function ProductDetailClient({ product }) {
 
       const data = await response.json();
       if (response.ok) {
-        toast.success(data.message);
+        if (data.token) Cookies.set("token", data.token);
+        
+        // Success! Show Thank You popup
+        toast.success("Request Sent Successfully!");
+        closeModal();
+        setShowThankYouPopup(true);
+        
+        // Hide Thank You popup after 4 seconds
+        setTimeout(() => setShowThankYouPopup(false), 4000);
       } else {
-        toast.error(data.message || 'Failed to add product');
+        toast.error(data.message || "Invalid OTP");
       }
     } catch (error) {
-      console.error('Error adding product name:', error);
-      toast.error('Failed to add product');
+      console.error("Error verifying OTP:", error);
+      toast.error("Verification failed");
     }
   };
+
   return (
     <div>
-      <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <section className="product-detail-slider-section">
         <div className="container">
           <div className="slider-text-wrapper">
@@ -167,10 +199,19 @@ export default function ProductDetailClient({ product }) {
                 thumbs={{ swiper: thumbsSwiper }}
                 className="main-slider"
               >
-                {product?.images && product.images.map((image, i)=>
-                  <SwiperSlide key={i}>
-                    <Image src={image?.url} width={540} height={496} alt={image?.alt_text || 'Product Image'} layout="responsive" className="bg-img" />
-                  </SwiperSlide>)}
+                {product?.images &&
+                  product.images.map((image, i) => (
+                    <SwiperSlide key={i}>
+                      <Image
+                        src={image?.url}
+                        width={540}
+                        height={496}
+                        alt={image?.alt_text || "Product Image"}
+                        layout="responsive"
+                        className="bg-img"
+                      />
+                    </SwiperSlide>
+                  ))}
               </Swiper>
               <Swiper
                 onSwiper={setThumbsSwiper}
@@ -179,10 +220,18 @@ export default function ProductDetailClient({ product }) {
                 watchSlidesProgress
                 className="thumb-slider"
               >
-                {product?.images && product.images.map((image, i)=>
-                  <SwiperSlide key={i}>
-                    <Image src={image?.url} width={128} height={120} alt={image?.alt_text || 'Product Thumbnail'} layout="responsive" />
-                  </SwiperSlide>)}
+                {product?.images &&
+                  product.images.map((image, i) => (
+                    <SwiperSlide key={i}>
+                      <Image
+                        src={image?.url}
+                        width={128}
+                        height={120}
+                        alt={image?.alt_text || "Product Thumbnail"}
+                        layout="responsive"
+                      />
+                    </SwiperSlide>
+                  ))}
               </Swiper>
             </div>
             <div className="text-wrapper">
@@ -193,16 +242,33 @@ export default function ProductDetailClient({ product }) {
                   <li key={index}>{feature}</li>
                 ))}
               </ul>
-              <a className="site-btn border-btn" href={product?.shopNowUrl} target="_blank" rel="noopener noreferrer">
+              <a
+                className="site-btn border-btn"
+                href={product?.shopNowUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Shop Now
               </a>
-              <button className="site-btn" onClick={getQuoteModal}>Get a Quote</button>
-              
-              <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Get a Quote Modal" className="quote-otp-modal">
+              <button className="site-btn" onClick={getQuoteModal}>
+                Get a Quote
+              </button>
+
+              <Modal
+                isOpen={modalIsOpen}
+                onRequestClose={closeModal}
+                contentLabel="Get a Quote Modal"
+                className="quote-otp-modal"
+              >
                 <div className="title-wrapper">
                   <h2>Get a Quote</h2>
                   <button onClick={closeModal} className="close-btn">
-                    <Image src="/images/cross.svg" height={25} width={25} alt="Close" />
+                    <Image
+                      src="/images/cross.svg"
+                      height={25}
+                      width={25}
+                      alt="Close"
+                    />
                   </button>
                 </div>
                 <form onSubmit={handleSendOtp}>
@@ -219,17 +285,29 @@ export default function ProductDetailClient({ product }) {
                       />
                     </div>
                     <div className="form-group">
-                      <button type="submit" className="site-btn">Submit</button>
+                      <button type="submit" className="site-btn">
+                        Submit
+                      </button>
                     </div>
                   </div>
                 </form>
               </Modal>
 
-              <Modal isOpen={otpModalIsOpen} onRequestClose={closeModal} contentLabel="OTP Modal" className="quote-otp-modal">
+              <Modal
+                isOpen={otpModalIsOpen}
+                onRequestClose={closeModal}
+                contentLabel="OTP Modal"
+                className="quote-otp-modal"
+              >
                 <div className="title-wrapper">
                   <h2>OTP Verification</h2>
                   <button onClick={closeModal} className="close-btn">
-                    <Image src="/images/cross.svg" height={25} width={25} alt="Close" />
+                    <Image
+                      src="/images/cross.svg"
+                      height={25}
+                      width={25}
+                      alt="Close"
+                    />
                   </button>
                 </div>
                 <p>We have sent OTP on your given mobile number</p>
@@ -247,7 +325,9 @@ export default function ProductDetailClient({ product }) {
                       />
                     </div>
                     <div className="form-group">
-                      <button type="submit" className="site-btn">Submit</button>
+                      <button type="submit" className="site-btn">
+                        Submit
+                      </button>
                     </div>
                   </div>
                 </form>
@@ -261,15 +341,25 @@ export default function ProductDetailClient({ product }) {
         <div className="product-block-navigation">
           <div className="container">
             <ul>
-              <li><button onClick={() => scrollToSection(section1Ref)}>Specifications</button></li>
-              <li><button onClick={() => scrollToSection(section3Ref)}>Applications</button></li>
-              {/* <li><button onClick={() => scrollToSection(section2Ref)}>Download</button></li> */}
+              <li>
+                <button onClick={() => scrollToSection(section1Ref)}>
+                  Specifications
+                </button>
+              </li>
+              <li>
+                <button onClick={() => scrollToSection(section3Ref)}>
+                  Applications
+                </button>
+              </li>
             </ul>
           </div>
         </div>
         <div className="product-info-block-inner">
           <div className="container">
-            <div className="product-info-block specification-block" ref={section1Ref}>
+            <div
+              className="product-info-block specification-block"
+              ref={section1Ref}
+            >
               <h3 className="block-title">Specifications</h3>
               <ul className="specification-list">
                 {product?.specifications.map((spec, index) => (
@@ -280,8 +370,10 @@ export default function ProductDetailClient({ product }) {
                 ))}
               </ul>
             </div>
-            {/* Download section commented out as in original file */}
-            <div className="product-info-block applications-block" ref={section3Ref}>
+            <div
+              className="product-info-block applications-block"
+              ref={section3Ref}
+            >
               <h3 className="block-title">Applications</h3>
               <ul>
                 {product?.applications.map((application, index) => (
@@ -293,23 +385,47 @@ export default function ProductDetailClient({ product }) {
         </div>
       </section>
 
-      <RequestQuote />
+      {/* Passed the productName prop here so the RequestQuote form knows which product */}
+      <RequestQuote productName={product?.title} />
 
       {showThankYouPopup && (
         <div className="modal-overlay">
           <div className="thank-you-popup">
-            <button onClick={() => setShowThankYouPopup(false)} className="close-btn">
-              <Image src="/images/cross.svg" height={25} width={25} alt="Close" />
+            <button
+              onClick={() => setShowThankYouPopup(false)}
+              className="close-btn"
+            >
+              <Image
+                src="/images/cross.svg"
+                height={25}
+                width={25}
+                alt="Close"
+              />
             </button>
             <div className="popup-content">
               <div className="check-icon">
-                <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="32" cy="32" r="32" fill="#4CAF50"/>
-                  <path d="M20 32L28 40L44 24" stroke="white" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+                <svg
+                  width="64"
+                  height="64"
+                  viewBox="0 0 64 64"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle cx="32" cy="32" r="32" fill="#4CAF50" />
+                  <path
+                    d="M20 32L28 40L44 24"
+                    stroke="white"
+                    strokeWidth="4"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
                 </svg>
               </div>
               <h2>Thank you for reaching out!</h2>
-              <p>Your quote request has been received. Our team will analyze your requirements and get back to you shortly.</p>
+              <p>
+                Your quote request has been received. Our team will analyze your
+                requirements and get back to you shortly.
+              </p>
             </div>
           </div>
         </div>

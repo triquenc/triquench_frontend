@@ -578,3 +578,163 @@
     }
   }
 }
+
+/* ------------------------------------------------------- */
+/* ADD THIS AT THE BOTTOM OF YOUR SCSS FILE              */
+/* ------------------------------------------------------- */
+
+// --- Modal Overlay ---
+.quote-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.75) !important; // Dark overlay
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+}
+
+// --- Modal Content Box ---
+.quote-modal-content {
+    background: $white;
+    width: 100%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 2rem;
+    padding: 3rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    outline: none;
+    position: relative;
+
+    @include bp("sm-max") {
+        padding: 2rem;
+    }
+
+    // Modal Header
+    .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2.5rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid $border2;
+
+        h2 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: $primaryColor;
+            margin: 0;
+            text-align: left;
+            text-transform: capitalize;
+            
+            @include bp("sm-max") {
+                font-size: 2rem;
+            }
+        }
+
+        .close-btn {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s;
+
+            &:hover {
+                transform: rotate(90deg);
+            }
+            
+            img {
+                width: 2rem;
+                height: 2rem;
+            }
+        }
+    }
+
+    // Modal Body Form
+    .modal-body {
+        .form-group {
+            margin-bottom: 2rem;
+
+            label {
+                display: block;
+                margin-bottom: 0.8rem;
+                font-weight: 600;
+                font-size: 1.5rem;
+                color: $secondaryColor;
+            }
+
+            input,
+            textarea {
+                width: 100%;
+                padding: 1.2rem 2rem;
+                border: 0.1rem solid $border3;
+                border-radius: 1rem;
+                font-size: 1.6rem;
+                font-family: "Hind Madurai", sans-serif;
+                transition: border-color 0.3s;
+                background-color: $white;
+
+                &::placeholder {
+                    color: $placeholder;
+                }
+
+                &:focus {
+                    border-color: $primaryColor;
+                    outline: none;
+                }
+            }
+
+            textarea {
+                resize: none;
+                height: 10rem;
+            }
+
+            // Read Only Input Style (for Product Name)
+            .read-only-input {
+                background-color: #f9f9f9;
+                color: #666;
+                border-color: $border2;
+                cursor: not-allowed;
+                font-weight: 600;
+            }
+
+            // Error Styling
+            .input-error {
+                border-color: #dc3545 !important;
+                background-color: #fff8f8;
+            }
+
+            .error-text {
+                color: #dc3545;
+                font-size: 1.3rem;
+                margin-top: 0.5rem;
+                font-weight: 500;
+            }
+        }
+
+        // Full Width Submit Button
+        .site-btn.full-width {
+            width: 100%;
+            margin-top: 1rem;
+            border-radius: 3rem;
+            height: 5rem;
+            line-height: 5rem;
+            padding: 0;
+            display: block;
+            text-align: center;
+
+            &:disabled {
+                background-color: #ccc;
+                cursor: not-allowed;
+            }
+        }
+    }
+}

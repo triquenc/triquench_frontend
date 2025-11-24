@@ -4,53 +4,51 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { HiOutlineShare } from "react-icons/hi";
 import { FaCalendar, FaMapMarkerAlt, FaRegHeart, FaFacebookF, FaLinkedinIn, FaInstagram, FaEye } from 'react-icons/fa';
+import SimpleSpinner from '@/components/commonComponents/SimpleSpinner';
+
+// (I am assuming your CSS file for .hero-banner, .social-grid etc. is imported elsewhere)
 
 export default function Events() {
   // State to manage events and likes
   const [events, setEvents] = useState([]);
+  const [likedPosts, setLikedPosts] = useState({});
+  const [selectedCategory, setSelectedCategory] = useState('');
+  
+  // --- 1. ADD LOADING STATE ---
+  const [isLoading, setIsLoading] = useState(true); // Start as true
 
-  // --- LINT FIX 1: Use object with event._id as key, not index ---
-  const [likedPosts, setLikedPosts] = useState({}); // Using an object to track like status for each post
-  const [selectedCategory, setSelectedCategory] = useState(''); // State to track selected category
-
-  // Fetch events data from the API
+  // Fetch events
   useEffect(() => {
     const fetchEvents = async () => {
+      setIsLoading(true); // Set loading true at the start of fetch
       try {
-        // --- PROBLEM 1: This URL is returning 404 ---
-        // Your screenshot shows '.../api/event/getEvents'
-        // Your code shows '.../api/event'
-        // You MUST fix this URL to be a valid API endpoint.
-        const response = await fetch('https://d1w2b5et10ojep.cloudfront.net/api/event'); // Using URL from screenshot
+        const response = await fetch('https://d1w2b5et10ojep.cloudfront.net/api/event');
 
-        // --- FIX 1: Check for HTTP errors (like 404) ---
         if (!response.ok) {
           throw new Error(`API Error: ${response.status} ${response.statusText}`);
         }
 
         const data = await response.json();
 
-        // --- FIX 2: Ensure the data is ALWAYS an array ---
         if (Array.isArray(data)) {
           setEvents(data);
         } else {
-          console.error("Error fetching events: API did not return an array.", data);
-          setEvents([]); // Reset to an empty array to prevent crash
+          setEvents([]);
         }
-
       } catch (error) {
-        // This will now catch network errors AND 404s
         console.error('Error fetching events:', error);
-        setEvents([]); // Reset to an empty array on any error
+        setEvents([]);
+      } finally {
+        // --- 2. SET LOADING FALSE ONCE FINISHED ---
+        setIsLoading(false); // Set false after try/catch
       }
     };
 
     fetchEvents();
-  }, []); // This will run once when the component is mounted
+  }, []);
 
-  // --- LINT FIX 2: Refactor handleLikeClick to use eventId, not index ---
   const handleLikeClick = async (eventId) => {
-    if (likedPosts[eventId]) return; // Prevent further clicks if already liked
+    if (likedPosts[eventId]) return;
 
     try {
       const response = await fetch(`https://d1w2b5et10ojep.cloudfront.net/api/event/like`, {
@@ -58,45 +56,32 @@ export default function Events() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          id: eventId,
-        }),
+        body: JSON.stringify({ id: eventId }),
       });
 
-      if (!response.ok) {
-        throw new Error('Failed to like the event');
-      }
+      if (!response.ok) throw new Error('Failed to like the event');
 
-      // Update the like status locally
-      setLikedPosts((prevState) => ({
-        ...prevState,
-        [eventId]: true, // Mark as liked using eventId
-      }));
+      setLikedPosts((prev) => ({ ...prev, [eventId]: true }));
 
-      // Update the like count in the UI
       setEvents((prevEvents) =>
         prevEvents.map((event) =>
-          event._id === eventId
-            ? { ...event, likes: (event.likes || 0) + 1 }
-            : event
+          event._id === eventId ? { ...event, likes: (event.likes || 0) + 1 } : event
         )
       );
     } catch (error) {
       console.error('Error liking event:', error);
-      alert('Error liking event: ' + error.message);
     }
   };
 
   // Filter events based on selected category
-  const filteredEvents = (selectedCategory
+  const filteredEvents = selectedCategory
     ? events.filter(event => event.category === selectedCategory)
     : events
-  ).sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
 
-  // Handle category selection without page jump
   const handleCategoryClick = (e, category) => {
-    e.preventDefault(); // Prevent default anchor behavior
+    e.preventDefault();
     setSelectedCategory(category === 'All Categories' ? '' : category);
   };
 
@@ -104,15 +89,38 @@ export default function Events() {
 
   return (
     <div style={{ width: '100%', backgroundColor: '#fff', fontFamily: 'Arial, sans-serif', lineHeight: '1.6', color: '#333' }}>
-      {/* ... (rest of your banner JSX, no changes needed) ... */}
+      
+      {/* ---- REQUIRED FIX: 320px Responsive Meta Block Styling ---- */}
+      <style>{`
+        @media (max-width: 320px) {
+          .meta-row {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 4px !important;
+          }
+          .meta-right {
+           display: flex !important;
+           justify-content: space-between !important;
+           width: 100% !important;
+          }
+
+          .badge {
+            display: inline-block !important;
+            margin-bottom: 2px !important;
+          }
+        }
+      `}</style>
+
+      {/* HERO SECTION */}
       <section className="hero-banner">
         <div className="hero-overlay" />
         <img src={HERO_IMG} alt="Events banner" className="hero-img-mobile" />
       </section>
 
       <div style={{ width: '100%', maxWidth: '1200px', margin: '0 auto', padding: '0 20px'}}>
+
+        {/* CATEGORY BUTTONS */}
         <section>
-          {/* ... (rest of your category button JSX, no changes needed) ... */}
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', padding: '2rem 0', justifyContent: 'center' }}>
             {['All Categories','Exhibition', 'Upcoming Exhibition','CSR By Triquench', 'Triquench Events' ].map((category) => (
               <button
@@ -128,20 +136,6 @@ export default function Events() {
                   transition: 'all 0.3s ease',
                   cursor: 'pointer',
                 }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = '#006098';
-                  e.currentTarget.style.color = '#fff';
-                  e.currentTarget.style.transform = 'translateY(-2px)';
-                  e.currentTarget.style.boxShadow = '0 4px 8px rgba(0,0,0,0.2)';
-                }}
-                onMouseLeave={(e) => {
-                  if (selectedCategory !== category) {
-                    e.currentTarget.style.backgroundColor = '#fff';
-                    e.currentTarget.style.color = '#006098';
-                    e.currentTarget.style.transform = 'translateY(0)';
-                    e.currentTarget.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
-                  }
-                }}
               >
                 {category}
               </button>
@@ -149,6 +143,7 @@ export default function Events() {
           </div>
         </section>
 
+        {/* --- 4. ADD CONDITIONAL RENDERING FOR LOADER --- */}
         <section className="social-wall-section" style={{ backgroundColor: 'white' }}>
           <div className="social-grid">
             {/* --- LINT FIX 3: Use event._id for the key, not index --- */}
@@ -164,29 +159,57 @@ export default function Events() {
                       )}
                     </picture>
                     {Array.isArray(event.socialLinks) && event.socialLinks.map((social, idx) => {
-                     const socialStyles = {
-                      facebook: { 
-                        backgroundColor: '#1877f2', 
-                        icon: <FaFacebookF />,
-                         url: "https://www.facebook.com/spindlemotorTQI"   // <-- YOUR LINK HERE
-                      },
-                      instagram: { 
-                        backgroundColor: '#E1306C', 
-                        icon: <FaInstagram />,
-                        url: "https://www.instagram.com/triquench_spindlemotor/"   // <-- YOUR LINK HERE
-                      },
-                      linkedin: { 
-                        backgroundColor: '#0077b5', 
-                        icon: <FaLinkedinIn />, 
-                        url: "https://www.linkedin.com/company/triquenchindia/"   // <-- YOUR LINK HERE
-                      }
-                    };
+                      const socialStyles = {
+                        facebook:{// Set background to transparent so the image gradient shows
+      backgroundColor: 'transparent', 
+      // Use Next.js Image component pointing to your file in /public
+      icon: (
+        <Image 
+          src="/favicon/communication.png" 
+          alt="Instagram" 
+          width={30} 
+          height={30} 
+          // Optional: Ensure it fits nicely if the image has sharp corners
+          style={{ objectFit: 'contain' }} 
+        />
+      )
+    },
+                        instagram: { 
+      // Set background to transparent so the image gradient shows
+      backgroundColor: 'transparent', 
+      // Use Next.js Image component pointing to your file in /public
+      icon: (
+        <Image 
+          src="/favicon/instagram.png" 
+          alt="Instagram" 
+          width={30} 
+          height={30} 
+          // Optional: Ensure it fits nicely if the image has sharp corners
+          style={{ objectFit: 'contain' }} 
+        />
+      )
+    },
+                        linkedin: {  // Set background to transparent so the image gradient shows
+      backgroundColor: 'transparent', 
+      // Use Next.js Image component pointing to your file in /public
+      icon: (
+        <Image 
+          src="/favicon/linkedin.png" 
+          alt="Instagram" 
+          width={30} 
+          height={30} 
+          // Optional: Ensure it fits nicely if the image has sharp corners
+          style={{ objectFit: 'contain' }} 
+        />
+      )
+    }
+                      };
                       const style = socialStyles[social.platform];
                       if (!style) return null;
                       return (
                         <a
                           key={idx}
-                         href={social.url || style.url}
+                          href={social.url}
                           style={{
                             position: 'absolute',
                             top: '10px',
@@ -268,6 +291,7 @@ export default function Events() {
             ))}
           </div>
         </section>
+
       </div>
     </div>
   );

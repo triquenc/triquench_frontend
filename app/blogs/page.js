@@ -1,29 +1,45 @@
 "use client";
 import { useState, useEffect } from "react";
-import { FaCalendarAlt, FaTag, FaBookOpen, FaUser } from "react-icons/fa"; // Removed FaRegComment
+import { FaCalendarAlt, FaTag, FaBookOpen, FaUser } from "react-icons/fa";
 import "./Blogs.css";
+import SimpleSpinner from "@/components/commonComponents/SimpleSpinner";
 
 export default function Blogs() {
   const [blogs, setBlogs] = useState([]);
-  // Removed unused 'popularPosts' and 'setPopularPosts' state
+  // --- 1. ADD LOADING STATE ---
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchAllBlogs = async () => {
+      // --- 2. SET LOADING TRUE ON FETCH START ---
+      setIsLoading(true); 
       try {
         const response = await fetch("https://d1w2b5et10ojep.cloudfront.net/api/blog");
-        if (!response.ok) throw new Error(`Failed: ${response.status}`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
         
         const data = await response.json();
-        
-        // --- THIS IS THE MAIN FIX ---
-        // We set the state to data.blogs (the array)
-        // not 'data' (the whole object)
-        setBlogs(data.blogs || []); 
+
+        // --- ROBUST FIX ---
+        if (Array.isArray(data)) {
+          setBlogs(data);
+        } 
+        else if (data && Array.isArray(data.blogs)) {
+          setBlogs(data.blogs);
+        } 
+        else {
+          console.warn("Received data is not in the expected format:", data);
+          setBlogs([]);
+        }
         // --- END OF FIX ---
 
       } catch (error) {
         console.error("Error fetching all blogs:", error);
-        setBlogs([]); // Set to empty array on error to prevent crash
+        setBlogs([]); // Set to empty array on error
+      } finally {
+        // --- 2. SET LOADING FALSE ON FINISH (SUCCESS OR ERROR) ---
+        setIsLoading(false);
       }
     };
 
@@ -32,6 +48,11 @@ export default function Blogs() {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%" }}>
+      
+
+
+  
+
       {/* Banner Section */}
       <section className="blog-banner" aria-label="Blog banner">
         <div className="blog-banner__frame">
@@ -70,18 +91,23 @@ export default function Blogs() {
         }}
       >
         {/* Blog Section */}
-        <div style={{ flex: "1 1 65%", paddingRight: "20px" }}>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(270px, 1fr))",
-              gap: "20px",
-            }}
-          >
-            {blogs.length > 0 ? (
-              blogs.map((blog) => (
+        <div style={{ flex: "1 1 65%", paddingRight: "20px", minHeight: "300px" }}>
+          
+          {/* --- 4. CONDITIONAL RENDERING --- */}
+          {isLoading ? (
+           <SimpleSpinner/>
+          ) : blogs.length > 0 ? (
+            // State 2: Loaded with blogs
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(270px, 1fr))",
+                gap: "20px",
+              }}
+            >
+              {blogs.map((blog) => (
                 <div
-                  key={blog._id} // Using the unique _id from your data
+                  key={blog._id}
                   style={{
                     border: "1px solid #ddd",
                     borderRadius: "8px",
@@ -101,7 +127,6 @@ export default function Blogs() {
                   <div style={{ padding: "5px 10px", display: "flex", justifyContent: "space-between" }}>
                     <div style={{ fontSize: "12px", color: "#888", display: "flex", alignItems: "center" }}>
                       <FaCalendarAlt style={{ marginRight: "5px" }} />
-                      {/* Using 'createdAt' from your API data */}
                       {blog.createdAt ? new Date(blog.createdAt).toLocaleDateString() : "Unknown Date"}
                     </div>
                     <div
@@ -135,17 +160,17 @@ export default function Blogs() {
                     </a>
                   </div>
                 </div>
-              ))
-            ) : (
-              // This will now only show if data.blogs is truly empty
+              ))}
+            </div>
+          ) : (
+            // State 3: Loaded but no blogs
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
               <p>No blogs available.</p>
-            )}
-          </div>
+            </div>
+          )}
         </div>
         
-        {/* I removed the sidebar code because its state 
-          (popularPosts) was removed for the lint fix.
-        */}
+        {/* Sidebar was removed */}
       </div>
     </div>
   );

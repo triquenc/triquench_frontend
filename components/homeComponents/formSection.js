@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-// ✅ Validation schema using Yup
+// Validation schema
 const validationSchema = Yup.object({
   name: Yup.string()
     .min(3, "Full Name must be at least 3 characters")
@@ -14,54 +16,45 @@ const validationSchema = Yup.object({
   mobile: Yup.string()
     .matches(/^[0-9]{10}$/, "Mobile must be 10 digits")
     .required("Mobile number is required"),
-  message: Yup.string()
-   
-    .required("Message is required"),
+  message: Yup.string().required("Message is required"),
 });
 
-const FormSection = () => {
-  const [notification, setNotification] = useState("");
+// Initial values for the form
+const initialValues = {
+  name: "",
+  email: "",
+  company: "",
+  mobile: "",
+  message: "",
+};
 
+const FormSection = () => {
   const handleSubmit = async (values, { resetForm }) => {
     try {
       const response = await fetch("https://d1w2b5et10ojep.cloudfront.net/api/form/submit", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
       });
 
-    const data = await response.json();
+      const data = await response.json();
 
-    if (response.ok) {
-      setNotification(data.message || "Message sent successfully!");
-      resetForm();
-
-      // Hide notification after 3 seconds
-      setTimeout(() => setNotification(""), 3000);
-    } else {
-      setNotification(data.message || "Something went wrong!");
+      if (response.ok) {
+        toast.success(data.message || "Message sent successfully!");
+        resetForm();
+      } else {
+        toast.error(data.message || "Something went wrong!");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      toast.error("Unable to connect to server. Please try again later.");
     }
-  } catch (error) {
-    console.error("Error submitting form:", error);
-    setNotification(
-      "Error: Unable to connect to server. Please try again later."
-    );
-  }
-};
-
+  };
 
   return (
-    <div>
+    <>
       <Formik
-        initialValues={{
-          name: "",
-          email: "",
-          company: "",
-          mobile: "",
-          message: "",
-        }}
+        initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
@@ -150,7 +143,11 @@ const FormSection = () => {
 
               {/* Submit Button */}
               <div className="form-group">
-                <button type="submit" className="site-btn" disabled={isSubmitting}>
+                <button
+                  type="submit"
+                  className="site-btn"
+                  disabled={isSubmitting}
+                >
                   {isSubmitting ? "Sending..." : "Send Message"}
                 </button>
               </div>
@@ -159,13 +156,10 @@ const FormSection = () => {
         )}
       </Formik>
 
-      {/* Notification */}
-      {notification && <div className="notification">{notification}</div>}
-    </div>
+      {/* Toast Notification Container */}
+      <ToastContainer position="top-right" autoClose={3000} />
+    </>
   );
 };
 
 export default FormSection;
-
-
-

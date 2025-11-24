@@ -6,6 +6,17 @@ export default function FeatureSection() {
     <>
       <section className="features-section">
          <div className="container">
+          
+          {/* --- Added Title Block --- */}
+          <div className="title-block" style={{ textAlign: 'center', marginBottom: '50px' }}>
+              <h2 className="has-green-bar">WHY CHOOSE TRIQUENCH</h2>
+              <p style={{ maxWidth: '800px', margin: '15px auto 0', color: '#64748b', fontSize: '1.6rem' }}>
+                We combine over a decade of engineering expertise with rigorous quality control 
+                to deliver CNC solutions you can trust.
+              </p>
+          </div>
+          {/* ------------------------- */}
+
           <div className="feature-grid">
             <div className="feature-grid-item">
                 <Image src="/images/quality.svg" width={40} height={40} alt="Quality Assurance Icon"/>
@@ -30,4 +41,3 @@ export default function FeatureSection() {
     </>
   );
 };
-

@@ -16,7 +16,7 @@ import Image from "next/image";
 import PopupClient from "../components/PopupClient";  
 
 
-export default function Home() {  
+export default function Home() {
   return (
     <div className="home-wrapper">
 

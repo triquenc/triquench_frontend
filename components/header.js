@@ -1,5 +1,7 @@
+"use client";
 import React, { useState, useEffect, forwardRef } from "react";
 import Image from "next/image";
+import Link from "next/link"; // <-- 1. IMPORT Link
 
 const globalStyles = `
   @media (max-width: 768px) {
@@ -146,7 +148,8 @@ const Header = forwardRef((props, ref) => {
                             e.currentTarget.style.borderColor = "transparent";
                           }}
                         >
-                          <a
+                          {/* --- 2. REPLACE <a> WITH <Link> --- */}
+                          <Link
                             href={product.href}
                             style={{
                               textDecoration: "none",
@@ -190,7 +193,8 @@ const Header = forwardRef((props, ref) => {
                                 </span>
                               </li>
                             </ul>
-                          </a>
+                          </Link>
+                          {/* --- END OF CHANGE --- */}
                         </div>
                       ))}
                     </div>
@@ -284,7 +288,8 @@ const Header = forwardRef((props, ref) => {
                         onMouseEnter={() => handleItemHover(index)}
                         onMouseLeave={handleItemLeave}
                       >
-                        <a
+                        {/* --- 3. ALSO REPLACE <a> WITH <Link> IN MOBILE --- */}
+                        <Link
                           href={product.href}
                           style={{
                             display: "flex",
@@ -302,7 +307,8 @@ const Header = forwardRef((props, ref) => {
                           }}>
                             {product.label}
                           </span>
-                        </a>
+                        </Link>
+                        {/* --- END OF CHANGE --- */}
                       </li>
                     ))}
                   </ul>
@@ -321,5 +327,8 @@ const Header = forwardRef((props, ref) => {
     </header>
   );
 });
+
+// Add display name for linter
+Header.displayName = 'Header';
 
 export default Header;
