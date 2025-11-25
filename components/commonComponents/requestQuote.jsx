@@ -9,7 +9,8 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 // FIX 1: Set Base URL to the ROOT DOMAIN ONLY (Remove '/api' from here)
-const API_BASE_URL = 'https://d1w2b5et10ojep.cloudfront.net';
+const API_BASE_URL = 'https://d1w2b5et10ojep.cloudfront.net/api';
+// const API_BASE_URL = 'http://localhost:5000/api';
 
 const validationSchema = Yup.object({
   name: Yup.string().required("Name is required"),
