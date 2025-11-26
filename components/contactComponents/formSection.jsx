@@ -131,7 +131,7 @@ const FormSection = () => {
   const handleSubmit = async (values, { resetForm }) => {
     try {
       const response = await fetch(
-        "http://localhost:5000/api/contact/submit",
+        "https://d1w2b5et10ojep.cloudfront.net/api/contact/submit",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
