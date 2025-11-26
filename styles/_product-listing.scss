@@ -274,6 +274,7 @@ $white: #fff;
             .product-grid {
                 display: flex;
                 flex-wrap: wrap;
+                
                 margin: 0 -1.5rem -3rem;
 
                 .no-products {
@@ -304,6 +305,7 @@ $white: #fff;
                     .product-grid-inner {
                         border-radius: 2rem;
                         border: 0.1rem solid $border2;
+                       
                         display: block;
                         padding: 1.6rem;
                         position: relative;
@@ -314,23 +316,39 @@ $white: #fff;
 
                         .img-content-block {
                             margin-bottom: 1.2rem;
+                           
                             .img-block {
                                 padding-bottom: 100%;
                                 position: relative;
+                                 
                                 margin-bottom: 1.6rem;
                                 img {
                                     height: 100%;
                                     width: 100%;
                                     object-fit: contain;
                                     position: absolute;
+                                     
                                     left: 0;
                                     top: 0;
                                 }
                             }
-                            p {
-                                line-height: 1.375;
-                                min-height: 6.6rem;
-                            }
+                            h3 {
+                            /* 1. Typography */
+                            line-height: 1.375;
+                        
+                           
+                            height: 4.125em;
+                        
+                          
+                            display: -webkit-box;
+                            -webkit-line-clamp: 3; /* Number of lines to show */
+                            line-clamp: 3; /* Standard property for compatibility */
+                            -webkit-box-orient: vertical;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                        
+                            
+                        }
                         }
                         .product-button-wrapper {
                             a {
