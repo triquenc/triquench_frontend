@@ -7,7 +7,7 @@ import StatisticsSection from "../components/homeComponents/statistics";
 import VideoSection from "../components/homeComponents/videoSection";
 import FeatureSection from "../components/homeComponents/featureSection";
 import AboutSection from "../components/homeComponents/aboutSection";
-import FormSection from "../components/homeComponents/formSection";
+import FormSection from "../components/contactComponents/formSection";
 import SocialWallSection from "../components/homeComponents/socialWallSection";
 import BrandLogo from "../components/homeComponents/brandLogo";
 import ServiceWeProvide from "../components/commonComponents/serviceWeProvide";
