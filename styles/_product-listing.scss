@@ -357,38 +357,57 @@ $white: #fff;
                         
                         // Buttons (Kept fixed version)
                         .product-button-wrapper {
-                            a {
-                                display: flex; 
-                                align-items: center;
-                                justify-content: center;
-                                
-                                min-height: 4.2rem;
-                                padding: 0.5rem 1rem;
-                                line-height: 1.2;
-                                
-                                text-align: center;
-                                text-transform: capitalize;
-                                font-weight: 600;
-                                width: 100%;
-                                
-                                &.border-btn {
-                                    border: 1px solid $primaryColor;
-                                    color: $primaryColor;
-                                    cursor: pointer;
-                                }
-                                &:hover {
-                                    color: $white;
-                                }
-                                &.site-btn {
-                                    background: $primaryColor;
-                                    color: $white;
-                                    border: 1px solid $primaryColor;
-                                }
-                                & + a {
-                                    margin-top: 1.2rem;
-                                }
-                            }
-                        }
+    a {
+        display: flex; 
+        align-items: center;
+        justify-content: center;
+        
+        // FIX 1: Use border-box so padding/border don't increase height
+        box-sizing: border-box; 
+        
+        // FIX 2: Set a transparent border on ALL buttons so they reserve the same space
+        border: 1px solid transparent; 
+        
+        min-height: 4.2rem; // Increased slightly to 4.2rem for better fit
+        padding: 0.5rem 1rem;
+        line-height: 1.2;
+        
+        text-align: center;
+        text-transform: capitalize;
+        font-weight: 600;
+        width: 100%;
+        text-decoration: none; // Ensure no underline
+        transition: all 0.3s ease;
+        
+        &.border-btn {
+            // Just change the color, the border width is already set on parent
+            border-color: $primaryColor;
+            color: $primaryColor;
+            cursor: pointer;
+            
+            &:hover {
+                background-color: $primaryColor;
+                color: $white;
+            }
+        }
+
+        &.site-btn {
+            background: $primaryColor;
+            color: $white;
+            // Ensure this also uses the border (colored) to match exactly
+            border-color: $primaryColor;
+            
+            &:hover {
+                background-color: darken($primaryColor, 10%);
+                border-color: darken($primaryColor, 10%);
+            }
+        }
+
+        & + a {
+            margin-top: 1.2rem;
+        }
+    }
+}
                     }
                 }
             }
