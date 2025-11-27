@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef, useMemo, useCallback, Suspense } fr
 import { useRouter, useSearchParams } from "next/navigation";
 import InnerPageBanner from "@/components/commonComponents/InnerPageBanner";
 import SimpleSpinner from "@/components/commonComponents/SimpleSpinner";
-import categoriesData from './categories.json'; // Make sure this path is correct relative to this file
+import categoriesData from '../../lib/categories.json';
 
 // Importing the new separate components
 import ProductSidebar from "@/components/productsComponents/ProductSidebar";
