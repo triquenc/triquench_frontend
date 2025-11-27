@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef, useMemo, useCallback, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import InnerPageBanner from "@/components/commonComponents/InnerPageBanner";
+import InnerPageBanner from "@/components/commonComponents/innerpagebanner";
 import SimpleSpinner from "@/components/commonComponents/SimpleSpinner";
 import categoriesData from '../../lib/categories.json';
 

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import InnerPageBanner from '@/components/commonComponents/InnerPageBanner';
+import InnerPageBanner from "../commonComponents/innerpagebanner";
 import ServiceWeProvide from '@/components/commonComponents/serviceWeProvide';
 import FormSection from '@/components/contactComponents/formSection';
 

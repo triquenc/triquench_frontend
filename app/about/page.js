@@ -1,4 +1,4 @@
-import InnerPageBanner from '../../components/commonComponents/innerpagebanner';
+import InnerPageBanner from '@/components/commonComponents/innerpagebanner';
 import WhoWeAre from '../../components/aboutComponents/whoWeAre';
 import WhyChooseTriquench from '@/components/aboutComponents/whyChooseTriquench';
 import MeetOurTeam from '@/components/aboutComponents/meetOurTeam';
