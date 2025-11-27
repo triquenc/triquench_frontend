@@ -51,7 +51,7 @@ const validationSchema = Yup.object({
     .required("Full Name is required"),
   email: Yup.string().email("Invalid email format"), // Optional
   company: Yup.string().required("Company is required"),
-  city: Yup.string().required("State is required"),
+  state: Yup.string().required("State is required"),
   mobile: Yup.string()
       .matches(/^[0-9]+$/, "Phone number must be digits only")
       .min(10, "Phone number must be at least 10 digits")
@@ -65,7 +65,7 @@ const initialValues = {
   name: "",
   email: "",
   company: "",
-  city: "",
+  state: "",
   mobile: "",
   message: "",
 };
@@ -188,7 +188,7 @@ const FormSection = () => {
               {/* Custom State Dropdown */}
               <CustomSelect 
                 label="State" 
-                name="city" 
+                name="state" 
                 options={stateOptions} 
                 placeholder="Select State" 
               />
