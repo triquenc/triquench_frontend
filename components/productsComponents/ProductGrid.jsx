@@ -21,8 +21,9 @@ export default function ProductGrid({ products, isLoading, onProductClick, gridR
             <div className="product-grid-inner">
               <div className="img-content-block">
                 <div className="img-block">
+                  {/* Performance Fix: Khali 1st photo j load karavo */}
                   {Array.isArray(product.images) && product.images.length > 0 ? (
-                    product.images.map((image) => (
+                    product.images.slice(0, 1).map((image) => (
                       <Image
                         key={image._id || image.url}
                         src={image.url}
@@ -43,8 +44,14 @@ export default function ProductGrid({ products, isLoading, onProductClick, gridR
                 <h3>{product.title}</h3>
               </div>
               <div className="product-button-wrapper">
+                {/* Lint Fix: href="#!" added */}
                 <a
-                  onClick={(e) => { e.stopPropagation(); onProductClick(product._id); }}
+                  href="#!" 
+                  onClick={(e) => { 
+                    e.preventDefault(); 
+                    e.stopPropagation(); 
+                    onProductClick(product._id); 
+                  }}
                   className="border-btn"
                 >
                   See Details

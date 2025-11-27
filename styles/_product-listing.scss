@@ -49,7 +49,7 @@ $white: #fff;
                 font-weight: 600;
                 margin-bottom: 2.5rem;
                 line-height: normal;
-                color: $secondaryColor;
+                color: $primaryColor;
             }
 
             ul {
@@ -62,15 +62,15 @@ $white: #fff;
                     display: block;
                     position: relative;
 
-                    // Common Pill Button Style (Parent & Child)
+                    // Common Pill Button Style
                     .sidebar-link {
                         display: flex;
                         align-items: center;
                         justify-content: space-between;
                         width: 100%;
                         min-height: 5.5rem;
-                        padding: 0.8rem 2rem; // Matches your inline padding
-                        border-radius: 3rem; // Pill shape
+                        padding: 0.8rem 2rem;
+                        border-radius: 3rem;
                         border: 1px solid $border2;
                         background-color: $white;
                         color: $primaryColor;
@@ -105,19 +105,18 @@ $white: #fff;
                         }
                     }
 
-                    // --- Nested Subcategories (Tree View) ---
+                    // --- Nested Subcategories ---
                     .subcategory-list {
                         list-style: none;
-                        padding-left: 3rem; // Indentation
+                        padding-left: 3rem;
                         margin-top: 1rem;
                         position: relative;
 
                         li {
                             margin-bottom: 1rem;
                             position: relative;
-                            padding-left: 1.5rem; // Space for the connector line
+                            padding-left: 1.5rem;
 
-                            // Horizontal Line Connector
                             .tree-line {
                                 position: absolute;
                                 left: -1rem;
@@ -128,7 +127,6 @@ $white: #fff;
                                 transform: translateY(-50%);
                             }
 
-                            // Subcategory specific adjustments
                             .sidebar-link {
                                 min-height: 5.0rem;
                                 font-size: 1.4rem;
@@ -148,8 +146,8 @@ $white: #fff;
         .product-listing-right {
             flex: 0 0 calc(109% - 40rem);
             max-width: calc(100% - 30rem);
-           
             padding-left: 3rem;
+            
             @include bp("smd-max") {
                 flex: 0 0 100%;
                 max-width: 100%;
@@ -171,22 +169,38 @@ $white: #fff;
                     flex: 1 0 auto;
                 }
 
-                // Controls Wrapper (Search & Sort)
+                // --- CONTROLS WRAPPER (Modified for Laptop Fix) ---
                 .controls-wrapper {
                     display: flex;
                     align-items: center;
                     gap: 2rem; 
-                    flex-wrap: wrap;
-                    flex: 1 1 30rem;
-                    justify-content: flex-end;
+                    
+                    // LAPTOP FIX: No wrap on desktop
+                    flex-wrap: nowrap; 
+                    flex: 1 1 auto;
+                    justify-content: flex-end; // Right align
                     max-width: 100%;
+
+                    // RESTORE "AS IT IS" FOR TABLET/MOBILE (<= 991px)
+                    @include bp("smd-max") {
+                        flex-wrap: wrap;
+                        flex: 1 1 30rem;
+                    }
 
                     .search-bar {
                         position: relative;
                         display: flex;
                         align-items: center;
-                        flex: 1 1 20rem;
-                        min-width: 20rem;
+                        
+                        // LAPTOP FIX: Fixed width compact
+                        flex: 0 0 260px;
+                        min-width: auto;
+
+                        // RESTORE "AS IT IS" FOR TABLET/MOBILE
+                        @include bp("smd-max") {
+                            flex: 1 1 20rem;
+                            min-width: 20rem;
+                        }
 
                         svg {
                             position: absolute;
@@ -196,10 +210,11 @@ $white: #fff;
                         }
 
                         input {
-                            padding: 0.8rem 1.2rem 0.8rem 3rem;
+                            padding: 0.2rem 0.2rem 0.2rem 3rem;
                             border: 1px solid $border2;
                             border-radius: 0.4rem;
                             width: 100%;
+                            height: 2.5rem; // Ensure height match
                             font-size: 1.4rem;
                             outline: none;
                         }
@@ -214,10 +229,12 @@ $white: #fff;
                         label {
                             font-size: 1.4rem;
                             color: $textDark;
+                            white-space: nowrap;
                         }
 
                         select {
-                            padding: 0.8rem 1.2rem;
+                            padding: 0.2rem 1.2rem;
+                            height: 2.5rem; // Ensure height match
                             border: 1px solid $border2;
                             border-radius: 0.4rem;
                             background-color: $white;
@@ -229,7 +246,6 @@ $white: #fff;
                 }
             }
 
-            // Breadcrumbs
             .breadcrumb-wrapper {
                 padding: 1rem 0;
                 margin-top: 1rem;
@@ -262,7 +278,7 @@ $white: #fff;
                                 text-decoration: underline;
                             }
                             &.current {
-                                color: $primaryColor; // or #666 based on your preference
+                                color: $primaryColor;
                                 text-decoration: none;
                             }
                         }
@@ -270,11 +286,10 @@ $white: #fff;
                 }
             }
 
-            // Product Grid (Your existing style)
+            // Product Grid (Button Fixed Version)
             .product-grid {
                 display: flex;
                 flex-wrap: wrap;
-                
                 margin: 0 -1.5rem -3rem;
 
                 .no-products {
@@ -305,7 +320,6 @@ $white: #fff;
                     .product-grid-inner {
                         border-radius: 2rem;
                         border: 0.1rem solid $border2;
-                       
                         display: block;
                         padding: 1.6rem;
                         position: relative;
@@ -316,57 +330,53 @@ $white: #fff;
 
                         .img-content-block {
                             margin-bottom: 1.2rem;
-                           
                             .img-block {
                                 padding-bottom: 100%;
                                 position: relative;
-                                 
                                 margin-bottom: 1.6rem;
                                 img {
                                     height: 100%;
                                     width: 100%;
                                     object-fit: contain;
                                     position: absolute;
-                                     
                                     left: 0;
                                     top: 0;
                                 }
                             }
                             h3 {
-                            /* 1. Typography */
-                            line-height: 1.375;
-                        
-                           
-                            height: 4.125em;
-                        
-                          
-                            display: -webkit-box;
-                            -webkit-line-clamp: 3; /* Number of lines to show */
-                            line-clamp: 3; /* Standard property for compatibility */
-                            -webkit-box-orient: vertical;
-                            overflow: hidden;
-                            text-overflow: ellipsis;
-                        
-                            
+                                line-height: 1.375;
+                                height: 4.125em;
+                                display: -webkit-box;
+                                -webkit-line-clamp: 3;
+                                line-clamp: 3;
+                                -webkit-box-orient: vertical;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                            }
                         }
-                        }
+                        
+                        // Buttons (Kept fixed version)
                         .product-button-wrapper {
                             a {
-                                display: block;
+                                display: flex; 
+                                align-items: center;
+                                justify-content: center;
+                                
+                                min-height: 4.2rem;
+                                padding: 0.5rem 1rem;
+                                line-height: 1.2;
+                                
                                 text-align: center;
-                                height: 4.2rem;
-                                line-height: 4rem;
                                 text-transform: capitalize;
                                 font-weight: 600;
+                                width: 100%;
                                 
                                 &.border-btn {
                                     border: 1px solid $primaryColor;
                                     color: $primaryColor;
                                     cursor: pointer;
-                                   
                                 }
-
-                                &:hover{
+                                &:hover {
                                     color: $white;
                                 }
                                 &.site-btn {
@@ -374,7 +384,6 @@ $white: #fff;
                                     color: $white;
                                     border: 1px solid $primaryColor;
                                 }
-
                                 & + a {
                                     margin-top: 1.2rem;
                                 }
@@ -384,7 +393,7 @@ $white: #fff;
                 }
             }
 
-            // Pagination (Converted from inline)
+            // Pagination
             .pagination {
                 width: 100%;
                 max-width: 80rem;
@@ -407,34 +416,28 @@ $white: #fff;
                     transition: all 0.3s ease;
                     min-width: 4.8rem;
                     cursor: pointer;
-                    
                     &:disabled {
                         opacity: 0.5;
                         cursor: not-allowed;
                     }
-
                     &.active {
                         background: $primaryColor;
                         color: $white;
                         box-shadow: 0 4px 8px rgba(59,130,246,0.3);
                         transform: scale(1.1);
                     }
-                    
-                    // Prev/Next buttons
                     &:first-child, &:last-child {
                         min-width: 10rem;
                         background: $primaryColor;
                         color: $white;
                     }
                 }
-
                 .page-numbers {
                     display: flex;
                     flex-wrap: wrap;
                     justify-content: center;
                     align-items: center;
                     gap: 0.8rem;
-                    
                     span {
                         color: $textGray;
                         font-size: 1.6rem;
