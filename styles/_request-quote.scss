@@ -1,6 +1,9 @@
 // --- 1. Existing Request Quote Section Styles ---
+// --- 1. Request Quote Section Styles (Fixed for Tablet/Mobile) ---
+// --- Request Quote Section (Fixed for Mobile S & M) ---
 .request-quote-section {
     padding: 10rem 0;
+    
     @include bp("xl-max") {
         padding: 8rem 0;
     }
@@ -13,45 +16,58 @@
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center center;
+        
         display: flex;
         justify-content: space-between;
         align-items: center;
+        
         padding: 0 5rem;
-        border: 1px solid $border3; // Assuming $border3 is defined in your variables
+        border: 1px solid $border3; 
         border-radius: 3rem;
         
-        @include bp("xs-max") {
-            flex: 0 0 100%;
-            max-width: 100%;
-            flex-wrap: wrap;
-            padding: 2.5rem; // Combined padding rule
-        }
+        // TABLET ADJUSTMENT
         @include bp("smd-max") {
-            padding: 0 2.5rem;
+            padding: 3rem;
+        }
+
+        // MOBILE FIX (For Mobile S, M, L)
+        // Uses sm-max (767px) to catch all mobile sizes
+        @include bp("sm-max") {
+            flex-direction: column; // Force vertical layout
+            text-align: center;     // Center alignment
+            padding: 3rem 2rem;
+            gap: 3rem;              // Space between text and image
         }
 
         .request-quote-left {
             flex: 1;
+            
+            // Text alignment specifically for mobile
             @include bp("sm-max") {
-                padding: 2.5rem 0;
-            }
-            @include bp("xs-max") {
-                flex: 0 0 100%;
-                max-width: 100%;
+                width: 100%;
                 text-align: center;
+                padding: 0;
             }
 
             h2 {
                 text-align: left;
                 text-transform: capitalize;
                 margin-bottom: 1rem;
-                @include bp("xs-max") {
+                
+                // Force center on mobile
+                @include bp("sm-max") {
                     text-align: center;
+                    font-size: 2.6rem; // Slightly smaller font for mobile
                 }
             }
 
             p {
                 margin-bottom: 1.5rem;
+                
+                @include bp("sm-max") {
+                    font-size: 1.5rem;
+                    max-width: 100%; // Ensure text uses full width
+                }
             }
 
             .site-btn {
@@ -59,25 +75,37 @@
                 line-height: 4.6rem;
                 font-size: 1.4rem;
                 font-weight: 600;
+                // Add margins to auto-center button on mobile
+                @include bp("sm-max") {
+                    margin: 0 auto;
+                    display: inline-block;
+                }
             }
         }
 
         .request-quote-right {
             flex: 0 0 30rem;
             max-width: 30rem;
+            
+            // Adjust image container for mobile
             @include bp("sm-max") {
-                flex: 0 0 18rem;
-                max-width: 18rem;
+                flex: 0 0 auto;
+                width: 100%;
+                max-width: 20rem; // Limit image size on small screens
+                margin-top: 0;
+                display: flex;
+                justify-content: center;
             }
-            @include bp("xs-max") {
-                flex: 0 0 100%;
-                max-width: 100%;
-                text-align: center;
-                margin-top: 2rem;
+            
+            img {
+                height: auto;
+                width: 100%;
             }
         }
     }
 }
+
+// ... (Baki no Modal code jem che tem rakho)
 
 
 .quote-modal-overlay {
