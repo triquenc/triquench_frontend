@@ -14,6 +14,7 @@ import ServiceWeProvide from "../components/commonComponents/serviceWeProvide";
 import Image from "next/image";
 
 import PopupClient from "../components/PopupClient";  
+import InquiryForm from "@/components/homeComponents/ContactPageFormSection";
 
 
 export default function Home() {
@@ -48,7 +49,7 @@ export default function Home() {
               <Image src="/images/submit-query-img.svg" width={416} height={200} alt="Product image" />
             </div>
             <div className="right">
-              <FormSection />
+              <InquiryForm/>
             </div>
           </div>
         </div>
