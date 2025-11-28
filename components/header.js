@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect, forwardRef } from "react";
 import Image from "next/image";
-import Link from "next/link"; // <-- 1. IMPORT Link
+import Link from "next/link";
 
 const globalStyles = `
   @media (max-width: 768px) {
@@ -63,6 +63,12 @@ const Header = forwardRef((props, ref) => {
   const handleItemHover = (index) => setHoveredItem(index);
   const handleItemLeave = () => setHoveredItem(null);
 
+  // Helper to close menu when a link is clicked
+  const handleLinkClick = () => {
+    setMenuOpen(false);
+    setMobileProductsOpen(false); // Also reset the accordion
+  };
+
   const products = [
     { url: "https://res.cloudinary.com/dd1na5drh/image/upload/v1733220967/SPINDLE_LINE_evvu8p.png", href: "/products?category=cnc-spindle-motor", label: "CNC Spindle Motor" },
     { url: "https://res.cloudinary.com/dd1na5drh/image/upload/v1733220967/SPINDLE_SERVO_LINE_q0nzbl.png", href: "/products?category=spindle-servo-motor", label: "Spindle Servo Motor" },
@@ -80,26 +86,26 @@ const Header = forwardRef((props, ref) => {
         <div className="header-wrapper">
           {/* Logo */}
           <div className="logo-wrapper">
-            <a href="/">
+            <Link href="/">
               <Image
                 src="/images/site-logo.svg"
                 width={86}
                 height={75}
                 alt="Triquench Logo"
               />
-            </a>
+            </Link>
           </div>
 
           {/* Desktop navigation */}
           <nav className="navigation-wrapper">
             <ul>
-              <li><a title="Home" href="/">Home</a></li>
+              <li><Link title="Home" href="/">Home</Link></li>
               <li
                 className="has-submenu"
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               >
-                <a title="Products" href="/products">Products</a>
+                <Link title="Products" href="/products">Products</Link>
                 {hoveredProduct && (
                   <div
                     className="products-dropdown"
@@ -148,7 +154,6 @@ const Header = forwardRef((props, ref) => {
                             e.currentTarget.style.borderColor = "transparent";
                           }}
                         >
-                          {/* --- 2. REPLACE <a> WITH <Link> --- */}
                           <Link
                             href={product.href}
                             style={{
@@ -194,18 +199,17 @@ const Header = forwardRef((props, ref) => {
                               </li>
                             </ul>
                           </Link>
-                          {/* --- END OF CHANGE --- */}
                         </div>
                       ))}
                     </div>
                   </div>
                 )}
               </li>
-              <li><a title="About Us" href="/about">About Us</a></li>
+              <li><Link title="About Us" href="/about">About Us</Link></li>
               <li><a title="Our Store" href="https://shop.triquenchindia.com/">Our Store</a></li>
-              <li><a title="Blog" href="/blogs">Blog</a></li>
-              <li><a title="Event" href="/event">Event</a></li>
-              <li><a title="Contact" href="/contact">Contact</a></li>
+              <li><Link title="Blog" href="/blogs">Blog</Link></li>
+              <li><Link title="Event" href="/event">Event</Link></li>
+              <li><Link title="Contact" href="/contact">Contact</Link></li>
             </ul>
           </nav>
 
@@ -249,7 +253,7 @@ const Header = forwardRef((props, ref) => {
           <nav>
             <ul style={{ listStyle: "none", padding: 0, margin: 0, paddingBottom: "20px" }}>
               <li style={{ borderBottom: "1px solid #eee" }}>
-                <a href="/" style={{ display: "block", padding: "15px 20px", color: "#333", textDecoration: "none" }}>Home</a>
+                <Link href="/" onClick={handleLinkClick} style={{ display: "block", padding: "15px 20px", color: "#333", textDecoration: "none" }}>Home</Link>
               </li>
               <li style={{ borderBottom: "1px solid #eee" }}>
                 <div
@@ -288,9 +292,10 @@ const Header = forwardRef((props, ref) => {
                         onMouseEnter={() => handleItemHover(index)}
                         onMouseLeave={handleItemLeave}
                       >
-                        {/* --- 3. ALSO REPLACE <a> WITH <Link> IN MOBILE --- */}
+                        {/* --- FIXED: Added onClick to close menu --- */}
                         <Link
                           href={product.href}
+                          onClick={handleLinkClick} 
                           style={{
                             display: "flex",
                             alignItems: "center",
@@ -308,18 +313,29 @@ const Header = forwardRef((props, ref) => {
                             {product.label}
                           </span>
                         </Link>
-                        {/* --- END OF CHANGE --- */}
                       </li>
                     ))}
                   </ul>
                 )}
               </li>
-              <li style={{ borderBottom: "1px solid #eee" }}><a href="/about" style={{ display: "block", padding: "15px 20px", color: "#333", textDecoration: "none" }}>About Us</a></li>
-              <li style={{ borderBottom: "1px solid #eee" }}><a href="https://shop.triquenchindia.com/" style={{ display: "block", padding: "15px 20px", color: "#333", textDecoration: "none" }}>Our Store</a></li>
-              <li style={{ borderBottom: "1px solid #eee" }}><a href="/blogs" style={{ display: "block", padding: "15px 20px", color: "#333", textDecoration: "none" }}>Blog</a></li>
-              <li style={{ borderBottom: "1px solid #eee" }}><a href="/event" style={{ display: "block", padding: "15px 20px", color: "#333", textDecoration: "none" }}>Event</a></li>
-              <li style={{ borderBottom: "1px solid #eee" }}><a href="/contact" style={{ display: "block", padding: "15px 20px", color: "#333", textDecoration: "none" }}>Contact</a></li>
-              <li style={{ borderBottom: "1px solid #eee" }}><a href="tel:+919601111615" className="border-btn">Call Now</a></li>
+              <li style={{ borderBottom: "1px solid #eee" }}>
+                <Link href="/about" onClick={handleLinkClick} style={{ display: "block", padding: "15px 20px", color: "#333", textDecoration: "none" }}>About Us</Link>
+              </li>
+              <li style={{ borderBottom: "1px solid #eee" }}>
+                <a href="https://shop.triquenchindia.com/" style={{ display: "block", padding: "15px 20px", color: "#333", textDecoration: "none" }}>Our Store</a>
+              </li>
+              <li style={{ borderBottom: "1px solid #eee" }}>
+                <Link href="/blogs" onClick={handleLinkClick} style={{ display: "block", padding: "15px 20px", color: "#333", textDecoration: "none" }}>Blog</Link>
+              </li>
+              <li style={{ borderBottom: "1px solid #eee" }}>
+                <Link href="/event" onClick={handleLinkClick} style={{ display: "block", padding: "15px 20px", color: "#333", textDecoration: "none" }}>Event</Link>
+              </li>
+              <li style={{ borderBottom: "1px solid #eee" }}>
+                <Link href="/contact" onClick={handleLinkClick} style={{ display: "block", padding: "15px 20px", color: "#333", textDecoration: "none" }}>Contact</Link>
+              </li>
+              <li style={{ borderBottom: "1px solid #eee" }}>
+                <a href="tel:+919601111615" className="border-btn" style={{ display: "block", padding: "15px 20px" }}>Call Now</a>
+              </li>
             </ul>
           </nav>
         </div>
