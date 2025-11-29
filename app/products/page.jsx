@@ -87,7 +87,7 @@ function ProductPageContent() {
     const fetchCategoryData = async (category, subcategory = '', subSubcategory = '') => {
         setIsLoading(true);
         try {
-            let url = `http://localhost:5000/api/product/category/${encodeURIComponent(category)}`;
+           let url = `https://d1w2b5et10ojep.cloudfront.net/api/product/category/${encodeURIComponent(category)}`;
             const params = new URLSearchParams();
             if (subcategory) params.append('subcategory', subcategory);
             if (subSubcategory) params.append('subSubcategory', subSubcategory);
