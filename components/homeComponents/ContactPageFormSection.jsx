@@ -179,7 +179,7 @@ const InquiryForm = () => {
                   />
 
                   {/* Phone */}
-                  <div className="inquiry-group inquiry-half-field1">
+                  <div className="inquiry-group inquiry-half-field2">
                     <label htmlFor="mobile">Phone Number</label>
                     <Field type="tel" name="mobile" placeholder="Enter Phone Number" />
                     <ErrorMessage name="mobile" component="div" className="inquiry-error" />
