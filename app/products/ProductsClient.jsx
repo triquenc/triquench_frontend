@@ -1,12 +1,11 @@
 "use client";
 
-import React, { useState, useEffect, useRef, useMemo, useCallback, Suspense } from "react";
+import React, { useState, useEffect, useRef, useMemo, useCallback } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import InnerPageBanner from "@/components/commonComponents/innerpagebanner";
-import SimpleSpinner from "@/components/commonComponents/SimpleSpinner";
 import categoriesData from '../../lib/categories.json';
 
-// Importing the new separate components
+// Import your sub-components
 import ProductSidebar from "@/components/productsComponents/ProductSidebar";
 import ProductHeaderControls from "@/components/productsComponents/ProductHeaderControls";
 import ProductBreadcrumbs from "@/components/productsComponents/ProductBreadcrumbs";
@@ -15,7 +14,7 @@ import ProductPagination from "@/components/productsComponents/ProductPagination
 
 const SITE_URL = "https://www.triquenchindia.com";
 
-function ProductPageContent() {
+export default function ProductsClient() {
     const searchParams = useSearchParams();
     const router = useRouter();
     const categorySlug = searchParams.get('category');
@@ -53,10 +52,6 @@ function ProductPageContent() {
             const text = (item.innerText || item.textContent || '').toLowerCase();
             if (text.includes(lowerName)) {
               item.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
-              const prevBoxShadow = item.style.boxShadow;
-              item.style.transition = 'box-shadow 0.35s ease';
-              item.style.boxShadow = '0 6px 18px rgba(0,96,152,0.12)';
-              setTimeout(() => { item.style.boxShadow = prevBoxShadow || ''; }, 1800);
               return true;
             }
           }
@@ -87,7 +82,7 @@ function ProductPageContent() {
     const fetchCategoryData = async (category, subcategory = '', subSubcategory = '') => {
         setIsLoading(true);
         try {
-           let url = `https://d1w2b5et10ojep.cloudfront.net/api/product/category/${encodeURIComponent(category)}`;
+           let url = `http://localhost:5000/api/product/category/${encodeURIComponent(category)}`;
             const params = new URLSearchParams();
             if (subcategory) params.append('subcategory', subcategory);
             if (subSubcategory) params.append('subSubcategory', subSubcategory);
@@ -115,21 +110,6 @@ function ProductPageContent() {
             }
         }
     }, [categorySlug, categories, fetchAllProducts]);
-
-    useEffect(() => {
-        const pageTitle = activeCategory === "All Products" ? "Our Products - Catalogue" : `${activeCategory} Products | Triquench`;
-        document.title = pageTitle;
-
-        let link = document.querySelector("link[rel='canonical']");
-        if (!link) {
-            link = document.createElement("link");
-            link.setAttribute("rel", "canonical");
-            document.head.appendChild(link);
-        }
-        let canonicalUrl = `${SITE_URL}/products`;
-        if (activeCategory !== "All Products") canonicalUrl += `?category=${encodeURIComponent(activeCategory)}`;
-        link.setAttribute("href", canonicalUrl);
-    }, [activeCategory]);
 
     // --- Handlers ---
     const handleCategoryClick = async (category, subcategory = '', subSubcategory = '') => {
@@ -267,7 +247,6 @@ function ProductPageContent() {
                 <div className="container">
                     <div className="product-listing-grid">
                         
-                        {/* 1. Sidebar */}
                         <ProductSidebar 
                             categories={categories}
                             activeCategory={activeCategory}
@@ -277,7 +256,6 @@ function ProductPageContent() {
                         />
 
                         <div className="product-listing-right">
-                            {/* 2. Header Controls */}
                             <ProductHeaderControls 
                                 start={indexOfFirstProduct + 1}
                                 end={Math.min(indexOfLastProduct, sortedProducts.length)}
@@ -288,13 +266,11 @@ function ProductPageContent() {
                                 setSortingOption={setSortingOption}
                             />
 
-                            {/* 3. Breadcrumbs */}
                             <ProductBreadcrumbs 
                                 breadcrumb={breadcrumb} 
                                 onBreadcrumbClick={handleBreadcrumbClick} 
                             />
 
-                            {/* 4. Grid */}
                             <ProductGrid 
                                 products={currentProducts}
                                 isLoading={isLoading}
@@ -302,7 +278,6 @@ function ProductPageContent() {
                                 gridRef={productGridRef}
                             />
 
-                            {/* 5. Pagination */}
                             {!isLoading && (
                                 <ProductPagination 
                                     currentPage={currentPage}
@@ -315,13 +290,5 @@ function ProductPageContent() {
                 </div>
             </section>
         </div>
-    );
-}
-
-export default function Products() {
-    return (
-        <Suspense fallback={<SimpleSpinner />}>
-            <ProductPageContent />
-        </Suspense>
     );
 }
