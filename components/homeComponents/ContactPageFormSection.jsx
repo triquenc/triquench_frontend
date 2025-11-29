@@ -12,7 +12,8 @@ const stateOptions = [
   "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram",
   "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu",
   "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal",
-  "Andaman and Nicobar Islands", "Chandigarh", "Dadra & Nagar Haveli and Daman & Diu",
+  "Andaman and Nicobar Islands", "Chandigarh",
+  "Dadra & Nagar Haveli and Daman & Diu",
   "Delhi", "Jammu & Kashmir", "Ladakh", "Puducherry",
 ];
 
@@ -63,28 +64,45 @@ const InquirySelect = ({ label, name, options, placeholder }) => {
   return (
     <div className="inquiry-group inquiry-half-field" ref={wrapperRef}>
       <label htmlFor={name}>{label}</label>
+
+      {/* visible trigger */}
       <div
         className={`inquiry-select-trigger ${isOpen ? "active" : ""}`}
         onClick={() => setIsOpen(!isOpen)}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") setIsOpen(!isOpen);
+        }}
+        aria-haspopup="listbox"
+        aria-expanded={isOpen}
       >
         <span className={!field.value ? "placeholder" : "value"}>
           {field.value || placeholder}
         </span>
-        <span className="arrow"></span>
+        <span className="arrow" />
       </div>
+
       {isOpen && (
-        <ul className="inquiry-options-list">
+        <ul className="inquiry-options-list" role="listbox">
           {options.map((option) => (
             <li
               key={option}
               className={field.value === option ? "selected" : ""}
               onClick={() => handleSelect(option)}
+              role="option"
+              aria-selected={field.value === option}
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") handleSelect(option);
+              }}
             >
               {option}
             </li>
           ))}
         </ul>
       )}
+
       <ErrorMessage name={name} component="div" className="inquiry-error" />
     </div>
   );
@@ -93,15 +111,19 @@ const InquirySelect = ({ label, name, options, placeholder }) => {
 const InquiryForm = () => {
   const handleSubmit = async (values, { resetForm }) => {
     try {
-      // Replace with your API
-      const response = await fetch("https://d1w2b5et10ojep.cloudfront.net/api/contact/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
-      });
+      const response = await fetch(
+        "https://d1w2b5et10ojep.cloudfront.net/api/contact/submit",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(values),
+        }
+      );
+
       const data = await response.json();
+
       if (response.ok) {
-        toast.success(data.message||"Message sent successfully!");
+        toast.success(data.message || "Message sent successfully!");
         resetForm();
       } else {
         toast.error(data.message || "Error sending message");
@@ -117,8 +139,6 @@ const InquiryForm = () => {
       <div className="container">
         <div className="inquiry-wrapper">
           
-          
-
           {/* RIGHT SIDE: Clean Form */}
           <div className="inquiry-right-col">
             <Formik
@@ -127,44 +147,45 @@ const InquiryForm = () => {
               onSubmit={handleSubmit}
             >
               {({ isSubmitting }) => (
-                <Form className="inquiry-form">
+                <Form className="inquiry-form new-centered-form">
                   
-                  {/* Row 1: Full Name */}
+                  {/* Full Name */}
                   <div className="inquiry-group inquiry-full-field">
                     <label htmlFor="name">Full Name</label>
                     <Field type="text" name="name" placeholder="Enter Full Name" />
                     <ErrorMessage name="name" component="div" className="inquiry-error" />
                   </div>
 
-                  {/* Row 2: Email */}
+                  {/* Email */}
                   <div className="inquiry-group inquiry-full-field">
                     <label htmlFor="email">Email (Optional)</label>
                     <Field type="email" name="email" placeholder="Enter Email" />
                     <ErrorMessage name="email" component="div" className="inquiry-error" />
                   </div>
 
-                  {/* Row 3: Company (Half) & State (Half) */}
+                  {/* Company */}
                   <div className="inquiry-group inquiry-half-field">
                     <label htmlFor="company">Company</label>
                     <Field type="text" name="company" placeholder="Enter Company" />
                     <ErrorMessage name="company" component="div" className="inquiry-error" />
                   </div>
 
-                  <InquirySelect 
-                    label="State" 
-                    name="state" 
-                    options={stateOptions} 
-                    placeholder="Select State" 
+                  {/* State */}
+                  <InquirySelect
+                    label="State"
+                    name="state"
+                    options={stateOptions}
+                    placeholder="Select State"
                   />
 
-                  {/* Row 4: Phone (Half) */}
+                  {/* Phone */}
                   <div className="inquiry-group inquiry-half-field">
                     <label htmlFor="mobile">Phone Number</label>
                     <Field type="tel" name="mobile" placeholder="Enter Phone Number" />
                     <ErrorMessage name="mobile" component="div" className="inquiry-error" />
                   </div>
 
-                  {/* Row 5: Message */}
+                  {/* Message */}
                   <div className="inquiry-group inquiry-full-field">
                     <label htmlFor="message">Message</label>
                     <Field as="textarea" name="message" placeholder="Type a message here" />

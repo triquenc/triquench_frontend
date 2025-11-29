@@ -1,250 +1,304 @@
+// form-styles.scss (updated for 320px - 420px)
 // Variables
 $primaryBlue: #145073;
 $borderColor: #d1e3ed;
 $lightBlueBg: #eaf6fb;
+$white: #ffffff;
+$errorRed: #d64545;
 
-// Breakpoint Mixin
-@mixin bp($point) {
-    @if $point == sm-max {
-        @media (max-width: 767px) { @content; }
-    }
-}
+/* Breakpoints */
+$bp-sm: 767px;
+$bp-mobile-max: 420px;
+$bp-mobile-mid: 375px;
+$bp-mobile-min: 320px;
 
-// --- RIGHT COLUMN: FORM STYLES ---
 .inquiry-right-col {
-    flex: 1; 
-    width: 100%;
-    padding-top: 1rem;
-    
-    // DESKTOP: Card Style
-   
-    padding: 3rem; 
-
-    // --- MOBILE FIX (320px+) ---
-    @include bp("sm-max") {
-        // 1. Force Full Width & Stop Flex Squeezing
-        flex: 0 0 100% !important; 
-        width: 150% !important; 
-        max-width: 150% !important;
-        
-        // 2. Reduce Card Padding to save space
-        padding: 1.5rem 1rem !important; 
-        
-        // 3. Keep Card Style
-        border: 2px solid #e1e1e1;
-        background: #fffdfd;      
-        border-radius: 2rem;      
-        
-        box-sizing: border-box; 
-        margin-top: 2rem;
-        margin-left: 0;
-        margin-right: 0;
-    }
-
-    .inquiry-form {
-        display: flex;
-        flex-wrap: wrap;
-        margin: 0 -1rem; // Desktop Gutter
-
-        // --- MOBILE FIX ---
-        @include bp("sm-max") {
-            display: block;       // Stack vertically
-            margin: 0 !important; // Remove negative margins
-            width: 100%;          
-        }
-
-        .inquiry-group {
-            padding: 0 1rem; // Desktop Gutter
-            margin-bottom: 2rem;
-            position: relative;
-            
-            // --- MOBILE FIX: FULL WIDTH CONTAINER ---
-            @include bp("sm-max") {
-                padding: 0 !important;
-                margin-bottom: 1.5rem;   
-                width: 100% !important;  
-                max-width: 100% !important;
-                flex: none;
-            }
-
-            label {
-                display: block;
-                font-size: 1.4rem;
-                color: $primaryBlue;
-                margin-bottom: 0.8rem;
-                font-weight: 500;
-                padding-left: 0.5rem;
-                text-align: left;
-            }
-
-            // --- INPUTS & TEXTAREA ---
-            input, textarea {
-                width: 100% !important;
-                background: #fff;
-                border: 1px solid $borderColor;
-                border-radius: 3rem; 
-                
-                // Desktop Padding
-                padding: 1.2rem 2rem; 
-                
-                // --- MOBILE FIX: REDUCE PADDING ---
-                // Less padding means more room for text
-                @include bp("sm-max") {
-                    padding: 1.2rem 1rem !important; 
-                    font-size: 1.4rem; // Slightly smaller font to fit text
-                }
-
-                font-size: 1.5rem;
-                color: #333;
-                outline: none;
-                transition: border-color 0.3s;
-                box-sizing: border-box; // CRITICAL
-
-                &::placeholder {
-                    color: #aaa;
-                    font-size: 1.4rem;
-                    
-                    @include bp("sm-max") {
-                        font-size: 1.3rem; // Smaller placeholder for mobile
-                    }
-                }
-
-                &:focus {
-                    border-color: $primaryBlue;
-                }
-            }
-
-            textarea {
-                border-radius: 1.5rem;
-                height: 12rem;
-                resize: none;
-            }
-
-            .inquiry-error {
-                color: red;
-                font-size: 1.2rem;
-                margin-top: 0.5rem;
-                padding-left: 0.5rem;
-                text-align: left;
-            }
-        }
-
-        // --- CUSTOM DROPDOWN ---
-        .inquiry-select-trigger {
-            width: 100% !important;
-            height: 4.8rem;
-            background: #fff;
-            border: 1px solid $borderColor;
-            border-radius: 3rem;
-            padding: 0 2rem;
-            
-            @include bp("sm-max") {
-                padding: 0 1rem !important; 
-            }
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            cursor: pointer;
-            box-sizing: border-box;
-
-            .placeholder { color: #aaa; font-size: 1.4rem; }
-            .value { color: #333; font-size: 1.5rem; }
-            
-            .arrow {
-                width: 1rem;
-                height: 1rem;
-                background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23145073' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-                background-repeat: no-repeat;
-                background-position: center;
-                background-size: contain;
-                transition: transform 0.3s;
-            }
-            &.active .arrow { transform: rotate(180deg); }
-        }
-
-        .inquiry-options-list {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: #fff;
-            border: 1px solid $borderColor;
-            border-radius: 1rem;
-            margin-top: 0.5rem;
-            max-height: 20rem;
-            overflow-y: auto;
-            z-index: 10;
-            padding: 0.5rem 0;
-            list-style: none;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            width: 100%;
-            text-align: left;
-
-            li {
-                padding: 0.8rem 2rem;
-                font-size: 1.4rem;
-                cursor: pointer;
-                color: #333;
-                
-                &:hover { background-color: $lightBlueBg; }
-                &.selected { background-color: $primaryBlue; color: #fff; }
-            }
-        }
-
-        // --- FIELD WIDTH HELPERS ---
-        // Desktop Definitions
-        .inquiry-full-field {
-            flex: 0 0 100%;
-            max-width: 100%;
-        }
-
-        .inquiry-half-field {
-            flex: 0 0 50%;
-            max-width: 50%;
-            
-            // --- MOBILE FIX ---
-            @include bp("sm-max") {
-                flex: 0 0 100% !important;
-                max-width: 100% !important;
-                width: 100% !important;
-            }
-        }
-
-        // --- SUBMIT BUTTON ---
-        .inquiry-btn-group {
-            width: 100%;
-            padding: 0 1rem;
-            margin-top: 1rem;
-
-            @include bp("sm-max") {
-                padding: 0 !important;
-            }
-
-            button {
-                background-color: $primaryBlue;
-                color: #fff;
-                border: none;
-                padding: 1.2rem 3.5rem;
-                border-radius: 3rem;
-                font-size: 1.6rem;
-                font-weight: 600;
-                cursor: pointer;
-                transition: background 0.3s;
-                
-                // Mobile: Full width button
-                @include bp("sm-max") {
-                    width: 100%;
-                }
-
-                &:hover {
-                    background-color: darken($primaryBlue, 10%);
-                }
-                &:disabled {
-                    opacity: 0.7;
-                    cursor: not-allowed;
-                }
-            }
-        }
-    }
+  box-sizing: border-box;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
+
+/* New centered form wrapper used inside the Form element */
+.new-centered-form {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 780px; // desktop comfortable width for the form
+  padding: 0;
+  box-sizing: border-box;
+
+  label {
+    display: block;
+    font-size: 14px;
+    color: $primaryBlue;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+
+  // common input/textarea/select styles
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  textarea {
+    width: 100%;
+    display: block;
+    padding: 14px 18px;
+    border-radius: 14px;
+    border: 1px solid $borderColor;
+    font-size: 16px;
+    color: #333;
+    background: $white;
+    box-sizing: border-box;
+    transition: box-shadow 0.15s ease, border-color 0.15s ease;
+  }
+
+  textarea {
+    min-height: 160px;
+    resize: vertical;
+  }
+
+  input:focus,
+  textarea:focus {
+    outline: none;
+    border-color: $primaryBlue;
+    box-shadow: 0 0 0 4px rgba(20, 80, 115, 0.06);
+  }
+
+  .inquiry-error {
+    color: $errorRed;
+    margin-top: 6px;
+    font-size: 13px;
+    padding-left: 2px;
+  }
+
+  .inquiry-half-field {
+    width: 48%;
+    display: inline-block;
+    vertical-align: top;
+    box-sizing: border-box;
+  }
+  .inquiry-half-field + .inquiry-half-field {
+    margin-left: 4%;
+  }
+
+  .inquiry-full-field {
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+  }
+
+  .inquiry-btn-group {
+    margin-top: 18px;
+    text-align: left;
+
+    button {
+      background: $primaryBlue;
+      color: $white;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    button[disabled] {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+}
+
+/* Custom select trigger matching input look */
+.inquiry-select-trigger {
+  width: 100% !important;
+  padding: 12px 16px;
+  border-radius: 14px;
+  border: 1px solid $borderColor;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  background: $white;
+  box-sizing: border-box;
+  font-size: 15px;
+
+  .placeholder { color: #9aaec0; }
+  .value { color: #333; }
+
+  &:focus {
+    outline: none;
+    border-color: $primaryBlue;
+    box-shadow: 0 0 0 4px rgba(20,80,115,0.06);
+  }
+}
+
+/* Dropdown options list */
+.inquiry-options-list {
+  position: absolute;
+  width: 100%;
+  max-height: 220px;
+  overflow-y: auto;
+  background: $white;
+  border: 1px solid $borderColor;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  z-index: 60;
+  padding: 6px 0;
+  box-sizing: border-box;
+
+  li {
+    padding: 10px 16px;
+    cursor: pointer;
+    font-size: 14px;
+    list-style: none;
+  }
+
+  li:hover {
+    background: $lightBlueBg;
+  }
+
+  li.selected {
+    background: $primaryBlue;
+    color: $white;
+  }
+}
+
+/* Desktop -> Tablet responsive rules */
+@media (max-width: $bp-sm) {
+  .new-centered-form {
+    .inquiry-half-field,
+    .inquiry-full-field {
+      width: 100% !important;
+      display: block;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea {
+      font-size: 15px;
+      padding: 12px 14px;
+    }
+
+    .inquiry-btn-group {
+      text-align: center;
+
+      button {
+        width: 100%;
+        max-width: 320px;
+      }
+    }
+  }
+
+  .inquiry-select-trigger {
+    height: auto;
+    padding: 12px 14px !important;
+  }
+}
+
+/* ---------- MOBILE: Optimized for 320px → 420px ---------- */
+
+/* Base mobile block: <= 420px */
+@media (max-width: $bp-mobile-max) {
+  /* Make the card fill most of viewport with a small gutter */
+  .inquiry-right-col {
+    width: calc(100% - 24px) !important;   /* 12px gutter each side */
+    max-width: calc(100% - 24px) !important;
+    margin: 12px auto !important;
+    padding: 10px !important;
+    background: $white;
+    border-radius: 10px;
+    border: 1px solid rgba(0,0,0,0.03);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  .new-centered-form {
+    max-width: 100% !important;
+    padding: 0;
+  }
+
+  /* Inputs slightly less padding so placeholders are visible and inputs look wider */
+  .new-centered-form input,
+  .new-centered-form textarea,
+  .inquiry-select-trigger {
+    font-size: 15px;
+    padding: 10px 12px !important;
+    border-radius: 12px !important;
+  }
+
+  /* Message area a bit shorter to avoid excessive scroll on small screens */
+  .new-centered-form textarea {
+    min-height: 110px;
+  }
+
+  /* Button full-width and prominent */
+  .inquiry-btn-group {
+    text-align: center;
+
+    button {
+      width: 100%;
+      max-width: none;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-size: 15px;
+    }
+  }
+
+  /* Ensure half fields stack cleanly */
+  .new-centered-form .inquiry-half-field,
+  .new-centered-form .inquiry-full-field {
+    width: 100% !important;
+    display: block;
+    margin: 0 !important;
+    padding: 0 0 !important;
+  }
+
+  /* Narrow devices: reduce side gutter slightly */
+  @media (max-width: $bp-mobile-mid) {
+    .inquiry-right-col {
+      width: calc(100% - 20px) !important; /* 10px gutter */
+      margin: 10px auto !important;
+      padding: 8px !important;
+    }
+    .new-centered-form input,
+    .new-centered-form textarea,
+    .inquiry-select-trigger {
+      padding: 9px 12px !important;
+      font-size: 14.5px !important;
+    }
+    .new-centered-form textarea { min-height: 100px; }
+  }
+
+  @media (max-width: $bp-mobile-min) {
+    .inquiry-right-col {
+      width: calc(100% - 16px) !important; /* 8px gutter */
+      margin: 8px auto !important;
+      padding: 6px !important;
+      border-radius: 8px;
+    }
+    .new-centered-form input,
+    .new-centered-form textarea,
+    .inquiry-select-trigger {
+      padding: 8px 10px !important;
+      font-size: 14px !important;
+    }
+    .new-centered-form textarea { min-height: 92px; }
+  }
+
+  /* small accessibility nicety: focus rings */
+  .new-centered-form input:focus,
+  .new-centered-form textarea:focus,
+  .inquiry-select-trigger:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(20,80,115,0.06);
+    border-color: $primaryBlue;
+  }
+}
+
+/* End of SCSS */
